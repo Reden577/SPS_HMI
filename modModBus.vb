@@ -1,0 +1,96 @@
+﻿Module modModBus
+    Public modComCheck As String
+
+    Public D2000 As Integer 'com check
+    Public D2001 As Integer
+    Public D2002 As Integer 'Counter MC1
+    Public D2003 As Integer
+    Public D2004 As Integer 'Counter MC2
+    Public D2005 As Integer
+    Public D2006 As Integer
+    Public D2007 As Integer
+    Public D2008 As Integer
+    Public D2009 As Integer
+    Public D2010 As Integer
+    Public D2011 As Integer
+    Public D2012 As Integer
+    Public D2013 As Integer
+    Public D2014 As Integer
+    Public D2015 As Integer
+    Public D2016 As Integer
+    Public D2017 As Integer
+    Public D2018 As Integer
+    Public D2019 As Integer
+    Public D2020 As Integer
+    Public D2021 As Integer
+    Public D2022 As Integer
+    Public D2023 As Integer
+    Public D2024 As Integer
+    Public D2025 As Integer
+    Public D2026 As Integer
+    Public D2027 As Integer
+    Public D2028 As Integer
+    Public D2029 As Integer
+    Public D2030 As Integer
+    Public D2031 As Integer
+    Public D2032 As Integer
+    Public D2033 As Integer
+    Public D2034 As Integer
+    Public D2035 As Integer
+    Public D2036 As Integer
+    Public D2037 As Integer
+    Public D2038 As Integer
+    Public D2039 As Integer
+    Public D2040 As Integer
+
+    Public RxPLCM0 As Boolean
+    Public RxPLCM1 As Boolean
+    Public RxPLCM2 As Boolean
+    Public RxPLCM3 As Boolean
+    Public RxPLCM4 As Boolean
+    Public RxPLCM5 As Boolean
+    Public RxPLCM6 As Boolean
+    Public RxPLCM7 As Boolean
+    Public RxPLCM8 As Boolean
+    Public RxPLCM9 As Boolean
+    Public RxPLCM10 As Boolean
+    Public RxPLCM11 As Boolean
+    Public RxPLCM12 As Boolean
+    Public RxPLCM13 As Boolean
+    Public RxPLCM14 As Boolean
+    Public RxPLCM15 As Boolean
+    Public RxPLCM16 As Boolean
+    Public RxPLCM17 As Boolean
+    Public RxPLCM18 As Boolean
+    Public RxPLCM19 As Boolean
+    Public RxPLCM20 As Boolean
+    Public RxPLCM21 As Boolean
+    Public RxPLCM22 As Boolean
+    Public RxPLCM23 As Boolean
+    Public RxPLCM24 As Boolean
+    Public RxPLCM25 As Boolean
+    Public RxPLCM26 As Boolean
+    Public RxPLCM27 As Boolean
+    Public RxPLCM28 As Boolean
+    Public RxPLCM29 As Boolean
+    Public RxPLCM30 As Boolean
+    Public RxPLCM31 As Boolean
+    Public RxPLCM32 As Boolean
+    Public RxPLCM33 As Boolean
+    Public RxPLCM34 As Boolean
+    Public RxPLCM35 As Boolean
+    Public RxPLCM36 As Boolean
+    Public RxPLCM37 As Boolean
+    Public RxPLCM38 As Boolean
+    Public RxPLCM39 As Boolean
+    Public RxPLCM40 As Boolean
+
+    Public M0_MC1UserLggedIN As Boolean
+    Public M1_MC2UserLggedIN As Boolean
+    Public M3_MC1JOLoaded As Boolean
+    Public M4_MC2JOLoaded As Boolean
+    Public M6_MC1PlanComplete As Boolean
+    Public M7_MC2PlanCOmplete As Boolean
+    Public M9_MC1TestAutoMOde As Boolean
+    Public M10_MC1TestAutoMode As Boolean
+End Module

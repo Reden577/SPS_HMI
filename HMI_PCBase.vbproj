@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{38BE2DF7-11C1-4773-AA87-6F017FDF87E7}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>HMI_PCBase.My.MyApplication</StartupObject>
+    <RootNamespace>HMI_PCBase</RootNamespace>
+    <AssemblyName>HMI_PCBase</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>HMI_PCBase.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>HMI_PCBase.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EasyModbus, Version=5.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\EasyModbusTCP.5.6.0\lib\net40\EasyModbus.dll</HintPath>
+    </Reference>
+    <Reference Include="FontAwesome.Sharp, Version=6.3.0.0, Culture=neutral, PublicKeyToken=d16d1e4e568ec10f, processorArchitecture=MSIL">
+      <HintPath>packages\FontAwesome.Sharp.6.3.0\lib\net472\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmMC1MachineStoppage.Designer.vb">
+      <DependentUpon>frmMC1MachineStoppage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMC1MachineStoppage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMC1Maintenance.Designer.vb">
+      <DependentUpon>frmMC1Maintenance.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMC1Maintenance.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="E:\0000 VBProjects\frmMC1OperatorStoppage.Designer.vb">
+      <DependentUpon>frmMC1OperatorStoppage.vb</DependentUpon>
+      <Link>frmMC1OperatorStoppage.Designer.vb</Link>
+    </Compile>
+    <Compile Include="E:\0000 VBProjects\frmMC1OperatorStoppage.vb">
+      <SubType>Form</SubType>
+      <Link>frmMC1OperatorStoppage.vb</Link>
+    </Compile>
+    <Compile Include="frmMC1QAVerification.Designer.vb">
+      <DependentUpon>frmMC1QAVerification.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMC1QAVerification.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMC1StoppageType.Designer.vb">
+      <DependentUpon>frmMC1StoppageType.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMC1StoppageType.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMC1TestAutoMode.Designer.vb">
+      <DependentUpon>frmMC1TestAutoMode.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMC1TestAutoMode.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMCStatDisplay.Designer.vb">
+      <DependentUpon>frmMCStatDisplay.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMCStatDisplay.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMC1Ready.Designer.vb">
+      <DependentUpon>frmMC1Ready.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMC1Ready.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMC1RUN.Designer.vb">
+      <DependentUpon>frmMC1RUN.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMC1RUN.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMC1QAStoppage.Designer.vb">
+      <DependentUpon>frmMC1QAStoppage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMC1QAStoppage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSettings.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSettings.Designer.vb">
+      <DependentUpon>frmSettings.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMC1STOP.Designer.vb">
+      <DependentUpon>frmMC1STOP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMC1STOP.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMC1PlsLogin.Designer.vb">
+      <DependentUpon>frmMC1PlsLogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMC1PlsLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainDash.Designer.vb">
+      <DependentUpon>frmMainDash.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainDash.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMC1MainPage.Designer.vb">
+      <DependentUpon>frmMC1MainPage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMC1MainPage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMC1NoPlan.Designer.vb">
+      <DependentUpon>frmMC1NoPlan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMC1NoPlan.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modCounters.vb" />
+    <Compile Include="modMCStartStop.vb" />
+    <Compile Include="modModBus.vb" />
+    <Compile Include="modShiftDetails.vb" />
+    <Compile Include="modSqlValues.vb" />
+    <Compile Include="modStoppageFlag.vb" />
+    <Compile Include="modSwitchForm.vb" />
+    <Compile Include="modSwitchMachines.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmMC1MachineStoppage.resx">
+      <DependentUpon>frmMC1MachineStoppage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMC1Maintenance.resx">
+      <DependentUpon>frmMC1Maintenance.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="E:\0000 VBProjects\frmMC1OperatorStoppage.resx">
+      <DependentUpon>frmMC1OperatorStoppage.vb</DependentUpon>
+      <Link>frmMC1OperatorStoppage.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMC1QAStoppage.resx">
+      <DependentUpon>frmMC1QAStoppage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMC1QAVerification.resx">
+      <DependentUpon>frmMC1QAVerification.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMC1StoppageType.resx">
+      <DependentUpon>frmMC1StoppageType.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMC1TestAutoMode.resx">
+      <DependentUpon>frmMC1TestAutoMode.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMCStatDisplay.resx">
+      <DependentUpon>frmMCStatDisplay.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMC1Ready.resx">
+      <DependentUpon>frmMC1Ready.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMC1RUN.resx">
+      <DependentUpon>frmMC1RUN.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSettings.resx">
+      <DependentUpon>frmSettings.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainDash.resx">
+      <DependentUpon>frmMainDash.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMC1MainPage.resx">
+      <DependentUpon>frmMC1MainPage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMC1STOP.resx">
+      <DependentUpon>frmMC1STOP.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMC1PlsLogin.resx">
+      <DependentUpon>frmMC1PlsLogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMC1NoPlan.resx">
+      <DependentUpon>frmMC1NoPlan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\indicator green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Stoppage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\QA Stoppage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\test auto mode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\indicator red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Machine Stoppage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Operator Stoppage.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+</Project>
