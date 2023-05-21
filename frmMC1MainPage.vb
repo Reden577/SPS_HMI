@@ -20,10 +20,11 @@
     End Sub
 
     Public Sub LoadDetailsMC1()
-        lblPlanQty.Text = D2010
+        lblJODetailsUN.Text = modLoginDetails_UserName
+        lblPlanQty.Text = modJODetails_PlanQty
         lblActualQty.Text = D2032
-        lblJobOrderCode.Text = "SO" & "/" & D2019 & "/" & D2020 & "/" & D2021
-        lblUserID.Text = D2006
+        lblJobOrderCode.Text = modJODetails_JOCode
+        lblUserID.Text = modLoginDetails_UserID
     End Sub
 
     Public Sub stoppageBtnsEnableDisable()
@@ -86,6 +87,10 @@
     Private Sub picTestAutoMode_Click(sender As Object, e As EventArgs) Handles picTestAutoMode.Click
         modINfrmMC1TestAutoMode = True
         Me.Close()
+
+    End Sub
+
+    Private Sub GroupBox1_Enter(sender As Object, e As EventArgs) Handles GroupBox1.Enter
 
     End Sub
 End Class

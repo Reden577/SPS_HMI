@@ -211,6 +211,7 @@ Public Class frmSettings
             MachineReadyFlag()
         End If
         modMC1TestAutoMOdeCounterSet = txtTAMCounterSet.Text
+        modSettingValMachineID = cboMachineName.Text
     End Sub
 
     'Public Sub MC1StartStopFlag()
@@ -252,6 +253,5 @@ Public Class frmSettings
             End If
         End If
     End Sub
-
 
 End Class

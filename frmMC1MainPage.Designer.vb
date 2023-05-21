@@ -37,6 +37,8 @@ Partial Class frmMC1MainPage
         Me.tmrRealTimeCheck = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.pnlMC1 = New System.Windows.Forms.Panel()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.lblJODetailsUN = New System.Windows.Forms.Label()
         Me.tmrDisplayON = New System.Windows.Forms.Timer(Me.components)
         Me.lblDisplayON = New System.Windows.Forms.Label()
         CType(Me.picTestAutoMode, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -50,7 +52,7 @@ Partial Class frmMC1MainPage
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(8, 24)
+        Me.Label4.Location = New System.Drawing.Point(8, 54)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(114, 29)
         Me.Label4.TabIndex = 0
@@ -60,7 +62,7 @@ Partial Class frmMC1MainPage
         '
         Me.lblUserID.AutoSize = True
         Me.lblUserID.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUserID.Location = New System.Drawing.Point(123, 24)
+        Me.lblUserID.Location = New System.Drawing.Point(123, 54)
         Me.lblUserID.Name = "lblUserID"
         Me.lblUserID.Size = New System.Drawing.Size(21, 29)
         Me.lblUserID.TabIndex = 0
@@ -70,7 +72,7 @@ Partial Class frmMC1MainPage
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(8, 77)
+        Me.Label6.Location = New System.Drawing.Point(8, 96)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(233, 29)
         Me.Label6.TabIndex = 0
@@ -80,7 +82,7 @@ Partial Class frmMC1MainPage
         '
         Me.lblJobOrderCode.AutoSize = True
         Me.lblJobOrderCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblJobOrderCode.Location = New System.Drawing.Point(250, 77)
+        Me.lblJobOrderCode.Location = New System.Drawing.Point(250, 96)
         Me.lblJobOrderCode.Name = "lblJobOrderCode"
         Me.lblJobOrderCode.Size = New System.Drawing.Size(21, 29)
         Me.lblJobOrderCode.TabIndex = 0
@@ -90,7 +92,7 @@ Partial Class frmMC1MainPage
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(8, 130)
+        Me.Label8.Location = New System.Drawing.Point(8, 138)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(210, 29)
         Me.Label8.TabIndex = 0
@@ -100,7 +102,7 @@ Partial Class frmMC1MainPage
         '
         Me.lblPlanQty.AutoSize = True
         Me.lblPlanQty.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPlanQty.Location = New System.Drawing.Point(250, 130)
+        Me.lblPlanQty.Location = New System.Drawing.Point(250, 138)
         Me.lblPlanQty.Name = "lblPlanQty"
         Me.lblPlanQty.Size = New System.Drawing.Size(21, 29)
         Me.lblPlanQty.TabIndex = 0
@@ -110,7 +112,7 @@ Partial Class frmMC1MainPage
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(8, 183)
+        Me.Label10.Location = New System.Drawing.Point(8, 180)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(241, 29)
         Me.Label10.TabIndex = 0
@@ -120,7 +122,7 @@ Partial Class frmMC1MainPage
         '
         Me.lblActualQty.AutoSize = True
         Me.lblActualQty.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblActualQty.Location = New System.Drawing.Point(250, 183)
+        Me.lblActualQty.Location = New System.Drawing.Point(250, 180)
         Me.lblActualQty.Name = "lblActualQty"
         Me.lblActualQty.Size = New System.Drawing.Size(21, 29)
         Me.lblActualQty.TabIndex = 0
@@ -176,6 +178,7 @@ Partial Class frmMC1MainPage
         '
         'pnlMC1
         '
+        Me.pnlMC1.Controls.Add(Me.Label2)
         Me.pnlMC1.Controls.Add(Me.Label4)
         Me.pnlMC1.Controls.Add(Me.picTestAutoMode)
         Me.pnlMC1.Controls.Add(Me.Label10)
@@ -183,6 +186,7 @@ Partial Class frmMC1MainPage
         Me.pnlMC1.Controls.Add(Me.Label6)
         Me.pnlMC1.Controls.Add(Me.picStoppage)
         Me.pnlMC1.Controls.Add(Me.lblJobOrderCode)
+        Me.pnlMC1.Controls.Add(Me.lblJODetailsUN)
         Me.pnlMC1.Controls.Add(Me.lblUserID)
         Me.pnlMC1.Controls.Add(Me.picQAStoppage)
         Me.pnlMC1.Controls.Add(Me.Label8)
@@ -192,6 +196,26 @@ Partial Class frmMC1MainPage
         Me.pnlMC1.Name = "pnlMC1"
         Me.pnlMC1.Size = New System.Drawing.Size(466, 361)
         Me.pnlMC1.TabIndex = 0
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(8, 12)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(60, 29)
+        Me.Label2.TabIndex = 0
+        Me.Label2.Text = "UN :"
+        '
+        'lblJODetailsUN
+        '
+        Me.lblJODetailsUN.AutoSize = True
+        Me.lblJODetailsUN.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblJODetailsUN.Location = New System.Drawing.Point(67, 12)
+        Me.lblJODetailsUN.Name = "lblJODetailsUN"
+        Me.lblJODetailsUN.Size = New System.Drawing.Size(21, 29)
+        Me.lblJODetailsUN.TabIndex = 0
+        Me.lblJODetailsUN.Text = "-"
         '
         'tmrDisplayON
         '
@@ -243,4 +267,6 @@ Partial Class frmMC1MainPage
     Friend WithEvents pnlMC1 As Panel
     Friend WithEvents tmrDisplayON As Timer
     Friend WithEvents lblDisplayON As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents lblJODetailsUN As Label
 End Class

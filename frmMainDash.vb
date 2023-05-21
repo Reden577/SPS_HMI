@@ -23,6 +23,40 @@ Public Class frmMainDash
     Dim stMC1QAStoppage As String = "QA Stoppage"
     Dim stMC1QAVerification As String = "QA Verification"
     Dim stMC1TestAutoMode As String = "Test Auto Mode"
+    Dim cntLoggedUser As Integer
+
+
+    Dim sqlPath As String = "Data Source=DESKTOP-4OGTIB2\DIAVIEWSQL;Initial Catalog=SPS;Persist Security Info=True;User ID=sa;Password=doc577isin"
+
+    '// FORM LOAD
+    Private Sub frmMainDash_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        shiftUpdate()
+        lblStopDateTime.Text = My.Settings.stopTime
+        modMC1StopDateandTime = My.Settings.stopTime
+        Me.CenterToScreen()
+    End Sub
+    '//
+    Private Sub frmMainDash_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        My.Settings.stopTime = lblStopDateTime.Text
+        tmrRepairTime.Stop()
+        tmrQAVeriTime.Stop()
+    End Sub
+    '// 
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles tmrRealTimeCheck.Tick
+        comCheck()
+        TextChangeReferenceValues()
+        MachineButtonEnableDisable()
+        shiftUpdate()
+        'GetLoginDetails()
+        'CheckForLoadedJobOrders()
+        'GetPlanDetails()
+        lblAckTime.Text = modMC1RepairTimer
+        lblQAVeriTimer.Text = modMC1QAVeriTimer
+        lblFailCounter.Text = modMC1FailCounters
+        Label22.Text = modMC1StoppageReason
+    End Sub
+    '//
+
 
 
     '// SWITHC FORM INSIDE FORM PANEL
@@ -103,31 +137,7 @@ Public Class frmMainDash
     End Sub
     '//
 
-    '// FORM LOAD
-    Private Sub frmMainDash_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        shiftUpdate()
-        lblStopDateTime.Text = My.Settings.stopTime
-        modMC1StopDateandTime = My.Settings.stopTime
-        Me.CenterToScreen()
-    End Sub
-    '//
-    Private Sub frmMainDash_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        My.Settings.stopTime = lblStopDateTime.Text
-        tmrRepairTime.Stop()
-        tmrQAVeriTime.Stop()
-    End Sub
-    '// 
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles tmrRealTimeCheck.Tick
-        comCheck()
-        TextChangeReferenceValues()
-        MachineButtonEnableDisable()
-        shiftUpdate()
-        lblAckTime.Text = modMC1RepairTimer
-        lblQAVeriTimer.Text = modMC1QAVeriTimer
-        lblFailCounter.Text = modMC1FailCounters
-        Label22.Text = modMC1StoppageReason
-    End Sub
-    '//
+
 
     '// SHOW FORM SETTING
     Private Sub btnSetting_Click(sender As Object, e As EventArgs) Handles btnSetting.Click
@@ -275,6 +285,9 @@ Public Class frmMainDash
         If modInfrmMC1MainPage = True Then
             change_PanelContainerFrmMC1(stMC1MainPage) 'MAIN PAGE
             showForm(frmMC1MainPage)
+            GetLoginDetails()
+            CheckForLoadedJobOrders()
+            GetPlanDetails()
         End If
     End Sub
     Private Sub lblStoppageType_TextChanged(sender As Object, e As EventArgs) Handles lblStoppageType.TextChanged
@@ -394,20 +407,14 @@ Public Class frmMainDash
             btnStartStopMC1.Enabled = False
         End If
     End Sub
-    '//
 
-    '//
     Public Sub TestAutoModeCounter()
         If modTestAutoModeMC1Flag = True And RxPLCM0 = True Then
             modMC1TestAutoModeCounter += 1
         End If
     End Sub
-    Private Sub lblMC1_D2002_TextChanged(sender As Object, e As EventArgs) Handles lblMC1_D2002.TextChanged
-        TestAutoModeCounter()
-    End Sub
-    '//
 
-    '//
+
     Public Sub shiftUpdate()
         Dim sc As Date
         modsftHours = Date.Now.ToString("HH")
@@ -444,7 +451,6 @@ Public Class frmMainDash
         sfCode = modShiftCode & "MC1"
         uID = D2006
 
-        Dim sqlPath As String = "Data Source=DESKTOP-4OGTIB2\DIAVIEWSQL;Initial Catalog=SPS;Persist Security Info=True;User ID=sa;Password=doc577isin"
         Dim sqlProcedure As String = "InsertProDT"
         Dim con As New SqlConnection(sqlPath)
         Using cmd As SqlCommand = New SqlCommand(sqlProcedure, con)
@@ -473,7 +479,6 @@ Public Class frmMainDash
     End Sub
 
     Public Sub UpdateDowntimeAtAcknowledge()
-        Dim sqlPath As String = "Data Source=DESKTOP-4OGTIB2\DIAVIEWSQL;Initial Catalog=SPS;Persist Security Info=True;User ID=sa;Password=doc577isin"
         Dim UpdateProDT As String = "UpdateProDTAck"
         Dim con As New SqlConnection(sqlPath)
         Using cmd As SqlCommand = New SqlCommand(UpdateProDT, con)
@@ -506,7 +511,6 @@ Public Class frmMainDash
             qaVeriDateTime = Now()
         End If
 
-        Dim sqlPath As String = "Data Source=DESKTOP-4OGTIB2\DIAVIEWSQL;Initial Catalog=SPS;Persist Security Info=True;User ID=sa;Password=doc577isin"
         Dim UpdateProDT As String = "UpdateProDTSave"
         Dim con As New SqlConnection(sqlPath)
         Using cmd As SqlCommand = New SqlCommand(UpdateProDT, con)
@@ -544,7 +548,6 @@ Public Class frmMainDash
         ttlDT = Math.Round((modMC1StopTimer / 60), 4)
 
         Dim dtComplete As String = "MC1DTComplete"
-        Dim sqlPath As String = "Data Source=DESKTOP-4OGTIB2\DIAVIEWSQL;Initial Catalog=SPS;Persist Security Info=True;User ID=sa;Password=doc577isin"
         Dim UpdateProDT As String = "UpdateProDTMCRun"
         Dim con As New SqlConnection(sqlPath)
         Using cmd As SqlCommand = New SqlCommand(UpdateProDT, con)
@@ -570,7 +573,6 @@ Public Class frmMainDash
     End Sub
 
     Public Sub UpdateDowntimeAtQAVerifyFail()
-        Dim sqlPath As String = "Data Source=DESKTOP-4OGTIB2\DIAVIEWSQL;Initial Catalog=SPS;Persist Security Info=True;User ID=sa;Password=doc577isin"
         Dim UpdateProDT As String = "UpdateProDTQAVeriFail"
         Dim con As New SqlConnection(sqlPath)
         Using cmd As SqlCommand = New SqlCommand(UpdateProDT, con)
@@ -588,7 +590,6 @@ Public Class frmMainDash
     Public Sub UpdateDowntimeAtQAVerifyPass()
         Dim ttlVeri As String
         ttlVeri = Math.Round((modMC1QAVeriTimer / 60), 4)
-        Dim sqlPath As String = "Data Source=DESKTOP-4OGTIB2\DIAVIEWSQL;Initial Catalog=SPS;Persist Security Info=True;User ID=sa;Password=doc577isin"
         Dim UpdateProDT As String = "UpdateProDTQAVeriPass"
         Dim con As New SqlConnection(sqlPath)
         Using cmd As SqlCommand = New SqlCommand(UpdateProDT, con)
@@ -619,41 +620,62 @@ Public Class frmMainDash
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        GetPlanDetails()
+        'GetPlanDetails()
+        'CheckForLoadJobOrders()
     End Sub
 
-
+    '// GETTING PLAN DETAILS FROM JO LOADED DETAILS
     Public Sub GetPlanDetails()
         Try
-            Dim sqlPath As String = "Data Source=DESKTOP-4OGTIB2\DIAVIEWSQL;Initial Catalog=SPS;Persist Security Info=True;User ID=sa;Password=doc577isin"
-            Dim sqlProc As String = "SelectProJOPlan"
-            Dim con As New SqlConnection(sqlPath)
-            Using cmd As SqlCommand = New SqlCommand(sqlProc, con)
-                cmd.Parameters.AddWithValue("@MachineID", "Machine 1")
-                cmd.Parameters.AddWithValue("@LoadStat", "Loaded")
-                cmd.CommandType = CommandType.StoredProcedure
-
-                con.Open()
-                Dim myreader As SqlDataReader
-                myreader = cmd.ExecuteReader
-                myreader.Read()
-                modJOPlan = myreader("JOB_ORDER_QTY")
-                con.Close()
-                'MsgBox(modJOPlan)
-            End Using
+            If modSettingValMachineID <> "" And modJODetails_LoadeStat >= 1 Then
+                Dim selDetails As New clsSelAllJOLoadedDetails_MCId_LDStat
+                selDetails.MachineId = modSettingValMachineID
+                selDetails.LoadStat = "Loaded"
+                selDetails.SellByMCIdAndLoadStat()
+                modJODetails_JOPlan = selDetails.JOPlanQty
+                modJODetails_JOCode = selDetails.JOCode
+                modJODetails_PlanQty = selDetails.JOPlanQty
+            End If
         Catch ex As Exception
             MessageBox.Show("No Job Order Loaded at Machine1!", "Get JO Plan Qty", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-
     End Sub
+    '//
 
-
-    Public Sub JOPlanVSActualTriggering()
-        'Max no. of Part No. in a Mould = 2
-        'Max no. of Cavity per Part No in a Mould = 4
-
+    '// COUNTING THE LOGGED IN USER ACCORDING TO MACHINE ID
+    Public Sub CountUserLogged()
+        Dim cntResult As New clsSelCountLoginDetails_UserName
+        cntResult.MachineId = modSettingValMachineID
+        cntResult.UserName = "none"
+        cntLoggedUser = cntResult.cntUN
     End Sub
+    '//
 
+    '// GETTING LOGIN DETAILS FROM LOGIN DETAILS
+    Public Sub GetLoginDetails()
+        CountUserLogged()
+        If modSettingValMachineID <> "" And cntLoggedUser <= 0 Then
+            Dim getUser As New clsSelAllLoginDetails_MachineId
+            getUser.MachineId = modSettingValMachineID
+            getUser.getUserLoginDetails()
+            modLoginDetails_UserName = getUser.UserName
+            modLoginDetails_UserID = getUser.UserID
+            modLoginDetails_AccLvl = getUser.AccessLvl
+        End If
+    End Sub
+    '//
+
+    '// COUNTING JO LOADED DETAILS BY MACHINE ID AND LOADED STAT
+    Public Sub CheckForLoadedJobOrders()
+        If modSettingValMachineID <> "" Then
+            Dim count As New clsSelCountJOLoadedDetails_MCId_Loaded
+            count.MachineId = modSettingValMachineID
+            count.LoadStat = "Loaded"
+            count.countLoadStatByMCIdAndLoaded()
+            modJODetails_LoadeStat = count.CountLoaded
+        End If
+    End Sub
+    '// 
 
 
 

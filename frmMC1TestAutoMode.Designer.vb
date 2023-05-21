@@ -25,6 +25,7 @@ Partial Class frmMC1TestAutoMode
         Me.components = New System.ComponentModel.Container()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.pnlMC1 = New System.Windows.Forms.Panel()
+        Me.lblRxPLCMC0 = New System.Windows.Forms.Label()
         Me.lblSTOP_RUNNING = New System.Windows.Forms.Label()
         Me.btnMainPage = New FontAwesome.Sharp.IconButton()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -34,7 +35,7 @@ Partial Class frmMC1TestAutoMode
         Me.lblElapsTimeMC1 = New System.Windows.Forms.Label()
         Me.lblStatMC1 = New System.Windows.Forms.Label()
         Me.tmrRealTimeCheck = New System.Windows.Forms.Timer(Me.components)
-        Me.lblRxPLCMC0 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.pnlMC1.SuspendLayout()
         Me.SuspendLayout()
@@ -53,6 +54,7 @@ Partial Class frmMC1TestAutoMode
         'pnlMC1
         '
         Me.pnlMC1.BackColor = System.Drawing.Color.DarkOrange
+        Me.pnlMC1.Controls.Add(Me.Label2)
         Me.pnlMC1.Controls.Add(Me.lblRxPLCMC0)
         Me.pnlMC1.Controls.Add(Me.lblSTOP_RUNNING)
         Me.pnlMC1.Controls.Add(Me.btnMainPage)
@@ -69,6 +71,16 @@ Partial Class frmMC1TestAutoMode
         Me.pnlMC1.Name = "pnlMC1"
         Me.pnlMC1.Size = New System.Drawing.Size(466, 361)
         Me.pnlMC1.TabIndex = 0
+        '
+        'lblRxPLCMC0
+        '
+        Me.lblRxPLCMC0.AutoSize = True
+        Me.lblRxPLCMC0.Location = New System.Drawing.Point(9, 50)
+        Me.lblRxPLCMC0.Name = "lblRxPLCMC0"
+        Me.lblRxPLCMC0.Size = New System.Drawing.Size(48, 20)
+        Me.lblRxPLCMC0.TabIndex = 10
+        Me.lblRxPLCMC0.Text = "False"
+        Me.lblRxPLCMC0.Visible = False
         '
         'lblSTOP_RUNNING
         '
@@ -178,15 +190,14 @@ Partial Class frmMC1TestAutoMode
         '
         Me.tmrRealTimeCheck.Enabled = True
         '
-        'lblRxPLCMC0
+        'Label2
         '
-        Me.lblRxPLCMC0.AutoSize = True
-        Me.lblRxPLCMC0.Location = New System.Drawing.Point(9, 50)
-        Me.lblRxPLCMC0.Name = "lblRxPLCMC0"
-        Me.lblRxPLCMC0.Size = New System.Drawing.Size(48, 20)
-        Me.lblRxPLCMC0.TabIndex = 10
-        Me.lblRxPLCMC0.Text = "False"
-        Me.lblRxPLCMC0.Visible = False
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(11, 188)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(57, 20)
+        Me.Label2.TabIndex = 11
+        Me.Label2.Text = "Label2"
         '
         'frmMC1TestAutoMode
         '
@@ -216,4 +227,5 @@ Partial Class frmMC1TestAutoMode
     Friend WithEvents tmrRealTimeCheck As Timer
     Friend WithEvents lblSTOP_RUNNING As Label
     Friend WithEvents lblRxPLCMC0 As Label
+    Friend WithEvents Label2 As Label
 End Class

@@ -83,6 +83,11 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsSelAllJOLoadedDetails_MCId_LDStat.vb" />
+    <Compile Include="clsSelAllLoginDetails_MachineId.vb" />
+    <Compile Include="clsSelCountJOLoadedDetails_MCId_Loaded.vb" />
+    <Compile Include="clsSelCountLoginDetails_UserName.vb" />
+    <Compile Include="clsSellAllJOLoadedDetais.vb" />
     <Compile Include="frmMC1MachineStoppage.Designer.vb">
       <DependentUpon>frmMC1MachineStoppage.vb</DependentUpon>
     </Compile>
@@ -95,13 +100,11 @@
     <Compile Include="frmMC1Maintenance.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="E:\0000 VBProjects\frmMC1OperatorStoppage.Designer.vb">
+    <Compile Include="frmMC1OperatorStoppage.Designer.vb">
       <DependentUpon>frmMC1OperatorStoppage.vb</DependentUpon>
-      <Link>frmMC1OperatorStoppage.Designer.vb</Link>
     </Compile>
-    <Compile Include="E:\0000 VBProjects\frmMC1OperatorStoppage.vb">
+    <Compile Include="frmMC1OperatorStoppage.vb">
       <SubType>Form</SubType>
-      <Link>frmMC1OperatorStoppage.vb</Link>
     </Compile>
     <Compile Include="frmMC1QAVerification.Designer.vb">
       <DependentUpon>frmMC1QAVerification.vb</DependentUpon>
@@ -185,8 +188,10 @@
     <Compile Include="modCounters.vb" />
     <Compile Include="modMCStartStop.vb" />
     <Compile Include="modModBus.vb" />
+    <Compile Include="modSettingValues.vb" />
     <Compile Include="modShiftDetails.vb" />
     <Compile Include="modSqlValues.vb" />
+    <Compile Include="modSqlValuesHelpers.vb" />
     <Compile Include="modStoppageFlag.vb" />
     <Compile Include="modSwitchForm.vb" />
     <Compile Include="modSwitchMachines.vb" />
@@ -214,9 +219,8 @@
     <EmbeddedResource Include="frmMC1Maintenance.resx">
       <DependentUpon>frmMC1Maintenance.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="E:\0000 VBProjects\frmMC1OperatorStoppage.resx">
+    <EmbeddedResource Include="frmMC1OperatorStoppage.resx">
       <DependentUpon>frmMC1OperatorStoppage.vb</DependentUpon>
-      <Link>frmMC1OperatorStoppage.resx</Link>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMC1QAStoppage.resx">
       <DependentUpon>frmMC1QAStoppage.vb</DependentUpon>
