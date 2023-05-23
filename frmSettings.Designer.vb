@@ -40,6 +40,8 @@ Partial Class frmSettings
         Me.txtTAMCounterSet = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.cboMachineName = New System.Windows.Forms.ComboBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.txtSQLPath = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'txtIP
@@ -141,54 +143,74 @@ Partial Class frmSettings
         '
         'Label1
         '
-        Me.Label1.Location = New System.Drawing.Point(14, 184)
+        Me.Label1.Location = New System.Drawing.Point(12, 189)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(92, 13)
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "TAM Counter Set:"
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'txtTAMCounterSet
         '
-        Me.txtTAMCounterSet.Location = New System.Drawing.Point(112, 181)
+        Me.txtTAMCounterSet.Location = New System.Drawing.Point(110, 186)
         Me.txtTAMCounterSet.Name = "txtTAMCounterSet"
-        Me.txtTAMCounterSet.Size = New System.Drawing.Size(101, 20)
+        Me.txtTAMCounterSet.Size = New System.Drawing.Size(79, 20)
         Me.txtTAMCounterSet.TabIndex = 4
         Me.txtTAMCounterSet.Text = "5"
         '
         'Label2
         '
-        Me.Label2.Location = New System.Drawing.Point(15, 158)
+        Me.Label2.Location = New System.Drawing.Point(14, 164)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(92, 13)
+        Me.Label2.Size = New System.Drawing.Size(73, 13)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Machine No:"
-        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'cboMachineName
         '
         Me.cboMachineName.FormattingEnabled = True
         Me.cboMachineName.Items.AddRange(New Object() {"Machine 1", "Machine 2", "Machine 3", "Machine 4", "Machine 5", "Machine 6", "Machine 7", "Machine 8", "Machine 9", "Machine 10", "Machine 11", "Machine 12", "Machine 13", "Machine 14", "Machine 15", "Machine 16", "Machine 17", "Machine 18", "Machine 19"})
-        Me.cboMachineName.Location = New System.Drawing.Point(112, 155)
+        Me.cboMachineName.Location = New System.Drawing.Point(88, 161)
         Me.cboMachineName.Name = "cboMachineName"
         Me.cboMachineName.Size = New System.Drawing.Size(101, 21)
         Me.cboMachineName.TabIndex = 6
         Me.cboMachineName.Text = "Machine 1"
         '
+        'Label3
+        '
+        Me.Label3.Location = New System.Drawing.Point(12, 138)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(92, 13)
+        Me.Label3.TabIndex = 2
+        Me.Label3.Text = "SQLPath:"
+        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'txtSQLPath
+        '
+        Me.txtSQLPath.Location = New System.Drawing.Point(64, 135)
+        Me.txtSQLPath.Name = "txtSQLPath"
+        Me.txtSQLPath.Size = New System.Drawing.Size(638, 20)
+        Me.txtSQLPath.TabIndex = 4
+        Me.txtSQLPath.Text = "Data Source=DESKTOP-4OGTIB2\DIAVIEWSQL;Initial Catalog=SPS;Persist Security Info=" &
+    "True;User ID=sa;Password=doc577isin"
+        '
         'frmSettings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(302, 369)
+        Me.ClientSize = New System.Drawing.Size(707, 369)
         Me.Controls.Add(Me.cboMachineName)
         Me.Controls.Add(Me.btnDisconnect)
         Me.Controls.Add(Me.btnConnect)
+        Me.Controls.Add(Me.txtSQLPath)
         Me.Controls.Add(Me.txtTAMCounterSet)
         Me.Controls.Add(Me.txtPort)
         Me.Controls.Add(Me.txtIP)
         Me.Controls.Add(Me.lblComCheck)
         Me.Controls.Add(Me.lblStatus)
         Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Label5)
@@ -217,4 +239,6 @@ Partial Class frmSettings
     Friend WithEvents txtTAMCounterSet As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents cboMachineName As ComboBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents txtSQLPath As TextBox
 End Class

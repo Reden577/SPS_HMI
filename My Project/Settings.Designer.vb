@@ -89,6 +89,43 @@ Namespace My
                 Me("QACountermeasure") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-4OGTIB2\DIAVIEWSQL;Initial Catalog=SPS;Persist Security Info="& _ 
+            "True;User ID=sa;Password=doc577isin"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10))>  _
+        Public Property SQLPath() As String
+            Get
+                Return CType(Me("SQLPath"),String)
+            End Get
+            Set
+                Me("SQLPath") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property MachineNo() As String
+            Get
+                Return CType(Me("MachineNo"),String)
+            End Get
+            Set
+                Me("MachineNo") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property TAMSetShots() As Integer
+            Get
+                Return CType(Me("TAMSetShots"),Integer)
+            End Get
+            Set
+                Me("TAMSetShots") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

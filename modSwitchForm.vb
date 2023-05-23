@@ -20,4 +20,5 @@
     Public modINfrmMC1MachineStoppage As Boolean
     Public modINfrmMC1QAVerification As Boolean
     Public modINfrmMC1TestAutoMode As Boolean
+    Public modINfrmMC1PlanComplete As Boolean
 End Module

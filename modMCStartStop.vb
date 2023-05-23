@@ -17,4 +17,9 @@
     Public modQAStoppageMC1Flag As Boolean
     Public modQAStoppageMC2Flag As Boolean
 
+    Public modCountermeasure As String
+    Public modVerificationDateTime As String
+
+    Public modPlanCOmplete As Boolean
+
 End Module

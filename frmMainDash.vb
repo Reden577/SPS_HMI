@@ -23,7 +23,9 @@ Public Class frmMainDash
     Dim stMC1QAStoppage As String = "QA Stoppage"
     Dim stMC1QAVerification As String = "QA Verification"
     Dim stMC1TestAutoMode As String = "Test Auto Mode"
+    Dim stMC1PlanComplete As String = "Plan Complete"
     Dim cntLoggedUser As Integer
+    Dim cntProdnStat As Integer
 
 
     Dim sqlPath As String = "Data Source=DESKTOP-4OGTIB2\DIAVIEWSQL;Initial Catalog=SPS;Persist Security Info=True;User ID=sa;Password=doc577isin"
@@ -33,11 +35,13 @@ Public Class frmMainDash
         shiftUpdate()
         lblStopDateTime.Text = My.Settings.stopTime
         modMC1StopDateandTime = My.Settings.stopTime
+        modSQLPath = My.Settings.SQLPath
         Me.CenterToScreen()
     End Sub
     '//
     Private Sub frmMainDash_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         My.Settings.stopTime = lblStopDateTime.Text
+        My.Settings.SQLPath = modSQLPath
         tmrRepairTime.Stop()
         tmrQAVeriTime.Stop()
     End Sub
@@ -54,6 +58,7 @@ Public Class frmMainDash
         lblQAVeriTimer.Text = modMC1QAVeriTimer
         lblFailCounter.Text = modMC1FailCounters
         Label22.Text = modMC1StoppageReason
+
     End Sub
     '//
 
@@ -98,6 +103,8 @@ Public Class frmMainDash
                 showForm(frmMC1QAVerification)
             Case "Test Auto Mode"
                 showForm(frmMC1TestAutoMode)
+            Case "Plan Complete"
+                showForm(frmPlanComplete)
         End Select
     End Sub
     Private Sub change_PanelContainerFrmMC2(page As String)
@@ -214,6 +221,7 @@ Public Class frmMainDash
         lblQAStoppage.Text = modINfrmMC1QAStoppage
         lblQAVerification.Text = modINfrmMC1QAVerification
         lblTestAutoMode.Text = modINfrmMC1TestAutoMode
+        lblInfmPlanComplete.Text = modINfrmMC1PlanComplete
 
         lblAckDateTime.Text = modMC1AckDateandTime
         lblAckFlag.Text = modMC1AcknowledgeFlag
@@ -226,6 +234,7 @@ Public Class frmMainDash
         lblQAVerifyFailFlag.Text = modMC1QAVerifyFailFlag
         lblQAVerifyPassFlag.Text = modMC1QAVerifyPassFlag
         lblMC1QAStoppageSaveFlag.Text = modMC1QAStoppageSaveFlag
+        lblPlanComplete.Text = RxPLCM14
     End Sub
 
     '// MACHINE STAT DISPLAY ACCORDING TO MACHINE STATUS TYPE
@@ -239,6 +248,7 @@ Public Class frmMainDash
         End If
     End Sub
     Private Sub lblRxPLCM0MC1_TextChanged(sender As Object, e As EventArgs) Handles lblRxPLCM0MC1.TextChanged
+        PlanVsActualMonitoring()
         If RxPLCM0 = True Then 'Machine1 Start/Stop  (M0 of PLC)
             UpdateDowntimeAtMachineRunning()
             tmrMC1StopTimer.Stop()
@@ -392,6 +402,16 @@ Public Class frmMainDash
 
         End If
     End Sub
+    Private Sub lblPlanComplete_TextChanged(sender As Object, e As EventArgs) Handles lblPlanComplete.TextChanged
+        PlanVsActualMonitoring()
+        UpdateJOLoadedDetails_At_PlanComplete()
+    End Sub
+    Private Sub lblInfmPlanComplete_TextChanged(sender As Object, e As EventArgs) Handles lblInfmPlanComplete.TextChanged
+        If modINfrmMC1PlanComplete = True Then
+            change_PanelContainerFrmMC1(stMC1PlanComplete) 'Plan Complete
+            showForm(frmPlanComplete)
+        End If
+    End Sub
     '//
 
 
@@ -408,13 +428,15 @@ Public Class frmMainDash
         End If
     End Sub
 
+    '// TEST AUTO MODE COUNTER
     Public Sub TestAutoModeCounter()
         If modTestAutoModeMC1Flag = True And RxPLCM0 = True Then
             modMC1TestAutoModeCounter += 1
         End If
     End Sub
+    '//
 
-
+    '// SHIFT UPDATE AND SHIFT CODES
     Public Sub shiftUpdate()
         Dim sc As Date
         modsftHours = Date.Now.ToString("HH")
@@ -443,169 +465,103 @@ Public Class frmMainDash
     End Sub
     '//
 
+    '// ASSIGNING MACHINE ID TO SHIFT CODE
+    Public Sub AssignMCIdToShiftCode(mcID As String)
+        Select Case mcID
+            Case "Machine 1"
+                modshiftCode_MCid = modShiftCode + "MC1"
+            Case "Machine 2"
+                modshiftCode_MCid = modShiftCode + "MC2"
+        End Select
+    End Sub
     '//
+
+    '// INSERTING DOWNTIME DETAILS
     Public Sub InsertDowntimeData()
         shiftUpdate()
-        Dim uID As String
-        Dim sfCode As String
-        sfCode = modShiftCode & "MC1"
-        uID = D2006
-
-        Dim sqlProcedure As String = "InsertProDT"
-        Dim con As New SqlConnection(sqlPath)
-        Using cmd As SqlCommand = New SqlCommand(sqlProcedure, con)
-            cmd.Parameters.AddWithValue("@ShiftCode", sfCode)
-            cmd.Parameters.AddWithValue("@UName", "")
-            cmd.Parameters.AddWithValue("@UNID", uID)
-            cmd.Parameters.AddWithValue("@DTType", "TBA") 'modMC1StoppageType
-            cmd.Parameters.AddWithValue("@StartTime", modMC1StopDateandTime)
-            cmd.Parameters.AddWithValue("@DTReason", "TBA") 'modMC1StoppageReason
-            cmd.Parameters.AddWithValue("@DTCountermeasure", "TBA") 'CM
-            cmd.Parameters.AddWithValue("@AckDate", "Not Yet Ack") 'modMC1AckDateandTime
-            cmd.Parameters.AddWithValue("@EndTime", "TBA") 'modMC1StoppageEndTime
-            cmd.Parameters.AddWithValue("@RunTime", "0") 'RunT
-            cmd.Parameters.AddWithValue("@ttlDT", "0") 'ttlDT
-            cmd.Parameters.AddWithValue("@ttlRprT", "0") 'ttlRprT
-            cmd.Parameters.AddWithValue("@ForQAVeri", "0")
-            cmd.Parameters.AddWithValue("@ttlQAVeri", "0") 'ttlQAVeriT
-            cmd.Parameters.AddWithValue("@ttlFailFreq", "0") 'modMC1FailCounters
-            cmd.Parameters.AddWithValue("@DTStatus", "MC1NewStoppage")
-            cmd.CommandType = CommandType.StoredProcedure
-
-            con.Open()
-            cmd.ExecuteNonQuery()
-            con.Close()
-        End Using
-    End Sub
-
-    Public Sub UpdateDowntimeAtAcknowledge()
-        Dim UpdateProDT As String = "UpdateProDTAck"
-        Dim con As New SqlConnection(sqlPath)
-        Using cmd As SqlCommand = New SqlCommand(UpdateProDT, con)
-            cmd.Parameters.AddWithValue("@AckDate", modMC1AckDateandTime)
-            cmd.Parameters.AddWithValue("@DTStatus", "MC1NewStoppage")
-            cmd.CommandType = CommandType.StoredProcedure
-
-            con.Open()
-            cmd.ExecuteNonQuery()
-            con.Close()
-        End Using
-    End Sub
-
-    Public Sub UpdateDowntimeAtStoppageSaved()
-        Dim stCM As String
-        Dim EndTime As String
-        Dim ttlRprT As String
-        Dim qaVeriDateTime As String
-
-        ttlRprT = Math.Round((modMC1RepairTimer / 60), 4)
-        EndTime = Now()
-        If modMC1StoppageType = "Operator" Then
-            stCM = "n/a"
-            qaVeriDateTime = "n/a"
-        ElseIf modMC1StoppageType = "Machine" Then
-            stCM = modMC1Countermeasure
-            qaVeriDateTime = "n/a"
-        ElseIf modMC1StoppageType = "Quality" Then
-            stCM = modMC1Countermeasure
-            qaVeriDateTime = Now()
+        AssignMCIdToShiftCode(modSettingValMachineID)
+        If modSQLPath IsNot Nothing Then
+            If modLoginDetails_UserName Is Nothing Then
+                modLoginDetails_UserName = ""
+            End If
+            Dim insDT As New clsInsertAllDowntimeDetails
+            insDT.ShiftCOde = modshiftCode_MCid
+            insDT.UserName = modLoginDetails_UserName
+            insDT.UserID = modLoginDetails_UserID
+            insDT.StartTime = modMC1StopDateandTime
+            insDT.InsertDowntime()
         End If
+    End Sub
+    '//
 
-        Dim UpdateProDT As String = "UpdateProDTSave"
-        Dim con As New SqlConnection(sqlPath)
-        Using cmd As SqlCommand = New SqlCommand(UpdateProDT, con)
-            cmd.Parameters.AddWithValue("@DTType", modMC1StoppageType)
-            cmd.Parameters.AddWithValue("@DTReason", modMC1StoppageReason)
-            cmd.Parameters.AddWithValue("@DTCountermeasure", stCM)
-            cmd.Parameters.AddWithValue("@EndTime", EndTime)
-            cmd.Parameters.AddWithValue("@ttlRprT", ttlRprT)
-            cmd.Parameters.AddWithValue("@ForQAVeri", qaVeriDateTime)
-            cmd.Parameters.AddWithValue("@ttlQAVeri", "0")
-            cmd.Parameters.AddWithValue("@ttlFailFreq", modMC1FailCounters)
-            cmd.Parameters.AddWithValue("@DTStatus", "MC1NewStoppage")
-            cmd.CommandType = CommandType.StoredProcedure
+    '// UPDATING DOWNTIME AT ACKNOWLEDGE
+    Public Sub UpdateDowntimeAtAcknowledge()
+        Dim upD8 As New clsUpdateDowntimeDetails_AtAck
+        upD8.AckDate = modMC1AckDateandTime
+        upD8.UpdateDT_At_Ack()
+    End Sub
+    '//
 
-            con.Open()
-            cmd.ExecuteNonQuery()
-            con.Close()
-
-            modMC1StoppageType = Nothing
-            modMC1StoppageReason = Nothing
-            modMC1Countermeasure = Nothing
-            modMC1AckDateandTime = Nothing
-            modMC1AcknowledgeFlag = False
-            modMC1OptStoppageSaveFlag = False
-            modMC1MachineStoppageSaveFlag = False
-        End Using
+    '// COUNTERMEASURE CONDITION IF OPERATOR, MACHINE OR QA STOPPAGE
+    Public Sub CountermeasureCondition(stoppageType As String)
+        Select Case stoppageType
+            Case "Operator"
+                modCountermeasure = "n/a"
+                modVerificationDateTime = "n/a"
+            Case "Machine"
+                modCountermeasure = modMC1Countermeasure
+                modVerificationDateTime = "n/a"
+            Case "Quality"
+                modCountermeasure = modMC1Countermeasure
+                modVerificationDateTime = Now()
+        End Select
     End Sub
 
+    '// UPDATING DOWNTIME AT STOPPAGE SAVE
+    Public Sub UpdateDowntimeAtStoppageSaved()
+        Dim upD8 As New clsUpdateDTDetails_StoppageSave
+        upD8.DTType = modMC1StoppageType
+        upD8.DTReason = modMC1StoppageReason
+        CountermeasureCondition(modMC1StoppageType)
+        upD8.DTCountermeasure = modCountermeasure
+        upD8.EndTime = Now()
+        upD8.TtlRepairTime = Math.Round((modMC1RepairTimer / 60), 4)
+        upD8.ForQAVeri = modVerificationDateTime
+        upD8.TtlFailFreq = modMC1FailCounters
+        upD8.UpdateDowntimeAtStoppageSaved()
+    End Sub
+    '//
+
+    '// UPDATING DOWNTIME AT MACHINE RUNNING
     Public Sub UpdateDowntimeAtMachineRunning()
-        Dim ttlDT As String
-        Dim RunT As String
-        Dim uID As String
-        uID = D2006
-        RunT = Now()
-        ttlDT = Math.Round((modMC1StopTimer / 60), 4)
-
-        Dim dtComplete As String = "MC1DTComplete"
-        Dim UpdateProDT As String = "UpdateProDTMCRun"
-        Dim con As New SqlConnection(sqlPath)
-        Using cmd As SqlCommand = New SqlCommand(UpdateProDT, con)
-            cmd.Parameters.AddWithValue("@UNID", uID)
-            cmd.Parameters.AddWithValue("@RunTime", RunT)
-            cmd.Parameters.AddWithValue("@ttlDT", ttlDT)
-            cmd.Parameters.AddWithValue("@DTComplete", dtComplete)
-            cmd.Parameters.AddWithValue("@DTStatus", "MC1NewStoppage")
-            cmd.CommandType = CommandType.StoredProcedure
-
-            con.Open()
-            cmd.ExecuteNonQuery()
-            con.Close()
-
-            modMC1StoppageType = Nothing
-            modMC1StopDateandTime = Nothing
-            modMC1StoppageReason = Nothing
-            modMC1Countermeasure = Nothing
-            modMC1AckDateandTime = Nothing
-            modMC1StoppageEndTime = Nothing
-            modMC1FailCounters = 0
-        End Using
+        If modLoginDetails_UserName IsNot Nothing Then
+            Dim upd8 As New clsUdateDTDetails_MCRunning
+            upd8.UserName = modLoginDetails_UserName
+            upd8.UserID = modLoginDetails_UserID
+            upd8.RunTime = Now()
+            upd8.TtlDT = Math.Round((modMC1StopTimer / 60), 4)
+            upd8.DTStatus = "MC1DTComplete"
+            upd8.Update_At_MachineRunning()
+        End If
     End Sub
+    '//
 
+    '// UPDATING DOWNTIME AT QA VERIFICATION FAIL
     Public Sub UpdateDowntimeAtQAVerifyFail()
-        Dim UpdateProDT As String = "UpdateProDTQAVeriFail"
-        Dim con As New SqlConnection(sqlPath)
-        Using cmd As SqlCommand = New SqlCommand(UpdateProDT, con)
-            cmd.Parameters.AddWithValue("@ForQAVeri", "TBA")
-            cmd.Parameters.AddWithValue("@ttlFailFreq", modMC1FailCounters)
-            cmd.Parameters.AddWithValue("@DTStatus", "MC1NewStoppage")
-            cmd.CommandType = CommandType.StoredProcedure
-
-            con.Open()
-            cmd.ExecuteNonQuery()
-            con.Close()
-        End Using
+        Dim upd8 As New clsUpdateDTDetails_QAVeriFail
+        upd8.TtlFailFreq = modMC1FailCounters
+        upd8.UpdateDTFailFreq()
     End Sub
+    '//
 
+    '// UPDATING DOWNTIME AT QA VERIFCATION PASS
     Public Sub UpdateDowntimeAtQAVerifyPass()
-        Dim ttlVeri As String
-        ttlVeri = Math.Round((modMC1QAVeriTimer / 60), 4)
-        Dim UpdateProDT As String = "UpdateProDTQAVeriPass"
-        Dim con As New SqlConnection(sqlPath)
-        Using cmd As SqlCommand = New SqlCommand(UpdateProDT, con)
-            cmd.Parameters.AddWithValue("@ttlQAVeri", ttlVeri)
-            cmd.Parameters.AddWithValue("@ttlFailFreq", modMC1FailCounters)
-            cmd.Parameters.AddWithValue("@DTStatus", "MC1NewStoppage")
-            cmd.CommandType = CommandType.StoredProcedure
-
-            con.Open()
-            cmd.ExecuteNonQuery()
-            con.Close()
-
-            modMC1QASendSampleFlag = False
-            modMC1QAVerifyPassFlag = False
-        End Using
+        Dim upd8 As New clsUpdateDTDetails_QAVeriPass
+        upd8.TtlVeri = Math.Round((modMC1QAVeriTimer / 60), 4)
+        upd8.TtlFailFreq = modMC1FailCounters
+        upd8.UpdateDTQAVerifyPass()
     End Sub
+    '//
 
     Private Sub tmrMC1StopTimer_Tick(sender As Object, e As EventArgs) Handles tmrMC1StopTimer.Tick
         modMC1StopTimer += 1
@@ -623,6 +579,18 @@ Public Class frmMainDash
         'GetPlanDetails()
         'CheckForLoadJobOrders()
     End Sub
+
+    '// COUNTING JO LOADED DETAILS BY MACHINE ID AND LOADED STAT
+    Public Sub CheckForLoadedJobOrders()
+        If modSettingValMachineID <> "" Then
+            Dim count As New clsSelCountJOLoadedDetails_MCId_Loaded
+            count.MachineId = modSettingValMachineID
+            count.LoadStat = "Loaded"
+            count.countLoadStatByMCIdAndLoaded()
+            modJODetails_LoadeStat = count.CountLoaded
+        End If
+    End Sub
+    '// 
 
     '// GETTING PLAN DETAILS FROM JO LOADED DETAILS
     Public Sub GetPlanDetails()
@@ -665,18 +633,47 @@ Public Class frmMainDash
     End Sub
     '//
 
-    '// COUNTING JO LOADED DETAILS BY MACHINE ID AND LOADED STAT
-    Public Sub CheckForLoadedJobOrders()
-        If modSettingValMachineID <> "" Then
-            Dim count As New clsSelCountJOLoadedDetails_MCId_Loaded
-            count.MachineId = modSettingValMachineID
-            count.LoadStat = "Loaded"
-            count.countLoadStatByMCIdAndLoaded()
-            modJODetails_LoadeStat = count.CountLoaded
+    '// PLAN VS ACTUAL OUTPUT MONITORING
+    Public Sub PlanVsActualMonitoring()
+        If RxPLCM14 = True Then
+            modPlanCOmplete = True
+            modINfrmMC1PlanComplete = True
+        Else
+            modPlanCOmplete = False
         End If
     End Sub
-    '// 
+    '//
 
+    '// COUNTING THE JO LOADED DETAILS ACCORDING TO MACHINE ID AND PRODUCTION STAT (In Progress)
+    Public Sub CountProdnStat()
+        Dim cntPrdStat As New clsSelCountJOLoadedDetails_MCIDnPrdnStat
+        cntPrdStat.MachineId = modSettingValMachineID
+        cntPrdStat.ProdnStat = "In Progress"
+        cntPrdStat.countLoadStatByMCIdAndLoaded()
+        cntProdnStat = cntPrdStat.CountPrdnStat
+    End Sub
+    '//
+
+    '//UPDATE JO LOADED DETAILS AT ENDTIME OR PLAN COMPLETE
+    Public Sub UpdateJOLoadedDetails_At_PlanComplete()
+        If modSettingValMachineID IsNot Nothing Then
+            CountProdnStat()
+            If modSettingValMachineID <> "" And cntProdnStat >= 1 Then
+                Dim upd8 As New clsUpdateJOLoadedDetails_AtEndTime
+                upd8.MCId = modSettingValMachineID
+                upd8.LoadStat = "Loaded"
+                upd8.ProdnStat = "In Progress"
+                upd8.EndTime = Now()
+                upd8.NewProdnStat = "Plan Complete"
+                upd8.TtlShots = D2002
+                upd8.PN1Output = D2002 * D2014
+                upd8.PN2Output = D2002 * D2015
+                upd8.TtlRunTime = 0
+                upd8.updateEndTimeDetails()
+            End If
+        End If
+    End Sub
+    '//
 
 
 End Class

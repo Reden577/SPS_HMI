@@ -5,4 +5,5 @@
     Public modsftDay As String
     Public modsShift As String
     Public modShiftCode As String
+    Public modshiftCode_MCid As String
 End Module

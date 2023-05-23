@@ -5,7 +5,7 @@ Public Class clsSelCountJOLoadedDetails_MCId_Loaded
     Public CountLoaded As Integer
 
     Public Sub countLoadStatByMCIdAndLoaded()
-        Dim con As New SqlConnection(sqlPath)
+        Dim con As New SqlConnection(modSQLPath)
         Dim proc As String = "SelProCountJOLoadedDetails_Loaded"
         Using cmd As SqlCommand = New SqlCommand(proc, con)
             cmd.Parameters.AddWithValue("@MchineId", MachineId)

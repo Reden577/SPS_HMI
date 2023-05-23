@@ -1,4 +1,5 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System.ComponentModel
+Imports System.Data.SqlClient
 Imports EasyModbus
 Public Class frmSettings
 
@@ -6,6 +7,16 @@ Public Class frmSettings
 
     Private Sub frmSettings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.CenterToScreen()
+        cboMachineName.Text = My.Settings.MachineNo
+        txtSQLPath.Text = My.Settings.SQLPath
+        txtTAMCounterSet.Text = My.Settings.TAMSetShots
+
+        modSQLPath = txtSQLPath.Text
+    End Sub
+    Private Sub frmSettings_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        My.Settings.MachineNo = cboMachineName.Text
+        My.Settings.SQLPath = txtSQLPath.Text
+        My.Settings.TAMSetShots = txtTAMCounterSet.Text
     End Sub
 
     Public Sub ConnectToModbus()
@@ -209,10 +220,19 @@ Public Class frmSettings
             'MC2StartStopFlag()
             MC1TestAutoModeFlag()
             MachineReadyFlag()
+            MachineStopPlanComplete()
         End If
         modMC1TestAutoMOdeCounterSet = txtTAMCounterSet.Text
         modSettingValMachineID = cboMachineName.Text
     End Sub
+
+    '// MACHINE STOP AT PLAN COMPLETE
+    Public Sub MachineStopPlanComplete()
+        If modPlanCOmplete = True Then
+            modClient.WriteSingleCoil(2348, False) 'PLC M300  MC1 OFF 
+        End If
+    End Sub
+
 
     'Public Sub MC1StartStopFlag()
     '    If modClient.Connected = True Then
@@ -253,5 +273,7 @@ Public Class frmSettings
             End If
         End If
     End Sub
+
+
 
 End Class

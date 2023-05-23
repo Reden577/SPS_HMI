@@ -1,7 +1,6 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class clsSellAllJOLoadedDetais
-    Public sqlPath As String = "Data Source=DESKTOP-4OGTIB2\DIAVIEWSQL;Initial Catalog=SPS;Persist Security Info=True;User ID=sa;Password=doc577isin"
     Public selAllProc As String = "SelProALLJOLoadedDetails_MachineID"
     Public MachineId As String
     Public ShiftCode As String
@@ -36,7 +35,7 @@ Public Class clsSellAllJOLoadedDetais
     Public TtlRunTime As Decimal
 
     Public Sub SelAllJOLoadedDetails()
-        Dim con As New SqlConnection(sqlPath)
+        Dim con As New SqlConnection(modSQLPath)
         Using cmd As SqlCommand = New SqlCommand(selAllProc, con)
             cmd.Parameters.AddWithValue("@MchineId", MachineId)
             cmd.CommandType = CommandType.StoredProcedure

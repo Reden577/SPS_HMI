@@ -5,7 +5,7 @@ Public Class clsSelCountLoginDetails_UserName
     Public cntUN As String
 
     Public Sub countUNByMachineId()
-        Dim con As New SqlConnection(sqlPath)
+        Dim con As New SqlConnection(modSQLPath)
         Dim proc As String = "SelProCountLoginDetails_UN"
         Using cmd As SqlCommand = New SqlCommand(proc, con)
             cmd.Parameters.AddWithValue("@MachineID", MachineId)

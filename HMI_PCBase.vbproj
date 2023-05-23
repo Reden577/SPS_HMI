@@ -83,11 +83,19 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsInsertAllDowntimeDetails.vb" />
     <Compile Include="clsSelAllJOLoadedDetails_MCId_LDStat.vb" />
     <Compile Include="clsSelAllLoginDetails_MachineId.vb" />
+    <Compile Include="clsSelCountJOLoadedDetails_MCIDnPrdnStat.vb" />
     <Compile Include="clsSelCountJOLoadedDetails_MCId_Loaded.vb" />
     <Compile Include="clsSelCountLoginDetails_UserName.vb" />
     <Compile Include="clsSellAllJOLoadedDetais.vb" />
+    <Compile Include="clsUdateDTDetails_MCRunning.vb" />
+    <Compile Include="clsUpdateDowntimeDetails_AtAck.vb" />
+    <Compile Include="clsUpdateDTDetails_QAVeriFail.vb" />
+    <Compile Include="clsUpdateDTDetails_QAVeriPass.vb" />
+    <Compile Include="clsUpdateDTDetails_StoppageSave.vb" />
+    <Compile Include="clsUpdateJOLoadedDetails_AtEndTime.vb" />
     <Compile Include="frmMC1MachineStoppage.Designer.vb">
       <DependentUpon>frmMC1MachineStoppage.vb</DependentUpon>
     </Compile>
@@ -146,6 +154,12 @@
       <DependentUpon>frmMC1QAStoppage.vb</DependentUpon>
     </Compile>
     <Compile Include="frmMC1QAStoppage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPlanComplete.Designer.vb">
+      <DependentUpon>frmPlanComplete.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPlanComplete.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmSettings.vb">
@@ -242,6 +256,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMC1RUN.resx">
       <DependentUpon>frmMC1RUN.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPlanComplete.resx">
+      <DependentUpon>frmPlanComplete.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSettings.resx">
       <DependentUpon>frmSettings.vb</DependentUpon>
