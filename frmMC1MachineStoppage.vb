@@ -2,7 +2,7 @@
 
 Public Class frmMC1MachineStoppage
 
-    Dim sqlPath As String = "Data Source=DESKTOP-4OGTIB2\DIAVIEWSQL;Initial Catalog=SPS;Persist Security Info=True;User ID=sa;Password=doc577isin"
+    'Dim sqlPath As String = "Data Source=DESKTOP-4OGTIB2\DIAVIEWSQL;Initial Catalog=SPS;Persist Security Info=True;User ID=sa;Password=doc577isin"
     Dim sqlStoppageSelectCmd As String = "SELECT[Stoppage_Details] FROM [Maintenance].[MListMachineStoppage] where [Machine_No] = 'MC1'"
 
     '//
@@ -55,7 +55,7 @@ Public Class frmMC1MachineStoppage
     '// 
     Public Sub LoadStoppageToDropdown()
         Try
-            Dim con As New SqlConnection(sqlPath)
+            Dim con As New SqlConnection(modSQLPath)
             Dim cmd As New SqlCommand(sqlStoppageSelectCmd, con)
             Dim adapter As New SqlDataAdapter(cmd)
             con.Open()
@@ -76,7 +76,7 @@ Public Class frmMC1MachineStoppage
         Try
             Dim sqlCountermeasureSelectCmd As String = "SELECT [Countermeasure] FROM [Maintenance].[MListMachineCountermeasure]" _
          & "where [Machine_No] = 'MC1'  AND [Stoppage_Details] = '" + cboStoppage.Text + "'"
-            Dim con As New SqlConnection(sqlPath)
+            Dim con As New SqlConnection(modSQLPath)
             Dim cmd As New SqlCommand(sqlCountermeasureSelectCmd, con)
             Dim adapter As New SqlDataAdapter(cmd)
             con.Open()

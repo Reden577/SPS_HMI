@@ -2,7 +2,7 @@
 
 Public Class frmMC1OperatorStoppage
 
-    Dim sqlPath As String = "Data Source=DESKTOP-4OGTIB2\DIAVIEWSQL;Initial Catalog=SPS;Persist Security Info=True;User ID=sa;Password=doc577isin"
+    'Dim sqlPath As String = "Data Source=DESKTOP-4OGTIB2\DIAVIEWSQL;Initial Catalog=SPS;Persist Security Info=True;User ID=sa;Password=doc577isin"
     Dim sqlOperatorSelectCmd As String = "SELECT[Operator_Stoppage] FROM [Production].[MListOperatorStoppage]"
 
     '//
@@ -51,7 +51,7 @@ Public Class frmMC1OperatorStoppage
 
     '// LOADING THE OPERATOR STOPPAGE TO DROPDOWN LIST
     Public Sub LoadOperatorStoppageToDropdown()
-        Dim con As New SqlConnection(sqlPath)
+        Dim con As New SqlConnection(modSQLPath)
         Dim cmd As New SqlCommand(sqlOperatorSelectCmd, con)
         Dim adapter As New SqlDataAdapter(cmd)
         con.Open()

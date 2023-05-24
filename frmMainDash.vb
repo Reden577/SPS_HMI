@@ -28,7 +28,7 @@ Public Class frmMainDash
     Dim cntProdnStat As Integer
 
 
-    Dim sqlPath As String = "Data Source=DESKTOP-4OGTIB2\DIAVIEWSQL;Initial Catalog=SPS;Persist Security Info=True;User ID=sa;Password=doc577isin"
+    'Dim sqlPath As String = "Data Source=DESKTOP-4OGTIB2\DIAVIEWSQL;Initial Catalog=SPS;Persist Security Info=True;User ID=sa;Password=doc577isin"
 
     '// FORM LOAD
     Private Sub frmMainDash_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -131,15 +131,13 @@ Public Class frmMainDash
 
     '// COMMUNICATION CHECK PLC AND DASHBOARD
     Public Sub comCheck()
-        Dim comON As String
-        Dim comOFF As String
-        comON = "C:\Users\TuF GaminG\Documents\000 projects\001VB.Net\HMI_PCBase\Resources\indicator red.png"
-        comOFF = "C:\Users\TuF GaminG\Documents\000 projects\001VB.Net\HMI_PCBase\Resources\indicator green.png"
+        Dim comON As Bitmap = My.Resources.indicator_green
+        Dim comOFF As Bitmap = My.Resources.indicator_red
 
         If modComCheck = "0" Then
-            picComCheck.Image = Image.FromFile(comOFF)
+            picComCheck.Image = comOFF
         Else
-            picComCheck.Image = Image.FromFile(comON)
+            picComCheck.Image = comON
         End If
     End Sub
     '//
