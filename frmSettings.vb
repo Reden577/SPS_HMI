@@ -10,6 +10,8 @@ Public Class frmSettings
         cboMachineName.Text = My.Settings.MachineNo
         txtSQLPath.Text = My.Settings.SQLPath
         txtTAMCounterSet.Text = My.Settings.TAMSetShots
+        txtIP.Text = My.Settings.IpAddress
+        txtPort.Text = My.Settings.Port
 
         modSQLPath = txtSQLPath.Text
     End Sub
@@ -17,6 +19,9 @@ Public Class frmSettings
         My.Settings.MachineNo = cboMachineName.Text
         My.Settings.SQLPath = txtSQLPath.Text
         My.Settings.TAMSetShots = txtTAMCounterSet.Text
+
+        My.Settings.IpAddress = txtIP.Text
+        My.Settings.Port = txtPort.Text
     End Sub
 
     Public Sub ConnectToModbus()

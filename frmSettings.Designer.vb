@@ -190,7 +190,7 @@ Partial Class frmSettings
         '
         Me.txtSQLPath.Location = New System.Drawing.Point(64, 135)
         Me.txtSQLPath.Name = "txtSQLPath"
-        Me.txtSQLPath.Size = New System.Drawing.Size(638, 20)
+        Me.txtSQLPath.Size = New System.Drawing.Size(386, 20)
         Me.txtSQLPath.TabIndex = 4
         Me.txtSQLPath.Text = "Data Source=DESKTOP-4OGTIB2\DIAVIEWSQL;Initial Catalog=SPS;Persist Security Info=" &
     "True;User ID=sa;Password=doc577isin"
@@ -199,7 +199,7 @@ Partial Class frmSettings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(707, 369)
+        Me.ClientSize = New System.Drawing.Size(458, 369)
         Me.Controls.Add(Me.cboMachineName)
         Me.Controls.Add(Me.btnDisconnect)
         Me.Controls.Add(Me.btnConnect)
