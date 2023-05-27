@@ -24,11 +24,11 @@ Public Class frmMainDash
     Dim stMC1QAVerification As String = "QA Verification"
     Dim stMC1TestAutoMode As String = "Test Auto Mode"
     Dim stMC1PlanComplete As String = "Plan Complete"
+    Dim stMC1NewJOSetup As String = "New JO Setup"
+
     Dim cntLoggedUser As Integer
+    Dim cntJOLoaded As Integer
     Dim cntProdnStat As Integer
-
-
-    'Dim sqlPath As String = "Data Source=DESKTOP-4OGTIB2\DIAVIEWSQL;Initial Catalog=SPS;Persist Security Info=True;User ID=sa;Password=doc577isin"
 
     '// FORM LOAD
     Private Sub frmMainDash_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -36,6 +36,10 @@ Public Class frmMainDash
         lblStopDateTime.Text = My.Settings.stopTime
         modMC1StopDateandTime = My.Settings.stopTime
         modSQLPath = My.Settings.SQLPath
+        modSettingValMachineID = My.Settings.MachineNo
+        modSQLPath = My.Settings.SQLPath
+        RxPLCM3_isFalse()
+        checkLoginAndJOLoaded()
         Me.CenterToScreen()
     End Sub
     '//
@@ -46,23 +50,19 @@ Public Class frmMainDash
         tmrQAVeriTime.Stop()
     End Sub
     '// 
+
+    '// FORM MAIN DASH REAL TIME STATUS CHECK TIMER
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles tmrRealTimeCheck.Tick
         comCheck()
         TextChangeReferenceValues()
-        MachineButtonEnableDisable()
         shiftUpdate()
-        'GetLoginDetails()
-        'CheckForLoadedJobOrders()
-        'GetPlanDetails()
         lblAckTime.Text = modMC1RepairTimer
         lblQAVeriTimer.Text = modMC1QAVeriTimer
         lblFailCounter.Text = modMC1FailCounters
         Label22.Text = modMC1StoppageReason
-
+        checkLoginAndJOLoaded()
     End Sub
     '//
-
-
 
     '// SWITHC FORM INSIDE FORM PANEL
     Private Sub showForm(frm As Form)
@@ -105,27 +105,9 @@ Public Class frmMainDash
                 showForm(frmMC1TestAutoMode)
             Case "Plan Complete"
                 showForm(frmPlanComplete)
+            Case "New JO Setup"
+                showForm(frmNewJOSetup)
         End Select
-    End Sub
-    Private Sub change_PanelContainerFrmMC2(page As String)
-        'Select Case page
-        '    Case "Main"
-        '        showForm(frmMC2MainPage)
-        '    Case "Please Login"
-        '        showForm(frmMC2PlsLogin)
-        '    Case "Stop"
-        '        showForm(frmMC2STOP)
-        '    Case "Running"
-        '        showForm(frmMC2RUN)
-        '    Case "Ready"
-        '        showForm(frmMC2Ready)
-        '    Case "No Plan"
-        '        showForm(frmMC2NoPlan)
-        '    Case "QA Stop"
-        '        showForm(frmMC2QAStoppage)
-        '    Case "Maintenance"
-        '        showForm(frmMC2Maintenance)
-        'End Select
     End Sub
     '//
 
@@ -142,64 +124,13 @@ Public Class frmMainDash
     End Sub
     '//
 
-
-
-    '// SHOW FORM SETTING
+    '// CALLING FORM SETTING1 SUBS
     Private Sub btnSetting_Click(sender As Object, e As EventArgs) Handles btnSetting.Click
         frmSettings.ShowDialog()
     End Sub
     '//
 
-    '//FUNCTION AS EXTERNAL MACHINE START/STOP
-    Private Sub btnStartStopMC1_Click(sender As Object, e As EventArgs) Handles btnStartStopMC1.Click
-        If modStartStopMC1 = False Then
-            modStartStopMC1 = True
-            btnStartStopMC1.BackColor = Color.Green
-            btnStartStopMC1.ForeColor = Color.White
-            btnStartStopMC1.Text = "ON"
-        Else
-            modStartStopMC1 = False
-            btnStartStopMC1.BackColor = Color.DarkRed
-            btnStartStopMC1.ForeColor = Color.White
-            btnStartStopMC1.Text = "OFF"
-        End If
-    End Sub
-    Private Sub btnStartStopMC2_Click(sender As Object, e As EventArgs) Handles btnStartStopMC2.Click
-        If modStartStopMC2 = False Then
-            modStartStopMC2 = True
-            btnStartStopMC2.BackColor = Color.Green
-            btnStartStopMC2.ForeColor = Color.White
-            btnStartStopMC2.Text = "ON"
-        Else
-            modStartStopMC2 = False
-            btnStartStopMC2.BackColor = Color.DarkRed
-            btnStartStopMC2.ForeColor = Color.White
-            btnStartStopMC2.Text = "OFF"
-        End If
-    End Sub
-    '//
-
-    '// FUNCTION EXTERNAL MACHINE MANUAL AUTO OPERATION
-    Private Sub ManualAuto_Buttons_Click(ByVal sender As Object, e As System.EventArgs) Handles btnAutoManualMC1.Click, btnAutoManualMC2.Click
-
-        Dim currentBtn As Button = sender
-        If currentBtn.Tag = 1 Then
-            modAutoManualMC1 = True
-            btnAutoManualMC1.Text = "MANUAL"
-        Else
-            modAutoManualMC1 = False
-            btnAutoManualMC1.Text = "AUTO"
-        End If
-        If currentBtn.Tag = 2 Then
-            modAutoManualMC2 = True
-            btnAutoManualMC2.Text = "MANUAL"
-        Else
-            modAutoManualMC2 = False
-            btnAutoManualMC2.Text = "AUTO"
-        End If
-    End Sub
-    '//
-
+    '// MONITORING SUBS FOR TEXT CHANGE
     Public Sub TextChangeReferenceValues()
         lblRxPLCM0MC1.Text = RxPLCM0
         lblRxPLCM3MC1.Text = RxPLCM3
@@ -220,6 +151,7 @@ Public Class frmMainDash
         lblQAVerification.Text = modINfrmMC1QAVerification
         lblTestAutoMode.Text = modINfrmMC1TestAutoMode
         lblInfmPlanComplete.Text = modINfrmMC1PlanComplete
+        lblInfrmNewJOSetup.Text = modINfrmNewJOSetup
 
         lblAckDateTime.Text = modMC1AckDateandTime
         lblAckFlag.Text = modMC1AcknowledgeFlag
@@ -233,18 +165,73 @@ Public Class frmMainDash
         lblQAVerifyPassFlag.Text = modMC1QAVerifyPassFlag
         lblMC1QAStoppageSaveFlag.Text = modMC1QAStoppageSaveFlag
         lblPlanComplete.Text = RxPLCM14
-    End Sub
 
-    '// MACHINE STAT DISPLAY ACCORDING TO MACHINE STATUS TYPE
-    Private Sub lblRxPLCM3MC1_TextChanged(sender As Object, e As EventArgs) Handles lblRxPLCM3MC1.TextChanged
-        If RxPLCM3 = False Then 'Machine1 LoggedIn confirm (M3 of PLC)
-            modINfrmMC1PlsLogin = True
-            modINfrmMC1Stop = False
+        lblJOLoadedisTrue.Text = modJODetails_isTrue
+        lblUserLoggedINisTrue.Text = modLoginDetails_isTrue
+        lblUserLoggedAndJOLoadedisTrue.Text = modLoginAndJOLoaded_isTrue
+    End Sub
+    '//
+
+    '// MACHINE STAT DISPLAY ACCORDING TO MACHINE STATUS TYPE (PLS LOGIN OR MACHINE STOP)
+    Public Sub RxPLCM3_isFalse()
+        'If RxPLCM3 = False Then 'Machine1 LoggedIn confirm (M3 of PLC)
+        '    modINfrmMC1PlsLogin = True
+        '    modINfrmMC1Stop = False
+        'Else
+        '    modINfrmMC1PlsLogin = False
+        '    modINfrmNewJOSetup = True
+        '    modINfrmMC1Stop = True
+        'End If
+    End Sub
+    '//
+
+    '// CHECKING FOR LOGIN AND JO LOADED SUBS
+    Public Sub checkLoginAndJOLoaded()
+        CountUserLogged() '<= 0
+        CheckForLoadedJobOrders() '>= 1
+        If cntLoggedUser <= 0 Then
+            modLoginDetails_isTrue = True
         Else
-            modINfrmMC1PlsLogin = False
-            modINfrmMC1Stop = True
+            modLoginDetails_isTrue = False
+        End If
+
+        If cntJOLoaded >= 1 Then
+            modJODetails_isTrue = True
+        Else
+            modJODetails_isTrue = False
+        End If
+
+        If modLoginDetails_isTrue = True And modJODetails_isTrue = True Then
+            modLoginAndJOLoaded_isTrue = True
+        Else
+            modLoginAndJOLoaded_isTrue = False
         End If
     End Sub
+    '//
+
+    '// CALLING CONDITION SUB FOR SWITCHING FORMS (PLS LOGIN, STOP AND NEW JO SETUP)
+    Public Sub formSwitchPlsLogin_Stop_JOLoadeSetup()
+        If modLoginAndJOLoaded_isTrue = True Then
+            modINfrmMC1PlsLogin = False
+            If D2002 = 0 And modFPBuyOff_Done = False Then
+                modINfrmNewJOSetup = True
+            Else
+                modINfrmMC1Stop = True
+            End If
+        Else
+            modINfrmMC1PlsLogin = True
+            modINfrmMC1Stop = False
+        End If
+    End Sub
+    '//
+
+    '// CALLING  KIOSK LOGIN AND JOLOADED CHECKING SUBS
+    Private Sub lblRxPLCM3MC1_TextChanged(sender As Object, e As EventArgs) Handles lblRxPLCM3MC1.TextChanged
+        RxPLCM3_isFalse()
+    End Sub
+    '// 
+
+    '// CALLING START STOP OPERATION SUBS
     Private Sub lblRxPLCM0MC1_TextChanged(sender As Object, e As EventArgs) Handles lblRxPLCM0MC1.TextChanged
         PlanVsActualMonitoring()
         If RxPLCM0 = True Then 'Machine1 Start/Stop  (M0 of PLC)
@@ -272,15 +259,24 @@ Public Class frmMainDash
             InsertDowntimeData()
         End If
     End Sub
+    '//
+
+    '// 
     Private Sub lblRxPLCM6MC1_TextChanged(sender As Object, e As EventArgs) Handles lblRxPLCM12MC1.TextChanged
 
     End Sub
+    '//
+
+    '// CALLING FORM PLS LOGIN SUBS
     Private Sub lblPlsLogin_TextChanged(sender As Object, e As EventArgs) Handles lblPlsLogin.TextChanged
         If modINfrmMC1PlsLogin = True Then
             change_PanelContainerFrmMC1(stMC1PlsLoginPage) 'PLS LOGIN
             showForm(frmMC1PlsLogin)
         End If
     End Sub
+    '//
+
+    '// CALLING FROM STOP SUBS
     Private Sub lblStop_TextChanged(sender As Object, e As EventArgs) Handles lblStop.TextChanged
         If modTestAutoModeMC1Flag = False Then
             If modINfrmMC1Stop = True Then
@@ -289,39 +285,56 @@ Public Class frmMainDash
             End If
         End If
     End Sub
+    '//
+
+    '// CALLING FORM MAIN SUBS
     Private Sub lblMain_TextChanged(sender As Object, e As EventArgs) Handles lblMain.TextChanged
         If modInfrmMC1MainPage = True Then
             change_PanelContainerFrmMC1(stMC1MainPage) 'MAIN PAGE
             showForm(frmMC1MainPage)
             GetLoginDetails()
-            CheckForLoadedJobOrders()
             GetPlanDetails()
         End If
     End Sub
+    '// 
+
+    '// CALLING FORM STOPPAGE SUBS
     Private Sub lblStoppageType_TextChanged(sender As Object, e As EventArgs) Handles lblStoppageType.TextChanged
         If modINfrmMC1StoppageType = True Then
             change_PanelContainerFrmMC1(stMC1StoppageType) 'STOPPAGE TYPE PAGE
             showForm(frmMC1StoppageType)
         End If
     End Sub
+    '//
+
+    '// CALLING FORM OPERATOR STOPPAGE SUBS
     Private Sub lblOperatorStoppage_TextChanged(sender As Object, e As EventArgs) Handles lblOperatorStoppage.TextChanged
         If modINfrmMC1OperatorStoppage = True Then
             change_PanelContainerFrmMC1(stMC1OperatorStoppage) 'OPERATOR STOPPAGE PAGE
             showForm(frmMC1OperatorStoppage)
         End If
     End Sub
+    '//
+
+    '// CALLING FORM MACHINE STOPPAGE SUBS
     Private Sub lblMachineStoppage_TextChanged(sender As Object, e As EventArgs) Handles lblMachineStoppage.TextChanged
         If modINfrmMC1MachineStoppage = True Then
             change_PanelContainerFrmMC1(stMC1MachineStoppage) 'MACHINE STOPPAGE PAGE
             showForm(frmMC1MachineStoppage)
         End If
     End Sub
+    '// 
+
+    '// CALLING FROM READY SUBS
     Private Sub lblReady_TextChanged(sender As Object, e As EventArgs) Handles lblReady.TextChanged
         If modINfrmMC1Ready = True Then
             change_PanelContainerFrmMC1(stMC1Ready) 'READY PAGE
             showForm(frmMC1Ready)
         End If
     End Sub
+    '//
+
+    '// CALLING FORM RUN SUBS
     Private Sub lblRun_TextChanged(sender As Object, e As EventArgs) Handles lblRun.TextChanged
         If modTestAutoModeMC1Flag = False Then
             If modINfrmMC1Run = True Then
@@ -330,24 +343,36 @@ Public Class frmMainDash
             End If
         End If
     End Sub
+    '//
+
+    '// CALLING FORM QA STOPPAGE SUBS
     Private Sub lblQAStoppage_TextChanged(sender As Object, e As EventArgs) Handles lblQAStoppage.TextChanged
         If modINfrmMC1QAStoppage = True Then
             change_PanelContainerFrmMC1(stMC1QAStoppage) 'QA STOPPAGE
             showForm(frmMC1QAStoppage)
         End If
     End Sub
+    '//
+
+    '// CALLING FORM QA VERIFICATIONSUBS
     Private Sub lblQAVerification_TextChanged(sender As Object, e As EventArgs) Handles lblQAVerification.TextChanged
         If modINfrmMC1QAVerification = True Then
             change_PanelContainerFrmMC1(stMC1QAVerification) 'QA VERIFICATION
             showForm(frmMC1QAVerification)
         End If
     End Sub
+    '//
+
+    '// CALLING FORM TEST AUTO MODESUBS
     Private Sub lblTestAutoMode_TextChanged(sender As Object, e As EventArgs) Handles lblTestAutoMode.TextChanged
         If modINfrmMC1TestAutoMode = True Then
             change_PanelContainerFrmMC1(stMC1TestAutoMode) 'QA TEST AUTO MODE
             showForm(frmMC1TestAutoMode)
         End If
     End Sub
+    '//
+
+    '// CALLING ACKNOWLEDGE SUBS
     Private Sub lblAckFlag_TextChanged(sender As Object, e As EventArgs) Handles lblAckFlag.TextChanged
         If modMC1AcknowledgeFlag = True Then
             UpdateDowntimeAtAcknowledge()
@@ -355,6 +380,9 @@ Public Class frmMainDash
             tmrRepairTime.Start()
         End If
     End Sub
+    '//
+
+    '// CALLING OPERATOR STOPPAGE SAVED SUBS
     Private Sub lblMC1OptStoppageSaveFlag_TextChanged(sender As Object, e As EventArgs) Handles lblMC1OptStoppageSaveFlag.TextChanged
         If modMC1OptStoppageSaveFlag = True Then
             UpdateDowntimeAtStoppageSaved()
@@ -362,6 +390,9 @@ Public Class frmMainDash
             modMC1RepairTimer = 0
         End If
     End Sub
+    '//
+
+    '// CALLING MACHINE STOPPAGE SAVED SUBS
     Private Sub lblMC1MachStoppageSaveFlag_TextChanged(sender As Object, e As EventArgs) Handles lblMC1MachStoppageSaveFlag.TextChanged
         If modMC1MachineStoppageSaveFlag = True Then
             UpdateDowntimeAtStoppageSaved()
@@ -369,6 +400,9 @@ Public Class frmMainDash
             modMC1RepairTimer = 0
         End If
     End Sub
+    '//
+
+    '// CALLING SEND SAMPLE SUBS
     Private Sub lblQASendSampleFlag_TextChanged(sender As Object, e As EventArgs) Handles lblMC1QASendSampleFlag.TextChanged
         If modMC1QASendSampleFlag = True Then
             tmrQAVeriTime.Enabled = True
@@ -380,6 +414,9 @@ Public Class frmMainDash
             modMC1QAVeriTimer = 0
         End If
     End Sub
+    '//
+
+    '// CALLING QA VERIFICATION FAIL SUBS
     Private Sub lblQAVerifyFailFlag_TextChanged(sender As Object, e As EventArgs) Handles lblQAVerifyFailFlag.TextChanged
         If modMC1QAVerifyFailFlag = True Then
             UpdateDowntimeAtQAVerifyFail()
@@ -388,6 +425,9 @@ Public Class frmMainDash
             modMC1QAVeriTimer = 0
         End If
     End Sub
+    '//
+
+    '// CALLING QA VERIFICATION PASS SUBS
     Private Sub lblQAVerifyPassFlag_TextChanged(sender As Object, e As EventArgs) Handles lblQAVerifyPassFlag.TextChanged
         If modMC1QAVerifyPassFlag = True Then
             UpdateDowntimeAtQAVerifyPass()
@@ -395,15 +435,24 @@ Public Class frmMainDash
             modMC1QAVeriTimer = 0
         End If
     End Sub
+    '//
+
+    '// CALLING STOPPAGE SAVED FLAG SUBS
     Private Sub lblMC1QAStoppageFlag_TextChanged(sender As Object, e As EventArgs) Handles lblMC1QAStoppageSaveFlag.TextChanged
         If modMC1QAStoppageSaveFlag = True Then
 
         End If
     End Sub
+    '//
+
+    '// CALLING PLAN COMPLETE SUBS
     Private Sub lblPlanComplete_TextChanged(sender As Object, e As EventArgs) Handles lblPlanComplete.TextChanged
         PlanVsActualMonitoring()
         UpdateJOLoadedDetails_At_PlanComplete()
     End Sub
+    '//
+
+    '// CALLING FROM PLAN COMPLETE SUBS
     Private Sub lblInfmPlanComplete_TextChanged(sender As Object, e As EventArgs) Handles lblInfmPlanComplete.TextChanged
         If modINfrmMC1PlanComplete = True Then
             change_PanelContainerFrmMC1(stMC1PlanComplete) 'Plan Complete
@@ -412,19 +461,36 @@ Public Class frmMainDash
     End Sub
     '//
 
-
-    '//
-    Public Sub MachineButtonEnableDisable()
-        If modINfrmMC1Ready = True Then
-            btnStartStopMC1.Enabled = True
-        ElseIf RxPLCM0 = True Then
-            btnStartStopMC1.Enabled = True
-        ElseIf modTestAutoModeMC1Flag = True Then
-            btnStartStopMC1.Enabled = True
-        Else
-            btnStartStopMC1.Enabled = False
+    '// CALLING FORM NEW JO SETUP SUBS
+    Private Sub lblInfrmNewJOSetup_TextChanged(sender As Object, e As EventArgs) Handles lblInfrmNewJOSetup.TextChanged
+        If modINfrmNewJOSetup = True Then
+            change_PanelContainerFrmMC1(stMC1NewJOSetup) 'New JO Setup
+            showForm(frmNewJOSetup)
         End If
     End Sub
+    '//
+
+    '// CALLING JO LOADED IS TRUE SUBS
+    Private Sub lblJOLoadedisTrue_TextChanged(sender As Object, e As EventArgs) Handles lblJOLoadedisTrue.TextChanged
+        If modJODetails_isTrue = True Then
+
+        End If
+    End Sub
+    '//
+
+    '// CALLING USER LOGGED IN IS TRUE SUBS
+    Private Sub lblUserLoggedINisTrue_TextChanged(sender As Object, e As EventArgs) Handles lblUserLoggedINisTrue.TextChanged
+        If modLoginDetails_isTrue = True Then
+
+        End If
+    End Sub
+    '//
+
+    '// CALLING USER LOGGEN IN AND JOLOADED CONFIRMATION SUBS
+    Private Sub lblUserLoggedAndJOLoadedisTrue_TextChanged(sender As Object, e As EventArgs) Handles lblUserLoggedAndJOLoadedisTrue.TextChanged
+        formSwitchPlsLogin_Stop_JOLoadeSetup()
+    End Sub
+    '//
 
     '// TEST AUTO MODE COUNTER
     Public Sub TestAutoModeCounter()
@@ -586,6 +652,7 @@ Public Class frmMainDash
             count.LoadStat = "Loaded"
             count.countLoadStatByMCIdAndLoaded()
             modJODetails_LoadeStat = count.CountLoaded
+            cntJOLoaded = count.CountLoaded
         End If
     End Sub
     '// 
@@ -593,6 +660,7 @@ Public Class frmMainDash
     '// GETTING PLAN DETAILS FROM JO LOADED DETAILS
     Public Sub GetPlanDetails()
         Try
+            CheckForLoadedJobOrders()
             If modSettingValMachineID <> "" And modJODetails_LoadeStat >= 1 Then
                 Dim selDetails As New clsSelAllJOLoadedDetails_MCId_LDStat
                 selDetails.MachineId = modSettingValMachineID
@@ -613,6 +681,7 @@ Public Class frmMainDash
         Dim cntResult As New clsSelCountLoginDetails_UserName
         cntResult.MachineId = modSettingValMachineID
         cntResult.UserName = "none"
+        cntResult.countUNByMachineId()
         cntLoggedUser = cntResult.cntUN
     End Sub
     '//
@@ -671,7 +740,6 @@ Public Class frmMainDash
             End If
         End If
     End Sub
-    '//
 
 
 End Class

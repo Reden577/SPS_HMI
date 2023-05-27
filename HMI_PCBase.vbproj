@@ -156,6 +156,12 @@
     <Compile Include="frmMC1QAStoppage.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmNewJOSetup.Designer.vb">
+      <DependentUpon>frmNewJOSetup.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmNewJOSetup.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmPlanComplete.Designer.vb">
       <DependentUpon>frmPlanComplete.vb</DependentUpon>
     </Compile>
@@ -257,6 +263,9 @@
     <EmbeddedResource Include="frmMC1RUN.resx">
       <DependentUpon>frmMC1RUN.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmNewJOSetup.resx">
+      <DependentUpon>frmNewJOSetup.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPlanComplete.resx">
       <DependentUpon>frmPlanComplete.vb</DependentUpon>
     </EmbeddedResource>
@@ -318,6 +327,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Operator Stoppage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewJOSetup.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

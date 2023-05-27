@@ -8,7 +8,14 @@ Public Class clsUpdateJOLoadedDetails_AtEndTime
     Public Sub updateEndTimeDetails()
         If modSettingValMachineID IsNot Nothing Then
             Dim con As New SqlConnection(modSQLPath)
-            Dim proc As String = "UpProJOLoadedDetails_EndTime"
+            Dim proc As String = "UPDATE [Production].[JOLoadedDetails] SET
+                                    [END_TIME] = @EndTime
+                                    ,[Prodn_Stats] = @NewProdnStat
+                                    ,[Ttl_Shots] = @TtlShots
+                                    ,[PN1_Output] = @PN1Out
+                                    ,[PN2_Output] = @PN2Out
+                                    ,[Ttl_RunTime] = @TtlRunTime
+                                  WHERE [Machine_ID] = @MCId And [Load_Stats] = @LoadStat And [Prodn_Stats] = @ProdnStat;"
             Using cmd As SqlCommand = New SqlCommand(proc, con)
                 cmd.Parameters.AddWithValue("@MCId", MCId)
                 cmd.Parameters.AddWithValue("@LoadStat", LoadStat)

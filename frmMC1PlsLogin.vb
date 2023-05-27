@@ -3,6 +3,7 @@
         modINfrmMC1PlsLogin = True
         frmMC1STOP.Close()
         frmMC1MainPage.Close()
+        frmNewJOSetup.Close()
     End Sub
     Private Sub frmMC1PlsLogin_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         modINfrmMC1PlsLogin = False

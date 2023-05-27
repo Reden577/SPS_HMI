@@ -9,5 +9,11 @@
 
     Public modMC1OutputCounter As Integer
 
+    Public modMSTimerCounter As Integer
+    Public modIdleTimer1Counter As Integer
+    Public modFPBTimerCounter As Integer
+    Public modidleTimer2Counter As Integer
+    Public modMassProTimerCounter As Integer
+
 
 End Module

@@ -42,7 +42,6 @@ Partial Class frmMainDash
         Me.tmrRepairTime = New System.Windows.Forms.Timer(Me.components)
         Me.tmrQAVeriTime = New System.Windows.Forms.Timer(Me.components)
         Me.Label22 = New System.Windows.Forms.Label()
-        Me.btnSetting = New FontAwesome.Sharp.IconButton()
         Me.main = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
@@ -103,10 +102,19 @@ Partial Class frmMainDash
         Me.lblMC1QAStoppageSaveFlag = New System.Windows.Forms.Label()
         Me.lblTesting = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.lblUserLoggedAndJOLoadedisTrue = New System.Windows.Forms.Label()
+        Me.Label34 = New System.Windows.Forms.Label()
+        Me.lblUserLoggedINisTrue = New System.Windows.Forms.Label()
+        Me.Label33 = New System.Windows.Forms.Label()
+        Me.lblJOLoadedisTrue = New System.Windows.Forms.Label()
+        Me.Label32 = New System.Windows.Forms.Label()
+        Me.lblInfrmNewJOSetup = New System.Windows.Forms.Label()
+        Me.Label31 = New System.Windows.Forms.Label()
         Me.lblPlanComplete = New System.Windows.Forms.Label()
         Me.Label29 = New System.Windows.Forms.Label()
         Me.lblInfmPlanComplete = New System.Windows.Forms.Label()
         Me.Label28 = New System.Windows.Forms.Label()
+        Me.btnSetting = New FontAwesome.Sharp.IconButton()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -207,7 +215,7 @@ Partial Class frmMainDash
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(490, 32)
+        Me.Panel1.Size = New System.Drawing.Size(494, 32)
         Me.Panel1.TabIndex = 5
         '
         'lblShiftCode
@@ -275,23 +283,6 @@ Partial Class frmMainDash
         Me.Label22.Text = "Label22"
         Me.Label22.Visible = False
         '
-        'btnSetting
-        '
-        Me.btnSetting.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnSetting.FlatAppearance.BorderSize = 0
-        Me.btnSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSetting.IconChar = FontAwesome.Sharp.IconChar.Gear
-        Me.btnSetting.IconColor = System.Drawing.Color.Black
-        Me.btnSetting.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.btnSetting.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnSetting.Location = New System.Drawing.Point(426, 460)
-        Me.btnSetting.Name = "btnSetting"
-        Me.btnSetting.Size = New System.Drawing.Size(62, 57)
-        Me.btnSetting.TabIndex = 2
-        Me.btnSetting.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnSetting.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnSetting.UseVisualStyleBackColor = True
-        '
         'main
         '
         Me.main.Location = New System.Drawing.Point(94, 48)
@@ -331,7 +322,7 @@ Partial Class frmMainDash
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(224, 22)
+        Me.Label18.Location = New System.Drawing.Point(536, 22)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(95, 13)
         Me.Label18.TabIndex = 0
@@ -350,7 +341,7 @@ Partial Class frmMainDash
         'Label19
         '
         Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(244, 35)
+        Me.Label19.Location = New System.Drawing.Point(556, 35)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(75, 13)
         Me.Label19.TabIndex = 0
@@ -369,7 +360,7 @@ Partial Class frmMainDash
         'lblAckTime
         '
         Me.lblAckTime.AutoSize = True
-        Me.lblAckTime.Location = New System.Drawing.Point(244, 74)
+        Me.lblAckTime.Location = New System.Drawing.Point(556, 74)
         Me.lblAckTime.Name = "lblAckTime"
         Me.lblAckTime.Size = New System.Drawing.Size(86, 13)
         Me.lblAckTime.TabIndex = 0
@@ -379,7 +370,7 @@ Partial Class frmMainDash
         'lblQAVeriTimer
         '
         Me.lblQAVeriTimer.AutoSize = True
-        Me.lblQAVeriTimer.Location = New System.Drawing.Point(244, 87)
+        Me.lblQAVeriTimer.Location = New System.Drawing.Point(556, 87)
         Me.lblQAVeriTimer.Name = "lblQAVeriTimer"
         Me.lblQAVeriTimer.Size = New System.Drawing.Size(72, 13)
         Me.lblQAVeriTimer.TabIndex = 0
@@ -389,7 +380,7 @@ Partial Class frmMainDash
         'lblFailCounter
         '
         Me.lblFailCounter.AutoSize = True
-        Me.lblFailCounter.Location = New System.Drawing.Point(244, 100)
+        Me.lblFailCounter.Location = New System.Drawing.Point(556, 100)
         Me.lblFailCounter.Name = "lblFailCounter"
         Me.lblFailCounter.Size = New System.Drawing.Size(63, 13)
         Me.lblFailCounter.TabIndex = 0
@@ -418,7 +409,7 @@ Partial Class frmMainDash
         'Label20
         '
         Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(244, 7)
+        Me.Label20.Location = New System.Drawing.Point(556, 7)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(75, 13)
         Me.Label20.TabIndex = 0
@@ -446,7 +437,7 @@ Partial Class frmMainDash
         'lblAckDateTime
         '
         Me.lblAckDateTime.AutoSize = True
-        Me.lblAckDateTime.Location = New System.Drawing.Point(320, 34)
+        Me.lblAckDateTime.Location = New System.Drawing.Point(632, 34)
         Me.lblAckDateTime.Name = "lblAckDateTime"
         Me.lblAckDateTime.Size = New System.Drawing.Size(32, 13)
         Me.lblAckDateTime.TabIndex = 0
@@ -455,7 +446,7 @@ Partial Class frmMainDash
         'lblAckFlag
         '
         Me.lblAckFlag.AutoSize = True
-        Me.lblAckFlag.Location = New System.Drawing.Point(320, 20)
+        Me.lblAckFlag.Location = New System.Drawing.Point(632, 20)
         Me.lblAckFlag.Name = "lblAckFlag"
         Me.lblAckFlag.Size = New System.Drawing.Size(32, 13)
         Me.lblAckFlag.TabIndex = 0
@@ -464,7 +455,7 @@ Partial Class frmMainDash
         'lblStopDateTime
         '
         Me.lblStopDateTime.AutoSize = True
-        Me.lblStopDateTime.Location = New System.Drawing.Point(320, 7)
+        Me.lblStopDateTime.Location = New System.Drawing.Point(632, 7)
         Me.lblStopDateTime.Name = "lblStopDateTime"
         Me.lblStopDateTime.Size = New System.Drawing.Size(32, 13)
         Me.lblStopDateTime.TabIndex = 0
@@ -823,7 +814,7 @@ Partial Class frmMainDash
         'lblTesting
         '
         Me.lblTesting.AutoSize = True
-        Me.lblTesting.Location = New System.Drawing.Point(262, 231)
+        Me.lblTesting.Location = New System.Drawing.Point(556, 126)
         Me.lblTesting.Name = "lblTesting"
         Me.lblTesting.Size = New System.Drawing.Size(45, 13)
         Me.lblTesting.TabIndex = 1
@@ -838,6 +829,14 @@ Partial Class frmMainDash
         Me.Panel2.Controls.Add(Me.lblQAVerifyPassFlag)
         Me.Panel2.Controls.Add(Me.lblMC1MachStoppageSaveFlag)
         Me.Panel2.Controls.Add(Me.lblMC1OptStoppageSaveFlag)
+        Me.Panel2.Controls.Add(Me.lblUserLoggedAndJOLoadedisTrue)
+        Me.Panel2.Controls.Add(Me.Label34)
+        Me.Panel2.Controls.Add(Me.lblUserLoggedINisTrue)
+        Me.Panel2.Controls.Add(Me.Label33)
+        Me.Panel2.Controls.Add(Me.lblJOLoadedisTrue)
+        Me.Panel2.Controls.Add(Me.Label32)
+        Me.Panel2.Controls.Add(Me.lblInfrmNewJOSetup)
+        Me.Panel2.Controls.Add(Me.Label31)
         Me.Panel2.Controls.Add(Me.lblPlanComplete)
         Me.Panel2.Controls.Add(Me.Label29)
         Me.Panel2.Controls.Add(Me.lblInfmPlanComplete)
@@ -897,8 +896,80 @@ Partial Class frmMainDash
         Me.Panel2.Controls.Add(Me.main)
         Me.Panel2.Location = New System.Drawing.Point(496, 38)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(488, 400)
+        Me.Panel2.Size = New System.Drawing.Size(741, 400)
         Me.Panel2.TabIndex = 0
+        '
+        'lblUserLoggedAndJOLoadedisTrue
+        '
+        Me.lblUserLoggedAndJOLoadedisTrue.Location = New System.Drawing.Point(354, 35)
+        Me.lblUserLoggedAndJOLoadedisTrue.Name = "lblUserLoggedAndJOLoadedisTrue"
+        Me.lblUserLoggedAndJOLoadedisTrue.Size = New System.Drawing.Size(32, 13)
+        Me.lblUserLoggedAndJOLoadedisTrue.TabIndex = 0
+        Me.lblUserLoggedAndJOLoadedisTrue.Text = "False"
+        Me.lblUserLoggedAndJOLoadedisTrue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label34
+        '
+        Me.Label34.Location = New System.Drawing.Point(200, 35)
+        Me.Label34.Name = "Label34"
+        Me.Label34.Size = New System.Drawing.Size(151, 13)
+        Me.Label34.TabIndex = 0
+        Me.Label34.Text = "UserLogged And JO Loaded isTrue:"
+        Me.Label34.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lblUserLoggedINisTrue
+        '
+        Me.lblUserLoggedINisTrue.Location = New System.Drawing.Point(354, 22)
+        Me.lblUserLoggedINisTrue.Name = "lblUserLoggedINisTrue"
+        Me.lblUserLoggedINisTrue.Size = New System.Drawing.Size(32, 13)
+        Me.lblUserLoggedINisTrue.TabIndex = 0
+        Me.lblUserLoggedINisTrue.Text = "False"
+        Me.lblUserLoggedINisTrue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label33
+        '
+        Me.Label33.Location = New System.Drawing.Point(200, 22)
+        Me.Label33.Name = "Label33"
+        Me.Label33.Size = New System.Drawing.Size(151, 13)
+        Me.Label33.TabIndex = 0
+        Me.Label33.Text = "User LoggedIn isTrue"
+        Me.Label33.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lblJOLoadedisTrue
+        '
+        Me.lblJOLoadedisTrue.Location = New System.Drawing.Point(354, 7)
+        Me.lblJOLoadedisTrue.Name = "lblJOLoadedisTrue"
+        Me.lblJOLoadedisTrue.Size = New System.Drawing.Size(32, 13)
+        Me.lblJOLoadedisTrue.TabIndex = 0
+        Me.lblJOLoadedisTrue.Text = "False"
+        Me.lblJOLoadedisTrue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label32
+        '
+        Me.Label32.Location = New System.Drawing.Point(200, 7)
+        Me.Label32.Name = "Label32"
+        Me.Label32.Size = New System.Drawing.Size(151, 13)
+        Me.Label32.TabIndex = 0
+        Me.Label32.Text = "JO Loaded isTrue"
+        Me.Label32.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lblInfrmNewJOSetup
+        '
+        Me.lblInfrmNewJOSetup.Location = New System.Drawing.Point(162, 346)
+        Me.lblInfrmNewJOSetup.Name = "lblInfrmNewJOSetup"
+        Me.lblInfrmNewJOSetup.Size = New System.Drawing.Size(32, 13)
+        Me.lblInfrmNewJOSetup.TabIndex = 0
+        Me.lblInfrmNewJOSetup.Text = "False"
+        Me.lblInfrmNewJOSetup.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label31
+        '
+        Me.Label31.Location = New System.Drawing.Point(8, 346)
+        Me.Label31.Name = "Label31"
+        Me.Label31.Size = New System.Drawing.Size(151, 13)
+        Me.Label31.TabIndex = 0
+        Me.Label31.Text = "InfrmNewJOSetup"
+        Me.Label31.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'lblPlanComplete
         '
@@ -936,12 +1007,29 @@ Partial Class frmMainDash
         Me.Label28.Text = "Infrm PlanComplete"
         Me.Label28.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
+        'btnSetting
+        '
+        Me.btnSetting.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnSetting.FlatAppearance.BorderSize = 0
+        Me.btnSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSetting.IconChar = FontAwesome.Sharp.IconChar.Gear
+        Me.btnSetting.IconColor = System.Drawing.Color.Black
+        Me.btnSetting.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.btnSetting.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnSetting.Location = New System.Drawing.Point(426, 460)
+        Me.btnSetting.Name = "btnSetting"
+        Me.btnSetting.Size = New System.Drawing.Size(62, 57)
+        Me.btnSetting.TabIndex = 2
+        Me.btnSetting.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnSetting.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnSetting.UseVisualStyleBackColor = True
+        '
         'frmMainDash
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.ClientSize = New System.Drawing.Size(490, 528)
+        Me.ClientSize = New System.Drawing.Size(494, 528)
         Me.Controls.Add(Me.Label22)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.btnSetting)
@@ -1050,4 +1138,12 @@ Partial Class frmMainDash
     Friend WithEvents Label28 As Label
     Friend WithEvents lblPlanComplete As Label
     Friend WithEvents Label29 As Label
+    Friend WithEvents lblInfrmNewJOSetup As Label
+    Friend WithEvents Label31 As Label
+    Friend WithEvents lblJOLoadedisTrue As Label
+    Friend WithEvents Label32 As Label
+    Friend WithEvents lblUserLoggedINisTrue As Label
+    Friend WithEvents Label33 As Label
+    Friend WithEvents lblUserLoggedAndJOLoadedisTrue As Label
+    Friend WithEvents Label34 As Label
 End Class
