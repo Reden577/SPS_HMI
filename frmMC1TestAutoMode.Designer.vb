@@ -35,7 +35,6 @@ Partial Class frmMC1TestAutoMode
         Me.lblElapsTimeMC1 = New System.Windows.Forms.Label()
         Me.lblStatMC1 = New System.Windows.Forms.Label()
         Me.tmrRealTimeCheck = New System.Windows.Forms.Timer(Me.components)
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.pnlMC1.SuspendLayout()
         Me.SuspendLayout()
@@ -54,7 +53,6 @@ Partial Class frmMC1TestAutoMode
         'pnlMC1
         '
         Me.pnlMC1.BackColor = System.Drawing.Color.DarkOrange
-        Me.pnlMC1.Controls.Add(Me.Label2)
         Me.pnlMC1.Controls.Add(Me.lblRxPLCMC0)
         Me.pnlMC1.Controls.Add(Me.lblSTOP_RUNNING)
         Me.pnlMC1.Controls.Add(Me.btnMainPage)
@@ -97,7 +95,9 @@ Partial Class frmMC1TestAutoMode
         'btnMainPage
         '
         Me.btnMainPage.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnMainPage.FlatAppearance.BorderColor = System.Drawing.Color.DarkOrange
         Me.btnMainPage.FlatAppearance.BorderSize = 0
+        Me.btnMainPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnMainPage.IconChar = FontAwesome.Sharp.IconChar.HomeLg
         Me.btnMainPage.IconColor = System.Drawing.Color.Black
         Me.btnMainPage.IconFont = FontAwesome.Sharp.IconFont.[Auto]
@@ -190,15 +190,6 @@ Partial Class frmMC1TestAutoMode
         '
         Me.tmrRealTimeCheck.Enabled = True
         '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(11, 188)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(57, 20)
-        Me.Label2.TabIndex = 11
-        Me.Label2.Text = "Label2"
-        '
         'frmMC1TestAutoMode
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -207,7 +198,7 @@ Partial Class frmMC1TestAutoMode
         Me.Controls.Add(Me.GroupBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "frmMC1TestAutoMode"
-        Me.Text = "frmMC1TestAutoMode"
+        Me.Text = " "
         Me.GroupBox1.ResumeLayout(False)
         Me.pnlMC1.ResumeLayout(False)
         Me.pnlMC1.PerformLayout()
@@ -227,5 +218,4 @@ Partial Class frmMC1TestAutoMode
     Friend WithEvents tmrRealTimeCheck As Timer
     Friend WithEvents lblSTOP_RUNNING As Label
     Friend WithEvents lblRxPLCMC0 As Label
-    Friend WithEvents Label2 As Label
 End Class

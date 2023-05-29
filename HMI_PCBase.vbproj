@@ -331,5 +331,11 @@
   <ItemGroup>
     <None Include="Resources\NewJOSetup.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewJOSetup_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewJOSetup_2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

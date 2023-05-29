@@ -22,4 +22,11 @@
     Public modINfrmMC1TestAutoMode As Boolean
     Public modINfrmMC1PlanComplete As Boolean
     Public modINfrmNewJOSetup As Boolean
+
+    Public modTAM_NewJOLoaded_isTrue As Boolean
+    Public modForQA_NewJOLoaded_isTrue As Boolean
+    Public modForQAFail_NewJOLoaded_isTrue As Boolean
+    Public modForQAPass_NewJOLoaded_isTrue As Boolean
+    Public modNewJOLoadedBYPASS_isTrue As Boolean
+
 End Module

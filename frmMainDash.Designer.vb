@@ -115,6 +115,9 @@ Partial Class frmMainDash
         Me.lblInfmPlanComplete = New System.Windows.Forms.Label()
         Me.Label28 = New System.Windows.Forms.Label()
         Me.btnSetting = New FontAwesome.Sharp.IconButton()
+        Me.tmrMSTimerCounter = New System.Windows.Forms.Timer(Me.components)
+        Me.tmrFPBTimerCounter = New System.Windows.Forms.Timer(Me.components)
+        Me.tmrMPTimerCounter = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -1024,6 +1027,21 @@ Partial Class frmMainDash
         Me.btnSetting.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnSetting.UseVisualStyleBackColor = True
         '
+        'tmrMSTimerCounter
+        '
+        Me.tmrMSTimerCounter.Enabled = True
+        Me.tmrMSTimerCounter.Interval = 1000
+        '
+        'tmrFPBTimerCounter
+        '
+        Me.tmrFPBTimerCounter.Enabled = True
+        Me.tmrFPBTimerCounter.Interval = 1000
+        '
+        'tmrMPTimerCounter
+        '
+        Me.tmrMPTimerCounter.Enabled = True
+        Me.tmrMPTimerCounter.Interval = 1000
+        '
         'frmMainDash
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1146,4 +1164,7 @@ Partial Class frmMainDash
     Friend WithEvents Label33 As Label
     Friend WithEvents lblUserLoggedAndJOLoadedisTrue As Label
     Friend WithEvents Label34 As Label
+    Friend WithEvents tmrMSTimerCounter As Timer
+    Friend WithEvents tmrFPBTimerCounter As Timer
+    Friend WithEvents tmrMPTimerCounter As Timer
 End Class

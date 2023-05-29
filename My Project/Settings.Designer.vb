@@ -116,8 +116,7 @@ Namespace My
         End Property
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Public Property TAMSetShots() As Integer
             Get
                 Return CType(Me("TAMSetShots"),Integer)
@@ -129,7 +128,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("169.254.190.100")>  _
         Public Property IpAddress() As String
             Get
                 Return CType(Me("IpAddress"),String)
@@ -148,6 +147,39 @@ Namespace My
             End Get
             Set
                 Me("Port") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property MSTimer() As Integer
+            Get
+                Return CType(Me("MSTimer"),Integer)
+            End Get
+            Set
+                Me("MSTimer") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property FBTimer() As Integer
+            Get
+                Return CType(Me("FBTimer"),Integer)
+            End Get
+            Set
+                Me("FBTimer") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property MassProTimer() As Integer
+            Get
+                Return CType(Me("MassProTimer"),Integer)
+            End Get
+            Set
+                Me("MassProTimer") = value
             End Set
         End Property
     End Class

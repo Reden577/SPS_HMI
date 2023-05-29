@@ -12,6 +12,7 @@
             btnTAM_startStop.BackColor = Color.DarkRed
             btnTAM_startStop.Text = "OFF"
         End If
+        ElapseTimeVisibility()
     End Sub
     Private Sub frmMC1TestAutoMode_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         modINfrmMC1TestAutoMode = False
@@ -20,8 +21,17 @@
 
     '//
     Private Sub btnMainPage_Click(sender As Object, e As EventArgs) Handles btnMainPage.Click
-        modInfrmMC1MainPage = True
-        Me.Close()
+        If modTAM_NewJOLoaded_isTrue = False Then
+            modInfrmMC1MainPage = True
+            Me.Close()
+        Else
+            btnTAM_startStop.BackColor = Color.DarkRed
+            btnTAM_startStop.Text = "OFF"
+            modTestAutoModeMC1Flag = False
+            modTAM_NewJOLoaded_isTrue = False
+            modINfrmNewJOSetup = True
+            Me.Close()
+        End If
     End Sub
     '//
 
@@ -39,8 +49,6 @@
             modMC1TestAutoModeCounter = 5
         End If
     End Sub
-
-
     '//
 
     '// RUNNING / STOP STATUS OF TAM
@@ -72,20 +80,35 @@
     End Sub
     '//
 
+
     '// REALTIME TIMER CHECK
     Private Sub tmrRealTimeCheck_Tick(sender As Object, e As EventArgs) Handles tmrRealTimeCheck.Tick
-        Dim StopTimer As String
-        StopTimer = Math.Round((modMC1StopTimer / 60), 3)
-        lblElapsTimeMC1.Text = StopTimer & " " & "mins"
-        TAMCounter()
+        ElapseTimeVisibility()
         lblRxPLCMC0.Text = RxPLCM0
-        If modTestAutoModeMC1Flag = True Then
-            btnMainPage.Enabled = False
-        Else
-            btnMainPage.Enabled = True
+        If modTAM_NewJOLoaded_isTrue = False Then '<- Interloack when New Job Order is being loaded
+            Dim StopTimer As String
+            StopTimer = Math.Round((modMC1StopTimer / 60), 3)
+            lblElapsTimeMC1.Text = StopTimer & " " & "mins"
+            TAMCounter()
+            If modTestAutoModeMC1Flag = True Then
+                btnMainPage.Enabled = False
+            Else
+                btnMainPage.Enabled = True
+            End If
         End If
-
-        Label2.Text = modMC1TestAutoModeCounter
+    End Sub
+    Public Sub ElapseTimeVisibility()
+        If modTAM_NewJOLoaded_isTrue = False Then
+            lblElapsTimeMC1.Visible = True
+            Label1.Visible = True
+            Label3.Visible = True
+            lblAlloweShots.Visible = True
+        Else
+            lblElapsTimeMC1.Visible = False
+            Label1.Visible = False
+            Label3.Visible = False
+            lblAlloweShots.Visible = False
+        End If
     End Sub
     '//
 

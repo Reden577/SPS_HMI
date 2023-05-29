@@ -1,9 +1,27 @@
 ﻿Imports System.ComponentModel
+Imports System.Net.Security
 
 Public Class frmNewJOSetup
     Private Sub frmNewJOSetup_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         modINfrmNewJOSetup = True
+
         frmMC1PlsLogin.Close()
+        btnMS_TAM_ONOFF.Enabled = False
+
+        If modMSTimerStart = True Then
+            MSbutton_INPROGStats()
+        End If
+        If modFPBTimerStart = True Then
+            MSbutton_INPROGStats()
+            btnMS_StartStop.Text = "DONE"
+            FPBButtonForQACheckStat()
+        End If
+
+
+        FORQAVeriResult_Failed()
+        FORQAVeriResult_Pass()
+
+        FORQAVeriResult_Failed()
     End Sub
 
     Private Sub frmNewJOSetup_Closed(sender As Object, e As EventArgs) Handles Me.Closed
@@ -13,56 +31,137 @@ Public Class frmNewJOSetup
     Private Sub frmNewJOSetup_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
 
     End Sub
+    '// REALTIME CHECK TIMER
+    Private Sub tmrRealTimeCheck_Tick(sender As Object, e As EventArgs) Handles tmrRealTimeCheck.Tick
+        Dim MSTimer As Decimal = Math.Round((modMSTimerCounter / 60), 3)
+        Dim FPBTimer As Decimal = Math.Round((modFPBTimerCounter / 60), 3)
+        Dim MSProTimer As Decimal = Math.Round((modMassProTimerCounter / 60), 3)
+        lblMSTimeCounter.Text = MSTimer
+        lblFPBTimeCounter.Text = FPBTimer
+        lblMPTimeCounter.Text = MSProTimer
+        lblFailCounter.Text = modFPBFailCounter
 
+        TAMButtonEnableDisable()
+        MSButtonEnableDisable()
+        FPBButtonEnableDisable()
+    End Sub
+    '//
+
+    Public Sub MSButtonEnableDisable()
+        If btnFPB_StartStop.Text = "FOR QA CHECK" Or btnFPB_StartStop.Text = "QA PASS!" Then
+            btnMS_StartStop.Enabled = False
+        Else
+            btnMS_StartStop.Enabled = True
+        End If
+    End Sub
+
+    '//
     Private Sub btnMS_StartStop_Click(sender As Object, e As EventArgs) Handles btnMS_StartStop.Click
-        If btnMS_StartStop.BackColor = Color.DarkRed Then
-            btnMS_StartStop.BackColor = Color.Green
-            btnMS_StartStop.ForeColor = Color.White
-            btnMS_StartStop.Text = "IN PROG"
-        Else
-            btnMS_StartStop.BackColor = Color.DarkRed
-            btnMS_StartStop.ForeColor = Color.White
-            btnMS_StartStop.Text = "STOP"
+        If modMSTimerStart = False Then
+            MSbutton_INPROGStats()
+            modMSTimerStart = True
+        ElseIf modMSTimerStart = True Then
+            MSbutton_STOPStat()
+            modMSTimerStart = False
         End If
     End Sub
+    Public Sub MSbutton_INPROGStats()
+        btnMS_StartStop.BackColor = Color.Green
+        btnMS_StartStop.ForeColor = Color.White
+        btnMS_StartStop.Text = "IN PROG"
+    End Sub
+    Public Sub MSbutton_STOPStat()
+        btnMS_StartStop.BackColor = Color.DarkRed
+        btnMS_StartStop.ForeColor = Color.White
+        btnMS_StartStop.Text = "STOP"
+    End Sub
+    '//
 
+    '//
+    Public Sub TAMButtonEnableDisable()
+        If modMSTimerStart = True Then
+            btnMS_TAM_ONOFF.Enabled = True
+        Else
+            btnMS_TAM_ONOFF.Enabled = False
+        End If
+    End Sub
     Private Sub btnMS_TAM_ONOFF_Click(sender As Object, e As EventArgs) Handles btnMS_TAM_ONOFF.Click
-
+        modTAM_NewJOLoaded_isTrue = True
+        modINfrmMC1TestAutoMode = True
+        Me.Close()
     End Sub
+    '//
 
-    Private Sub btnFPB_StartStop_Click(sender As Object, e As EventArgs) Handles btnFPB_StartStop.Click
-        If btnFPB_StartStop.BackColor = Color.DarkRed Then
-            btnFPB_StartStop.BackColor = Color.Green
-            btnFPB_StartStop.ForeColor = Color.White
-            btnFPB_StartStop.Text = "IN PROG"
+    Public Sub FPBButtonEnableDisable()
+        If (btnMS_StartStop.Text = "IN PROG" Or btnMS_StartStop.Text = "DONE") And btnFPB_StartStop.Text <> "QA PASS!" Then
+            btnFPB_StartStop.Enabled = True
         Else
-            btnFPB_StartStop.BackColor = Color.DarkRed
-            btnFPB_StartStop.ForeColor = Color.White
-            btnFPB_StartStop.Text = "STOP"
+            btnFPB_StartStop.Enabled = False
         End If
     End Sub
 
-    Private Sub btnFPB_TAM_ONOFF_Click(sender As Object, e As EventArgs) Handles btnFPB_TAM_ONOFF.Click
-
+    '//
+    Private Sub btnFPB_StartStop_Click(sender As Object, e As EventArgs) Handles btnFPB_StartStop.Click
+        If modFPBTimerStart = False Then
+            FPBButtonForQACheckStat()
+            btnMS_StartStop.Text = "DONE"
+            modMSTimerStart = False
+            modFPBTimerStart = True
+            modForQA_NewJOLoaded_isTrue = True
+            modINfrmMC1QAVerification = True
+            Me.Close()
+        ElseIf modFPBTimerStart = True Then
+            FPBButtonSendSampleStat()
+            modFPBTimerStart = False
+            modMSTimerCounter = modMSTimerCounter + modFPBTimerCounter
+            modFPBTimerCounter = 0
+            MSbutton_INPROGStats()
+            modMSTimerStart = True
+        End If
+    End Sub
+    Public Sub FPBButtonForQACheckStat()
+        btnFPB_StartStop.BackColor = Color.Green
+        btnFPB_StartStop.ForeColor = Color.White
+        btnFPB_StartStop.Text = "FOR QA CHECK"
+    End Sub
+    Public Sub FPBButtonSendSampleStat()
+        btnFPB_StartStop.BackColor = Color.DarkRed
+        btnFPB_StartStop.ForeColor = Color.White
+        btnFPB_StartStop.Text = "SEND SAMPLE"
     End Sub
 
-    Private Sub tmrMSTimer_Tick(sender As Object, e As EventArgs) Handles tmrMSTimer.Tick
-        modMSTimerCounter += 1
+    Private Sub btnByPass_Click(sender As Object, e As EventArgs) Handles btnByPass.Click
+        modFPBuyOff_Done = True
+        modINfrmMC1PlsLogin = True
+        Me.Close()
     End Sub
 
-    Private Sub tmrIdleTime1_Tick(sender As Object, e As EventArgs) Handles tmrIdleTime1.Tick
-        modIdleTimer1Counter += 1
+    Public Sub FORQAVeriResult_Failed()
+        If modForQAFail_NewJOLoaded_isTrue = True Then
+            modForQAFail_NewJOLoaded_isTrue = False
+            modFPBFailCounter += 1
+
+            FPBButtonSendSampleStat()
+            modFPBTimerStart = False
+            modMSTimerCounter = modMSTimerCounter + modFPBTimerCounter
+            modFPBTimerCounter = 0
+            MSbutton_INPROGStats()
+            modMSTimerStart = True
+        End If
     End Sub
 
-    Private Sub tmrFPBTimer_Tick(sender As Object, e As EventArgs) Handles tmrFPBTimer.Tick
-        modFPBTimerCounter += 1
+    Public Sub FORQAVeriResult_Pass()
+        If modForQAPass_NewJOLoaded_isTrue = True Then
+            modForQAPass_NewJOLoaded_isTrue = False
+            btnFPB_StartStop.Text = "QA PASS!"
+            modFPBTimerStart = False
+            modMPTimerStart = True
+        End If
     End Sub
 
-    Private Sub tmrIdleTime2_Tick(sender As Object, e As EventArgs) Handles tmrIdleTime2.Tick
-        modidleTimer2Counter += 1
-    End Sub
-
-    Private Sub tmrMassProTimer_Tick(sender As Object, e As EventArgs) Handles tmrMassProTimer.Tick
-        modMassProTimerCounter += 1
+    Private Sub btnMassPro_Click(sender As Object, e As EventArgs) Handles btnMassPro.Click
+        modFPBuyOff_Done = True
+        modInfrmMC1MainPage = True
+        Me.Close()
     End Sub
 End Class

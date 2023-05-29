@@ -38,6 +38,11 @@ Public Class frmMainDash
         modSQLPath = My.Settings.SQLPath
         modSettingValMachineID = My.Settings.MachineNo
         modSQLPath = My.Settings.SQLPath
+
+        modMSTimerCounter = My.Settings.MSTimer
+        modFPBTimerCounter = My.Settings.FBTimer
+        modMassProTimerCounter = My.Settings.MassProTimer
+
         RxPLCM3_isFalse()
         checkLoginAndJOLoaded()
         Me.CenterToScreen()
@@ -46,6 +51,11 @@ Public Class frmMainDash
     Private Sub frmMainDash_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         My.Settings.stopTime = lblStopDateTime.Text
         My.Settings.SQLPath = modSQLPath
+
+        My.Settings.MSTimer = modMSTimerCounter
+        My.Settings.FBTimer = modFPBTimerCounter
+        My.Settings.MassProTimer = modMassProTimerCounter
+
         tmrRepairTime.Stop()
         tmrQAVeriTime.Stop()
     End Sub
@@ -233,31 +243,34 @@ Public Class frmMainDash
 
     '// CALLING START STOP OPERATION SUBS
     Private Sub lblRxPLCM0MC1_TextChanged(sender As Object, e As EventArgs) Handles lblRxPLCM0MC1.TextChanged
-        PlanVsActualMonitoring()
-        If RxPLCM0 = True Then 'Machine1 Start/Stop  (M0 of PLC)
-            UpdateDowntimeAtMachineRunning()
-            tmrMC1StopTimer.Stop()
-            tmrRepairTime.Stop()
-            tmrQAVeriTime.Stop()
-            modMC1StopTimer = 0
-            modMC1RepairTimer = 0
-            modMC1QAVeriTimer = 0
-            modMC1FailCounters = 0
-            If modTestAutoModeMC1Flag = False Then
-                modINfrmMC1Run = True
-                modINfrmMC1Ready = False
+        If modTAM_NewJOLoaded_isTrue = False Then 'Interlock during NEW Job Order is Loaded.....
+            PlanVsActualMonitoring()
+            If RxPLCM0 = True Then 'Machine1 Start/Stop  (M0 of PLC)
+                UpdateDowntimeAtMachineRunning()
+                tmrMC1StopTimer.Stop()
+                tmrRepairTime.Stop()
+                tmrQAVeriTime.Stop()
+                modMC1StopTimer = 0
+                modMC1RepairTimer = 0
+                modMC1QAVeriTimer = 0
+                modMC1FailCounters = 0
+                If modTestAutoModeMC1Flag = False Then
+                    modINfrmMC1Run = True
+                    modINfrmMC1Ready = False
+                End If
+            Else
+                tmrMC1StopTimer.Start()
+                modINfrmMC1Run = False
+                If modMC1StopDateandTime = Nothing Then
+                    modMC1StopDateandTime = Now()
+                End If
+                If modTestAutoModeMC1Flag = False Then
+                    modINfrmMC1Stop = True
+                End If
+                InsertDowntimeData()
             End If
-        Else
-            tmrMC1StopTimer.Start()
-            modINfrmMC1Run = False
-            If modMC1StopDateandTime = Nothing Then
-                modMC1StopDateandTime = Now()
-            End If
-            If modTestAutoModeMC1Flag = False Then
-                modINfrmMC1Stop = True
-            End If
-            InsertDowntimeData()
         End If
+
     End Sub
     '//
 
@@ -494,9 +507,12 @@ Public Class frmMainDash
 
     '// TEST AUTO MODE COUNTER
     Public Sub TestAutoModeCounter()
-        If modTestAutoModeMC1Flag = True And RxPLCM0 = True Then
-            modMC1TestAutoModeCounter += 1
+        If modTAM_NewJOLoaded_isTrue = False Then
+            If modTestAutoModeMC1Flag = True And RxPLCM0 = True Then
+                modMC1TestAutoModeCounter += 1
+            End If
         End If
+
     End Sub
     '//
 
@@ -740,6 +756,23 @@ Public Class frmMainDash
             End If
         End If
     End Sub
+    '//
 
+    Private Sub tmrMSTimerCounter_Tick(sender As Object, e As EventArgs) Handles tmrMSTimerCounter.Tick
+        If modMSTimerStart = True Then
+            modMSTimerCounter += 1
+        End If
+    End Sub
 
+    Private Sub tmrFPBTimerCounter_Tick(sender As Object, e As EventArgs) Handles tmrFPBTimerCounter.Tick
+        If modFPBTimerStart = True Then
+            modFPBTimerCounter += 1
+        End If
+    End Sub
+
+    Private Sub tmrMPTimerCounter_Tick(sender As Object, e As EventArgs) Handles tmrMPTimerCounter.Tick
+        If modMPTimerStart = True Then
+            modMassProTimerCounter += 1
+        End If
+    End Sub
 End Class

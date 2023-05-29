@@ -15,5 +15,11 @@
     Public modidleTimer2Counter As Integer
     Public modMassProTimerCounter As Integer
 
+    Public modMSTimerStart As Boolean
+    Public modFPBTimerStart As Boolean
+    Public modMPTimerStart As Boolean
+
+    Public modFPBFailCounter As Integer
+
 
 End Module

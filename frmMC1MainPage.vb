@@ -51,28 +51,31 @@
     End Sub
 
     Public Sub displaytimeCheck()
-        lblDisplayON.Text = displayTime
-        If displayTime >= 10 Then
-            If RxPLCM0 = False And modMC1QAStoppageSaveFlag = False _
-                And modTestAutoModeMC1Flag = False And RxPLCM14 = False Then
-                modINfrmMC1Stop = True
-                Me.Close()
-            ElseIf RxPLCM0 = False And modMC1QAStoppageSaveFlag = True _
-                And modTestAutoModeMC1Flag = False And RxPLCM14 = False Then
-                modINfrmMC1QAVerification = True
-                Me.Close()
-            ElseIf RxPLCM0 = False And (modMC1QAStoppageSaveFlag = True Or modMC1QAStoppageSaveFlag = False) _
-                And modTestAutoModeMC1Flag = True And RxPLCM14 = False Then
-                modINfrmMC1TestAutoMode = True
-                Me.Close()
-            ElseIf RxPLCM14 = True Then
-                modINfrmMC1PlanComplete = True
-                Me.Close()
-            Else
-                modINfrmMC1Run = True
-                Me.Close()
+        If modTAM_NewJOLoaded_isTrue = False Then '<-Interlock during NEw Job Order is loaded
+            lblDisplayON.Text = displayTime
+            If displayTime >= 10 Then
+                If RxPLCM0 = False And modMC1QAStoppageSaveFlag = False _
+                    And modTestAutoModeMC1Flag = False And RxPLCM14 = False Then
+                    modINfrmMC1Stop = True
+                    Me.Close()
+                ElseIf RxPLCM0 = False And modMC1QAStoppageSaveFlag = True _
+                    And modTestAutoModeMC1Flag = False And RxPLCM14 = False Then
+                    modINfrmMC1QAVerification = True
+                    Me.Close()
+                ElseIf RxPLCM0 = False And (modMC1QAStoppageSaveFlag = True Or modMC1QAStoppageSaveFlag = False) _
+                    And modTestAutoModeMC1Flag = True And RxPLCM14 = False Then
+                    modINfrmMC1TestAutoMode = True
+                    Me.Close()
+                ElseIf RxPLCM14 = True Then
+                    modINfrmMC1PlanComplete = True
+                    Me.Close()
+                Else
+                    modINfrmMC1Run = True
+                    Me.Close()
+                End If
             End If
         End If
+
     End Sub
 
     Private Sub picStoppage_Click(sender As Object, e As EventArgs) Handles picStoppage.Click

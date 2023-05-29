@@ -31,6 +31,7 @@ Partial Class frmMC1QAVerification
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblFailedCounter = New System.Windows.Forms.Label()
         Me.lblElapsTimeMC1 = New System.Windows.Forms.Label()
+        Me.lblFPB_label = New System.Windows.Forms.Label()
         Me.lblStatMC1 = New System.Windows.Forms.Label()
         Me.tmrRealTimeCheck = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox1.SuspendLayout()
@@ -57,6 +58,7 @@ Partial Class frmMC1QAVerification
         Me.pnlMC1.Controls.Add(Me.Label1)
         Me.pnlMC1.Controls.Add(Me.lblFailedCounter)
         Me.pnlMC1.Controls.Add(Me.lblElapsTimeMC1)
+        Me.pnlMC1.Controls.Add(Me.lblFPB_label)
         Me.pnlMC1.Controls.Add(Me.lblStatMC1)
         Me.pnlMC1.Cursor = System.Windows.Forms.Cursors.Hand
         Me.pnlMC1.Dock = System.Windows.Forms.DockStyle.Fill
@@ -70,6 +72,7 @@ Partial Class frmMC1QAVerification
         '
         Me.btnMainPage.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnMainPage.FlatAppearance.BorderSize = 0
+        Me.btnMainPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnMainPage.IconChar = FontAwesome.Sharp.IconChar.HomeLg
         Me.btnMainPage.IconColor = System.Drawing.Color.Black
         Me.btnMainPage.IconFont = FontAwesome.Sharp.IconFont.[Auto]
@@ -152,6 +155,19 @@ Partial Class frmMC1QAVerification
         Me.lblElapsTimeMC1.Text = "0"
         Me.lblElapsTimeMC1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
+        'lblFPB_label
+        '
+        Me.lblFPB_label.BackColor = System.Drawing.Color.Transparent
+        Me.lblFPB_label.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.lblFPB_label.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFPB_label.ForeColor = System.Drawing.Color.Black
+        Me.lblFPB_label.Location = New System.Drawing.Point(5, 5)
+        Me.lblFPB_label.Name = "lblFPB_label"
+        Me.lblFPB_label.Size = New System.Drawing.Size(311, 32)
+        Me.lblFPB_label.TabIndex = 6
+        Me.lblFPB_label.Text = "FIRST PCS BUY OFF"
+        Me.lblFPB_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'lblStatMC1
         '
         Me.lblStatMC1.BackColor = System.Drawing.Color.Transparent
@@ -195,4 +211,5 @@ Partial Class frmMC1QAVerification
     Friend WithEvents btnMainPage As FontAwesome.Sharp.IconButton
     Friend WithEvents lblFailedCounter As Label
     Friend WithEvents tmrRealTimeCheck As Timer
+    Friend WithEvents lblFPB_label As Label
 End Class
