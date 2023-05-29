@@ -12,7 +12,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="SQLPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Data Source=DESKTOP-1HR4BP1\SQLEXPRESS,1433;Initial Catalog=SPS;User ID=sa;Password=admin01</Value>
+      <Value Profile="(Default)">Data Source=169.254.5.121,1433;Initial Catalog=SPS;User ID=sa;Password=admin01</Value>
     </Setting>
     <Setting Name="MachineNo" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
