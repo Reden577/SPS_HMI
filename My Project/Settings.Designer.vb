@@ -92,8 +92,8 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-1HR4BP1\SQLEXPRESS;Initial Catalog=SPS;Integrated Security=Tr"& _ 
-            "ue")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-1HR4BP1\SQLEXPRESS,1433;Initial Catalog=SPS;User ID=sa;Passwo"& _ 
+            "rd=admin01")>  _
         Public Property SQLPath() As String
             Get
                 Return CType(Me("SQLPath"),String)
@@ -128,7 +128,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("192.168.1.220")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("169.254.5.225")>  _
         Public Property IpAddress() As String
             Get
                 Return CType(Me("IpAddress"),String)
