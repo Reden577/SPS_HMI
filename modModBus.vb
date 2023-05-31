@@ -93,4 +93,7 @@
     Public M7_MC2PlanCOmplete As Boolean
     Public M9_MC1TestAutoMOde As Boolean
     Public M10_MC1TestAutoMode As Boolean
+
+    Public M16Flag_isTrue As Boolean
+    Public M17Flag_isTure As Boolean
 End Module

@@ -61,7 +61,7 @@
             lblSTOP_RUNNING.Text = "STOP"
             lblSTOP_RUNNING.BackColor = Color.Red
             lblSTOP_RUNNING.ForeColor = Color.White
-            modINfrmMC1Stop = False
+            'modINfrmMC1Stop = False
         End If
     End Sub
     Private Sub lblRxPLCMC0_TextChanged(sender As Object, e As EventArgs) Handles lblRxPLCMC0.TextChanged
@@ -75,16 +75,17 @@
         If lblAlloweShots.Text = 0 Then
             modTestAutoModeMC1Flag = False
             modStartStopMC1 = False
+            modMC1TestAutoModeCounter = 0
             lblAlloweShots.Text = modMC1TestAutoMOdeCounterSet
         End If
     End Sub
     '//
 
-
     '// REALTIME TIMER CHECK
     Private Sub tmrRealTimeCheck_Tick(sender As Object, e As EventArgs) Handles tmrRealTimeCheck.Tick
         ElapseTimeVisibility()
         lblRxPLCMC0.Text = RxPLCM0
+        lblTesting.Text = modTestAutoModeMC1Flag
         If modTAM_NewJOLoaded_isTrue = False Then '<- Interloack when New Job Order is being loaded
             Dim StopTimer As String
             StopTimer = Math.Round((modMC1StopTimer / 60), 3)
@@ -111,9 +112,6 @@
         End If
     End Sub
     '//
-
-
-
 
 
 End Class

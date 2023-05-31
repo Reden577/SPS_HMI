@@ -35,6 +35,7 @@ Partial Class frmMC1TestAutoMode
         Me.lblElapsTimeMC1 = New System.Windows.Forms.Label()
         Me.lblStatMC1 = New System.Windows.Forms.Label()
         Me.tmrRealTimeCheck = New System.Windows.Forms.Timer(Me.components)
+        Me.lblTesting = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.pnlMC1.SuspendLayout()
         Me.SuspendLayout()
@@ -53,6 +54,7 @@ Partial Class frmMC1TestAutoMode
         'pnlMC1
         '
         Me.pnlMC1.BackColor = System.Drawing.Color.DarkOrange
+        Me.pnlMC1.Controls.Add(Me.lblTesting)
         Me.pnlMC1.Controls.Add(Me.lblRxPLCMC0)
         Me.pnlMC1.Controls.Add(Me.lblSTOP_RUNNING)
         Me.pnlMC1.Controls.Add(Me.btnMainPage)
@@ -190,6 +192,15 @@ Partial Class frmMC1TestAutoMode
         '
         Me.tmrRealTimeCheck.Enabled = True
         '
+        'lblTesting
+        '
+        Me.lblTesting.AutoSize = True
+        Me.lblTesting.Location = New System.Drawing.Point(9, 70)
+        Me.lblTesting.Name = "lblTesting"
+        Me.lblTesting.Size = New System.Drawing.Size(48, 20)
+        Me.lblTesting.TabIndex = 10
+        Me.lblTesting.Text = "False"
+        '
         'frmMC1TestAutoMode
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -218,4 +229,5 @@ Partial Class frmMC1TestAutoMode
     Friend WithEvents tmrRealTimeCheck As Timer
     Friend WithEvents lblSTOP_RUNNING As Label
     Friend WithEvents lblRxPLCMC0 As Label
+    Friend WithEvents lblTesting As Label
 End Class

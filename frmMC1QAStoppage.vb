@@ -14,7 +14,7 @@ Public Class frmMC1QAStoppage
         cboStoppage.Text = ""
         cboCountermeasure.Text = ""
 
-        If modMC1QAVerifyFailFlag = True Then
+        If modMC1QASendSampleFlag = True Then
             cboStoppage.Text = My.Settings.QAStoppage
             cboCountermeasure.Text = My.Settings.QACountermeasure
         Else
@@ -22,7 +22,7 @@ Public Class frmMC1QAStoppage
             cboCountermeasure.Text = ""
         End If
 
-        modMC1QASendSampleFlag = False
+        'modMC1QASendSampleFlag = False
         tmrRstFailFlag.Start()
         detailsComplete()
     End Sub

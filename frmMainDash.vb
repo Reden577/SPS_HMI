@@ -32,6 +32,7 @@ Public Class frmMainDash
 
     '// FORM LOAD
     Private Sub frmMainDash_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        modSQLPath = "Data Source=DESKTOP-4OGTIB2\DIAVIEWSQL;Initial Catalog=SPS;Persist Security Info=True;User ID=sa;Password=doc577isin"
         shiftUpdate()
         lblStopDateTime.Text = My.Settings.stopTime
         modMC1StopDateandTime = My.Settings.stopTime
@@ -42,6 +43,8 @@ Public Class frmMainDash
         modMSTimerCounter = My.Settings.MSTimer
         modFPBTimerCounter = My.Settings.FBTimer
         modMassProTimerCounter = My.Settings.MassProTimer
+
+        modMC1TestAutoModeCounter = 0
 
         RxPLCM3_isFalse()
         checkLoginAndJOLoaded()
@@ -71,6 +74,7 @@ Public Class frmMainDash
         lblFailCounter.Text = modMC1FailCounters
         Label22.Text = modMC1StoppageReason
         checkLoginAndJOLoaded()
+        TestAutoModeCounterSub()
     End Sub
     '//
 
@@ -175,6 +179,8 @@ Public Class frmMainDash
         lblQAVerifyPassFlag.Text = modMC1QAVerifyPassFlag
         lblMC1QAStoppageSaveFlag.Text = modMC1QAStoppageSaveFlag
         lblPlanComplete.Text = RxPLCM14
+
+        lblM16FlagisTrue.Text = M16Flag_isTrue
 
         lblJOLoadedisTrue.Text = modJODetails_isTrue
         lblUserLoggedINisTrue.Text = modLoginDetails_isTrue
@@ -505,14 +511,21 @@ Public Class frmMainDash
     End Sub
     '//
 
+    '//
+    Private Sub lblM16FlagisTrue_TextAlignChanged(sender As Object, e As EventArgs) Handles lblM16FlagisTrue.TextAlignChanged
+        'If M16Flag_isTrue = True Then
+        '    modMC1TestAutoModeCounter += 1
+        'End If
+    End Sub
+    '//
+
     '// TEST AUTO MODE COUNTER
-    Public Sub TestAutoModeCounter()
-        If modTAM_NewJOLoaded_isTrue = False Then
-            If modTestAutoModeMC1Flag = True And RxPLCM0 = True Then
-                modMC1TestAutoModeCounter += 1
+    Public Sub TestAutoModeCounterSub()
+        If modTestAutoModeMC1Flag = True And RxPLCM0 = True Then
+            If RxPLCM16 = True And M16Flag_isTrue = False Then
+                M16Flag_isTrue = True
             End If
         End If
-
     End Sub
     '//
 
@@ -775,4 +788,6 @@ Public Class frmMainDash
             modMassProTimerCounter += 1
         End If
     End Sub
+
+
 End Class

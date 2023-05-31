@@ -102,6 +102,8 @@ Partial Class frmMainDash
         Me.lblMC1QAStoppageSaveFlag = New System.Windows.Forms.Label()
         Me.lblTesting = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.lblM16FlagisTrue = New System.Windows.Forms.Label()
+        Me.Label35 = New System.Windows.Forms.Label()
         Me.lblUserLoggedAndJOLoadedisTrue = New System.Windows.Forms.Label()
         Me.Label34 = New System.Windows.Forms.Label()
         Me.lblUserLoggedINisTrue = New System.Windows.Forms.Label()
@@ -218,7 +220,7 @@ Partial Class frmMainDash
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(494, 32)
+        Me.Panel1.Size = New System.Drawing.Size(495, 32)
         Me.Panel1.TabIndex = 5
         '
         'lblShiftCode
@@ -832,6 +834,8 @@ Partial Class frmMainDash
         Me.Panel2.Controls.Add(Me.lblQAVerifyPassFlag)
         Me.Panel2.Controls.Add(Me.lblMC1MachStoppageSaveFlag)
         Me.Panel2.Controls.Add(Me.lblMC1OptStoppageSaveFlag)
+        Me.Panel2.Controls.Add(Me.lblM16FlagisTrue)
+        Me.Panel2.Controls.Add(Me.Label35)
         Me.Panel2.Controls.Add(Me.lblUserLoggedAndJOLoadedisTrue)
         Me.Panel2.Controls.Add(Me.Label34)
         Me.Panel2.Controls.Add(Me.lblUserLoggedINisTrue)
@@ -899,8 +903,26 @@ Partial Class frmMainDash
         Me.Panel2.Controls.Add(Me.main)
         Me.Panel2.Location = New System.Drawing.Point(496, 38)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(741, 400)
+        Me.Panel2.Size = New System.Drawing.Size(692, 400)
         Me.Panel2.TabIndex = 0
+        '
+        'lblM16FlagisTrue
+        '
+        Me.lblM16FlagisTrue.Location = New System.Drawing.Point(354, 48)
+        Me.lblM16FlagisTrue.Name = "lblM16FlagisTrue"
+        Me.lblM16FlagisTrue.Size = New System.Drawing.Size(32, 13)
+        Me.lblM16FlagisTrue.TabIndex = 0
+        Me.lblM16FlagisTrue.Text = "False"
+        Me.lblM16FlagisTrue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label35
+        '
+        Me.Label35.Location = New System.Drawing.Point(200, 48)
+        Me.Label35.Name = "Label35"
+        Me.Label35.Size = New System.Drawing.Size(151, 13)
+        Me.Label35.TabIndex = 0
+        Me.Label35.Text = "InputCounterFlag_isTrue(X2=M16):"
+        Me.Label35.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'lblUserLoggedAndJOLoadedisTrue
         '
@@ -1047,7 +1069,7 @@ Partial Class frmMainDash
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.ClientSize = New System.Drawing.Size(494, 528)
+        Me.ClientSize = New System.Drawing.Size(495, 528)
         Me.Controls.Add(Me.Label22)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.btnSetting)
@@ -1167,4 +1189,6 @@ Partial Class frmMainDash
     Friend WithEvents tmrMSTimerCounter As Timer
     Friend WithEvents tmrFPBTimerCounter As Timer
     Friend WithEvents tmrMPTimerCounter As Timer
+    Friend WithEvents lblM16FlagisTrue As Label
+    Friend WithEvents Label35 As Label
 End Class

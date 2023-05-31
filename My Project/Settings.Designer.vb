@@ -92,7 +92,8 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=169.254.5.121,1433;Initial Catalog=SPS;User ID=sa;Password=admin01")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-1HR4BP1\SQLEXPRESS;Initial Catalog=SPS;User ID=sa;Password=ad"& _ 
+            "min01")>  _
         Public Property SQLPath() As String
             Get
                 Return CType(Me("SQLPath"),String)

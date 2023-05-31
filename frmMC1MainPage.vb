@@ -34,7 +34,11 @@
             picQAStoppage.Enabled = False
             picTestAutoMode.Enabled = False
         Else
-            picStoppage.Enabled = True
+            If modMC1QASendSampleFlag = False Then
+                picStoppage.Enabled = True
+            Else
+                picStoppage.Enabled = False
+            End If
             picQAStoppage.Enabled = True
             picTestAutoMode.Enabled = True
         End If
@@ -79,6 +83,7 @@
     End Sub
 
     Private Sub picStoppage_Click(sender As Object, e As EventArgs) Handles picStoppage.Click
+
         modINfrmMC1StoppageType = True
         Me.Close()
     End Sub

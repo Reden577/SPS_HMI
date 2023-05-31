@@ -81,10 +81,10 @@ Public Class frmSettings
             RxPLCM11 = rxCoil(11) '2059
             RxPLCM12 = rxCoil(12) '2060 MC1 Test Auto Mode Flag (Machine HMI)
             RxPLCM13 = rxCoil(13) '2061 MC2 Test Auto Mode Flag (Machine HMI)
-            RxPLCM14 = rxCoil(14)
-            RxPLCM15 = rxCoil(15)
-            RxPLCM16 = rxCoil(16)
-            RxPLCM17 = rxCoil(17)
+            RxPLCM14 = rxCoil(14) '2062 MC1 Plan Complete
+            RxPLCM15 = rxCoil(15) '2063 MC2 Plan Complete
+            RxPLCM16 = rxCoil(16) '2064 MC1 CounterInputFlag (X2)
+            RxPLCM17 = rxCoil(17) '2065 MC2 CounterInputFlag (X5)
             RxPLCM18 = rxCoil(18)
             RxPLCM19 = rxCoil(19)
             RxPLCM20 = rxCoil(20)
@@ -226,6 +226,7 @@ Public Class frmSettings
             MC1TestAutoModeFlag()
             MachineReadyFlag()
             MachineStopPlanComplete()
+            InputCounterM16_M17_Via_X2_X5()
         End If
         modMC1TestAutoMOdeCounterSet = txtTAMCounterSet.Text
         modSettingValMachineID = cboMachineName.Text
@@ -279,6 +280,14 @@ Public Class frmSettings
         End If
     End Sub
 
-
+    Public Sub InputCounterM16_M17_Via_X2_X5()
+        If modClient.Connected = True Then
+            If RxPLCM16 = True And M16Flag_isTrue = True Then
+                M16Flag_isTrue = False
+                modClient.WriteSingleCoil(2064, False) '2064 M16  MC1 CounterInputFlag (X2)
+                modMC1TestAutoModeCounter += 1
+            End If
+        End If
+    End Sub
 
 End Class

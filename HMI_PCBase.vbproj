@@ -84,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsInsertAllDowntimeDetails.vb" />
+    <Compile Include="clsModBusClient.vb" />
     <Compile Include="clsSelAllJOLoadedDetails_MCId_LDStat.vb" />
     <Compile Include="clsSelAllLoginDetails_MachineId.vb" />
     <Compile Include="clsSelCountJOLoadedDetails_MCIDnPrdnStat.vb" />

@@ -9,6 +9,7 @@
         modMC1QAStoppageSaveFlag = False
         modMC1AcknowledgeFlag = False
         modMC1QASendSampleFlag = False
+        modMC1QAVerifyPassFlag = False
     End Sub
     Private Sub frmMC1Ready_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         modINfrmMC1Ready = False
