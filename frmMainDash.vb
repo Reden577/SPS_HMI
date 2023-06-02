@@ -7,6 +7,7 @@ Imports System.Threading
 Imports System.Windows.Documents
 Imports FontAwesome.Sharp
 Imports MS.Internal.WindowsRuntime.Windows
+Imports EasyModbus
 
 Public Class frmMainDash
     Dim stMC1MainPage As String = "Main"
@@ -30,24 +31,31 @@ Public Class frmMainDash
     Dim cntJOLoaded As Integer
     Dim cntProdnStat As Integer
 
+    Dim ModClient As New EasyModbus.ModbusClient
+
     '// FORM LOAD
     Private Sub frmMainDash_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        modSQLPath = "Data Source=DESKTOP-4OGTIB2\DIAVIEWSQL;Initial Catalog=SPS;Persist Security Info=True;User ID=sa;Password=doc577isin"
-        shiftUpdate()
+
+
         lblStopDateTime.Text = My.Settings.stopTime
         modMC1StopDateandTime = My.Settings.stopTime
-        modSQLPath = My.Settings.SQLPath
         modSettingValMachineID = My.Settings.MachineNo
-        modSQLPath = My.Settings.SQLPath
 
         modMSTimerCounter = My.Settings.MSTimer
         modFPBTimerCounter = My.Settings.FBTimer
         modMassProTimerCounter = My.Settings.MassProTimer
 
+        modSQLPath = My.Settings.SQLPath
+        modSetVal_IPAddress = My.Settings.IpAddress
+        modSetVal_Por = My.Settings.Port
+
         modMC1TestAutoModeCounter = 0
 
+
+        shiftUpdate()
         RxPLCM3_isFalse()
         checkLoginAndJOLoaded()
+        ConnectToModbus()
         Me.CenterToScreen()
     End Sub
     '//
@@ -58,6 +66,8 @@ Public Class frmMainDash
         My.Settings.MSTimer = modMSTimerCounter
         My.Settings.FBTimer = modFPBTimerCounter
         My.Settings.MassProTimer = modMassProTimerCounter
+        My.Settings.TAMSetShots = modMC1TestAutoMOdeCounterSet
+        My.Settings.MachineNo = modSettingValMachineID
 
         tmrRepairTime.Stop()
         tmrQAVeriTime.Stop()
@@ -75,6 +85,13 @@ Public Class frmMainDash
         Label22.Text = modMC1StoppageReason
         checkLoginAndJOLoaded()
         TestAutoModeCounterSub()
+
+        ReadHoldingRegs()
+        readCoilsRegisters()
+        MC1TestAutoModeFlag()
+        MachineReadyFlag()
+        MachineStopPlanComplete()
+        InputCounterM16_M17_Via_X2_X5()
     End Sub
     '//
 
@@ -170,7 +187,7 @@ Public Class frmMainDash
         lblAckDateTime.Text = modMC1AckDateandTime
         lblAckFlag.Text = modMC1AcknowledgeFlag
         lblStopDateTime.Text = modMC1StopDateandTime
-        lblShiftCode.Text = modShiftCode
+        lblShiftCode.Text = modShiftCode & "MC1"
         lblMC1_D2002.Text = D2002
         lblMC1OptStoppageSaveFlag.Text = modMC1OptStoppageSaveFlag
         lblMC1MachStoppageSaveFlag.Text = modMC1MachineStoppageSaveFlag
@@ -491,8 +508,13 @@ Public Class frmMainDash
 
     '// CALLING JO LOADED IS TRUE SUBS
     Private Sub lblJOLoadedisTrue_TextChanged(sender As Object, e As EventArgs) Handles lblJOLoadedisTrue.TextChanged
-        If modJODetails_isTrue = True Then
-
+        If modJODetails_isTrue = False Then
+            modMPTimerStart = False
+            modMSTimerCounter = 0
+            modFPBTimerCounter = 0
+            modFPBFailCounter = 0
+            modMassProTimerCounter = 0
+            modFPBuyOff_Done = False
         End If
     End Sub
     '//
@@ -524,6 +546,8 @@ Public Class frmMainDash
         If modTestAutoModeMC1Flag = True And RxPLCM0 = True Then
             If RxPLCM16 = True And M16Flag_isTrue = False Then
                 M16Flag_isTrue = True
+            ElseIf RxPLCM16 = False Then
+                M16Flag_isTrue = False
             End If
         End If
     End Sub
@@ -573,6 +597,12 @@ Public Class frmMainDash
     Public Sub InsertDowntimeData()
         shiftUpdate()
         AssignMCIdToShiftCode(modSettingValMachineID)
+        Dim UID As String
+        If String.IsNullOrEmpty(modLoginDetails_UserID) Then
+            UID = "TBA"
+        Else
+            UID = modLoginDetails_UserID
+        End If
         If modSQLPath IsNot Nothing Then
             If modLoginDetails_UserName Is Nothing Then
                 modLoginDetails_UserName = ""
@@ -580,7 +610,7 @@ Public Class frmMainDash
             Dim insDT As New clsInsertAllDowntimeDetails
             insDT.ShiftCOde = modshiftCode_MCid
             insDT.UserName = modLoginDetails_UserName
-            insDT.UserID = modLoginDetails_UserID
+            insDT.UserID = UID
             insDT.StartTime = modMC1StopDateandTime
             insDT.InsertDowntime()
         End If
@@ -771,23 +801,218 @@ Public Class frmMainDash
     End Sub
     '//
 
+    '// TIMER COUNTERS USED DURING SETUP AT NEW JOB ORDER LAODING
     Private Sub tmrMSTimerCounter_Tick(sender As Object, e As EventArgs) Handles tmrMSTimerCounter.Tick
         If modMSTimerStart = True Then
             modMSTimerCounter += 1
         End If
     End Sub
-
     Private Sub tmrFPBTimerCounter_Tick(sender As Object, e As EventArgs) Handles tmrFPBTimerCounter.Tick
         If modFPBTimerStart = True Then
             modFPBTimerCounter += 1
         End If
     End Sub
-
     Private Sub tmrMPTimerCounter_Tick(sender As Object, e As EventArgs) Handles tmrMPTimerCounter.Tick
         If modMPTimerStart = True Then
             modMassProTimerCounter += 1
         End If
     End Sub
+    '//
+
+    Public Sub ConnectToModbus()
+        ModClient.IPAddress = modSetVal_IPAddress
+        ModClient.Port = modSetVal_Por
+        ModClient.ConnectionTimeout = 3000
+        ModClient.NumberOfRetries = 5
+
+        Try
+            ModClient.Connect()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
 
 
+    '// READING COIL REGISTERS OF DELTA PLC
+    Public Sub readCoilsRegisters()
+        Try
+            'Modbuss address 2048 = M0 (Delta PLC) and so on for Coil registers
+            Dim rxCoil() As Boolean = ModClient.ReadCoils(2048, 45)
+            RxPLCM0 = rxCoil(0) '2048 MC1 ON/OFF FLAG (EXternal Triggered)
+            RxPLCM1 = rxCoil(1) '2049 MC2 ON/OFF FLAG (External Triggered)
+            RxPLCM2 = rxCoil(2) '2050
+            RxPLCM3 = rxCoil(3) '2051 MC1 KIOSK Login & JO Flag
+            RxPLCM4 = rxCoil(4) '2052 MC2 KIOSK Login & JO Flag
+            RxPLCM5 = rxCoil(5) '2053
+            RxPLCM6 = rxCoil(6) '2054 MC1 Machine Ready (Machine HMI)
+            RxPLCM7 = rxCoil(7) '2055 MC2 Machine Ready (Machine HMI)
+            RxPLCM8 = rxCoil(8) '2056
+            RxPLCM9 = rxCoil(9) '2057 MC1 KIOSK CONDITION TRIGGERED Flag
+            RxPLCM10 = rxCoil(10) '2058 MC2 KIOSK CONDITION TRIGGERED Flag
+            RxPLCM11 = rxCoil(11) '2059
+            RxPLCM12 = rxCoil(12) '2060 MC1 Test Auto Mode Flag (Machine HMI)
+            RxPLCM13 = rxCoil(13) '2061 MC2 Test Auto Mode Flag (Machine HMI)
+            RxPLCM14 = rxCoil(14) '2062 MC1 Plan Complete
+            RxPLCM15 = rxCoil(15) '2063 MC2 Plan Complete
+            RxPLCM16 = rxCoil(16) '2064 MC1 CounterInputFlag (X2)
+            RxPLCM17 = rxCoil(17) '2065 MC2 CounterInputFlag (X5)
+            RxPLCM18 = rxCoil(18) '2066 TAM Counter Reached MC1
+            RxPLCM19 = rxCoil(19) '2067 TAM Counter Reached MC2
+            RxPLCM20 = rxCoil(20) '2068 
+            RxPLCM21 = rxCoil(21)
+            RxPLCM22 = rxCoil(22)
+            RxPLCM23 = rxCoil(23)
+            RxPLCM24 = rxCoil(24)
+            RxPLCM25 = rxCoil(25)
+            RxPLCM26 = rxCoil(26)
+            RxPLCM27 = rxCoil(27)
+            RxPLCM28 = rxCoil(28)
+            RxPLCM29 = rxCoil(29)
+            RxPLCM30 = rxCoil(30)
+            RxPLCM31 = rxCoil(31)
+            RxPLCM32 = rxCoil(32)
+            RxPLCM33 = rxCoil(33)
+            RxPLCM34 = rxCoil(34)
+            RxPLCM35 = rxCoil(35)
+            RxPLCM36 = rxCoil(36)
+            RxPLCM37 = rxCoil(37)
+            RxPLCM38 = rxCoil(38)
+            RxPLCM39 = rxCoil(39)
+            RxPLCM40 = rxCoil(40)
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+    '//
+
+    '// READING HOLDING REGISTERS OF DELTA PLC
+    Public Sub ReadHoldingRegs()
+        'Modbuss address 6096 = D2000 (Delta PLC) and so on for holding registers
+        Try
+            Dim ReadValue() As Integer = ModClient.ReadHoldingRegisters(6096, 100)
+            modComCheck = ReadValue(0) '6096
+
+            'Double Word Declaration for Modbus 6098,6099 which is equal to D2002,D2003 of delta PLC
+            Dim dwD2002(2) As Integer 'MC1 Machine Counter (Double Register)
+            dwD2002(0) = ReadValue(2) '6098
+            dwD2002(1) = ReadValue(3) '6099
+            D2002 = ModbusClient.ConvertRegistersToInt(dwD2002, 0)
+
+            Dim dwD2004(2) As Integer 'MC2 Machine Counter (Double Rregister)
+            dwD2004(0) = ReadValue(4) '6100
+            dwD2004(1) = ReadValue(5) '6101
+            D2004 = ModbusClient.ConvertRegistersToInt(dwD2004, 0)
+
+            Dim dwD2006(2) As Integer 'MC1 User ID (Double Register)
+            dwD2006(0) = ReadValue(6) '6102
+            dwD2006(1) = ReadValue(7) '6103
+            D2006 = ModbusClient.ConvertRegistersToInt(dwD2006, 0)
+
+            Dim dwD2008(2) As Integer 'MC2 User ID (Double Register)
+            dwD2008(0) = ReadValue(8) '6104
+            dwD2008(1) = ReadValue(9) '6105
+            D2008 = ModbusClient.ConvertRegistersToInt(dwD2008, 0)
+
+            Dim dwD2010(2) As Integer 'MC1 Plan Qty (Double Register)
+            dwD2010(0) = ReadValue(10) '6106
+            dwD2010(1) = ReadValue(11) '6107
+            D2010 = ModbusClient.ConvertRegistersToInt(dwD2010, 0)
+
+            Dim dwD2012(2) As Integer 'MC2 Plan Qty (Double Register)
+            dwD2012(0) = ReadValue(12) '6108
+            dwD2012(1) = ReadValue(13) '6109
+            D2012 = ModbusClient.ConvertRegistersToInt(dwD2012, 0)
+
+            Dim dwD2014(2) As Integer 'MC1 Actual Counter (Double Register)
+            dwD2014(0) = ReadValue(14) '6110
+            dwD2014(1) = ReadValue(15) '6111
+            D2014 = ModbusClient.ConvertRegistersToInt(dwD2014, 0)
+
+            Dim dwD2016(2) As Integer 'MC2 Actual Counter (Double Register)
+            dwD2016(0) = ReadValue(16) '6112
+            dwD2016(1) = ReadValue(17) '6113
+            D2016 = ModbusClient.ConvertRegistersToInt(dwD2016, 0)
+
+            D2018 = ReadValue(18) '6114 MC1JOCode1
+            D2019 = ReadValue(19) '6115 MC1JOCode2
+            D2020 = ReadValue(20) '6116 MC1JOCode3
+            D2021 = ReadValue(21) '6117 MC1JOCode4
+            D2022 = ReadValue(22) '6118 MC1JOCode5
+            D2023 = ReadValue(23) '6119 MC1JOCode6
+            D2024 = ReadValue(24) '6120 Empty
+            D2025 = ReadValue(25) '6121 MC2JOCode1
+            D2026 = ReadValue(26) '6122 MC2JOCode2
+            D2027 = ReadValue(27) '6123 MC2JOCode3
+            D2028 = ReadValue(28) '6124 MC2JOCode4
+            D2029 = ReadValue(29) '6125 MC2JOCode5
+            D2030 = ReadValue(30) '6126 MC2JOCode6
+            D2031 = ReadValue(31) '6127 EMPTY
+
+            Dim dwD2032(2) As Integer ''MC1 Total Counter (Double Register)
+            dwD2032(0) = ReadValue(32) '6128
+            dwD2032(1) = ReadValue(33) '6129 
+            D2032 = ModbusClient.ConvertRegistersToInt(dwD2032, 0)
+
+            Dim dwD2034(2) As Integer ''MC2 Total Counter (Double Register)
+            dwD2034(0) = ReadValue(34) '6130 
+            dwD2034(1) = ReadValue(35) '6131
+            D2034 = ModbusClient.ConvertRegistersToInt(dwD2034, 0)
+
+            D2036 = ReadValue(36) '6132
+            D2037 = ReadValue(37) '6133
+            D2038 = ReadValue(38) '6134 
+            D2039 = ReadValue(39) '6135 
+            D2040 = ReadValue(40) '6136
+
+            'lblRx4.Text = (ReadValue(5) + ReadValue(4)) * 65535.0F
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+    '//
+
+    '// MACHINE STOP AT PLAN COMPLETE
+    Public Sub MachineStopPlanComplete()
+        If modPlanCOmplete = True Then
+            modMSTimerStart = False
+            ModClient.WriteSingleCoil(2348, False) 'PLC M300  MC1 OFF 
+        End If
+    End Sub
+    '//
+
+    '// MACHINE READY FLAG
+    Public Sub MachineReadyFlag()
+        If ModClient.Connected = True Then
+            If modINfrmMC1Ready = True Then
+                ModClient.WriteSingleCoil(2054, True) 'MC6 ON
+            Else
+                ModClient.WriteSingleCoil(2054, False) 'MC6 OFF
+            End If
+        End If
+    End Sub
+    '//
+
+    '// TEST AUTO MODE FLAG
+    Public Sub MC1TestAutoModeFlag()
+        If ModClient.Connected = True Then
+            If modTestAutoModeMC1Flag = True Then
+                ModClient.WriteSingleCoil(2060, True) 'MC12 ON
+            Else
+                ModClient.WriteSingleCoil(2060, False) 'MC12 OFF
+            End If
+        End If
+    End Sub
+    '//
+
+    '// INPUT COUNTER FLAG FOR TAM COUNTER
+    Public Sub InputCounterM16_M17_Via_X2_X5()
+        If ModClient.Connected = True Then
+            If RxPLCM16 = True And M16Flag_isTrue = True Then
+                M16Flag_isTrue = False
+                ModClient.WriteSingleCoil(2064, False) '2064 M16  MC1 CounterInputFlag (X2)
+                modMC1TestAutoModeCounter += 1
+            End If
+        End If
+    End Sub
+    '//
 End Class

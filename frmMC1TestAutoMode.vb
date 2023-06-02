@@ -38,17 +38,31 @@
     '// TAM BUTTON STATUS AND STATUS FLAG
     Private Sub IconButton1_Click(sender As Object, e As EventArgs) Handles btnTAM_startStop.Click
         If btnTAM_startStop.BackColor = Color.DarkRed Then
-            btnTAM_startStop.BackColor = Color.Green
-            btnTAM_startStop.Text = "ON"
-            modTestAutoModeMC1Flag = True
+            TAMBtnONState()
         Else
-            'modTestAutoModeMC1Flag = False
-            btnTAM_startStop.BackColor = Color.DarkRed
-            btnTAM_startStop.Text = "OFF"
-            modTestAutoModeMC1Flag = False
-            modMC1TestAutoModeCounter = 5
+            TAMbtnOFFState()
         End If
     End Sub
+    Public Sub TAMBtnONState()
+        btnTAM_startStop.BackColor = Color.Green
+        btnTAM_startStop.Text = "ON"
+        modTestAutoModeMC1Flag = True
+    End Sub
+    Public Sub TAMbtnOFFState()
+        btnTAM_startStop.BackColor = Color.DarkRed
+        btnTAM_startStop.Text = "OFF"
+        modTestAutoModeMC1Flag = False
+        'modMC1TestAutoModeCounter = 5
+    End Sub
+    Public Sub TAMbtnStats_AT_RxPLCM12isOFF()
+        If RxPLCM12 = False And btnTAM_startStop.BackColor = Color.Green Then
+            If modTAMCounterReached_isTrue = True Then
+                modTAMCounterReached_isTrue = False
+                TAMbtnOFFState()
+            End If
+        End If
+    End Sub
+
     '//
 
     '// RUNNING / STOP STATUS OF TAM
@@ -74,7 +88,7 @@
         lblAlloweShots.Text = modMC1TestAutoMOdeCounterSet - modMC1TestAutoModeCounter
         If lblAlloweShots.Text = 0 Then
             modTestAutoModeMC1Flag = False
-            modStartStopMC1 = False
+            modTAMCounterReached_isTrue = True
             modMC1TestAutoModeCounter = 0
             lblAlloweShots.Text = modMC1TestAutoMOdeCounterSet
         End If
@@ -86,6 +100,8 @@
         ElapseTimeVisibility()
         lblRxPLCMC0.Text = RxPLCM0
         lblTesting.Text = modTestAutoModeMC1Flag
+        lblTesting2.Text = modMC1TestAutoModeCounter
+        lblTesting3.Text = M16Flag_isTrue
         If modTAM_NewJOLoaded_isTrue = False Then '<- Interloack when New Job Order is being loaded
             Dim StopTimer As String
             StopTimer = Math.Round((modMC1StopTimer / 60), 3)
@@ -97,6 +113,7 @@
                 btnMainPage.Enabled = True
             End If
         End If
+        TAMbtnStats_AT_RxPLCM12isOFF() 'M12 MC1 Test AutoMode
     End Sub
     Public Sub ElapseTimeVisibility()
         If modTAM_NewJOLoaded_isTrue = False Then

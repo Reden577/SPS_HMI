@@ -12,16 +12,16 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="SQLPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Data Source=DESKTOP-1HR4BP1\SQLEXPRESS;Initial Catalog=SPS;User ID=sa;Password=admin01</Value>
+      <Value Profile="(Default)">Data Source=DESKTOP-4OGTIB2\DIAVIEWSQL;Initial Catalog=SPS;Persist Security Info=True;User ID=sa;Password=doc577isin</Value>
     </Setting>
     <Setting Name="MachineNo" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">Machine 1</Value>
     </Setting>
     <Setting Name="TAMSetShots" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">5</Value>
     </Setting>
     <Setting Name="IpAddress" Type="System.String" Scope="User">
-      <Value Profile="(Default)">169.254.5.225</Value>
+      <Value Profile="(Default)">169.254.190.100</Value>
     </Setting>
     <Setting Name="Port" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">502</Value>
@@ -33,6 +33,9 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="MassProTimer" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="TAMCounter" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

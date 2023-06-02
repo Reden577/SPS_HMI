@@ -2,6 +2,7 @@
     Public modMC1FailCounters As Integer
     Public modMC1TestAutoModeCounter As Integer
     Public modMC1TestAutoMOdeCounterSet As Integer
+    Public modTAMCounterReached_isTrue As Boolean
 
     Public modMC1StopTimer As Integer
     Public modMC1RepairTimer As Integer

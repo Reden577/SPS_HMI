@@ -42,11 +42,15 @@ Partial Class frmSettings
         Me.cboMachineName = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtSQLPath = New System.Windows.Forms.TextBox()
+        Me.btnSaveSettings = New FontAwesome.Sharp.IconButton()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'txtIP
         '
-        Me.txtIP.Location = New System.Drawing.Point(17, 28)
+        Me.txtIP.Location = New System.Drawing.Point(89, 49)
         Me.txtIP.Name = "txtIP"
         Me.txtIP.Size = New System.Drawing.Size(101, 20)
         Me.txtIP.TabIndex = 4
@@ -55,24 +59,24 @@ Partial Class frmSettings
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(13, 12)
+        Me.Label4.Location = New System.Drawing.Point(8, 52)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(58, 13)
+        Me.Label4.Size = New System.Drawing.Size(61, 13)
         Me.Label4.TabIndex = 2
-        Me.Label4.Text = "IP Address"
+        Me.Label4.Text = "IP Address:"
         '
         'lblPort
         '
         Me.lblPort.AutoSize = True
-        Me.lblPort.Location = New System.Drawing.Point(14, 51)
+        Me.lblPort.Location = New System.Drawing.Point(8, 79)
         Me.lblPort.Name = "lblPort"
-        Me.lblPort.Size = New System.Drawing.Size(26, 13)
+        Me.lblPort.Size = New System.Drawing.Size(29, 13)
         Me.lblPort.TabIndex = 2
-        Me.lblPort.Text = "Port"
+        Me.lblPort.Text = "Port:"
         '
         'txtPort
         '
-        Me.txtPort.Location = New System.Drawing.Point(17, 67)
+        Me.txtPort.Location = New System.Drawing.Point(89, 75)
         Me.txtPort.Name = "txtPort"
         Me.txtPort.Size = New System.Drawing.Size(101, 20)
         Me.txtPort.TabIndex = 4
@@ -80,57 +84,63 @@ Partial Class frmSettings
         '
         'btnConnect
         '
-        Me.btnConnect.Location = New System.Drawing.Point(124, 28)
+        Me.btnConnect.Location = New System.Drawing.Point(618, 48)
         Me.btnConnect.Name = "btnConnect"
         Me.btnConnect.Size = New System.Drawing.Size(77, 59)
         Me.btnConnect.TabIndex = 5
         Me.btnConnect.Text = "Connect"
         Me.btnConnect.UseVisualStyleBackColor = True
+        Me.btnConnect.Visible = False
         '
         'btnDisconnect
         '
-        Me.btnDisconnect.Location = New System.Drawing.Point(207, 28)
+        Me.btnDisconnect.Location = New System.Drawing.Point(701, 48)
         Me.btnDisconnect.Name = "btnDisconnect"
         Me.btnDisconnect.Size = New System.Drawing.Size(77, 59)
         Me.btnDisconnect.TabIndex = 5
         Me.btnDisconnect.Text = "Disconnect"
         Me.btnDisconnect.UseVisualStyleBackColor = True
+        Me.btnDisconnect.Visible = False
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(14, 93)
+        Me.Label5.Location = New System.Drawing.Point(508, 113)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(97, 13)
         Me.Label5.TabIndex = 2
         Me.Label5.Text = "Connection Status:"
+        Me.Label5.Visible = False
         '
         'lblStatus
         '
         Me.lblStatus.AutoSize = True
-        Me.lblStatus.Location = New System.Drawing.Point(117, 93)
+        Me.lblStatus.Location = New System.Drawing.Point(611, 113)
         Me.lblStatus.Name = "lblStatus"
         Me.lblStatus.Size = New System.Drawing.Size(76, 13)
         Me.lblStatus.TabIndex = 2
         Me.lblStatus.Text = "Disconnected!"
+        Me.lblStatus.Visible = False
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(13, 116)
+        Me.Label7.Location = New System.Drawing.Point(507, 136)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(62, 13)
         Me.Label7.TabIndex = 2
         Me.Label7.Text = "ComCheck:"
+        Me.Label7.Visible = False
         '
         'lblComCheck
         '
         Me.lblComCheck.AutoSize = True
-        Me.lblComCheck.Location = New System.Drawing.Point(74, 116)
+        Me.lblComCheck.Location = New System.Drawing.Point(568, 136)
         Me.lblComCheck.Name = "lblComCheck"
         Me.lblComCheck.Size = New System.Drawing.Size(13, 13)
         Me.lblComCheck.TabIndex = 2
         Me.lblComCheck.Text = "0"
+        Me.lblComCheck.Visible = False
         '
         'tmrComCheck
         '
@@ -143,7 +153,7 @@ Partial Class frmSettings
         '
         'Label1
         '
-        Me.Label1.Location = New System.Drawing.Point(12, 189)
+        Me.Label1.Location = New System.Drawing.Point(8, 132)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(92, 13)
         Me.Label1.TabIndex = 2
@@ -152,7 +162,7 @@ Partial Class frmSettings
         '
         'txtTAMCounterSet
         '
-        Me.txtTAMCounterSet.Location = New System.Drawing.Point(110, 186)
+        Me.txtTAMCounterSet.Location = New System.Drawing.Point(111, 128)
         Me.txtTAMCounterSet.Name = "txtTAMCounterSet"
         Me.txtTAMCounterSet.Size = New System.Drawing.Size(79, 20)
         Me.txtTAMCounterSet.TabIndex = 4
@@ -160,7 +170,7 @@ Partial Class frmSettings
         '
         'Label2
         '
-        Me.Label2.Location = New System.Drawing.Point(14, 164)
+        Me.Label2.Location = New System.Drawing.Point(8, 105)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(73, 13)
         Me.Label2.TabIndex = 2
@@ -171,7 +181,7 @@ Partial Class frmSettings
         '
         Me.cboMachineName.FormattingEnabled = True
         Me.cboMachineName.Items.AddRange(New Object() {"Machine 1", "Machine 2", "Machine 3", "Machine 4", "Machine 5", "Machine 6", "Machine 7", "Machine 8", "Machine 9", "Machine 10", "Machine 11", "Machine 12", "Machine 13", "Machine 14", "Machine 15", "Machine 16", "Machine 17", "Machine 18", "Machine 19"})
-        Me.cboMachineName.Location = New System.Drawing.Point(88, 161)
+        Me.cboMachineName.Location = New System.Drawing.Point(89, 101)
         Me.cboMachineName.Name = "cboMachineName"
         Me.cboMachineName.Size = New System.Drawing.Size(101, 21)
         Me.cboMachineName.TabIndex = 6
@@ -179,7 +189,7 @@ Partial Class frmSettings
         '
         'Label3
         '
-        Me.Label3.Location = New System.Drawing.Point(12, 138)
+        Me.Label3.Location = New System.Drawing.Point(5, 27)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(92, 13)
         Me.Label3.TabIndex = 2
@@ -188,37 +198,79 @@ Partial Class frmSettings
         '
         'txtSQLPath
         '
-        Me.txtSQLPath.Location = New System.Drawing.Point(64, 135)
+        Me.txtSQLPath.Location = New System.Drawing.Point(57, 23)
         Me.txtSQLPath.Name = "txtSQLPath"
         Me.txtSQLPath.Size = New System.Drawing.Size(386, 20)
         Me.txtSQLPath.TabIndex = 4
         Me.txtSQLPath.Text = "Data Source=DESKTOP-4OGTIB2\DIAVIEWSQL;Initial Catalog=SPS;Persist Security Info=" &
     "True;User ID=sa;Password=doc577isin"
         '
+        'btnSaveSettings
+        '
+        Me.btnSaveSettings.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSaveSettings.IconChar = FontAwesome.Sharp.IconChar.Database
+        Me.btnSaveSettings.IconColor = System.Drawing.Color.Black
+        Me.btnSaveSettings.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.btnSaveSettings.IconSize = 40
+        Me.btnSaveSettings.Location = New System.Drawing.Point(305, 216)
+        Me.btnSaveSettings.Name = "btnSaveSettings"
+        Me.btnSaveSettings.Size = New System.Drawing.Size(160, 48)
+        Me.btnSaveSettings.TabIndex = 7
+        Me.btnSaveSettings.Text = "Save"
+        Me.btnSaveSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnSaveSettings.UseVisualStyleBackColor = True
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.cboMachineName)
+        Me.GroupBox1.Controls.Add(Me.txtSQLPath)
+        Me.GroupBox1.Controls.Add(Me.txtTAMCounterSet)
+        Me.GroupBox1.Controls.Add(Me.txtPort)
+        Me.GroupBox1.Controls.Add(Me.txtIP)
+        Me.GroupBox1.Controls.Add(Me.Label3)
+        Me.GroupBox1.Controls.Add(Me.Label2)
+        Me.GroupBox1.Controls.Add(Me.Label1)
+        Me.GroupBox1.Controls.Add(Me.lblPort)
+        Me.GroupBox1.Controls.Add(Me.Label4)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 46)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(453, 164)
+        Me.GroupBox1.TabIndex = 8
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Settings"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(7, 9)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(235, 25)
+        Me.Label6.TabIndex = 9
+        Me.Label6.Text = "HMI SETTING VALUES"
+        '
         'frmSettings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(458, 369)
-        Me.Controls.Add(Me.cboMachineName)
+        Me.ClientSize = New System.Drawing.Size(477, 281)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.btnSaveSettings)
         Me.Controls.Add(Me.btnDisconnect)
         Me.Controls.Add(Me.btnConnect)
-        Me.Controls.Add(Me.txtSQLPath)
-        Me.Controls.Add(Me.txtTAMCounterSet)
-        Me.Controls.Add(Me.txtPort)
-        Me.Controls.Add(Me.txtIP)
         Me.Controls.Add(Me.lblComCheck)
         Me.Controls.Add(Me.lblStatus)
         Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.lblPort)
-        Me.Controls.Add(Me.Label4)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "frmSettings"
         Me.Text = "Machine HMI"
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -241,4 +293,7 @@ Partial Class frmSettings
     Friend WithEvents cboMachineName As ComboBox
     Friend WithEvents Label3 As Label
     Friend WithEvents txtSQLPath As TextBox
+    Friend WithEvents btnSaveSettings As FontAwesome.Sharp.IconButton
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents Label6 As Label
 End Class

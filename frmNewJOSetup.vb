@@ -29,7 +29,9 @@ Public Class frmNewJOSetup
     End Sub
 
     Private Sub frmNewJOSetup_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-
+        My.Settings.MSTimer = modMSTimerCounter
+        My.Settings.FBTimer = modFPBTimerCounter
+        My.Settings.MassProTimer = modMassProTimerCounter
     End Sub
     '// REALTIME CHECK TIMER
     Private Sub tmrRealTimeCheck_Tick(sender As Object, e As EventArgs) Handles tmrRealTimeCheck.Tick
@@ -44,6 +46,7 @@ Public Class frmNewJOSetup
         TAMButtonEnableDisable()
         MSButtonEnableDisable()
         FPBButtonEnableDisable()
+        BtnMassPro_EnabelDisable()
     End Sub
     '//
 
@@ -159,6 +162,14 @@ Public Class frmNewJOSetup
         End If
     End Sub
 
+
+    Public Sub BtnMassPro_EnabelDisable()
+        If btnFPB_StartStop.Text = "QA PASS!" Then
+            btnMassPro.Enabled = True
+        Else
+            btnMassPro.Enabled = False
+        End If
+    End Sub
     Private Sub btnMassPro_Click(sender As Object, e As EventArgs) Handles btnMassPro.Click
         modFPBuyOff_Done = True
         modInfrmMC1MainPage = True

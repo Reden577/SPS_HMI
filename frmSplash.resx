@@ -117,50 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="NewJOSetup" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\NewJOSetup.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="sample1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sample1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SPSHMI" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SPSHMI.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="NewJOSetup_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\NewJOSetup_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="test auto mode1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\test auto mode1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="sps2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sps2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="NewJOSetup_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\NewJOSetup_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Stoppage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Stoppage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="test auto mode" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\test auto mode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Machine Stoppage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Machine Stoppage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="indicator green" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\indicator green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Operator Stoppage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Operator Stoppage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="QA Stoppage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\QA Stoppage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="indicator red" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\indicator red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SPSHMI_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SPSHMI_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
+  <metadata name="tmrProgress.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

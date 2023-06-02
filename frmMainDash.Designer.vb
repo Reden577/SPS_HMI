@@ -220,7 +220,7 @@ Partial Class frmMainDash
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(495, 32)
+        Me.Panel1.Size = New System.Drawing.Size(494, 32)
         Me.Panel1.TabIndex = 5
         '
         'lblShiftCode
@@ -1069,7 +1069,7 @@ Partial Class frmMainDash
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.ClientSize = New System.Drawing.Size(495, 528)
+        Me.ClientSize = New System.Drawing.Size(494, 528)
         Me.Controls.Add(Me.Label22)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.btnSetting)

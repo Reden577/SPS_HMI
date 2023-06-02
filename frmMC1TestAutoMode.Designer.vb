@@ -25,6 +25,9 @@ Partial Class frmMC1TestAutoMode
         Me.components = New System.ComponentModel.Container()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.pnlMC1 = New System.Windows.Forms.Panel()
+        Me.lblTesting3 = New System.Windows.Forms.Label()
+        Me.lblTesting2 = New System.Windows.Forms.Label()
+        Me.lblTesting = New System.Windows.Forms.Label()
         Me.lblRxPLCMC0 = New System.Windows.Forms.Label()
         Me.lblSTOP_RUNNING = New System.Windows.Forms.Label()
         Me.btnMainPage = New FontAwesome.Sharp.IconButton()
@@ -35,7 +38,6 @@ Partial Class frmMC1TestAutoMode
         Me.lblElapsTimeMC1 = New System.Windows.Forms.Label()
         Me.lblStatMC1 = New System.Windows.Forms.Label()
         Me.tmrRealTimeCheck = New System.Windows.Forms.Timer(Me.components)
-        Me.lblTesting = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.pnlMC1.SuspendLayout()
         Me.SuspendLayout()
@@ -54,6 +56,8 @@ Partial Class frmMC1TestAutoMode
         'pnlMC1
         '
         Me.pnlMC1.BackColor = System.Drawing.Color.DarkOrange
+        Me.pnlMC1.Controls.Add(Me.lblTesting3)
+        Me.pnlMC1.Controls.Add(Me.lblTesting2)
         Me.pnlMC1.Controls.Add(Me.lblTesting)
         Me.pnlMC1.Controls.Add(Me.lblRxPLCMC0)
         Me.pnlMC1.Controls.Add(Me.lblSTOP_RUNNING)
@@ -71,6 +75,36 @@ Partial Class frmMC1TestAutoMode
         Me.pnlMC1.Name = "pnlMC1"
         Me.pnlMC1.Size = New System.Drawing.Size(466, 361)
         Me.pnlMC1.TabIndex = 0
+        '
+        'lblTesting3
+        '
+        Me.lblTesting3.AutoSize = True
+        Me.lblTesting3.Location = New System.Drawing.Point(9, 110)
+        Me.lblTesting3.Name = "lblTesting3"
+        Me.lblTesting3.Size = New System.Drawing.Size(48, 20)
+        Me.lblTesting3.TabIndex = 10
+        Me.lblTesting3.Text = "False"
+        Me.lblTesting3.Visible = False
+        '
+        'lblTesting2
+        '
+        Me.lblTesting2.AutoSize = True
+        Me.lblTesting2.Location = New System.Drawing.Point(9, 90)
+        Me.lblTesting2.Name = "lblTesting2"
+        Me.lblTesting2.Size = New System.Drawing.Size(48, 20)
+        Me.lblTesting2.TabIndex = 10
+        Me.lblTesting2.Text = "False"
+        Me.lblTesting2.Visible = False
+        '
+        'lblTesting
+        '
+        Me.lblTesting.AutoSize = True
+        Me.lblTesting.Location = New System.Drawing.Point(9, 70)
+        Me.lblTesting.Name = "lblTesting"
+        Me.lblTesting.Size = New System.Drawing.Size(48, 20)
+        Me.lblTesting.TabIndex = 10
+        Me.lblTesting.Text = "False"
+        Me.lblTesting.Visible = False
         '
         'lblRxPLCMC0
         '
@@ -192,15 +226,6 @@ Partial Class frmMC1TestAutoMode
         '
         Me.tmrRealTimeCheck.Enabled = True
         '
-        'lblTesting
-        '
-        Me.lblTesting.AutoSize = True
-        Me.lblTesting.Location = New System.Drawing.Point(9, 70)
-        Me.lblTesting.Name = "lblTesting"
-        Me.lblTesting.Size = New System.Drawing.Size(48, 20)
-        Me.lblTesting.TabIndex = 10
-        Me.lblTesting.Text = "False"
-        '
         'frmMC1TestAutoMode
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -230,4 +255,6 @@ Partial Class frmMC1TestAutoMode
     Friend WithEvents lblSTOP_RUNNING As Label
     Friend WithEvents lblRxPLCMC0 As Label
     Friend WithEvents lblTesting As Label
+    Friend WithEvents lblTesting2 As Label
+    Friend WithEvents lblTesting3 As Label
 End Class

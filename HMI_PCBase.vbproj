@@ -85,11 +85,13 @@
   <ItemGroup>
     <Compile Include="clsInsertAllDowntimeDetails.vb" />
     <Compile Include="clsModBusClient.vb" />
+    <Compile Include="clsModbusConnection.vb" />
     <Compile Include="clsSelAllJOLoadedDetails_MCId_LDStat.vb" />
     <Compile Include="clsSelAllLoginDetails_MachineId.vb" />
     <Compile Include="clsSelCountJOLoadedDetails_MCIDnPrdnStat.vb" />
     <Compile Include="clsSelCountJOLoadedDetails_MCId_Loaded.vb" />
     <Compile Include="clsSelCountLoginDetails_UserName.vb" />
+    <Compile Include="clsSelDTDetails_DTStatus.vb" />
     <Compile Include="clsSellAllJOLoadedDetais.vb" />
     <Compile Include="clsUdateDTDetails_MCRunning.vb" />
     <Compile Include="clsUpdateDowntimeDetails_AtAck.vb" />
@@ -206,6 +208,12 @@
     <Compile Include="frmMC1NoPlan.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmSplash.Designer.vb">
+      <DependentUpon>frmSplash.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSplash.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="modCounters.vb" />
     <Compile Include="modMCStartStop.vb" />
     <Compile Include="modModBus.vb" />
@@ -288,6 +296,9 @@
     <EmbeddedResource Include="frmMC1NoPlan.resx">
       <DependentUpon>frmMC1NoPlan.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmSplash.resx">
+      <DependentUpon>frmSplash.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -337,6 +348,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\NewJOSetup_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sps2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SPSHMI.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SPSHMI_1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

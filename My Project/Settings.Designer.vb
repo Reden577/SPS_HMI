@@ -92,8 +92,8 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-1HR4BP1\SQLEXPRESS;Initial Catalog=SPS;User ID=sa;Password=ad"& _ 
-            "min01")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-4OGTIB2\DIAVIEWSQL;Initial Catalog=SPS;Persist Security Info="& _ 
+            "True;User ID=sa;Password=doc577isin")>  _
         Public Property SQLPath() As String
             Get
                 Return CType(Me("SQLPath"),String)
@@ -105,7 +105,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Machine 1")>  _
         Public Property MachineNo() As String
             Get
                 Return CType(Me("MachineNo"),String)
@@ -116,7 +116,8 @@ Namespace My
         End Property
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("5")>  _
         Public Property TAMSetShots() As Integer
             Get
                 Return CType(Me("TAMSetShots"),Integer)
@@ -128,7 +129,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("169.254.5.225")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("169.254.190.100")>  _
         Public Property IpAddress() As String
             Get
                 Return CType(Me("IpAddress"),String)
@@ -180,6 +181,18 @@ Namespace My
             End Get
             Set
                 Me("MassProTimer") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property TAMCounter() As String
+            Get
+                Return CType(Me("TAMCounter"),String)
+            End Get
+            Set
+                Me("TAMCounter") = value
             End Set
         End Property
     End Class
