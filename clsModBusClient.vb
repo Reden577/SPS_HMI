@@ -6,12 +6,7 @@ Public Class clsModBusClient
 
     Public Sub WriteCoilRegister()
         Dim ModClient As New EasyModbus.ModbusClient
-
         ModClient.IPAddress = IPAddress
         ModClient.Port = Port
-
-
-
-
     End Sub
 End Class

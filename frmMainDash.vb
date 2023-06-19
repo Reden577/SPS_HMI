@@ -35,8 +35,6 @@ Public Class frmMainDash
 
     '// FORM LOAD
     Private Sub frmMainDash_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-
         lblStopDateTime.Text = My.Settings.stopTime
         modMC1StopDateandTime = My.Settings.stopTime
         modSettingValMachineID = My.Settings.MachineNo
@@ -51,11 +49,13 @@ Public Class frmMainDash
 
         modMC1TestAutoModeCounter = 0
 
+        GetPlanDetails()
 
         shiftUpdate()
         RxPLCM3_isFalse()
         checkLoginAndJOLoaded()
         ConnectToModbus()
+
         Me.CenterToScreen()
     End Sub
     '//
@@ -202,6 +202,8 @@ Public Class frmMainDash
         lblJOLoadedisTrue.Text = modJODetails_isTrue
         lblUserLoggedINisTrue.Text = modLoginDetails_isTrue
         lblUserLoggedAndJOLoadedisTrue.Text = modLoginAndJOLoaded_isTrue
+
+        lblNewDTisTrue.Text = modDTDetails_NewDT_isTrue
     End Sub
     '//
 
@@ -268,7 +270,9 @@ Public Class frmMainDash
     Private Sub lblRxPLCM0MC1_TextChanged(sender As Object, e As EventArgs) Handles lblRxPLCM0MC1.TextChanged
         If modTAM_NewJOLoaded_isTrue = False Then 'Interlock during NEW Job Order is Loaded.....
             PlanVsActualMonitoring()
+
             If RxPLCM0 = True Then 'Machine1 Start/Stop  (M0 of PLC)
+                modDTDetails_NewDT_isTrue = False
                 UpdateDowntimeAtMachineRunning()
                 tmrMC1StopTimer.Stop()
                 tmrRepairTime.Stop()
@@ -277,23 +281,35 @@ Public Class frmMainDash
                 modMC1RepairTimer = 0
                 modMC1QAVeriTimer = 0
                 modMC1FailCounters = 0
+
                 If modTestAutoModeMC1Flag = False Then
                     modINfrmMC1Run = True
                     modINfrmMC1Ready = False
                 End If
+
             Else
                 tmrMC1StopTimer.Start()
                 modINfrmMC1Run = False
+
                 If modMC1StopDateandTime = Nothing Then
                     modMC1StopDateandTime = Now()
                 End If
+
                 If modTestAutoModeMC1Flag = False Then
                     modINfrmMC1Stop = True
                 End If
-                InsertDowntimeData()
+
+                'Note:
+                '1. KIOSK downtime must be prioritize before (InsertDowntimeData())
+                '   during QA Machine Stop Flag from KIOSK...
+                If RxPLCM20 = True Then
+
+                Else
+                    InsertDowntimeData()
+                End If
+
             End If
         End If
-
     End Sub
     '//
 
@@ -595,24 +611,34 @@ Public Class frmMainDash
 
     '// INSERTING DOWNTIME DETAILS
     Public Sub InsertDowntimeData()
-        shiftUpdate()
-        AssignMCIdToShiftCode(modSettingValMachineID)
-        Dim UID As String
-        If String.IsNullOrEmpty(modLoginDetails_UserID) Then
-            UID = "TBA"
-        Else
-            UID = modLoginDetails_UserID
-        End If
-        If modSQLPath IsNot Nothing Then
-            If modLoginDetails_UserName Is Nothing Then
-                modLoginDetails_UserName = ""
+        If modDTDetails_NewDT_isTrue = False Then
+            shiftUpdate()
+            AssignMCIdToShiftCode(modSettingValMachineID)
+            Dim UID As String
+            Dim JCod As String
+            If modLoginDetails_UserID = "" Then
+                UID = "TBA"
+            Else
+                UID = modLoginDetails_UserID
             End If
-            Dim insDT As New clsInsertAllDowntimeDetails
-            insDT.ShiftCOde = modshiftCode_MCid
-            insDT.UserName = modLoginDetails_UserName
-            insDT.UserID = UID
-            insDT.StartTime = modMC1StopDateandTime
-            insDT.InsertDowntime()
+            If modJODetails_JOCode = "" Then
+                JCod = "TBA"
+            Else
+                JCod = modJODetails_JOCode
+            End If
+            If modSQLPath IsNot Nothing Then
+                If modLoginDetails_UserName Is Nothing Then
+                    modLoginDetails_UserName = ""
+                End If
+                Dim insDT As New clsInsertAllDowntimeDetails
+                insDT.ShiftCOde = modshiftCode_MCid
+                insDT.UserName = modLoginDetails_UserName
+                insDT.UserID = UID
+                insDT.StartTime = modMC1StopDateandTime
+                insDT.DT_JOCode = JCod
+                insDT.MCID = modSettingValMachineID
+                insDT.InsertDowntime()
+            End If
         End If
     End Sub
     '//
@@ -819,6 +845,7 @@ Public Class frmMainDash
     End Sub
     '//
 
+    '// CONNECT TO PLC MODBUS (DELTA)
     Public Sub ConnectToModbus()
         ModClient.IPAddress = modSetVal_IPAddress
         ModClient.Port = modSetVal_Por
@@ -828,10 +855,10 @@ Public Class frmMainDash
         Try
             ModClient.Connect()
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(ex.Message, "Connecting to ModbusClient...", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-
+    '//
 
     '// READING COIL REGISTERS OF DELTA PLC
     Public Sub readCoilsRegisters()
@@ -985,6 +1012,8 @@ Public Class frmMainDash
         If ModClient.Connected = True Then
             If modINfrmMC1Ready = True Then
                 ModClient.WriteSingleCoil(2054, True) 'MC6 ON
+            ElseIf modINfrmMC1Run = True Then
+                ModClient.WriteSingleCoil(2054, False) 'MC6 OFF
             Else
                 ModClient.WriteSingleCoil(2054, False) 'MC6 OFF
             End If

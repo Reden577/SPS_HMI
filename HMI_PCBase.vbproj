@@ -83,6 +83,8 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsCountDTStatus_MCNewStoppage.vb" />
+    <Compile Include="clsCountDTType_byDTStatusMCId.vb" />
     <Compile Include="clsInsertAllDowntimeDetails.vb" />
     <Compile Include="clsModBusClient.vb" />
     <Compile Include="clsModbusConnection.vb" />
@@ -92,6 +94,7 @@
     <Compile Include="clsSelCountJOLoadedDetails_MCId_Loaded.vb" />
     <Compile Include="clsSelCountLoginDetails_UserName.vb" />
     <Compile Include="clsSelDTDetails_DTStatus.vb" />
+    <Compile Include="clsSelDTReasonCMeasure.vb" />
     <Compile Include="clsSellAllJOLoadedDetais.vb" />
     <Compile Include="clsUdateDTDetails_MCRunning.vb" />
     <Compile Include="clsUpdateDowntimeDetails_AtAck.vb" />

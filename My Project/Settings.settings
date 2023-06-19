@@ -12,7 +12,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="SQLPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Data Source=DESKTOP-4OGTIB2\DIAVIEWSQL;Initial Catalog=SPS;Persist Security Info=True;User ID=sa;Password=doc577isin</Value>
+      <Value Profile="(Default)">Data Source=192.168.68.113,49172;Initial Catalog=SPS;Persist Security Info=True;User ID=sa;Password=admin01</Value>
     </Setting>
     <Setting Name="MachineNo" Type="System.String" Scope="User">
       <Value Profile="(Default)">Machine 1</Value>
@@ -21,7 +21,7 @@
       <Value Profile="(Default)">5</Value>
     </Setting>
     <Setting Name="IpAddress" Type="System.String" Scope="User">
-      <Value Profile="(Default)">169.254.190.100</Value>
+      <Value Profile="(Default)">169.254.204.70</Value>
     </Setting>
     <Setting Name="Port" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">502</Value>
@@ -36,6 +36,9 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="TAMCounter" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="JOCode" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

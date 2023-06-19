@@ -102,6 +102,8 @@ Partial Class frmMainDash
         Me.lblMC1QAStoppageSaveFlag = New System.Windows.Forms.Label()
         Me.lblTesting = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.lblNewDTisTrue = New System.Windows.Forms.Label()
+        Me.Label36 = New System.Windows.Forms.Label()
         Me.lblM16FlagisTrue = New System.Windows.Forms.Label()
         Me.Label35 = New System.Windows.Forms.Label()
         Me.lblUserLoggedAndJOLoadedisTrue = New System.Windows.Forms.Label()
@@ -220,7 +222,7 @@ Partial Class frmMainDash
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(494, 32)
+        Me.Panel1.Size = New System.Drawing.Size(496, 32)
         Me.Panel1.TabIndex = 5
         '
         'lblShiftCode
@@ -828,6 +830,8 @@ Partial Class frmMainDash
         'Panel2
         '
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel2.Controls.Add(Me.lblNewDTisTrue)
+        Me.Panel2.Controls.Add(Me.Label36)
         Me.Panel2.Controls.Add(Me.lblTesting)
         Me.Panel2.Controls.Add(Me.lblMC1QAStoppageSaveFlag)
         Me.Panel2.Controls.Add(Me.lblQAVerifyFailFlag)
@@ -905,6 +909,24 @@ Partial Class frmMainDash
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(692, 400)
         Me.Panel2.TabIndex = 0
+        '
+        'lblNewDTisTrue
+        '
+        Me.lblNewDTisTrue.AutoSize = True
+        Me.lblNewDTisTrue.Location = New System.Drawing.Point(381, 165)
+        Me.lblNewDTisTrue.Name = "lblNewDTisTrue"
+        Me.lblNewDTisTrue.Size = New System.Drawing.Size(32, 13)
+        Me.lblNewDTisTrue.TabIndex = 2
+        Me.lblNewDTisTrue.Text = "False"
+        '
+        'Label36
+        '
+        Me.Label36.AutoSize = True
+        Me.Label36.Location = New System.Drawing.Point(220, 165)
+        Me.Label36.Name = "Label36"
+        Me.Label36.Size = New System.Drawing.Size(155, 13)
+        Me.Label36.TabIndex = 2
+        Me.Label36.Text = "modDTDetails_NewDT_isTrue:"
         '
         'lblM16FlagisTrue
         '
@@ -1069,7 +1091,7 @@ Partial Class frmMainDash
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.ClientSize = New System.Drawing.Size(494, 528)
+        Me.ClientSize = New System.Drawing.Size(496, 528)
         Me.Controls.Add(Me.Label22)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.btnSetting)
@@ -1191,4 +1213,6 @@ Partial Class frmMainDash
     Friend WithEvents tmrMPTimerCounter As Timer
     Friend WithEvents lblM16FlagisTrue As Label
     Friend WithEvents Label35 As Label
+    Friend WithEvents Label36 As Label
+    Friend WithEvents lblNewDTisTrue As Label
 End Class

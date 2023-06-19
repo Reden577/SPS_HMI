@@ -25,6 +25,7 @@ Public Class frmMC1QAStoppage
         'modMC1QASendSampleFlag = False
         tmrRstFailFlag.Start()
         detailsComplete()
+        CheckLoggedQualityStoppage()
     End Sub
     Private Sub frmMC1QAStoppage_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         modINfrmMC1QAStoppage = False
@@ -124,7 +125,32 @@ Public Class frmMC1QAStoppage
         modMC1QAVerifyFailFlag = False
         tmrRstFailFlag.Stop()
     End Sub
+    '//
 
+    '//
+    '// CHECKING AND LOADING QUALITY STOPPAGE DETAILS
+    Public Sub CheckLoggedQualityStoppage()
+        Dim result As Integer
+        Dim cnt As New clsCountDTType_byDTStatusMCId
+        cnt.DTType = "Quality"
+        cnt.DTStatus = "MC1NewStoppage"
+        cnt.MCID = modSettingValMachineID
+        cnt.CountDTType()
+        result = cnt.cntDTtype
 
+        If result >= 1 Then
+            Dim sel As New clsSelDTReasonCMeasure
+            sel.DTType = "Quality"
+            sel.MCID = modSettingValMachineID
+            sel.DTStatus = "MC1NewStoppage"
+            sel.SelDTReason_CMeasure()
+            cboStoppage.Text = sel.DTReason
+            cboCountermeasure.Text = sel.DTCountermeasure
+            modMC1FailCounters = sel.TtlFailFreq
+        Else
+            cboStoppage.SelectedIndex = -1
+            cboCountermeasure.SelectedIndex = -1
+        End If
+    End Sub
     '//
 End Class

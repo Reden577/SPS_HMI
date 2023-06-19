@@ -14,5 +14,7 @@
 
     Public modLoginAndJOLoaded_isTrue As Boolean
 
+    Public modDTDetails_NewDT_isTrue As Boolean
+
 
 End Module

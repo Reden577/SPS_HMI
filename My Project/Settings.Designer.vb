@@ -92,8 +92,8 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-4OGTIB2\DIAVIEWSQL;Initial Catalog=SPS;Persist Security Info="& _ 
-            "True;User ID=sa;Password=doc577isin")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.68.113,49172;Initial Catalog=SPS;Persist Security Info=True;U"& _ 
+            "ser ID=sa;Password=admin01")>  _
         Public Property SQLPath() As String
             Get
                 Return CType(Me("SQLPath"),String)
@@ -129,7 +129,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("169.254.190.100")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("169.254.204.70")>  _
         Public Property IpAddress() As String
             Get
                 Return CType(Me("IpAddress"),String)
@@ -193,6 +193,18 @@ Namespace My
             End Get
             Set
                 Me("TAMCounter") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property JOCode() As String
+            Get
+                Return CType(Me("JOCode"),String)
+            End Get
+            Set
+                Me("JOCode") = value
             End Set
         End Property
     End Class

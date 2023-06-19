@@ -7,7 +7,7 @@
         lblFailedCounter.Text = modMC1FailCounters
 
         LabelVisibility()
-
+        CheckLoggedQualityStoppage()
     End Sub
     Private Sub frmMC1QAVerification_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         modINfrmMC1QAVerification = False
@@ -29,6 +29,7 @@
             Me.Close()
         Else
             modForQAPass_NewJOLoaded_isTrue = True
+            modForQA_NewJOLoaded_isTrue = False
             modINfrmNewJOSetup = True
             Me.Close()
         End If
@@ -72,6 +73,26 @@
         End If
     End Sub
 
+    '// CHECKING AND LOADING QUALITY STOPPAGE DETAILS
+    Public Sub CheckLoggedQualityStoppage()
+        Dim result As Integer
+        Dim cnt As New clsCountDTType_byDTStatusMCId
+        cnt.DTType = "Quality"
+        cnt.DTStatus = "MC1NewStoppage"
+        cnt.MCID = modSettingValMachineID
+        cnt.CountDTType()
+        result = cnt.cntDTtype
+
+        If result >= 1 Then
+            Dim sel As New clsSelDTReasonCMeasure
+            sel.DTType = "Quality"
+            sel.MCID = modSettingValMachineID
+            sel.DTStatus = "MC1NewStoppage"
+            sel.SelDTReason_CMeasure()
+            modMC1FailCounters = sel.TtlFailFreq
+        End If
+    End Sub
+    '//
 
 
 End Class

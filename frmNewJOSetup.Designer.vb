@@ -24,6 +24,7 @@ Partial Class frmNewJOSetup
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btnByPass = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btnMainPage = New FontAwesome.Sharp.IconButton()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -43,7 +44,6 @@ Partial Class frmNewJOSetup
         Me.tmrIdleTime2 = New System.Windows.Forms.Timer(Me.components)
         Me.tmrMassProTimer = New System.Windows.Forms.Timer(Me.components)
         Me.tmrRealTimeCheck = New System.Windows.Forms.Timer(Me.components)
-        Me.btnByPass = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -61,6 +61,16 @@ Partial Class frmNewJOSetup
         Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Machine 1  "
+        '
+        'btnByPass
+        '
+        Me.btnByPass.Location = New System.Drawing.Point(325, 0)
+        Me.btnByPass.Name = "btnByPass"
+        Me.btnByPass.Size = New System.Drawing.Size(144, 33)
+        Me.btnByPass.TabIndex = 12
+        Me.btnByPass.Text = "Buypass"
+        Me.btnByPass.UseVisualStyleBackColor = True
+        Me.btnByPass.Visible = False
         '
         'Panel1
         '
@@ -249,15 +259,6 @@ Partial Class frmNewJOSetup
         'tmrRealTimeCheck
         '
         Me.tmrRealTimeCheck.Enabled = True
-        '
-        'btnByPass
-        '
-        Me.btnByPass.Location = New System.Drawing.Point(325, 0)
-        Me.btnByPass.Name = "btnByPass"
-        Me.btnByPass.Size = New System.Drawing.Size(144, 33)
-        Me.btnByPass.TabIndex = 12
-        Me.btnByPass.Text = "Buypass"
-        Me.btnByPass.UseVisualStyleBackColor = True
         '
         'frmNewJOSetup
         '
