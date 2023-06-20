@@ -15,7 +15,7 @@ Option Explicit On
 Namespace My
     
     <Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.5.0.0"),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.6.0.0"),  _
      Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
     Partial Friend NotInheritable Class MySettings
         Inherits Global.System.Configuration.ApplicationSettingsBase
@@ -92,8 +92,8 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.68.113,49172;Initial Catalog=SPS;Persist Security Info=True;U"& _ 
-            "ser ID=sa;Password=admin01")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=169.254.120.130,49172;Initial Catalog=SPS;Persist Security Info=True;"& _ 
+            "User ID=sa;Password=admin01")>  _
         Public Property SQLPath() As String
             Get
                 Return CType(Me("SQLPath"),String)
