@@ -1,5 +1,6 @@
 ﻿Module modSettingValues
     Public modSettingValMachineID As String
+    Public modSetVal_MCIdintification As String
 
     Public modSetVal_IPAddress As String
     Public modSetVal_Por As Integer

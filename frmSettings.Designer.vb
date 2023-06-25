@@ -180,12 +180,12 @@ Partial Class frmSettings
         'cboMachineName
         '
         Me.cboMachineName.FormattingEnabled = True
-        Me.cboMachineName.Items.AddRange(New Object() {"Machine 1", "Machine 2", "Machine 3", "Machine 4", "Machine 5", "Machine 6", "Machine 7", "Machine 8", "Machine 9", "Machine 10", "Machine 11", "Machine 12", "Machine 13", "Machine 14", "Machine 15", "Machine 16", "Machine 17", "Machine 18", "Machine 19"})
+        Me.cboMachineName.Items.AddRange(New Object() {"MC1", "MC2", "MC3", "MC4", "MC5", "MC6", "MC7", "MC8", "MC9", "MC10", "MC11", "MC12", "MC13", "MC14", "MC15", "MC16", "MC17", "MC18", "MC19"})
         Me.cboMachineName.Location = New System.Drawing.Point(89, 101)
         Me.cboMachineName.Name = "cboMachineName"
         Me.cboMachineName.Size = New System.Drawing.Size(101, 21)
         Me.cboMachineName.TabIndex = 6
-        Me.cboMachineName.Text = "Machine 1"
+        Me.cboMachineName.Text = "MC1"
         '
         'Label3
         '

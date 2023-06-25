@@ -32,9 +32,9 @@ Partial Class frmSplash
         '
         'ProgressBar1
         '
-        Me.ProgressBar1.Location = New System.Drawing.Point(38, 309)
+        Me.ProgressBar1.Location = New System.Drawing.Point(12, 309)
         Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(411, 23)
+        Me.ProgressBar1.Size = New System.Drawing.Size(478, 23)
         Me.ProgressBar1.TabIndex = 1
         '
         'tmrProgress
@@ -46,7 +46,7 @@ Partial Class frmSplash
         '
         Me.lblProgress.AutoSize = True
         Me.lblProgress.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblProgress.Location = New System.Drawing.Point(35, 293)
+        Me.lblProgress.Location = New System.Drawing.Point(12, 293)
         Me.lblProgress.Name = "lblProgress"
         Me.lblProgress.Size = New System.Drawing.Size(39, 13)
         Me.lblProgress.TabIndex = 2
@@ -55,10 +55,10 @@ Partial Class frmSplash
         '
         'PictureBox1
         '
-        Me.PictureBox1.Image = Global.HMI_PCBase.My.Resources.Resources.SPSHMI_1
-        Me.PictureBox1.Location = New System.Drawing.Point(38, 35)
+        Me.PictureBox1.Image = Global.HMI_PCBase.My.Resources.Resources.SPSHMI_2
+        Me.PictureBox1.Location = New System.Drawing.Point(12, 12)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(411, 240)
+        Me.PictureBox1.Size = New System.Drawing.Size(478, 263)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
@@ -71,9 +71,10 @@ Partial Class frmSplash
         Me.Controls.Add(Me.lblProgress)
         Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.PictureBox1)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "frmSplash"
-        Me.Text = "frmSplash"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

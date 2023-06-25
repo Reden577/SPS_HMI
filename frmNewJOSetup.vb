@@ -175,4 +175,5 @@ Public Class frmNewJOSetup
         modInfrmMC1MainPage = True
         Me.Close()
     End Sub
+
 End Class

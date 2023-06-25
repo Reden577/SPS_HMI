@@ -127,14 +127,14 @@
   <data name="SPSHMI" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SPSHMI.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="NewJOSetup_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\NewJOSetup_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="test auto mode1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\test auto mode1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="sps2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sps2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NewJOSetup_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NewJOSetup_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="NewJOSetup_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\NewJOSetup_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -144,6 +144,9 @@
   </data>
   <data name="test auto mode" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\test auto mode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SPSHMI_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SPSHMI_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Machine Stoppage" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Machine Stoppage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -160,7 +163,7 @@
   <data name="indicator red" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\indicator red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="SPSHMI_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SPSHMI_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SPSHMI_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SPSHMI_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

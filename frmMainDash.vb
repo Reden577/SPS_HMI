@@ -76,13 +76,13 @@ Public Class frmMainDash
 
     '// FORM MAIN DASH REAL TIME STATUS CHECK TIMER
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles tmrRealTimeCheck.Tick
+        MachineIdentification()
         comCheck()
         TextChangeReferenceValues()
         shiftUpdate()
         lblAckTime.Text = modMC1RepairTimer
         lblQAVeriTimer.Text = modMC1QAVeriTimer
         lblFailCounter.Text = modMC1FailCounters
-        Label22.Text = modMC1StoppageReason
         checkLoginAndJOLoaded()
         TestAutoModeCounterSub()
 
@@ -613,7 +613,7 @@ Public Class frmMainDash
     Public Sub InsertDowntimeData()
         If modDTDetails_NewDT_isTrue = False Then
             shiftUpdate()
-            AssignMCIdToShiftCode(modSettingValMachineID)
+            'AssignMCIdToShiftCode(modSettingValMachineID)
             Dim UID As String
             Dim JCod As String
             If modLoginDetails_UserID = "" Then
@@ -631,7 +631,7 @@ Public Class frmMainDash
                     modLoginDetails_UserName = ""
                 End If
                 Dim insDT As New clsInsertAllDowntimeDetails
-                insDT.ShiftCOde = modshiftCode_MCid
+                insDT.ShiftCOde = modShiftCode + modSettingValMachineID
                 insDT.UserName = modLoginDetails_UserName
                 insDT.UserID = UID
                 insDT.StartTime = modMC1StopDateandTime
@@ -724,7 +724,7 @@ Public Class frmMainDash
         modMC1QAVeriTimer += 1
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs)
         'GetPlanDetails()
         'CheckForLoadJobOrders()
     End Sub
@@ -1044,4 +1044,66 @@ Public Class frmMainDash
         End If
     End Sub
     '//
+
+    '// MACHINE NUMBER IDENTIFICATION
+    Public Sub MachineIdentification()
+        If modSettingValMachineID = "MC1" Then
+            modSetVal_MCIdintification = "Machine 1"
+            lblMCNumber.Text = modSetVal_MCIdintification
+        ElseIf modSettingValMachineID = "MC2" Then
+            modSetVal_MCIdintification = "Machine 2"
+            lblMCNumber.Text = modSetVal_MCIdintification
+        ElseIf modSettingValMachineID = "MC3" Then
+            modSetVal_MCIdintification = "Machine 3"
+            lblMCNumber.Text = modSetVal_MCIdintification
+        ElseIf modSettingValMachineID = "MC4" Then
+            modSetVal_MCIdintification = "Machine 4"
+            lblMCNumber.Text = modSetVal_MCIdintification
+        ElseIf modSettingValMachineID = "MC5" Then
+            modSetVal_MCIdintification = "Machine 5"
+            lblMCNumber.Text = modSetVal_MCIdintification
+        ElseIf modSettingValMachineID = "MC6" Then
+            modSetVal_MCIdintification = "Machine 6"
+            lblMCNumber.Text = modSetVal_MCIdintification
+        ElseIf modSettingValMachineID = "MC7" Then
+            modSetVal_MCIdintification = "Machine 7"
+            lblMCNumber.Text = modSetVal_MCIdintification
+        ElseIf modSettingValMachineID = "MC8" Then
+            modSetVal_MCIdintification = "Machine 8"
+            lblMCNumber.Text = modSetVal_MCIdintification
+        ElseIf modSettingValMachineID = "MC9" Then
+            modSetVal_MCIdintification = "Machine 9"
+            lblMCNumber.Text = modSetVal_MCIdintification
+        ElseIf modSettingValMachineID = "MC10" Then
+            modSetVal_MCIdintification = "Machine 10"
+            lblMCNumber.Text = modSetVal_MCIdintification
+        ElseIf modSettingValMachineID = "MC11" Then
+            modSetVal_MCIdintification = "Machine 11"
+            lblMCNumber.Text = modSetVal_MCIdintification
+        ElseIf modSettingValMachineID = "MC12" Then
+            modSetVal_MCIdintification = "Machine 12"
+            lblMCNumber.Text = modSetVal_MCIdintification
+        ElseIf modSettingValMachineID = "MC13" Then
+            modSetVal_MCIdintification = "Machine 13"
+            lblMCNumber.Text = modSetVal_MCIdintification
+        ElseIf modSettingValMachineID = "MC14" Then
+            modSetVal_MCIdintification = "Machine 14"
+            lblMCNumber.Text = modSetVal_MCIdintification
+        ElseIf modSettingValMachineID = "MC15" Then
+            modSetVal_MCIdintification = "Machine 15"
+            lblMCNumber.Text = modSetVal_MCIdintification
+        ElseIf modSettingValMachineID = "MC16" Then
+            modSetVal_MCIdintification = "Machine 16"
+            lblMCNumber.Text = modSetVal_MCIdintification
+        ElseIf modSettingValMachineID = "MC17" Then
+            modSetVal_MCIdintification = "Machine 17"
+            lblMCNumber.Text = modSetVal_MCIdintification
+        ElseIf modSettingValMachineID = "MC18" Then
+            modSetVal_MCIdintification = "Machine 18"
+            lblMCNumber.Text = modSetVal_MCIdintification
+        ElseIf modSettingValMachineID = "MC19" Then
+            modSetVal_MCIdintification = "Machine 19"
+            lblMCNumber.Text = modSetVal_MCIdintification
+        End If
+    End Sub
 End Class

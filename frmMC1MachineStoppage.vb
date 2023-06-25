@@ -109,6 +109,7 @@ Public Class frmMC1MachineStoppage
     Private Sub tmrRealTimeCheck_Tick(sender As Object, e As EventArgs) Handles tmrRealTimeCheck.Tick
         detailsComplete()
     End Sub
+
     '//
 
 End Class
