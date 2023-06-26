@@ -15,7 +15,7 @@ Public Class clsUpdateDTDetails_StoppageSave
             cmd.Parameters.AddWithValue("@ForQAVeri", ForQAVeri)
             cmd.Parameters.AddWithValue("@ttlQAVeri", "0")
             cmd.Parameters.AddWithValue("@ttlFailFreq", TtlFailFreq)
-            cmd.Parameters.AddWithValue("@DTStatus", "MC1NewStoppage")
+            cmd.Parameters.AddWithValue("@DTStatus", modSetVal_NewStoppage)
             cmd.CommandType = CommandType.StoredProcedure
             con.Open()
             cmd.ExecuteNonQuery()

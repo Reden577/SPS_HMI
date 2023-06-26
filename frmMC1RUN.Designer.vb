@@ -58,6 +58,7 @@ Partial Class frmMC1RUN
         Me.Label1.TabIndex = 7
         Me.Label1.Text = "Elapsed Time:"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.Label1.Visible = False
         '
         'lblElapsTimeMC1
         '
@@ -72,6 +73,7 @@ Partial Class frmMC1RUN
         Me.lblElapsTimeMC1.TabIndex = 8
         Me.lblElapsTimeMC1.Text = "0"
         Me.lblElapsTimeMC1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.lblElapsTimeMC1.Visible = False
         '
         'lblStatMC1
         '

@@ -8,7 +8,7 @@ Public Class clsUpdateDowntimeDetails_AtAck
         Dim con As New SqlConnection(modSQLPath)
         Using cmd As SqlCommand = New SqlCommand(proc, con)
             cmd.Parameters.AddWithValue("@AckDate", AckDate)
-            cmd.Parameters.AddWithValue("@DTStatus", "MC1NewStoppage")
+            cmd.Parameters.AddWithValue("@DTStatus", modSetVal_NewStoppage)
             cmd.CommandType = CommandType.StoredProcedure
             con.Open()
             cmd.ExecuteNonQuery()

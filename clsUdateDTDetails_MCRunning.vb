@@ -12,7 +12,7 @@ Public Class clsUdateDTDetails_MCRunning
             cmd.Parameters.AddWithValue("@RunTime", RunTime)
             cmd.Parameters.AddWithValue("@ttlDT", TtlDT)
             cmd.Parameters.AddWithValue("@DTComplete", DTStatus)
-            cmd.Parameters.AddWithValue("@DTStatus", "MC1NewStoppage")
+            cmd.Parameters.AddWithValue("@DTStatus", modSetVal_NewStoppage)
             cmd.CommandType = CommandType.StoredProcedure
             con.Open()
             cmd.ExecuteNonQuery()

@@ -9,7 +9,7 @@ Public Class clsUpdateDTDetails_QAVeriFail
         Using cmd As SqlCommand = New SqlCommand(Proc, con)
             cmd.Parameters.AddWithValue("@ForQAVeri", "TBA")
             cmd.Parameters.AddWithValue("@ttlFailFreq", TtlFailFreq)
-            cmd.Parameters.AddWithValue("@DTStatus", "MC1NewStoppage")
+            cmd.Parameters.AddWithValue("@DTStatus", modSetVal_NewStoppage)
             cmd.CommandType = CommandType.StoredProcedure
 
             con.Open()

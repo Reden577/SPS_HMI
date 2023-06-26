@@ -51,7 +51,7 @@ Public Class clsInsertAllDowntimeDetails
             cmd.Parameters.AddWithValue("@ForQAVeri", "0")
             cmd.Parameters.AddWithValue("@ttlQAVeri", "0")
             cmd.Parameters.AddWithValue("@ttlFailFreq", "0")
-            cmd.Parameters.AddWithValue("@DTStatus", "MC1NewStoppage")
+            cmd.Parameters.AddWithValue("@DTStatus", modSetVal_NewStoppage)
             cmd.Parameters.AddWithValue("@JOCode", DT_JOCode)
             cmd.Parameters.AddWithValue("@MCId", MCID)
             'cmd.CommandType = CommandType.StoredProcedure
