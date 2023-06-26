@@ -12,4 +12,8 @@
     Public modMoldSetup_Done As Boolean
     Public modFPBuyOff_Done As Boolean
 
+    Public modSetVal_RXPLC_RunStop As Boolean
+    Public modSetVal_RxPLC_UNLogd_KIOSkLogd As Boolean
+    Public modSetVal_RxPLC_TestAutoModeFlag As Boolean
+
 End Module

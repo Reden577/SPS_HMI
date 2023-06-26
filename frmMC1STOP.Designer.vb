@@ -41,9 +41,11 @@ Partial Class frmMC1STOP
         Me.GroupBox1.Controls.Add(Me.pnlMC1)
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(13, 13)
+        Me.GroupBox1.Location = New System.Drawing.Point(17, 16)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(561, 438)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Size = New System.Drawing.Size(738, 539)
         Me.GroupBox1.TabIndex = 5
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "*"
@@ -58,9 +60,10 @@ Partial Class frmMC1STOP
         Me.pnlMC1.Cursor = System.Windows.Forms.Cursors.Hand
         Me.pnlMC1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlMC1.ForeColor = System.Drawing.Color.Black
-        Me.pnlMC1.Location = New System.Drawing.Point(3, 22)
+        Me.pnlMC1.Location = New System.Drawing.Point(4, 27)
+        Me.pnlMC1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.pnlMC1.Name = "pnlMC1"
-        Me.pnlMC1.Size = New System.Drawing.Size(555, 413)
+        Me.pnlMC1.Size = New System.Drawing.Size(730, 508)
         Me.pnlMC1.TabIndex = 0
         '
         'btnAcknowledge
@@ -70,9 +73,10 @@ Partial Class frmMC1STOP
         Me.btnAcknowledge.IconChar = FontAwesome.Sharp.IconChar.Wrench
         Me.btnAcknowledge.IconColor = System.Drawing.Color.Black
         Me.btnAcknowledge.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.btnAcknowledge.Location = New System.Drawing.Point(152, 233)
+        Me.btnAcknowledge.Location = New System.Drawing.Point(198, 287)
+        Me.btnAcknowledge.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnAcknowledge.Name = "btnAcknowledge"
-        Me.btnAcknowledge.Size = New System.Drawing.Size(252, 59)
+        Me.btnAcknowledge.Size = New System.Drawing.Size(336, 73)
         Me.btnAcknowledge.TabIndex = 9
         Me.btnAcknowledge.Text = "Acknowledge"
         Me.btnAcknowledge.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -85,9 +89,10 @@ Partial Class frmMC1STOP
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(14, 359)
+        Me.Label1.Location = New System.Drawing.Point(19, 442)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(187, 31)
+        Me.Label1.Size = New System.Drawing.Size(235, 39)
         Me.Label1.TabIndex = 7
         Me.Label1.Text = "Elapsed Time:"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -99,9 +104,10 @@ Partial Class frmMC1STOP
         Me.lblElapsTimeMC1.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblElapsTimeMC1.ForeColor = System.Drawing.Color.White
         Me.lblElapsTimeMC1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.lblElapsTimeMC1.Location = New System.Drawing.Point(209, 357)
+        Me.lblElapsTimeMC1.Location = New System.Drawing.Point(279, 439)
+        Me.lblElapsTimeMC1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblElapsTimeMC1.Name = "lblElapsTimeMC1"
-        Me.lblElapsTimeMC1.Size = New System.Drawing.Size(272, 35)
+        Me.lblElapsTimeMC1.Size = New System.Drawing.Size(363, 43)
         Me.lblElapsTimeMC1.TabIndex = 8
         Me.lblElapsTimeMC1.Text = "0"
         Me.lblElapsTimeMC1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -114,9 +120,10 @@ Partial Class frmMC1STOP
         Me.lblStatMC1.Cursor = System.Windows.Forms.Cursors.Hand
         Me.lblStatMC1.Font = New System.Drawing.Font("Microsoft Sans Serif", 48.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblStatMC1.ForeColor = System.Drawing.Color.White
-        Me.lblStatMC1.Location = New System.Drawing.Point(5, 92)
+        Me.lblStatMC1.Location = New System.Drawing.Point(4, 143)
+        Me.lblStatMC1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblStatMC1.Name = "lblStatMC1"
-        Me.lblStatMC1.Size = New System.Drawing.Size(545, 192)
+        Me.lblStatMC1.Size = New System.Drawing.Size(717, 140)
         Me.lblStatMC1.TabIndex = 6
         Me.lblStatMC1.Text = "Machine Stop"
         Me.lblStatMC1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -128,27 +135,29 @@ Partial Class frmMC1STOP
         'TableLayoutPanel1
         '
         Me.TableLayoutPanel1.ColumnCount = 3
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 13.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 13.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.GroupBox1, 1, 1)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
+        Me.TableLayoutPanel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 3
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 12.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(587, 464)
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 12.0!))
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(772, 571)
         Me.TableLayoutPanel1.TabIndex = 6
         '
         'frmMC1STOP
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(587, 464)
+        Me.ClientSize = New System.Drawing.Size(772, 571)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "frmMC1STOP"
         Me.Text = "frmMCStop"
         Me.GroupBox1.ResumeLayout(False)

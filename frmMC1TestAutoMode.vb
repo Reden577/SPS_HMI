@@ -67,11 +67,11 @@
 
     '// RUNNING / STOP STATUS OF TAM
     Public Sub TAMRunStopStats()
-        If modTestAutoModeMC1Flag = True And RxPLCM0 = True Then
+        If modTestAutoModeMC1Flag = True And RxPLCM1 = True Then
             lblSTOP_RUNNING.Text = "RUNNING"
             lblSTOP_RUNNING.BackColor = Color.Green
             lblSTOP_RUNNING.ForeColor = Color.White
-        ElseIf modTestAutoModeMC1Flag = True And RxPLCM0 = False Then
+        ElseIf modTestAutoModeMC1Flag = True And RxPLCM1 = False Then
             lblSTOP_RUNNING.Text = "STOP"
             lblSTOP_RUNNING.BackColor = Color.Red
             lblSTOP_RUNNING.ForeColor = Color.White
@@ -98,7 +98,7 @@
     '// REALTIME TIMER CHECK
     Private Sub tmrRealTimeCheck_Tick(sender As Object, e As EventArgs) Handles tmrRealTimeCheck.Tick
         ElapseTimeVisibility()
-        lblRxPLCMC0.Text = RxPLCM0
+        lblRxPLCMC0.Text = RxPLCM1
         lblTesting.Text = modTestAutoModeMC1Flag
         lblTesting2.Text = modMC1TestAutoModeCounter
         lblTesting3.Text = M16Flag_isTrue

@@ -29,7 +29,7 @@
     End Sub
 
     Public Sub stoppageBtnsEnableDisable()
-        If RxPLCM0 = True Then
+        If RxPLCM1 = True Then
             picStoppage.Enabled = False
             picQAStoppage.Enabled = False
             picTestAutoMode.Enabled = False
@@ -58,15 +58,15 @@
         If modTAM_NewJOLoaded_isTrue = False Then '<-Interlock during NEw Job Order is loaded
             lblDisplayON.Text = displayTime
             If displayTime >= 10 Then
-                If RxPLCM0 = False And modMC1QAStoppageSaveFlag = False _
+                If RxPLCM1 = False And modMC1QAStoppageSaveFlag = False _
                     And modTestAutoModeMC1Flag = False And RxPLCM14 = False Then
                     modINfrmMC1Stop = True
                     Me.Close()
-                ElseIf RxPLCM0 = False And modMC1QAStoppageSaveFlag = True _
+                ElseIf RxPLCM1 = False And modMC1QAStoppageSaveFlag = True _
                     And modTestAutoModeMC1Flag = False And RxPLCM14 = False Then
                     modINfrmMC1QAVerification = True
                     Me.Close()
-                ElseIf RxPLCM0 = False And (modMC1QAStoppageSaveFlag = True Or modMC1QAStoppageSaveFlag = False) _
+                ElseIf RxPLCM1 = False And (modMC1QAStoppageSaveFlag = True Or modMC1QAStoppageSaveFlag = False) _
                     And modTestAutoModeMC1Flag = True And RxPLCM14 = False Then
                     modINfrmMC1TestAutoMode = True
                     Me.Close()
