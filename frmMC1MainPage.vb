@@ -29,7 +29,7 @@
     End Sub
 
     Public Sub stoppageBtnsEnableDisable()
-        If RxPLCM1 = True Then
+        If modSetVal_RXPLC_RunStop = True Then
             picStoppage.Enabled = False
             picQAStoppage.Enabled = False
             picTestAutoMode.Enabled = False
@@ -58,19 +58,19 @@
         If modTAM_NewJOLoaded_isTrue = False Then '<-Interlock during NEw Job Order is loaded
             lblDisplayON.Text = displayTime
             If displayTime >= 10 Then
-                If RxPLCM1 = False And modMC1QAStoppageSaveFlag = False _
-                    And modTestAutoModeMC1Flag = False And RxPLCM14 = False Then
+                If modSetVal_RXPLC_RunStop = False And modMC1QAStoppageSaveFlag = False _
+                    And modTestAutoModeMC1Flag = False And modSetVal_RxPLC_PlanComplete = False Then
                     modINfrmMC1Stop = True
                     Me.Close()
-                ElseIf RxPLCM1 = False And modMC1QAStoppageSaveFlag = True _
-                    And modTestAutoModeMC1Flag = False And RxPLCM14 = False Then
+                ElseIf modSetVal_RXPLC_RunStop = False And modMC1QAStoppageSaveFlag = True _
+                    And modTestAutoModeMC1Flag = False And modSetVal_RxPLC_PlanComplete = False Then
                     modINfrmMC1QAVerification = True
                     Me.Close()
-                ElseIf RxPLCM1 = False And (modMC1QAStoppageSaveFlag = True Or modMC1QAStoppageSaveFlag = False) _
-                    And modTestAutoModeMC1Flag = True And RxPLCM14 = False Then
+                ElseIf modSetVal_RXPLC_RunStop = False And (modMC1QAStoppageSaveFlag = True Or modMC1QAStoppageSaveFlag = False) _
+                    And modTestAutoModeMC1Flag = True And modSetVal_RxPLC_PlanComplete = False Then
                     modINfrmMC1TestAutoMode = True
                     Me.Close()
-                ElseIf RxPLCM14 = True Then
+                ElseIf modSetVal_RxPLC_PlanComplete = True Then
                     modINfrmMC1PlanComplete = True
                     Me.Close()
                 Else

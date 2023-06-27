@@ -77,10 +77,14 @@ Public Class frmMainDash
     '// FORM MAIN DASH REAL TIME STATUS CHECK TIMER
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles tmrRealTimeCheck.Tick
         Label22.Text = RxPLCM1
+        Label39.Text = modINfrmMC1Run
+        Label40.Text = modMC1QASendSampleFlag
+        Label38.Text = RxPLCM0
         Label37.Text = RxPLCM4
         MachineIdentification()
         comCheck()
-        TextChangeReferenceValues()
+
+        'MessageBox.Show("timer tick")
         shiftUpdate()
         lblAckTime.Text = modMC1RepairTimer
         lblQAVeriTimer.Text = modMC1QAVeriTimer
@@ -94,6 +98,8 @@ Public Class frmMainDash
         MachineReadyFlag()
         MachineStopPlanComplete()
         InputCounterM16_M17_Via_X2_X5()
+
+        TextChangeReferenceValues()
     End Sub
     '//
 
@@ -165,9 +171,9 @@ Public Class frmMainDash
 
     '// MONITORING SUBS FOR TEXT CHANGE
     Public Sub TextChangeReferenceValues()
-        lblRxPLCM0MC1.Text = RxPLCM1
-        lblRxPLCM3MC1.Text = RxPLCM4
-        lblRxPLCM12MC1.Text = RxPLCM13
+        lblRxPLCM0MC1.Text = modSetVal_RXPLC_RunStop 'Machine Run/Stop
+        lblRxPLCM3MC1.Text = modSetVal_RxPLC_UNLogd_KIOSkLogd 'Machine Logged In and JO Loaded Flag
+        lblRxPLCM12MC1.Text = modSetVal_RxPLC_TestAutoModeFlag 'Test Auto Mode Flag
 
         lblMain.Text = modInfrmMC1MainPage
         lblMaintenance.Text = modINfrmMC1Maintenance
@@ -197,7 +203,7 @@ Public Class frmMainDash
         lblQAVerifyFailFlag.Text = modMC1QAVerifyFailFlag
         lblQAVerifyPassFlag.Text = modMC1QAVerifyPassFlag
         lblMC1QAStoppageSaveFlag.Text = modMC1QAStoppageSaveFlag
-        lblPlanComplete.Text = RxPLCM14
+        lblPlanComplete.Text = modSetVal_RxPLC_PlanComplete
 
         lblM16FlagisTrue.Text = M16Flag_isTrue
 
@@ -206,6 +212,7 @@ Public Class frmMainDash
         lblUserLoggedAndJOLoadedisTrue.Text = modLoginAndJOLoaded_isTrue
 
         lblNewDTisTrue.Text = modDTDetails_NewDT_isTrue
+        'MessageBox.Show("timer tick")
     End Sub
     '//
 
@@ -268,14 +275,76 @@ Public Class frmMainDash
     End Sub
     '// 
 
-    '// CALLING START STOP OPERATION SUBS
+    '// CALLING RXPLCM0_M1 CONDSTIONS SUB
+    Public Sub RxPLCM_Condtion()
+
+    End Sub
+
+    '//
+
+    '// CALLING MACHINE RUN/STOP OPERATION SUBS Ver.2
+    Public Sub MachineRunStopFlag_M0_M1()
+        'MACHINE RUN
+        If modSetVal_RXPLC_RunStop = True And modTAM_NewJOLoaded_isTrue = False _
+            And modRxPLCM0_isON = False Then 'Interlock during NEW Job Order is Loaded.....
+            modRxPLCM0_isON = True
+            modRxPLCM0_isOFF = False
+
+            PlanVsActualMonitoring()
+            modDTDetails_NewDT_isTrue = False
+            UpdateDowntimeAtMachineRunning()
+            tmrMC1StopTimer.Stop()
+            tmrRepairTime.Stop()
+            tmrQAVeriTime.Stop()
+            modMC1StopTimer = 0
+            modMC1RepairTimer = 0
+            modMC1QAVeriTimer = 0
+            modMC1FailCounters = 0
+
+            If modTestAutoModeMC1Flag = False Then
+                modINfrmMC1Run = True
+                modINfrmMC1Ready = False
+            End If
+
+            'MACHINE STOP
+        ElseIf modSetVal_RXPLC_RunStop = False And modTAM_NewJOLoaded_isTrue = False _
+            And modRxPLCM0_isOFF = False Then 'Interlock during NEW Job Order is Loaded.....
+            modRxPLCM0_isOFF = True
+            modRxPLCM0_isON = False
+
+            tmrMC1StopTimer.Start()
+            modINfrmMC1Run = False
+
+            If modMC1StopDateandTime = Nothing Then
+                modMC1StopDateandTime = Now()
+            End If
+
+            If modTestAutoModeMC1Flag = False Then
+                modINfrmMC1Stop = True
+            End If
+
+            'Note:
+            '1. KIOSK downtime must be prioritize before (InsertDowntimeData())
+            '   during QA Machine Stop Flag from KIOSK...
+            If modSetVal_RxPLC_QAStopKIOSK = True Then '2068 QA STOPPAGE TRIGGERED MC1 @KIOSK
+
+            Else
+                InsertDowntimeData()
+            End If
+
+        End If
+    End Sub
+    '//
+
+
+    '// CALLING MACHINE RUN/STOP OPERATION SUBS Ver.1
     Private Sub lblRxPLCM0MC1_TextChanged(sender As Object, e As EventArgs) Handles lblRxPLCM0MC1.TextChanged
+        'MessageBox.Show("TextChange")
         If modTAM_NewJOLoaded_isTrue = False Then 'Interlock during NEW Job Order is Loaded.....
             PlanVsActualMonitoring()
 
-
             'If modSetVal_RXPLC_RunStop = True Then 'Machine1 Start/Stop  (M0 of PLC)
-            If RxPLCM1 = True Then 'Machine1 Start/Stop  (M0 of PLC)
+            If modSetVal_RXPLC_RunStop = True Then 'Machine1 Start/Stop  (M0 of PLC)
                 modDTDetails_NewDT_isTrue = False
                 UpdateDowntimeAtMachineRunning()
                 tmrMC1StopTimer.Stop()
@@ -293,27 +362,27 @@ Public Class frmMainDash
 
             Else
                 tmrMC1StopTimer.Start()
-                    modINfrmMC1Run = False
+                modINfrmMC1Run = False
 
-                    If modMC1StopDateandTime = Nothing Then
-                        modMC1StopDateandTime = Now()
-                    End If
-
-                    If modTestAutoModeMC1Flag = False Then
-                        modINfrmMC1Stop = True
-                    End If
-
-                    'Note:
-                    '1. KIOSK downtime must be prioritize before (InsertDowntimeData())
-                    '   during QA Machine Stop Flag from KIOSK...
-                    If RxPLCM20 = True Then
-
-                    Else
-                        InsertDowntimeData()
-                    End If
-
+                If modMC1StopDateandTime = Nothing Then
+                    modMC1StopDateandTime = Now()
                 End If
+
+                If modTestAutoModeMC1Flag = False Then
+                    modINfrmMC1Stop = True
+                End If
+
+                'Note:
+                '1. KIOSK downtime must be prioritize before (InsertDowntimeData())
+                '   during QA Machine Stop Flag from KIOSK...
+                If modSetVal_RxPLC_QAStopKIOSK = True Then
+
+                Else
+                    InsertDowntimeData()
+                End If
+
             End If
+        End If
     End Sub
     '//
 
@@ -475,10 +544,11 @@ Public Class frmMainDash
     '// CALLING QA VERIFICATION FAIL SUBS
     Private Sub lblQAVerifyFailFlag_TextChanged(sender As Object, e As EventArgs) Handles lblQAVerifyFailFlag.TextChanged
         If modMC1QAVerifyFailFlag = True Then
-            UpdateDowntimeAtQAVerifyFail()
+            'UpdateDowntimeAtQAVerifyFail()
             tmrQAVeriTime.Enabled = False
             tmrQAVeriTime.Stop()
             modMC1QAVeriTimer = 0
+            modMC1QAVerifyFailFlag = False
         End If
     End Sub
     '//
@@ -486,7 +556,7 @@ Public Class frmMainDash
     '// CALLING QA VERIFICATION PASS SUBS
     Private Sub lblQAVerifyPassFlag_TextChanged(sender As Object, e As EventArgs) Handles lblQAVerifyPassFlag.TextChanged
         If modMC1QAVerifyPassFlag = True Then
-            UpdateDowntimeAtQAVerifyPass()
+            'UpdateDowntimeAtQAVerifyPass()
             tmrQAVeriTime.Stop()
             modMC1QAVeriTimer = 0
         End If
@@ -563,10 +633,10 @@ Public Class frmMainDash
 
     '// TEST AUTO MODE COUNTER
     Public Sub TestAutoModeCounterSub()
-        If modTestAutoModeMC1Flag = True And RxPLCM1 = True Then
-            If RxPLCM16 = True And M16Flag_isTrue = False Then
+        If modTestAutoModeMC1Flag = True And modSetVal_RXPLC_RunStop = True Then
+            If modSetVal_RxPLC_CounterInFlag = True And M16Flag_isTrue = False Then
                 M16Flag_isTrue = True
-            ElseIf RxPLCM16 = False Then
+            ElseIf modSetVal_RxPLC_CounterInFlag = False Then
                 M16Flag_isTrue = False
             End If
         End If
@@ -791,7 +861,7 @@ Public Class frmMainDash
 
     '// PLAN VS ACTUAL OUTPUT MONITORING
     Public Sub PlanVsActualMonitoring()
-        If RxPLCM14 = True Then
+        If modSetVal_RxPLC_PlanComplete = True Then
             modPlanCOmplete = True
             modINfrmMC1PlanComplete = True
         Else
@@ -889,12 +959,12 @@ Public Class frmMainDash
             RxPLCM17 = rxCoil(17) '2065 MC2 CounterInputFlag (X5)
             RxPLCM18 = rxCoil(18) '2066 TAM Counter Reached MC1
             RxPLCM19 = rxCoil(19) '2067 TAM Counter Reached MC2
-            RxPLCM20 = rxCoil(20) '2068 
-            RxPLCM21 = rxCoil(21)
-            RxPLCM22 = rxCoil(22)
-            RxPLCM23 = rxCoil(23)
-            RxPLCM24 = rxCoil(24)
-            RxPLCM25 = rxCoil(25)
+            RxPLCM20 = rxCoil(20) '2068 QA STOPPAGE TRIGGERED MC1 @KIOSK
+            RxPLCM21 = rxCoil(21) '2069 QA STOPPAGE TRIGGERED MC2 @KIOSK
+            RxPLCM22 = rxCoil(22) '2070 PM STOPPAGE TRIGGERED MC1 @KIOSK
+            RxPLCM23 = rxCoil(23) '2071 PM STOPPAGE TRIGGERED MC2 @KIOSK
+            RxPLCM24 = rxCoil(24) '2072 TOOLING STOPPAGE TRIGGERED MC1 @KIOSK
+            RxPLCM25 = rxCoil(25) '2073 TOOLING STOPPAGE TRIGGERED MC2 @KIOSK
             RxPLCM26 = rxCoil(26)
             RxPLCM27 = rxCoil(27)
             RxPLCM28 = rxCoil(28)
@@ -1039,11 +1109,20 @@ Public Class frmMainDash
     '// TEST AUTO MODE FLAG
     Public Sub MC1TestAutoModeFlag()
         If ModClient.Connected = True Then
-            If modTestAutoModeMC1Flag = True Then
-                ModClient.WriteSingleCoil(2060, True) 'MC12 ON
-            Else
-                ModClient.WriteSingleCoil(2060, False) 'MC12 OFF
+            If modSettingValMachineID = "MC1" Then
+                If modTestAutoModeMC1Flag = True Then
+                    ModClient.WriteSingleCoil(2060, True) 'MC12 ON
+                Else
+                    ModClient.WriteSingleCoil(2060, False) 'MC12 OFF
+                End If
+            ElseIf modSettingValMachineID = "MC2" Then
+                If modTestAutoModeMC1Flag = True Then
+                    ModClient.WriteSingleCoil(2061, True) 'MC12 ON
+                Else
+                    ModClient.WriteSingleCoil(2061, False) 'MC12 OFF
+                End If
             End If
+
         End If
     End Sub
     '//
@@ -1051,7 +1130,7 @@ Public Class frmMainDash
     '// INPUT COUNTER FLAG FOR TAM COUNTER
     Public Sub InputCounterM16_M17_Via_X2_X5()
         If ModClient.Connected = True Then
-            If RxPLCM16 = True And M16Flag_isTrue = True Then
+            If modSetVal_RxPLC_CounterInFlag = True And M16Flag_isTrue = True Then
                 M16Flag_isTrue = False
                 ModClient.WriteSingleCoil(2064, False) '2064 M16  MC1 CounterInputFlag (X2)
                 modMC1TestAutoModeCounter += 1
@@ -1063,22 +1142,29 @@ Public Class frmMainDash
     '// MACHINE NUMBER IDENTIFICATION
     Public Sub MachineIdentification()
         If modSettingValMachineID = "MC1" Then
-            RxPLCM0 = modSetVal_RXPLC_RunStop
-            RxPLCM3 = modSetVal_RxPLC_UNLogd_KIOSkLogd
-            RxPLCM12 = modSetVal_RxPLC_TestAutoModeFlag
+            modSetVal_RXPLC_RunStop = RxPLCM0
+            modSetVal_RxPLC_UNLogd_KIOSkLogd = RxPLCM3
+            modSetVal_RxPLC_TestAutoModeFlag = RxPLCM12
+            modSetVal_RxPLC_PlanComplete = RxPLCM14
+            modSetVal_RxPLC_CounterInFlag = RxPLCM16
+            modSetVal_RxPLC_QAStopKIOSK = RxPLCM20
+            modSetVal_TAMFlag = modTestAutoModeMC1Flag
 
             modSetVal_MCIdintification = "Machine 1"
             lblMCNumber.Text = modSetVal_MCIdintification
             modSetVal_DTComplete = "MC1DTComplete"
             modSetVal_NewStoppage = "MC1NewStoppage"
         ElseIf modSettingValMachineID = "MC2" Then
-            RxPLCM1 = modSetVal_RXPLC_RunStop
-            RxPLCM4 = modSetVal_RxPLC_UNLogd_KIOSkLogd
-            RxPLCM13 = modSetVal_RxPLC_TestAutoModeFlag
+            modSetVal_RXPLC_RunStop = RxPLCM1
+            modSetVal_RxPLC_UNLogd_KIOSkLogd = RxPLCM4
+            modSetVal_RxPLC_TestAutoModeFlag = RxPLCM13
+            modSetVal_RxPLC_PlanComplete = RxPLCM15
+            modSetVal_RxPLC_CounterInFlag = RxPLCM17
+            modSetVal_RxPLC_QAStopKIOSK = RxPLCM21
 
             modSetVal_MCIdintification = "Machine 2"
             lblMCNumber.Text = modSetVal_MCIdintification
-            modSetVal_DTComplete = "M2DTComplete"
+            modSetVal_DTComplete = "MC2DTComplete"
             modSetVal_NewStoppage = "MC2NewStoppage"
         ElseIf modSettingValMachineID = "MC3" Then
             modSetVal_MCIdintification = "Machine 3"
@@ -1167,4 +1253,5 @@ Public Class frmMainDash
             modSetVal_NewStoppage = "MC19NewStoppage"
         End If
     End Sub
+
 End Class

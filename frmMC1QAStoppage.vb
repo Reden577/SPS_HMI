@@ -11,8 +11,8 @@ Public Class frmMC1QAStoppage
         frmMC1MainPage.Close()
         frmMC1QAVerification.Close()
         LoadStoppageToDropdown()
-        cboStoppage.Text = ""
-        cboCountermeasure.Text = ""
+        'cboStoppage.Text = ""
+        'cboCountermeasure.Text = ""
 
         If modMC1QASendSampleFlag = True Then
             cboStoppage.Text = My.Settings.QAStoppage
@@ -85,7 +85,7 @@ Public Class frmMC1QAStoppage
     Public Sub LoaCountermeasureToDropdown()
         Try
             Dim sqlCountermeasureSelectCmd As String = "SELECT [Countermeasure] FROM [Quality].[MListQualityCountermeasure]" _
-         & "where [Machine_No] = 'MC1' AND [Stoppage_Details] = '" + cboStoppage.Text + "'   "
+         & "where [Machine_No] = '" + modSettingValMachineID + "'  AND [Stoppage_Details] = '" + cboStoppage.Text + "'   "
             Dim con As New SqlConnection(modSQLPath)
             Dim cmd As New SqlCommand(sqlCountermeasureSelectCmd, con)
             Dim adapter As New SqlDataAdapter(cmd)
@@ -122,7 +122,7 @@ Public Class frmMC1QAStoppage
     End Sub
 
     Private Sub tmrRstFailFlag_Tick(sender As Object, e As EventArgs) Handles tmrRstFailFlag.Tick
-        modMC1QAVerifyFailFlag = False
+        'modMC1QAVerifyFailFlag = False
         tmrRstFailFlag.Stop()
     End Sub
     '//
@@ -133,7 +133,7 @@ Public Class frmMC1QAStoppage
         Dim result As Integer
         Dim cnt As New clsCountDTType_byDTStatusMCId
         cnt.DTType = "Quality"
-        cnt.DTStatus = "MC1NewStoppage"
+        cnt.DTStatus = modSetVal_NewStoppage
         cnt.MCID = modSettingValMachineID
         cnt.CountDTType()
         result = cnt.cntDTtype
@@ -142,7 +142,7 @@ Public Class frmMC1QAStoppage
             Dim sel As New clsSelDTReasonCMeasure
             sel.DTType = "Quality"
             sel.MCID = modSettingValMachineID
-            sel.DTStatus = "MC1NewStoppage"
+            sel.DTStatus = modSetVal_NewStoppage
             sel.SelDTReason_CMeasure()
             cboStoppage.Text = sel.DTReason
             cboCountermeasure.Text = sel.DTCountermeasure

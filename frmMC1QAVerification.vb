@@ -25,6 +25,7 @@
     Private Sub btnPass_Click(sender As Object, e As EventArgs) Handles btnPass.Click
         If modForQA_NewJOLoaded_isTrue = False Then '<- Interlock during new Job Order is loaded
             modMC1QAVerifyPassFlag = True
+            Update_AT_QAPass()
             modINfrmMC1Ready = True
             Me.Close()
         Else
@@ -36,10 +37,32 @@
 
     End Sub
 
+    '// UPDATE QA PASS
+    Public Sub Update_AT_QAPass()
+        If modMC1QAVerifyPassFlag = True Then
+            UpdateDowntimeAtQAVerifyPass()
+            'tmrQAVeriTime.Stop()
+            'modMC1QAVeriTimer = 0
+        End If
+    End Sub
+    '//
+
+    '// UPDATING DOWNTIME AT QA VERIFCATION PASS
+    Public Sub UpdateDowntimeAtQAVerifyPass()
+        Dim upd8 As New clsUpdateDTDetails_QAVeriPass
+        upd8.TtlVeri = Math.Round((modMC1QAVeriTimer / 60), 4)
+        upd8.TtlFailFreq = modMC1FailCounters
+        upd8.UpdateDTQAVerifyPass()
+    End Sub
+    '//
+
     Private Sub btnFail_Click(sender As Object, e As EventArgs) Handles btnFail.Click
+        modMC1QASendSampleFlag = False
+
         If modForQA_NewJOLoaded_isTrue = False Then '<- Interlock during new Job Order is loaded
             modMC1FailCounters = modMC1FailCounters + 1
             modMC1QAVerifyFailFlag = True
+            UpdateDT_At_QAFail()
             modINfrmMC1QAStoppage = True
             Me.Close()
         Else
@@ -49,6 +72,26 @@
         End If
 
     End Sub
+
+    '// UPDATE QA FAIL
+    Public Sub UpdateDT_At_QAFail()
+        If modMC1QAVerifyFailFlag = True Then
+            UpdateDowntimeAtQAVerifyFail()
+            'tmrQAVeriTime.Enabled = False
+            'tmrQAVeriTime.Stop()
+            'modMC1QAVeriTimer = 0
+            'modMC1QAVerifyFailFlag = False
+        End If
+    End Sub
+    '//
+
+    '// UPDATING DOWNTIME AT QA VERIFICATION FAIL
+    Public Sub UpdateDowntimeAtQAVerifyFail()
+        Dim upd8 As New clsUpdateDTDetails_QAVeriFail
+        upd8.TtlFailFreq = modMC1FailCounters
+        upd8.UpdateDTFailFreq()
+    End Sub
+    '//
 
     Private Sub tmrRealTimeCheck_Tick(sender As Object, e As EventArgs) Handles tmrRealTimeCheck.Tick
         lblFailedCounter.Text = modMC1FailCounters
@@ -78,7 +121,7 @@
         Dim result As Integer
         Dim cnt As New clsCountDTType_byDTStatusMCId
         cnt.DTType = "Quality"
-        cnt.DTStatus = "MC1NewStoppage"
+        cnt.DTStatus = modSetVal_NewStoppage
         cnt.MCID = modSettingValMachineID
         cnt.CountDTType()
         result = cnt.cntDTtype
@@ -87,7 +130,7 @@
             Dim sel As New clsSelDTReasonCMeasure
             sel.DTType = "Quality"
             sel.MCID = modSettingValMachineID
-            sel.DTStatus = "MC1NewStoppage"
+            sel.DTStatus = modSetVal_NewStoppage
             sel.SelDTReason_CMeasure()
             modMC1FailCounters = sel.TtlFailFreq
         End If

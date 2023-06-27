@@ -227,6 +227,7 @@
     <Compile Include="modStoppageFlag.vb" />
     <Compile Include="modSwitchForm.vb" />
     <Compile Include="modSwitchMachines.vb" />
+    <Compile Include="modTriggerIsONFlag.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

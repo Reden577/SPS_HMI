@@ -12,8 +12,13 @@
     Public modMoldSetup_Done As Boolean
     Public modFPBuyOff_Done As Boolean
 
+    Public modSetVal_TAMFlag As Boolean
+
     Public modSetVal_RXPLC_RunStop As Boolean
     Public modSetVal_RxPLC_UNLogd_KIOSkLogd As Boolean
     Public modSetVal_RxPLC_TestAutoModeFlag As Boolean
+    Public modSetVal_RxPLC_PlanComplete As Boolean
+    Public modSetVal_RxPLC_CounterInFlag As Boolean
+    Public modSetVal_RxPLC_QAStopKIOSK As Boolean
 
 End Module

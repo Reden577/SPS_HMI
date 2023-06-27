@@ -49,7 +49,7 @@ Public Class frmSplash
     Public Sub CheckingForNewDT()
         Dim Result As Integer
         Dim newDT As New clsCountDTStatus_MCNewStoppage
-        newDT.DTStatus = "MC1NewStoppage"
+        newDT.DTStatus = modSetVal_NewStoppage
         newDT.MCID = modSettingValMachineID
         newDT.CountMCNewStoppage()
         Result = newDT.CountDT
@@ -106,22 +106,28 @@ Public Class frmSplash
     '// MACHINE NUMBER IDENTIFICATION
     Public Sub MachineIdentification()
         If modSettingValMachineID = "MC1" Then
-            RxPLCM0 = modSetVal_RXPLC_RunStop
-            RxPLCM3 = modSetVal_RxPLC_UNLogd_KIOSkLogd
-            RxPLCM12 = modSetVal_RxPLC_TestAutoModeFlag
+            modSetVal_RXPLC_RunStop = RxPLCM0
+            modSetVal_RxPLC_UNLogd_KIOSkLogd = RxPLCM3
+            modSetVal_RxPLC_TestAutoModeFlag = RxPLCM12
+            modSetVal_RxPLC_PlanComplete = RxPLCM14
+            modSetVal_RxPLC_CounterInFlag = RxPLCM16
+            modSetVal_RxPLC_QAStopKIOSK = RxPLCM20
 
             modSetVal_MCIdintification = "Machine 1"
             'lblMCNumber.Text = modSetVal_MCIdintification
             modSetVal_DTComplete = "MC1DTComplete"
             modSetVal_NewStoppage = "MC1NewStoppage"
         ElseIf modSettingValMachineID = "MC2" Then
-            RxPLCM1 = modSetVal_RXPLC_RunStop
-            RxPLCM4 = modSetVal_RxPLC_UNLogd_KIOSkLogd
-            RxPLCM13 = modSetVal_RxPLC_TestAutoModeFlag
+            modSetVal_RXPLC_RunStop = RxPLCM1
+            modSetVal_RxPLC_UNLogd_KIOSkLogd = RxPLCM4
+            modSetVal_RxPLC_TestAutoModeFlag = RxPLCM13
+            modSetVal_RxPLC_PlanComplete = RxPLCM15
+            modSetVal_RxPLC_CounterInFlag = RxPLCM17
+            modSetVal_RxPLC_QAStopKIOSK = RxPLCM21
 
             modSetVal_MCIdintification = "Machine 2"
             'lblMCNumber.Text = modSetVal_MCIdintification
-            modSetVal_DTComplete = "M2DTComplete"
+            modSetVal_DTComplete = "MC2DTComplete"
             modSetVal_NewStoppage = "MC2NewStoppage"
         ElseIf modSettingValMachineID = "MC3" Then
             modSetVal_MCIdintification = "Machine 3"
