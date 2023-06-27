@@ -5,7 +5,7 @@ VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "HMI_PCBase", "HMI_PCBase.vbproj", "{38BE2DF7-11C1-4773-AA87-6F017FDF87E7}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SPSHMISetup", "SPSHMISetup\SPSHMISetup.vdproj", "{B782018F-F7E2-4584-AC53-401D2A0CC296}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SPSHMIApp_270623_001", "..\SPSHMIApp_270623_001\SPSHMIApp_270623_001.vdproj", "{294A9D69-3214-4A09-BEFD-6A3B5D49EF1A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,8 +17,8 @@ Global
 		{38BE2DF7-11C1-4773-AA87-6F017FDF87E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38BE2DF7-11C1-4773-AA87-6F017FDF87E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38BE2DF7-11C1-4773-AA87-6F017FDF87E7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B782018F-F7E2-4584-AC53-401D2A0CC296}.Debug|Any CPU.ActiveCfg = Debug
-		{B782018F-F7E2-4584-AC53-401D2A0CC296}.Release|Any CPU.ActiveCfg = Release
+		{294A9D69-3214-4A09-BEFD-6A3B5D49EF1A}.Debug|Any CPU.ActiveCfg = Debug
+		{294A9D69-3214-4A09-BEFD-6A3B5D49EF1A}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
