@@ -253,7 +253,7 @@ Public Class frmMainDash
     End Sub
     '//
 
-    '// CALLING CONDITION SUB FOR SWITCHING FORMS (PLS LOGIN, STOP AND NEW JO SETUP)
+    '// CALLING CONDITION SUB FOR SWITCHING FORMS (PLS LOGIN, STOP AND NEW JO SETUP, NO PLAN)
     Public Sub formSwitchPlsLogin_Stop_JOLoadeSetup()
         If modLoginAndJOLoaded_isTrue = True Then
             modINfrmMC1PlsLogin = False
@@ -605,6 +605,9 @@ Public Class frmMainDash
             modFPBFailCounter = 0
             modMassProTimerCounter = 0
             modFPBuyOff_Done = False
+
+            change_PanelContainerFrmMC1(stMC1NoPlan) 'No Plan
+            showForm(frmMC1NoPlan)
         End If
     End Sub
     '//
@@ -619,6 +622,7 @@ Public Class frmMainDash
 
     '// CALLING USER LOGGEN IN AND JOLOADED CONFIRMATION SUBS
     Private Sub lblUserLoggedAndJOLoadedisTrue_TextChanged(sender As Object, e As EventArgs) Handles lblUserLoggedAndJOLoadedisTrue.TextChanged
+
         formSwitchPlsLogin_Stop_JOLoadeSetup()
     End Sub
     '//

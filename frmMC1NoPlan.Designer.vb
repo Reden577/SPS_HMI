@@ -22,12 +22,14 @@ Partial Class frmMC1NoPlan
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.pnlMC1 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblElapsTimeMC1 = New System.Windows.Forms.Label()
         Me.lblStatMC1 = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.tmrRealTimeCheck = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox1.SuspendLayout()
         Me.pnlMC1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -38,9 +40,11 @@ Partial Class frmMC1NoPlan
         Me.GroupBox1.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.GroupBox1.Controls.Add(Me.pnlMC1)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(13, 13)
+        Me.GroupBox1.Location = New System.Drawing.Point(17, 16)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(561, 438)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
+        Me.GroupBox1.Size = New System.Drawing.Size(748, 539)
         Me.GroupBox1.TabIndex = 6
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "*"
@@ -53,9 +57,10 @@ Partial Class frmMC1NoPlan
         Me.pnlMC1.Controls.Add(Me.lblStatMC1)
         Me.pnlMC1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlMC1.ForeColor = System.Drawing.Color.Black
-        Me.pnlMC1.Location = New System.Drawing.Point(3, 22)
+        Me.pnlMC1.Location = New System.Drawing.Point(4, 23)
+        Me.pnlMC1.Margin = New System.Windows.Forms.Padding(4)
         Me.pnlMC1.Name = "pnlMC1"
-        Me.pnlMC1.Size = New System.Drawing.Size(555, 413)
+        Me.pnlMC1.Size = New System.Drawing.Size(740, 512)
         Me.pnlMC1.TabIndex = 0
         '
         'Label1
@@ -64,7 +69,8 @@ Partial Class frmMC1NoPlan
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(14, 359)
+        Me.Label1.Location = New System.Drawing.Point(19, 446)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(187, 31)
         Me.Label1.TabIndex = 7
@@ -79,9 +85,10 @@ Partial Class frmMC1NoPlan
         Me.lblElapsTimeMC1.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblElapsTimeMC1.ForeColor = System.Drawing.Color.White
         Me.lblElapsTimeMC1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.lblElapsTimeMC1.Location = New System.Drawing.Point(209, 357)
+        Me.lblElapsTimeMC1.Location = New System.Drawing.Point(279, 443)
+        Me.lblElapsTimeMC1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblElapsTimeMC1.Name = "lblElapsTimeMC1"
-        Me.lblElapsTimeMC1.Size = New System.Drawing.Size(272, 35)
+        Me.lblElapsTimeMC1.Size = New System.Drawing.Size(363, 43)
         Me.lblElapsTimeMC1.TabIndex = 8
         Me.lblElapsTimeMC1.Text = "0"
         Me.lblElapsTimeMC1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -94,9 +101,10 @@ Partial Class frmMC1NoPlan
         Me.lblStatMC1.BackColor = System.Drawing.Color.Transparent
         Me.lblStatMC1.Font = New System.Drawing.Font("Microsoft Sans Serif", 48.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblStatMC1.ForeColor = System.Drawing.Color.White
-        Me.lblStatMC1.Location = New System.Drawing.Point(3, 92)
+        Me.lblStatMC1.Location = New System.Drawing.Point(4, 113)
+        Me.lblStatMC1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblStatMC1.Name = "lblStatMC1"
-        Me.lblStatMC1.Size = New System.Drawing.Size(546, 192)
+        Me.lblStatMC1.Size = New System.Drawing.Size(728, 236)
         Me.lblStatMC1.TabIndex = 6
         Me.lblStatMC1.Text = "NO PLAN"
         Me.lblStatMC1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -107,26 +115,32 @@ Partial Class frmMC1NoPlan
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TableLayoutPanel1.ColumnCount = 3
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 13.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 13.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.GroupBox1, 1, 1)
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
+        Me.TableLayoutPanel1.Margin = New System.Windows.Forms.Padding(4)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 3
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 12.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(587, 464)
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 12.0!))
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(783, 571)
         Me.TableLayoutPanel1.TabIndex = 7
+        '
+        'tmrRealTimeCheck
+        '
+        Me.tmrRealTimeCheck.Enabled = True
         '
         'frmMC1NoPlan
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(587, 464)
+        Me.ClientSize = New System.Drawing.Size(783, 571)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmMC1NoPlan"
         Me.Text = "MC1NoPlan"
         Me.GroupBox1.ResumeLayout(False)
@@ -143,4 +157,5 @@ Partial Class frmMC1NoPlan
     Friend WithEvents lblElapsTimeMC1 As Label
     Friend WithEvents lblStatMC1 As Label
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
+    Friend WithEvents tmrRealTimeCheck As Timer
 End Class
