@@ -882,7 +882,7 @@ Public Class frmMainDash
 
     '//UPDATE JO LOADED DETAILS AT ENDTIME OR PLAN COMPLETE
     Public Sub UpdateJOLoadedDetails_At_PlanComplete()
-        If modSettingValMachineID IsNot Nothing Then
+        If modSettingValMachineID IsNot Nothing And modPlanCOmplete = True Then
             CountProdnStat()
             If modSettingValMachineID <> "" And cntProdnStat >= 1 Then
                 Dim upd8 As New clsUpdateJOLoadedDetails_AtEndTime
@@ -942,14 +942,14 @@ Public Class frmMainDash
             RxPLCM0 = rxCoil(0) '2048 MC1 ON/OFF FLAG (EXternal Triggered)
             RxPLCM1 = rxCoil(1) '2049 MC2 ON/OFF FLAG (External Triggered)
             RxPLCM2 = rxCoil(2) '2050
-            RxPLCM3 = rxCoil(3) '2051 MC1 KIOSK Login & JO Flag
+            RxPLCM3 = rxCoil(3) '2051 MC1 KIOSK Login & JO Fla
             RxPLCM4 = rxCoil(4) '2052 MC2 KIOSK Login & JO Flag
             RxPLCM5 = rxCoil(5) '2053
             RxPLCM6 = rxCoil(6) '2054 MC1 Machine Ready (Machine HMI)
             RxPLCM7 = rxCoil(7) '2055 MC2 Machine Ready (Machine HMI)
             RxPLCM8 = rxCoil(8) '2056
-            RxPLCM9 = rxCoil(9) '2057 MC1 KIOSK CONDITION TRIGGERED Flag
-            RxPLCM10 = rxCoil(10) '2058 MC2 KIOSK CONDITION TRIGGERED Flag
+            RxPLCM9 = rxCoil(9) '2057 
+            RxPLCM10 = rxCoil(10) '2058
             RxPLCM11 = rxCoil(11) '2059
             RxPLCM12 = rxCoil(12) '2060 MC1 Test Auto Mode Flag (Machine HMI)
             RxPLCM13 = rxCoil(13) '2061 MC2 Test Auto Mode Flag (Machine HMI)
@@ -1253,5 +1253,15 @@ Public Class frmMainDash
             modSetVal_NewStoppage = "MC19NewStoppage"
         End If
     End Sub
+
+    '// CHECK IF HAVE PLAN
+    'Public Sub CheckIfHavePlan()
+    '    If modSettingValMachineID = "MC1" Then
+    '        Dim MC1PlanCheck As New clsCheckPlan
+    '        MC1PlanCheck.MCId = "MC1"
+    '        MC1PlanCheck.JCode = modJODetails_JOCode
+    '        MC1PlanCheck.
+    '    End If
+    'End Sub
 
 End Class

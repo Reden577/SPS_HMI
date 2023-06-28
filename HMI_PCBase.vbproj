@@ -83,6 +83,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsCheckPlan.vb" />
     <Compile Include="clsCountDTStatus_MCNewStoppage.vb" />
     <Compile Include="clsCountDTType_byDTStatusMCId.vb" />
     <Compile Include="clsInsertAllDowntimeDetails.vb" />
