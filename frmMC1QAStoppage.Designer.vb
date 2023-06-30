@@ -26,6 +26,7 @@ Partial Class frmMC1QAStoppage
         Me.lblDisplayON = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.pnlMC1 = New System.Windows.Forms.Panel()
+        Me.btnEditDetails = New FontAwesome.Sharp.IconButton()
         Me.btnClear = New FontAwesome.Sharp.IconButton()
         Me.btnSendSample = New FontAwesome.Sharp.IconButton()
         Me.cboCountermeasure = New System.Windows.Forms.ComboBox()
@@ -37,9 +38,11 @@ Partial Class frmMC1QAStoppage
         Me.tmrRealTimeCheck = New System.Windows.Forms.Timer(Me.components)
         Me.tmrRstFailFlag = New System.Windows.Forms.Timer(Me.components)
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.grpStopDetails = New System.Windows.Forms.GroupBox()
         Me.GroupBox1.SuspendLayout()
         Me.pnlMC1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
+        Me.grpStopDetails.SuspendLayout()
         Me.SuspendLayout()
         '
         'lblDisplayON
@@ -69,13 +72,11 @@ Partial Class frmMC1QAStoppage
         '
         'pnlMC1
         '
+        Me.pnlMC1.Controls.Add(Me.grpStopDetails)
+        Me.pnlMC1.Controls.Add(Me.btnEditDetails)
         Me.pnlMC1.Controls.Add(Me.btnClear)
         Me.pnlMC1.Controls.Add(Me.btnSendSample)
-        Me.pnlMC1.Controls.Add(Me.cboCountermeasure)
-        Me.pnlMC1.Controls.Add(Me.cboStoppage)
-        Me.pnlMC1.Controls.Add(Me.Label2)
         Me.pnlMC1.Controls.Add(Me.btnMainPage)
-        Me.pnlMC1.Controls.Add(Me.Label1)
         Me.pnlMC1.Controls.Add(Me.Label4)
         Me.pnlMC1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlMC1.Location = New System.Drawing.Point(3, 22)
@@ -83,9 +84,29 @@ Partial Class frmMC1QAStoppage
         Me.pnlMC1.Size = New System.Drawing.Size(555, 413)
         Me.pnlMC1.TabIndex = 0
         '
+        'btnEditDetails
+        '
+        Me.btnEditDetails.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnEditDetails.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+        Me.btnEditDetails.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnEditDetails.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnEditDetails.IconChar = FontAwesome.Sharp.IconChar.Pen
+        Me.btnEditDetails.IconColor = System.Drawing.Color.Black
+        Me.btnEditDetails.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.btnEditDetails.IconSize = 40
+        Me.btnEditDetails.Location = New System.Drawing.Point(347, 256)
+        Me.btnEditDetails.Name = "btnEditDetails"
+        Me.btnEditDetails.Size = New System.Drawing.Size(199, 58)
+        Me.btnEditDetails.TabIndex = 3
+        Me.btnEditDetails.Text = "EDIT"
+        Me.btnEditDetails.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnEditDetails.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnEditDetails.UseVisualStyleBackColor = False
+        '
         'btnClear
         '
         Me.btnClear.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnClear.BackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.btnClear.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnClear.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnClear.IconChar = FontAwesome.Sharp.IconChar.Eraser
@@ -95,11 +116,11 @@ Partial Class frmMC1QAStoppage
         Me.btnClear.Location = New System.Drawing.Point(98, 342)
         Me.btnClear.Name = "btnClear"
         Me.btnClear.Size = New System.Drawing.Size(199, 58)
-        Me.btnClear.TabIndex = 5
+        Me.btnClear.TabIndex = 4
         Me.btnClear.Text = "CLEAR"
         Me.btnClear.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnClear.UseVisualStyleBackColor = True
+        Me.btnClear.UseVisualStyleBackColor = False
         '
         'btnSendSample
         '
@@ -124,10 +145,10 @@ Partial Class frmMC1QAStoppage
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cboCountermeasure.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboCountermeasure.FormattingEnabled = True
-        Me.cboCountermeasure.Location = New System.Drawing.Point(9, 206)
+        Me.cboCountermeasure.Location = New System.Drawing.Point(5, 116)
         Me.cboCountermeasure.Name = "cboCountermeasure"
-        Me.cboCountermeasure.Size = New System.Drawing.Size(537, 33)
-        Me.cboCountermeasure.TabIndex = 4
+        Me.cboCountermeasure.Size = New System.Drawing.Size(533, 33)
+        Me.cboCountermeasure.TabIndex = 2
         '
         'cboStoppage
         '
@@ -135,16 +156,16 @@ Partial Class frmMC1QAStoppage
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cboStoppage.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboStoppage.FormattingEnabled = True
-        Me.cboStoppage.Location = New System.Drawing.Point(9, 129)
+        Me.cboStoppage.Location = New System.Drawing.Point(5, 39)
         Me.cboStoppage.Name = "cboStoppage"
-        Me.cboStoppage.Size = New System.Drawing.Size(537, 33)
-        Me.cboStoppage.TabIndex = 4
+        Me.cboStoppage.Size = New System.Drawing.Size(533, 33)
+        Me.cboStoppage.TabIndex = 1
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(3, 172)
+        Me.Label2.Location = New System.Drawing.Point(6, 82)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(224, 31)
         Me.Label2.TabIndex = 0
@@ -155,6 +176,7 @@ Partial Class frmMC1QAStoppage
         Me.btnMainPage.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnMainPage.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnMainPage.FlatAppearance.BorderSize = 0
+        Me.btnMainPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnMainPage.IconChar = FontAwesome.Sharp.IconChar.HomeLg
         Me.btnMainPage.IconColor = System.Drawing.Color.Black
         Me.btnMainPage.IconFont = FontAwesome.Sharp.IconFont.[Auto]
@@ -162,14 +184,14 @@ Partial Class frmMC1QAStoppage
         Me.btnMainPage.Location = New System.Drawing.Point(481, 19)
         Me.btnMainPage.Name = "btnMainPage"
         Me.btnMainPage.Size = New System.Drawing.Size(65, 56)
-        Me.btnMainPage.TabIndex = 3
+        Me.btnMainPage.TabIndex = 0
         Me.btnMainPage.UseVisualStyleBackColor = True
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(3, 95)
+        Me.Label1.Location = New System.Drawing.Point(6, 5)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(229, 31)
         Me.Label1.TabIndex = 0
@@ -213,10 +235,25 @@ Partial Class frmMC1QAStoppage
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(587, 464)
         Me.TableLayoutPanel1.TabIndex = 9
         '
+        'grpStopDetails
+        '
+        Me.grpStopDetails.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.grpStopDetails.Controls.Add(Me.cboCountermeasure)
+        Me.grpStopDetails.Controls.Add(Me.cboStoppage)
+        Me.grpStopDetails.Controls.Add(Me.Label2)
+        Me.grpStopDetails.Controls.Add(Me.Label1)
+        Me.grpStopDetails.Location = New System.Drawing.Point(3, 84)
+        Me.grpStopDetails.Name = "grpStopDetails"
+        Me.grpStopDetails.Size = New System.Drawing.Size(549, 166)
+        Me.grpStopDetails.TabIndex = 6
+        Me.grpStopDetails.TabStop = False
+        '
         'frmMC1QAStoppage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.SystemColors.ControlLight
         Me.ClientSize = New System.Drawing.Size(587, 464)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
@@ -226,6 +263,8 @@ Partial Class frmMC1QAStoppage
         Me.pnlMC1.ResumeLayout(False)
         Me.pnlMC1.PerformLayout()
         Me.TableLayoutPanel1.ResumeLayout(False)
+        Me.grpStopDetails.ResumeLayout(False)
+        Me.grpStopDetails.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -244,4 +283,6 @@ Partial Class frmMC1QAStoppage
     Friend WithEvents tmrRealTimeCheck As Timer
     Friend WithEvents tmrRstFailFlag As Timer
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
+    Friend WithEvents btnEditDetails As FontAwesome.Sharp.IconButton
+    Friend WithEvents grpStopDetails As GroupBox
 End Class

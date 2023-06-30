@@ -195,8 +195,6 @@ Public Class frmMainDash
         lblAckDateTime.Text = modMC1AckDateandTime
         lblAckFlag.Text = modMC1AcknowledgeFlag
         lblStopDateTime.Text = modMC1StopDateandTime
-        lblShiftCode.Text = modShiftCode & modSettingValMachineID
-        lblMC1_D2002.Text = D2002
         lblMC1OptStoppageSaveFlag.Text = modMC1OptStoppageSaveFlag
         lblMC1MachStoppageSaveFlag.Text = modMC1MachineStoppageSaveFlag
         lblMC1QASendSampleFlag.Text = modMC1QASendSampleFlag
@@ -212,6 +210,12 @@ Public Class frmMainDash
         lblUserLoggedAndJOLoadedisTrue.Text = modLoginAndJOLoaded_isTrue
 
         lblNewDTisTrue.Text = modDTDetails_NewDT_isTrue
+
+        If modSettingValMachineID = "MC1" Then
+            lblMC1_D2002.Text = D2002
+        ElseIf modSettingValMachineID = "MC2" Then
+            lblMC1_D2002.Text = D2004
+        End If
         'MessageBox.Show("timer tick")
     End Sub
     '//
@@ -257,11 +261,22 @@ Public Class frmMainDash
     Public Sub formSwitchPlsLogin_Stop_JOLoadeSetup()
         If modLoginAndJOLoaded_isTrue = True Then
             modINfrmMC1PlsLogin = False
-            If D2002 = 0 And modFPBuyOff_Done = False Then
-                modINfrmNewJOSetup = True
-            Else
-                modINfrmMC1Stop = True
+
+            If modSettingValMachineID = "MC1" Then
+                If D2002 = 0 And modFPBuyOff_Done = False Then
+                    modINfrmNewJOSetup = True
+                Else
+                    modINfrmMC1Stop = True
+                End If
+
+            ElseIf modSettingValMachineID = "MC2" Then
+                If D2004 = 0 And modFPBuyOff_Done = False Then
+                    modINfrmNewJOSetup = True
+                Else
+                    modINfrmMC1Stop = True
+                End If
             End If
+
         Else
             modINfrmMC1PlsLogin = True
             modINfrmMC1Stop = False
@@ -532,7 +547,7 @@ Public Class frmMainDash
         If modMC1QASendSampleFlag = True Then
             tmrQAVeriTime.Enabled = True
             tmrQAVeriTime.Start()
-            UpdateDowntimeAtStoppageSaved()
+            'UpdateDowntimeAtStoppageSaved()
         ElseIf modINfrmMC1Ready = False And modMC1QASendSampleFlag = False Then
             tmrQAVeriTime.Enabled = False
             tmrQAVeriTime.Stop()
@@ -792,14 +807,17 @@ Public Class frmMainDash
 
     Private Sub tmrMC1StopTimer_Tick(sender As Object, e As EventArgs) Handles tmrMC1StopTimer.Tick
         modMC1StopTimer += 1
+        lblMCStopTime.Text = modMC1StopTimer
     End Sub
 
     Private Sub tmrRepairTime_Tick(sender As Object, e As EventArgs) Handles tmrRepairTime.Tick
         modMC1RepairTimer += 1
+        lblRepairTime.Text = modMC1RepairTimer
     End Sub
 
     Private Sub tmrQAVeriTime_Tick(sender As Object, e As EventArgs) Handles tmrQAVeriTime.Tick
         modMC1QAVeriTimer += 1
+        lblQAVeriTime.Text = modMC1QAVeriTimer
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs)
@@ -822,20 +840,27 @@ Public Class frmMainDash
 
     '// GETTING PLAN DETAILS FROM JO LOADED DETAILS
     Public Sub GetPlanDetails()
-        Try
-            CheckForLoadedJobOrders()
-            If modSettingValMachineID <> "" And modJODetails_LoadeStat >= 1 Then
-                Dim selDetails As New clsSelAllJOLoadedDetails_MCId_LDStat
-                selDetails.MachineId = modSettingValMachineID
-                selDetails.LoadStat = "Loaded"
-                selDetails.SellByMCIdAndLoadStat()
-                modJODetails_JOPlan = selDetails.JOPlanQty
-                modJODetails_JOCode = selDetails.JOCode
-                modJODetails_PlanQty = selDetails.JOPlanQty
-            End If
-        Catch ex As Exception
-            MessageBox.Show("No Job Order Loaded at Machine1!", "Get JO Plan Qty", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
+        If moderrFlag_CheckLoadedJO_MainDash = False Then
+            Try
+                CheckForLoadedJobOrders()
+                If modSettingValMachineID <> "" And modJODetails_LoadeStat >= 1 Then
+                    Dim selDetails As New clsSelAllJOLoadedDetails_MCId_LDStat
+                    selDetails.MachineId = modSettingValMachineID
+                    selDetails.LoadStat = "Loaded"
+                    selDetails.SellByMCIdAndLoadStat()
+                    modJODetails_JOPlan = selDetails.JOPlanQty
+                    modJODetails_JOCode = selDetails.JOCode
+                    modJODetails_PlanQty = selDetails.JOPlanQty
+                End If
+            Catch ex As Exception
+                moderrFlag_CheckLoadedJO_MainDash = True
+                MessageBox.Show(ex.Message, "Checking Loaded Job Order...", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                If DialogResult.OK = True Then
+                    moderrFlag_CheckLoadedJO_MainDash = False
+                End If
+            End Try
+        End If
+
     End Sub
     '//
 
@@ -886,8 +911,21 @@ Public Class frmMainDash
 
     '//UPDATE JO LOADED DETAILS AT ENDTIME OR PLAN COMPLETE
     Public Sub UpdateJOLoadedDetails_At_PlanComplete()
+        Dim mc_cnt As Integer
+        Dim mc_p1Out As Integer
+        Dim mc_P2Out As Integer
+
         If modSettingValMachineID IsNot Nothing And modPlanCOmplete = True Then
             CountProdnStat()
+            If modSettingValMachineID = "MC1" Then
+                mc_cnt = D2002
+                mc_p1Out = D2002 * D2014
+                mc_P2Out = D2002 * D2014
+            ElseIf modSettingValMachineID = "MC2" Then
+                mc_cnt = D2004
+                mc_p1Out = D2004 * D2016
+                mc_P2Out = D2004 * D2016
+            End If
             If modSettingValMachineID <> "" And cntProdnStat >= 1 Then
                 Dim upd8 As New clsUpdateJOLoadedDetails_AtEndTime
                 upd8.MCId = modSettingValMachineID
@@ -895,9 +933,9 @@ Public Class frmMainDash
                 upd8.ProdnStat = "In Progress"
                 upd8.EndTime = Now()
                 upd8.NewProdnStat = "Plan Complete"
-                upd8.TtlShots = D2002
-                upd8.PN1Output = D2002 * D2014
-                upd8.PN2Output = D2002 * D2015
+                upd8.TtlShots = mc_cnt
+                upd8.PN1Output = mc_p1Out
+                upd8.PN2Output = mc_P2Out
                 upd8.TtlRunTime = 0
                 upd8.updateEndTimeDetails()
             End If
@@ -940,139 +978,148 @@ Public Class frmMainDash
 
     '// READING COIL REGISTERS OF DELTA PLC
     Public Sub readCoilsRegisters()
-        Try
-            'Modbuss address 2048 = M0 (Delta PLC) and so on for Coil registers
-            Dim rxCoil() As Boolean = ModClient.ReadCoils(2048, 45)
-            RxPLCM0 = rxCoil(0) '2048 MC1 ON/OFF FLAG (EXternal Triggered)
-            RxPLCM1 = rxCoil(1) '2049 MC2 ON/OFF FLAG (External Triggered)
-            RxPLCM2 = rxCoil(2) '2050
-            RxPLCM3 = rxCoil(3) '2051 MC1 KIOSK Login & JO Fla
-            RxPLCM4 = rxCoil(4) '2052 MC2 KIOSK Login & JO Flag
-            RxPLCM5 = rxCoil(5) '2053
-            RxPLCM6 = rxCoil(6) '2054 MC1 Machine Ready (Machine HMI)
-            RxPLCM7 = rxCoil(7) '2055 MC2 Machine Ready (Machine HMI)
-            RxPLCM8 = rxCoil(8) '2056
-            RxPLCM9 = rxCoil(9) '2057 
-            RxPLCM10 = rxCoil(10) '2058
-            RxPLCM11 = rxCoil(11) '2059
-            RxPLCM12 = rxCoil(12) '2060 MC1 Test Auto Mode Flag (Machine HMI)
-            RxPLCM13 = rxCoil(13) '2061 MC2 Test Auto Mode Flag (Machine HMI)
-            RxPLCM14 = rxCoil(14) '2062 MC1 Plan Complete
-            RxPLCM15 = rxCoil(15) '2063 MC2 Plan Complete
-            RxPLCM16 = rxCoil(16) '2064 MC1 CounterInputFlag (X2)
-            RxPLCM17 = rxCoil(17) '2065 MC2 CounterInputFlag (X5)
-            RxPLCM18 = rxCoil(18) '2066 TAM Counter Reached MC1
-            RxPLCM19 = rxCoil(19) '2067 TAM Counter Reached MC2
-            RxPLCM20 = rxCoil(20) '2068 QA STOPPAGE TRIGGERED MC1 @KIOSK
-            RxPLCM21 = rxCoil(21) '2069 QA STOPPAGE TRIGGERED MC2 @KIOSK
-            RxPLCM22 = rxCoil(22) '2070 PM STOPPAGE TRIGGERED MC1 @KIOSK
-            RxPLCM23 = rxCoil(23) '2071 PM STOPPAGE TRIGGERED MC2 @KIOSK
-            RxPLCM24 = rxCoil(24) '2072 TOOLING STOPPAGE TRIGGERED MC1 @KIOSK
-            RxPLCM25 = rxCoil(25) '2073 TOOLING STOPPAGE TRIGGERED MC2 @KIOSK
-            RxPLCM26 = rxCoil(26)
-            RxPLCM27 = rxCoil(27)
-            RxPLCM28 = rxCoil(28)
-            RxPLCM29 = rxCoil(29)
-            RxPLCM30 = rxCoil(30)
-            RxPLCM31 = rxCoil(31)
-            RxPLCM32 = rxCoil(32)
-            RxPLCM33 = rxCoil(33)
-            RxPLCM34 = rxCoil(34)
-            RxPLCM35 = rxCoil(35)
-            RxPLCM36 = rxCoil(36)
-            RxPLCM37 = rxCoil(37)
-            RxPLCM38 = rxCoil(38)
-            RxPLCM39 = rxCoil(39)
-            RxPLCM40 = rxCoil(40)
-        Catch ex As Exception
-            MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
+        If modErrFlag_ReadCoilRegistry = False Then
+            Try
+                'Modbuss address 2048 = M0 (Delta PLC) and so on for Coil registers
+                Dim rxCoil() As Boolean = ModClient.ReadCoils(2048, 45)
+                RxPLCM0 = rxCoil(0) '2048 MC1 ON/OFF FLAG (EXternal Triggered)
+                RxPLCM1 = rxCoil(1) '2049 MC2 ON/OFF FLAG (External Triggered)
+                RxPLCM2 = rxCoil(2) '2050
+                RxPLCM3 = rxCoil(3) '2051 MC1 KIOSK Login & JO Fla
+                RxPLCM4 = rxCoil(4) '2052 MC2 KIOSK Login & JO Flag
+                RxPLCM5 = rxCoil(5) '2053
+                RxPLCM6 = rxCoil(6) '2054 MC1 Machine Ready (Machine HMI)
+                RxPLCM7 = rxCoil(7) '2055 MC2 Machine Ready (Machine HMI)
+                RxPLCM8 = rxCoil(8) '2056
+                RxPLCM9 = rxCoil(9) '2057 
+                RxPLCM10 = rxCoil(10) '2058
+                RxPLCM11 = rxCoil(11) '2059
+                RxPLCM12 = rxCoil(12) '2060 MC1 Test Auto Mode Flag (Machine HMI)
+                RxPLCM13 = rxCoil(13) '2061 MC2 Test Auto Mode Flag (Machine HMI)
+                RxPLCM14 = rxCoil(14) '2062 MC1 Plan Complete
+                RxPLCM15 = rxCoil(15) '2063 MC2 Plan Complete
+                RxPLCM16 = rxCoil(16) '2064 MC1 CounterInputFlag (X2)
+                RxPLCM17 = rxCoil(17) '2065 MC2 CounterInputFlag (X5)
+                RxPLCM18 = rxCoil(18) '2066 TAM Counter Reached MC1
+                RxPLCM19 = rxCoil(19) '2067 TAM Counter Reached MC2
+                RxPLCM20 = rxCoil(20) '2068 QA STOPPAGE TRIGGERED MC1 @KIOSK
+                RxPLCM21 = rxCoil(21) '2069 QA STOPPAGE TRIGGERED MC2 @KIOSK
+                RxPLCM22 = rxCoil(22) '2070 PM STOPPAGE TRIGGERED MC1 @KIOSK
+                RxPLCM23 = rxCoil(23) '2071 PM STOPPAGE TRIGGERED MC2 @KIOSK
+                RxPLCM24 = rxCoil(24) '2072 TOOLING STOPPAGE TRIGGERED MC1 @KIOSK
+                RxPLCM25 = rxCoil(25) '2073 TOOLING STOPPAGE TRIGGERED MC2 @KIOSK
+                RxPLCM26 = rxCoil(26)
+                RxPLCM27 = rxCoil(27)
+                RxPLCM28 = rxCoil(28)
+                RxPLCM29 = rxCoil(29)
+                RxPLCM30 = rxCoil(30)
+                RxPLCM31 = rxCoil(31)
+                RxPLCM32 = rxCoil(32)
+                RxPLCM33 = rxCoil(33)
+                RxPLCM34 = rxCoil(34)
+                RxPLCM35 = rxCoil(35)
+                RxPLCM36 = rxCoil(36)
+                RxPLCM37 = rxCoil(37)
+                RxPLCM38 = rxCoil(38)
+                RxPLCM39 = rxCoil(39)
+                RxPLCM40 = rxCoil(40)
+            Catch ex As Exception
+                modErrFlag_ReadCoilRegistry = True
+                MessageBox.Show(ex.Message, "Reading Coil Regisers...", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                If DialogResult.OK = True Then
+                    modErrFlag_ReadCoilRegistry = False
+                End If
+            End Try
+        End If
+
     End Sub
     '//
 
     '// READING HOLDING REGISTERS OF DELTA PLC
     Public Sub ReadHoldingRegs()
-        'Modbuss address 6096 = D2000 (Delta PLC) and so on for holding registers
-        Try
-            Dim ReadValue() As Integer = ModClient.ReadHoldingRegisters(6096, 100)
-            modComCheck = ReadValue(0) '6096
+        If modErrFlag_ReadHoldingRegistry = False Then
+            'Modbuss address 6096 = D2000 (Delta PLC) and so on for holding registers
+            Try
+                Dim ReadValue() As Integer = ModClient.ReadHoldingRegisters(6096, 100)
+                modComCheck = ReadValue(0) '6096
 
-            'Double Word Declaration for Modbus 6098,6099 which is equal to D2002,D2003 of delta PLC
-            Dim dwD2002(2) As Integer 'MC1 Machine Counter (Double Register)
-            dwD2002(0) = ReadValue(2) '6098
-            dwD2002(1) = ReadValue(3) '6099
-            D2002 = ModbusClient.ConvertRegistersToInt(dwD2002, 0)
+                'Double Word Declaration for Modbus 6098,6099 which is equal to D2002,D2003 of delta PLC
+                Dim dwD2002(2) As Integer 'MC1 Machine Counter (Double Register)
+                dwD2002(0) = ReadValue(2) '6098
+                dwD2002(1) = ReadValue(3) '6099
+                D2002 = ModbusClient.ConvertRegistersToInt(dwD2002, 0)
 
-            Dim dwD2004(2) As Integer 'MC2 Machine Counter (Double Rregister)
-            dwD2004(0) = ReadValue(4) '6100
-            dwD2004(1) = ReadValue(5) '6101
-            D2004 = ModbusClient.ConvertRegistersToInt(dwD2004, 0)
+                Dim dwD2004(2) As Integer 'MC2 Machine Counter (Double Rregister)
+                dwD2004(0) = ReadValue(4) '6100
+                dwD2004(1) = ReadValue(5) '6101
+                D2004 = ModbusClient.ConvertRegistersToInt(dwD2004, 0)
 
-            Dim dwD2006(2) As Integer 'MC1 User ID (Double Register)
-            dwD2006(0) = ReadValue(6) '6102
-            dwD2006(1) = ReadValue(7) '6103
-            D2006 = ModbusClient.ConvertRegistersToInt(dwD2006, 0)
+                Dim dwD2006(2) As Integer 'MC1 User ID (Double Register)
+                dwD2006(0) = ReadValue(6) '6102
+                dwD2006(1) = ReadValue(7) '6103
+                D2006 = ModbusClient.ConvertRegistersToInt(dwD2006, 0)
 
-            Dim dwD2008(2) As Integer 'MC2 User ID (Double Register)
-            dwD2008(0) = ReadValue(8) '6104
-            dwD2008(1) = ReadValue(9) '6105
-            D2008 = ModbusClient.ConvertRegistersToInt(dwD2008, 0)
+                Dim dwD2008(2) As Integer 'MC2 User ID (Double Register)
+                dwD2008(0) = ReadValue(8) '6104
+                dwD2008(1) = ReadValue(9) '6105
+                D2008 = ModbusClient.ConvertRegistersToInt(dwD2008, 0)
 
-            Dim dwD2010(2) As Integer 'MC1 Plan Qty (Double Register)
-            dwD2010(0) = ReadValue(10) '6106
-            dwD2010(1) = ReadValue(11) '6107
-            D2010 = ModbusClient.ConvertRegistersToInt(dwD2010, 0)
+                Dim dwD2010(2) As Integer 'MC1 Plan Qty (Double Register)
+                dwD2010(0) = ReadValue(10) '6106
+                dwD2010(1) = ReadValue(11) '6107
+                D2010 = ModbusClient.ConvertRegistersToInt(dwD2010, 0)
 
-            Dim dwD2012(2) As Integer 'MC2 Plan Qty (Double Register)
-            dwD2012(0) = ReadValue(12) '6108
-            dwD2012(1) = ReadValue(13) '6109
-            D2012 = ModbusClient.ConvertRegistersToInt(dwD2012, 0)
+                Dim dwD2012(2) As Integer 'MC2 Plan Qty (Double Register)
+                dwD2012(0) = ReadValue(12) '6108
+                dwD2012(1) = ReadValue(13) '6109
+                D2012 = ModbusClient.ConvertRegistersToInt(dwD2012, 0)
 
-            Dim dwD2014(2) As Integer 'MC1 Actual Counter (Double Register)
-            dwD2014(0) = ReadValue(14) '6110
-            dwD2014(1) = ReadValue(15) '6111
-            D2014 = ModbusClient.ConvertRegistersToInt(dwD2014, 0)
+                D2014 = ReadValue(14) '6110 MC1 P1CavQty
+                D2015 = ReadValue(15) '6111 MC1 P2CavQty
+                D2016 = ReadValue(16) '6112 MC2 P1CavQty
+                D2017 = ReadValue(17) '6113 MC2 P2CavQty
 
-            Dim dwD2016(2) As Integer 'MC2 Actual Counter (Double Register)
-            dwD2016(0) = ReadValue(16) '6112
-            dwD2016(1) = ReadValue(17) '6113
-            D2016 = ModbusClient.ConvertRegistersToInt(dwD2016, 0)
+                D2018 = ReadValue(18) '6114 MC1JOCode1
+                D2019 = ReadValue(19) '6115 MC1JOCode2
+                D2020 = ReadValue(20) '6116 MC1JOCode3
+                D2021 = ReadValue(21) '6117 MC1JOCode4
+                D2022 = ReadValue(22) '6118 MC1JOCode5
+                D2023 = ReadValue(23) '6119 MC1JOCode6
+                D2024 = ReadValue(24) '6120 Empty
+                D2025 = ReadValue(25) '6121 MC2JOCode1
+                D2026 = ReadValue(26) '6122 MC2JOCode2
+                D2027 = ReadValue(27) '6123 MC2JOCode3
+                D2028 = ReadValue(28) '6124 MC2JOCode4
+                D2029 = ReadValue(29) '6125 MC2JOCode5
+                D2030 = ReadValue(30) '6126 MC2JOCode6
+                D2031 = ReadValue(31) '6127 EMPTY
 
-            D2018 = ReadValue(18) '6114 MC1JOCode1
-            D2019 = ReadValue(19) '6115 MC1JOCode2
-            D2020 = ReadValue(20) '6116 MC1JOCode3
-            D2021 = ReadValue(21) '6117 MC1JOCode4
-            D2022 = ReadValue(22) '6118 MC1JOCode5
-            D2023 = ReadValue(23) '6119 MC1JOCode6
-            D2024 = ReadValue(24) '6120 Empty
-            D2025 = ReadValue(25) '6121 MC2JOCode1
-            D2026 = ReadValue(26) '6122 MC2JOCode2
-            D2027 = ReadValue(27) '6123 MC2JOCode3
-            D2028 = ReadValue(28) '6124 MC2JOCode4
-            D2029 = ReadValue(29) '6125 MC2JOCode5
-            D2030 = ReadValue(30) '6126 MC2JOCode6
-            D2031 = ReadValue(31) '6127 EMPTY
+                Dim dwD2032(2) As Integer ''MC1 Total Counter (Double Register)
+                dwD2032(0) = ReadValue(32) '6128
+                dwD2032(1) = ReadValue(33) '6129 
+                D2032 = ModbusClient.ConvertRegistersToInt(dwD2032, 0)
 
-            Dim dwD2032(2) As Integer ''MC1 Total Counter (Double Register)
-            dwD2032(0) = ReadValue(32) '6128
-            dwD2032(1) = ReadValue(33) '6129 
-            D2032 = ModbusClient.ConvertRegistersToInt(dwD2032, 0)
+                Dim dwD2034(2) As Integer ''MC2 Total Counter (Double Register)
+                dwD2034(0) = ReadValue(34) '6130 
+                dwD2034(1) = ReadValue(35) '6131
+                D2034 = ModbusClient.ConvertRegistersToInt(dwD2034, 0)
 
-            Dim dwD2034(2) As Integer ''MC2 Total Counter (Double Register)
-            dwD2034(0) = ReadValue(34) '6130 
-            dwD2034(1) = ReadValue(35) '6131
-            D2034 = ModbusClient.ConvertRegistersToInt(dwD2034, 0)
+                D2036 = ReadValue(36) '6132
+                D2037 = ReadValue(37) '6133
+                D2038 = ReadValue(38) '6134 
+                D2039 = ReadValue(39) '6135 
+                D2040 = ReadValue(40) '6136
 
-            D2036 = ReadValue(36) '6132
-            D2037 = ReadValue(37) '6133
-            D2038 = ReadValue(38) '6134 
-            D2039 = ReadValue(39) '6135 
-            D2040 = ReadValue(40) '6136
+                'lblRx4.Text = (ReadValue(5) + ReadValue(4)) * 65535.0F
+            Catch ex As Exception
+                modErrFlag_ReadHoldingRegistry = True
+                MessageBox.Show(ex.Message, "Reading Holding Registers...", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                If DialogResult.OK = True Then
+                    modErrFlag_ReadHoldingRegistry = False
+                End If
+            End Try
+        End If
 
-            'lblRx4.Text = (ReadValue(5) + ReadValue(4)) * 65535.0F
-        Catch ex As Exception
-            MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
     End Sub
     '//
 
@@ -1158,6 +1205,7 @@ Public Class frmMainDash
             lblMCNumber.Text = modSetVal_MCIdintification
             modSetVal_DTComplete = "MC1DTComplete"
             modSetVal_NewStoppage = "MC1NewStoppage"
+
         ElseIf modSettingValMachineID = "MC2" Then
             modSetVal_RXPLC_RunStop = RxPLCM1
             modSetVal_RxPLC_UNLogd_KIOSkLogd = RxPLCM4
@@ -1170,92 +1218,113 @@ Public Class frmMainDash
             lblMCNumber.Text = modSetVal_MCIdintification
             modSetVal_DTComplete = "MC2DTComplete"
             modSetVal_NewStoppage = "MC2NewStoppage"
+
         ElseIf modSettingValMachineID = "MC3" Then
             modSetVal_MCIdintification = "Machine 3"
             lblMCNumber.Text = modSetVal_MCIdintification
             modSetVal_DTComplete = "MC3DTComplete"
             modSetVal_NewStoppage = "MC3NewStoppage"
+
         ElseIf modSettingValMachineID = "MC4" Then
             modSetVal_MCIdintification = "Machine 4"
             lblMCNumber.Text = modSetVal_MCIdintification
             modSetVal_DTComplete = "MC4DTComplete"
             modSetVal_NewStoppage = "MC4NewStoppage"
+
         ElseIf modSettingValMachineID = "MC5" Then
             modSetVal_MCIdintification = "Machine 5"
             lblMCNumber.Text = modSetVal_MCIdintification
             modSetVal_DTComplete = "MC5DTComplete"
             modSetVal_NewStoppage = "MC5NewStoppage"
+
         ElseIf modSettingValMachineID = "MC6" Then
             modSetVal_MCIdintification = "Machine 6"
             lblMCNumber.Text = modSetVal_MCIdintification
             modSetVal_DTComplete = "MC6DTComplete"
             modSetVal_NewStoppage = "MC6NewStoppage"
+
         ElseIf modSettingValMachineID = "MC7" Then
             modSetVal_MCIdintification = "Machine 7"
             lblMCNumber.Text = modSetVal_MCIdintification
             modSetVal_DTComplete = "MC7DTComplete"
             modSetVal_NewStoppage = "MC7NewStoppage"
+
         ElseIf modSettingValMachineID = "MC8" Then
             modSetVal_MCIdintification = "Machine 8"
             lblMCNumber.Text = modSetVal_MCIdintification
             modSetVal_DTComplete = "MC8DTComplete"
             modSetVal_NewStoppage = "MC8NewStoppage"
+
         ElseIf modSettingValMachineID = "MC9" Then
             modSetVal_MCIdintification = "Machine 9"
             lblMCNumber.Text = modSetVal_MCIdintification
             modSetVal_DTComplete = "MC9DTComplete"
             modSetVal_NewStoppage = "MC9NewStoppage"
+
         ElseIf modSettingValMachineID = "MC10" Then
             modSetVal_MCIdintification = "Machine 10"
             lblMCNumber.Text = modSetVal_MCIdintification
             modSetVal_DTComplete = "MC10DTComplete"
             modSetVal_NewStoppage = "MC10NewStoppage"
+
         ElseIf modSettingValMachineID = "MC11" Then
             modSetVal_MCIdintification = "Machine 11"
             lblMCNumber.Text = modSetVal_MCIdintification
             modSetVal_DTComplete = "MC11DTComplete"
             modSetVal_NewStoppage = "MC11NewStoppage"
+
         ElseIf modSettingValMachineID = "MC12" Then
             modSetVal_MCIdintification = "Machine 12"
             lblMCNumber.Text = modSetVal_MCIdintification
             modSetVal_DTComplete = "MC12DTComplete"
             modSetVal_NewStoppage = "MC12NewStoppage"
+
         ElseIf modSettingValMachineID = "MC13" Then
             modSetVal_MCIdintification = "Machine 13"
             lblMCNumber.Text = modSetVal_MCIdintification
             modSetVal_DTComplete = "MC13DTComplete"
             modSetVal_NewStoppage = "MC13NewStoppage"
+
         ElseIf modSettingValMachineID = "MC14" Then
             modSetVal_MCIdintification = "Machine 14"
             lblMCNumber.Text = modSetVal_MCIdintification
             modSetVal_DTComplete = "MC14DTComplete"
             modSetVal_NewStoppage = "MC14NewStoppage"
+
         ElseIf modSettingValMachineID = "MC15" Then
             modSetVal_MCIdintification = "Machine 15"
             lblMCNumber.Text = modSetVal_MCIdintification
             modSetVal_DTComplete = "MC15DTComplete"
             modSetVal_NewStoppage = "MC15NewStoppage"
+
         ElseIf modSettingValMachineID = "MC16" Then
             modSetVal_MCIdintification = "Machine 16"
             lblMCNumber.Text = modSetVal_MCIdintification
             modSetVal_DTComplete = "MC16DTComplete"
             modSetVal_NewStoppage = "MC16NewStoppage"
+
         ElseIf modSettingValMachineID = "MC17" Then
             modSetVal_MCIdintification = "Machine 17"
             lblMCNumber.Text = modSetVal_MCIdintification
             modSetVal_DTComplete = "MC17DTComplete"
             modSetVal_NewStoppage = "MC17NewStoppage"
+
         ElseIf modSettingValMachineID = "MC18" Then
             modSetVal_MCIdintification = "Machine 18"
             lblMCNumber.Text = modSetVal_MCIdintification
             modSetVal_DTComplete = "MC18DTComplete"
             modSetVal_NewStoppage = "MC18NewStoppage"
+
         ElseIf modSettingValMachineID = "MC19" Then
             modSetVal_MCIdintification = "Machine 19"
             lblMCNumber.Text = modSetVal_MCIdintification
             modSetVal_DTComplete = "MC19DTComplete"
             modSetVal_NewStoppage = "MC19NewStoppage"
         End If
+    End Sub
+
+    Private Sub pnlFormContainer_Paint(sender As Object, e As PaintEventArgs) Handles pnlFormContainer.Paint
+
     End Sub
 
     '// CHECK IF HAVE PLAN

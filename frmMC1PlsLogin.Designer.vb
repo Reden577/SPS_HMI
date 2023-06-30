@@ -45,7 +45,7 @@ Partial Class frmMC1PlsLogin
         Me.GroupBox1.Size = New System.Drawing.Size(561, 438)
         Me.GroupBox1.TabIndex = 7
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Machine 1"
+        Me.GroupBox1.Text = "*"
         '
         'pnlMC1
         '
@@ -127,6 +127,7 @@ Partial Class frmMC1PlsLogin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.SystemColors.ControlLight
         Me.ClientSize = New System.Drawing.Size(587, 464)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None

@@ -100,6 +100,8 @@
             StopTimer = Math.Round((modMC1StopTimer / 60), 3)
             lblElapsTimeMC1.Text = StopTimer & " " & "mins"
         End If
+        CheckingFailFreqValueChange()
+        CheckPassQAVerificationAT_KIOSK()
     End Sub
 
     Public Sub LabelVisibility()
@@ -137,5 +139,40 @@
     End Sub
     '//
 
+    '// CHECKING CHANGES OF FAIL FREQ VALUE NEW > OLD
+    Public Sub CheckingFailFreqValueChange()
+        Dim ff As Integer
+        Dim FailFreq As New clsGetQAFailFreq
+        FailFreq.QAFailFreq_MCId = modSettingValMachineID
+        FailFreq.QAFailFreq_DTStatus = modSetVal_NewStoppage
+        FailFreq.QAFailFreq_DTType = "Quality"
+        FailFreq.GetQAFailFreq()
+        ff = FailFreq.QAFailFreq_FailFreq
 
+        If ff > CInt(lblFailedCounter.Text) Then
+            modINfrmMC1QAStoppage = True
+            Me.Close()
+        End If
+    End Sub
+    '//
+
+    '// CHECKING QA PASS VERIFICATION FROM KIOSK SIDE
+    Public Sub CheckPassQAVerificationAT_KIOSK()
+        Dim qaveri As String
+        Dim ttlqaveri As Integer
+        Dim chk As New clsGetForQAVeriNTtlQAVeri
+        chk.DTDetails_sfDTType = "Quality"
+        chk.DTDetails_sfDTStatus = modSetVal_NewStoppage
+        chk.DTDetails_sfMCId = modSettingValMachineID
+        chk.GetForQAVeri_N_TtlQAVeri()
+        qaveri = chk.DTDetails_sfForQAVeri
+        ttlqaveri = chk.DTDetails_iTtlQAVeri
+
+        If qaveri <> "" And qaveri <> "TBA" And ttlqaveri = 1 Then
+            Update_AT_QAPass()
+            modINfrmMC1Ready = True
+            Me.Close()
+        End If
+    End Sub
+    '//
 End Class

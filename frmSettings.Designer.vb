@@ -207,6 +207,7 @@ Partial Class frmSettings
         '
         'btnSaveSettings
         '
+        Me.btnSaveSettings.BackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.btnSaveSettings.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSaveSettings.IconChar = FontAwesome.Sharp.IconChar.Database
         Me.btnSaveSettings.IconColor = System.Drawing.Color.Black
@@ -218,7 +219,7 @@ Partial Class frmSettings
         Me.btnSaveSettings.TabIndex = 7
         Me.btnSaveSettings.Text = "Save"
         Me.btnSaveSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnSaveSettings.UseVisualStyleBackColor = True
+        Me.btnSaveSettings.UseVisualStyleBackColor = False
         '
         'GroupBox1
         '
@@ -253,6 +254,7 @@ Partial Class frmSettings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.SystemColors.ControlLight
         Me.ClientSize = New System.Drawing.Size(477, 281)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.GroupBox1)

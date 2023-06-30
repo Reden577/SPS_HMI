@@ -66,7 +66,7 @@ Public Class frmMC1MachineStoppage
             cboStoppage.DataSource = table
             cboStoppage.DisplayMember = "Stoppage_Details"
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(ex.Message, "Loading Machine Stoppage Details...", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
@@ -87,7 +87,7 @@ Public Class frmMC1MachineStoppage
             cboCountermeasure.DataSource = table
             cboCountermeasure.DisplayMember = "Countermeasure"
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(ex.Message, "Loading Machine Countermeasure...", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub

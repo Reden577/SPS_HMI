@@ -54,8 +54,7 @@ Partial Class frmMC1MainPage
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(11, 74)
-        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label4.Location = New System.Drawing.Point(8, 60)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(140, 33)
         Me.Label4.TabIndex = 0
@@ -65,8 +64,7 @@ Partial Class frmMC1MainPage
         '
         Me.lblUserID.AutoSize = True
         Me.lblUserID.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUserID.Location = New System.Drawing.Point(215, 74)
-        Me.lblUserID.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblUserID.Location = New System.Drawing.Point(161, 60)
         Me.lblUserID.Name = "lblUserID"
         Me.lblUserID.Size = New System.Drawing.Size(25, 33)
         Me.lblUserID.TabIndex = 0
@@ -76,8 +74,7 @@ Partial Class frmMC1MainPage
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(11, 134)
-        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label6.Location = New System.Drawing.Point(8, 109)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(285, 33)
         Me.Label6.TabIndex = 0
@@ -87,8 +84,7 @@ Partial Class frmMC1MainPage
         '
         Me.lblJobOrderCode.AutoSize = True
         Me.lblJobOrderCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblJobOrderCode.Location = New System.Drawing.Point(387, 134)
-        Me.lblJobOrderCode.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblJobOrderCode.Location = New System.Drawing.Point(290, 109)
         Me.lblJobOrderCode.Name = "lblJobOrderCode"
         Me.lblJobOrderCode.Size = New System.Drawing.Size(25, 33)
         Me.lblJobOrderCode.TabIndex = 0
@@ -98,8 +94,7 @@ Partial Class frmMC1MainPage
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(11, 194)
-        Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label8.Location = New System.Drawing.Point(8, 158)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(254, 33)
         Me.Label8.TabIndex = 0
@@ -109,8 +104,7 @@ Partial Class frmMC1MainPage
         '
         Me.lblPlanQty.AutoSize = True
         Me.lblPlanQty.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPlanQty.Location = New System.Drawing.Point(355, 194)
-        Me.lblPlanQty.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblPlanQty.Location = New System.Drawing.Point(266, 158)
         Me.lblPlanQty.Name = "lblPlanQty"
         Me.lblPlanQty.Size = New System.Drawing.Size(25, 33)
         Me.lblPlanQty.TabIndex = 0
@@ -120,8 +114,7 @@ Partial Class frmMC1MainPage
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(11, 255)
-        Me.Label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label10.Location = New System.Drawing.Point(8, 207)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(293, 33)
         Me.Label10.TabIndex = 0
@@ -131,8 +124,7 @@ Partial Class frmMC1MainPage
         '
         Me.lblActualQty.AutoSize = True
         Me.lblActualQty.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblActualQty.Location = New System.Drawing.Point(408, 255)
-        Me.lblActualQty.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblActualQty.Location = New System.Drawing.Point(306, 207)
         Me.lblActualQty.Name = "lblActualQty"
         Me.lblActualQty.Size = New System.Drawing.Size(25, 33)
         Me.lblActualQty.TabIndex = 0
@@ -142,10 +134,9 @@ Partial Class frmMC1MainPage
         '
         Me.picTestAutoMode.Cursor = System.Windows.Forms.Cursors.Hand
         Me.picTestAutoMode.Image = Global.HMI_PCBase.My.Resources.Resources.test_auto_mode
-        Me.picTestAutoMode.Location = New System.Drawing.Point(491, 320)
-        Me.picTestAutoMode.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.picTestAutoMode.Location = New System.Drawing.Point(368, 260)
         Me.picTestAutoMode.Name = "picTestAutoMode"
-        Me.picTestAutoMode.Size = New System.Drawing.Size(232, 149)
+        Me.picTestAutoMode.Size = New System.Drawing.Size(174, 121)
         Me.picTestAutoMode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picTestAutoMode.TabIndex = 2
         Me.picTestAutoMode.TabStop = False
@@ -154,10 +145,9 @@ Partial Class frmMC1MainPage
         '
         Me.picQAStoppage.Cursor = System.Windows.Forms.Cursors.Hand
         Me.picQAStoppage.Image = Global.HMI_PCBase.My.Resources.Resources.QA_Stoppage
-        Me.picQAStoppage.Location = New System.Drawing.Point(249, 320)
-        Me.picQAStoppage.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.picQAStoppage.Location = New System.Drawing.Point(187, 260)
         Me.picQAStoppage.Name = "picQAStoppage"
-        Me.picQAStoppage.Size = New System.Drawing.Size(232, 149)
+        Me.picQAStoppage.Size = New System.Drawing.Size(174, 121)
         Me.picQAStoppage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picQAStoppage.TabIndex = 2
         Me.picQAStoppage.TabStop = False
@@ -166,10 +156,9 @@ Partial Class frmMC1MainPage
         '
         Me.picStoppage.Cursor = System.Windows.Forms.Cursors.Hand
         Me.picStoppage.Image = Global.HMI_PCBase.My.Resources.Resources.Stoppage
-        Me.picStoppage.Location = New System.Drawing.Point(8, 320)
-        Me.picStoppage.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.picStoppage.Location = New System.Drawing.Point(6, 260)
         Me.picStoppage.Name = "picStoppage"
-        Me.picStoppage.Size = New System.Drawing.Size(232, 149)
+        Me.picStoppage.Size = New System.Drawing.Size(174, 121)
         Me.picStoppage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picStoppage.TabIndex = 2
         Me.picStoppage.TabStop = False
@@ -184,11 +173,9 @@ Partial Class frmMC1MainPage
         Me.GroupBox1.Controls.Add(Me.lblDisplayON)
         Me.GroupBox1.Controls.Add(Me.pnlMC1)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(17, 16)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Location = New System.Drawing.Point(13, 13)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.GroupBox1.Size = New System.Drawing.Size(748, 539)
+        Me.GroupBox1.Size = New System.Drawing.Size(561, 438)
         Me.GroupBox1.TabIndex = 3
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "*"
@@ -198,10 +185,9 @@ Partial Class frmMC1MainPage
         Me.lblDisplayON.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblDisplayON.BackColor = System.Drawing.Color.Transparent
         Me.lblDisplayON.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDisplayON.Location = New System.Drawing.Point(612, 10)
-        Me.lblDisplayON.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblDisplayON.Location = New System.Drawing.Point(459, 8)
         Me.lblDisplayON.Name = "lblDisplayON"
-        Me.lblDisplayON.Size = New System.Drawing.Size(128, 18)
+        Me.lblDisplayON.Size = New System.Drawing.Size(96, 15)
         Me.lblDisplayON.TabIndex = 4
         Me.lblDisplayON.Text = "0"
         Me.lblDisplayON.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -222,18 +208,16 @@ Partial Class frmMC1MainPage
         Me.pnlMC1.Controls.Add(Me.Label8)
         Me.pnlMC1.Controls.Add(Me.lblPlanQty)
         Me.pnlMC1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pnlMC1.Location = New System.Drawing.Point(4, 23)
-        Me.pnlMC1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pnlMC1.Location = New System.Drawing.Point(3, 22)
         Me.pnlMC1.Name = "pnlMC1"
-        Me.pnlMC1.Size = New System.Drawing.Size(740, 512)
+        Me.pnlMC1.Size = New System.Drawing.Size(555, 413)
         Me.pnlMC1.TabIndex = 0
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(11, 14)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label2.Location = New System.Drawing.Point(8, 11)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(73, 33)
         Me.Label2.TabIndex = 0
@@ -243,8 +227,7 @@ Partial Class frmMC1MainPage
         '
         Me.lblJODetailsUN.AutoSize = True
         Me.lblJODetailsUN.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblJODetailsUN.Location = New System.Drawing.Point(145, 14)
-        Me.lblJODetailsUN.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblJODetailsUN.Location = New System.Drawing.Point(109, 11)
         Me.lblJODetailsUN.Name = "lblJODetailsUN"
         Me.lblJODetailsUN.Size = New System.Drawing.Size(25, 33)
         Me.lblJODetailsUN.TabIndex = 0
@@ -258,29 +241,28 @@ Partial Class frmMC1MainPage
         'TableLayoutPanel1
         '
         Me.TableLayoutPanel1.ColumnCount = 3
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 13.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 13.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.GroupBox1, 1, 1)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
-        Me.TableLayoutPanel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 3
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 12.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 12.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(783, 571)
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10.0!))
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(587, 464)
         Me.TableLayoutPanel1.TabIndex = 4
         '
         'frmMC1MainPage
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(783, 571)
+        Me.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.ClientSize = New System.Drawing.Size(587, 464)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "frmMC1MainPage"
         Me.Text = "MainPage"
         CType(Me.picTestAutoMode, System.ComponentModel.ISupportInitialize).EndInit()

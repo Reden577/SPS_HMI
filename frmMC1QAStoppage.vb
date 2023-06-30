@@ -11,8 +11,6 @@ Public Class frmMC1QAStoppage
         frmMC1MainPage.Close()
         frmMC1QAVerification.Close()
         LoadStoppageToDropdown()
-        'cboStoppage.Text = ""
-        'cboCountermeasure.Text = ""
 
         If modMC1QASendSampleFlag = True Then
             cboStoppage.Text = My.Settings.QAStoppage
@@ -22,10 +20,15 @@ Public Class frmMC1QAStoppage
             cboCountermeasure.Text = ""
         End If
 
-        'modMC1QASendSampleFlag = False
         tmrRstFailFlag.Start()
         detailsComplete()
         CheckLoggedQualityStoppage()
+
+        If cboStoppage.Text <> "" And cboCountermeasure.Text <> "" Then
+            grpStopDetails.Enabled = False
+            btnClear.Enabled = False
+        End If
+
     End Sub
     Private Sub frmMC1QAStoppage_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         modINfrmMC1QAStoppage = False
@@ -45,14 +48,40 @@ Public Class frmMC1QAStoppage
 
     '//
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSendSample.Click
-        modMC1StoppageType = "Quality"
-        modMC1StoppageReason = cboStoppage.Text
-        modMC1Countermeasure = cboCountermeasure.Text
-        modMC1StoppageEndTime = Now()
-        'modMC1QAStoppageSaveFlag = True
-        modMC1QASendSampleFlag = True
-        modINfrmMC1QAVerification = True
-        Me.Close()
+        If cboStoppage.Text <> "" And cboCountermeasure.Text <> "" And cboCountermeasure.Text <> "TBA" Then
+            modMC1StoppageType = "Quality"
+            modMC1StoppageReason = cboStoppage.Text
+            modMC1Countermeasure = cboCountermeasure.Text
+            modMC1StoppageEndTime = Now()
+
+            UpdateDowntimeAtStoppageSaved()
+
+            modMC1QASendSampleFlag = True
+            modINfrmMC1QAVerification = True
+            cboStoppage.Enabled = False
+            cboCountermeasure.Enabled = False
+
+            Me.Close()
+        Else
+            MessageBox.Show("Invalid Stoppage Details..." &
+                             vbNewLine & "Please input valid Stoppage and Countermeasure Details...",
+                            "Saving Stoppage and Countermeasure Details...", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+
+    End Sub
+    '//
+
+    '// UPDATE DOWNTIME DETAILS AT SEND SAMPLE TO QA
+    Public Sub UpdateDowntimeAtStoppageSaved()
+        Dim upD8 As New clsUpdateDTDetails_StoppageSave
+        upD8.DTType = "Quality"
+        upD8.DTReason = cboStoppage.Text
+        upD8.DTCountermeasure = cboCountermeasure.Text
+        upD8.EndTime = Now()
+        upD8.TtlRepairTime = Math.Round((modMC1RepairTimer / 60), 4)
+        upD8.ForQAVeri = Now()
+        upD8.TtlFailFreq = modMC1FailCounters
+        upD8.UpdateDowntimeAtStoppageSaved()
     End Sub
     '//
 
@@ -61,8 +90,14 @@ Public Class frmMC1QAStoppage
         cboStoppage.Text = ""
         cboCountermeasure.Text = ""
     End Sub
-
     '// 
+
+    '//
+    Private Sub btnEditDetails_Click(sender As Object, e As EventArgs) Handles btnEditDetails.Click
+        grpStopDetails.Enabled = True
+        btnClear.Enabled = True
+    End Sub
+    '//
     Public Sub LoadStoppageToDropdown()
         Try
             Dim con As New SqlConnection(modSQLPath)
@@ -152,5 +187,7 @@ Public Class frmMC1QAStoppage
             cboCountermeasure.SelectedIndex = -1
         End If
     End Sub
+
+
     '//
 End Class

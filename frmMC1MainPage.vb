@@ -1,6 +1,9 @@
-﻿Public Class frmMC1MainPage
+﻿Imports System.Data.SqlClient
+
+Public Class frmMC1MainPage
     Dim displayTime As Integer
     Private Sub frmMCMainPage_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'MessageBox.Show("MainPage")
         modInfrmMC1MainPage = True
         frmMC1PlsLogin.Close()
         frmMC1STOP.Close()
@@ -13,6 +16,8 @@
         frmMC1TestAutoMode.Close()
         frmPlanComplete.Close()
         tmrDisplayON.Start()
+
+        CheckExistingQAStop()
     End Sub
 
     Private Sub frmMC1MainPage_Closed(sender As Object, e As EventArgs) Handles Me.Closed
@@ -21,11 +26,21 @@
     End Sub
 
     Public Sub LoadDetailsMC1()
-        lblJODetailsUN.Text = modLoginDetails_UserName
-        lblPlanQty.Text = modJODetails_PlanQty
-        lblActualQty.Text = D2002 * D2014
-        lblJobOrderCode.Text = modJODetails_JOCode
-        lblUserID.Text = modLoginDetails_UserID
+        If modSettingValMachineID = "MC1" Then
+            lblJODetailsUN.Text = modLoginDetails_UserName
+            lblPlanQty.Text = modJODetails_PlanQty
+            lblActualQty.Text = D2002 * D2014
+            lblJobOrderCode.Text = modJODetails_JOCode
+            lblUserID.Text = modLoginDetails_UserID
+        End If
+        If modSettingValMachineID = "MC2" Then
+            lblJODetailsUN.Text = modLoginDetails_UserName
+            lblPlanQty.Text = modJODetails_PlanQty
+            lblActualQty.Text = D2004 * D2016
+            lblJobOrderCode.Text = modJODetails_JOCode
+            lblUserID.Text = modLoginDetails_UserID
+        End If
+
     End Sub
 
     Public Sub stoppageBtnsEnableDisable()
@@ -34,11 +49,6 @@
             picQAStoppage.Enabled = False
             picTestAutoMode.Enabled = False
         Else
-            If modMC1QASendSampleFlag = False Then
-                picStoppage.Enabled = True
-            Else
-                picStoppage.Enabled = False
-            End If
             picQAStoppage.Enabled = True
             picTestAutoMode.Enabled = True
         End If
@@ -101,14 +111,22 @@
     Private Sub picTestAutoMode_Click(sender As Object, e As EventArgs) Handles picTestAutoMode.Click
         modINfrmMC1TestAutoMode = True
         Me.Close()
-
     End Sub
 
-    Private Sub GroupBox1_Enter(sender As Object, e As EventArgs) Handles GroupBox1.Enter
+    '// CHECKING FOR EXISTING QA STOPPAGE
+    Public Sub CheckExistingQAStop()
+        Dim Result As String
+        Dim qaStop As New clsCheckQAStoppage
+        qaStop.QAStop_MCId = modSettingValMachineID
+        qaStop.QAStop_DTStatus = modSetVal_NewStoppage
+        qaStop.CheckExistingQAStoppage()
+        Result = qaStop.QAStop_Result
 
+        If Result = "Quality" Then
+            picStoppage.Enabled = False
+        Else
+            picStoppage.Enabled = True
+        End If
     End Sub
-
-    Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Label6.Click
-
-    End Sub
+    '//
 End Class

@@ -12,7 +12,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="SQLPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Data Source=169.254.120.130,49172;Initial Catalog=SPS;Persist Security Info=True;User ID=sa;Password=admin01</Value>
+      <Value Profile="(Default)">Data Source=169.254.190.85,49172;Initial Catalog=SPS;Persist Security Info=True;User ID=sa;Password=doc577isin</Value>
     </Setting>
     <Setting Name="MachineNo" Type="System.String" Scope="User">
       <Value Profile="(Default)">MC1</Value>
@@ -21,7 +21,7 @@
       <Value Profile="(Default)">5</Value>
     </Setting>
     <Setting Name="IpAddress" Type="System.String" Scope="User">
-      <Value Profile="(Default)">169.254.204.70</Value>
+      <Value Profile="(Default)">169.254.190.100</Value>
     </Setting>
     <Setting Name="Port" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">502</Value>

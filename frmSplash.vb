@@ -28,20 +28,28 @@ Public Class frmSplash
         End If
     End Sub
     Public Sub GetPlanDetails()
-        Try
-            CheckForLoadedJobOrders()
-            If modSettingValMachineID <> "" And modJODetails_LoadeStat >= 1 Then
-                Dim selDetails As New clsSelAllJOLoadedDetails_MCId_LDStat
-                selDetails.MachineId = modSettingValMachineID
-                selDetails.LoadStat = "Loaded"
-                selDetails.SellByMCIdAndLoadStat()
-                modJODetails_JOPlan = selDetails.JOPlanQty
-                modJODetails_JOCode = selDetails.JOCode
-                modJODetails_PlanQty = selDetails.JOPlanQty
-            End If
-        Catch ex As Exception
-            MessageBox.Show("No Job Order Loaded at Machine1!", "Get JO Plan Qty", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
+        If moderrFlag_CheckLoadedJO_Splash = False Then
+            Try
+                CheckForLoadedJobOrders()
+                If modSettingValMachineID <> "" And modJODetails_LoadeStat >= 1 Then
+                    Dim selDetails As New clsSelAllJOLoadedDetails_MCId_LDStat
+                    selDetails.MachineId = modSettingValMachineID
+                    selDetails.LoadStat = "Loaded"
+                    selDetails.SellByMCIdAndLoadStat()
+                    modJODetails_JOPlan = selDetails.JOPlanQty
+                    modJODetails_JOCode = selDetails.JOCode
+                    modJODetails_PlanQty = selDetails.JOPlanQty
+                End If
+            Catch ex As Exception
+                moderrFlag_CheckLoadedJO_Splash = True
+                MessageBox.Show(ex.Message, "SPLASH Checking Loaded Job Order...", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                If DialogResult.OK = True Then
+                    moderrFlag_CheckLoadedJO_Splash = False
+                    Application.Exit()
+                End If
+            End Try
+        End If
+
     End Sub
     '//
 

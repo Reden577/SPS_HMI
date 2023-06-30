@@ -24,12 +24,12 @@ Partial Class frmMC1StoppageType
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.lblDisplayON = New System.Windows.Forms.Label()
         Me.pnlMC1 = New System.Windows.Forms.Panel()
         Me.IconButton1 = New FontAwesome.Sharp.IconButton()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.picMachineStoppage = New System.Windows.Forms.PictureBox()
         Me.picOperatorStoppage = New System.Windows.Forms.PictureBox()
-        Me.lblDisplayON = New System.Windows.Forms.Label()
         Me.tmrDisplayON = New System.Windows.Forms.Timer(Me.components)
         Me.tmrRealtimeCheck = New System.Windows.Forms.Timer(Me.components)
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
@@ -53,6 +53,18 @@ Partial Class frmMC1StoppageType
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "*"
         '
+        'lblDisplayON
+        '
+        Me.lblDisplayON.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblDisplayON.BackColor = System.Drawing.Color.Transparent
+        Me.lblDisplayON.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDisplayON.Location = New System.Drawing.Point(460, 13)
+        Me.lblDisplayON.Name = "lblDisplayON"
+        Me.lblDisplayON.Size = New System.Drawing.Size(96, 15)
+        Me.lblDisplayON.TabIndex = 5
+        Me.lblDisplayON.Text = "0"
+        Me.lblDisplayON.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
         'pnlMC1
         '
         Me.pnlMC1.Controls.Add(Me.IconButton1)
@@ -70,6 +82,7 @@ Partial Class frmMC1StoppageType
         Me.IconButton1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.IconButton1.Cursor = System.Windows.Forms.Cursors.Hand
         Me.IconButton1.FlatAppearance.BorderSize = 0
+        Me.IconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.IconButton1.IconChar = FontAwesome.Sharp.IconChar.HomeLg
         Me.IconButton1.IconColor = System.Drawing.Color.Black
         Me.IconButton1.IconFont = FontAwesome.Sharp.IconFont.[Auto]
@@ -114,18 +127,6 @@ Partial Class frmMC1StoppageType
         Me.picOperatorStoppage.TabIndex = 2
         Me.picOperatorStoppage.TabStop = False
         '
-        'lblDisplayON
-        '
-        Me.lblDisplayON.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lblDisplayON.BackColor = System.Drawing.Color.Transparent
-        Me.lblDisplayON.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDisplayON.Location = New System.Drawing.Point(460, 13)
-        Me.lblDisplayON.Name = "lblDisplayON"
-        Me.lblDisplayON.Size = New System.Drawing.Size(96, 15)
-        Me.lblDisplayON.TabIndex = 5
-        Me.lblDisplayON.Text = "0"
-        Me.lblDisplayON.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
         'tmrDisplayON
         '
         Me.tmrDisplayON.Enabled = True
@@ -157,6 +158,7 @@ Partial Class frmMC1StoppageType
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.SystemColors.ControlLight
         Me.ClientSize = New System.Drawing.Size(587, 464)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None

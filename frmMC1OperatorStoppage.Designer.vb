@@ -83,6 +83,7 @@ Partial Class frmMC1OperatorStoppage
         'btnClear
         '
         Me.btnClear.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnClear.BackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.btnClear.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnClear.IconChar = FontAwesome.Sharp.IconChar.Eraser
         Me.btnClear.IconColor = System.Drawing.Color.Black
@@ -95,11 +96,12 @@ Partial Class frmMC1OperatorStoppage
         Me.btnClear.Text = "CLEAR"
         Me.btnClear.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnClear.UseVisualStyleBackColor = True
+        Me.btnClear.UseVisualStyleBackColor = False
         '
         'btnSave
         '
         Me.btnSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSave.BackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.btnSave.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSave.IconChar = FontAwesome.Sharp.IconChar.Database
         Me.btnSave.IconColor = System.Drawing.Color.Black
@@ -112,7 +114,7 @@ Partial Class frmMC1OperatorStoppage
         Me.btnSave.Text = "SAVE"
         Me.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnSave.UseVisualStyleBackColor = True
+        Me.btnSave.UseVisualStyleBackColor = False
         '
         'cboUDT
         '
@@ -130,6 +132,7 @@ Partial Class frmMC1OperatorStoppage
         Me.btnBack.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnBack.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnBack.FlatAppearance.BorderSize = 0
+        Me.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnBack.IconChar = FontAwesome.Sharp.IconChar.AngleDoubleLeft
         Me.btnBack.IconColor = System.Drawing.Color.Black
         Me.btnBack.IconFont = FontAwesome.Sharp.IconFont.[Auto]
@@ -145,6 +148,7 @@ Partial Class frmMC1OperatorStoppage
         Me.btnMainPage.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnMainPage.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnMainPage.FlatAppearance.BorderSize = 0
+        Me.btnMainPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnMainPage.IconChar = FontAwesome.Sharp.IconChar.HomeLg
         Me.btnMainPage.IconColor = System.Drawing.Color.Black
         Me.btnMainPage.IconFont = FontAwesome.Sharp.IconFont.[Auto]
@@ -202,6 +206,7 @@ Partial Class frmMC1OperatorStoppage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.SystemColors.ControlLight
         Me.ClientSize = New System.Drawing.Size(587, 464)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None

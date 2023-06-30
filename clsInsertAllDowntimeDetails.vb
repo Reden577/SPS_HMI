@@ -23,8 +23,10 @@ Public Class clsInsertAllDowntimeDetails
     Public MCID As String
 
     Public Sub InsertDowntime()
-        Dim con As New SqlConnection(modSQLPath)
-        Dim proc As String = "INSERT INTO [Maintenance].[Downtime]
+        If modErrFlag_IndertDowntime = False Then
+            Try
+                Dim con As New SqlConnection(modSQLPath)
+                Dim proc As String = "INSERT INTO [Maintenance].[Downtime]
            ([Shift_CodeFK] ,[User_Name] ,[User_ID] ,[DT_Type] ,[Start_Time]
            ,[DT_Reason] ,[DT_Countermeasure] ,[Ack_Date] ,[End_Time] ,[Run_Time]
            ,[ttl_DT_mins] ,[ttl_RprT_mins] ,[ForQAVerification] ,[ttl_QAVeri_mins] ,[ttl_FailFreq]
@@ -35,29 +37,39 @@ Public Class clsInsertAllDowntimeDetails
            ,@ttlDT ,@ttlRprT ,@ForQAVeri ,@ttlQAVeri ,@ttlFailFreq
            ,@DTStatus ,@JOCode, @MCId)"
 
-        Using cmd As SqlCommand = New SqlCommand(proc, con)
-            cmd.Parameters.AddWithValue("@ShiftCode", ShiftCOde)
-            cmd.Parameters.AddWithValue("@UName", UserName)
-            cmd.Parameters.AddWithValue("@UNID", UserID)
-            cmd.Parameters.AddWithValue("@DTType", "TBA")
-            cmd.Parameters.AddWithValue("@StartTime", StartTime)
-            cmd.Parameters.AddWithValue("@DTReason", "TBA")
-            cmd.Parameters.AddWithValue("@DTCountermeasure", "TBA")
-            cmd.Parameters.AddWithValue("@AckDate", "Not Yet Ack")
-            cmd.Parameters.AddWithValue("@EndTime", "TBA")
-            cmd.Parameters.AddWithValue("@RunTime", "0")
-            cmd.Parameters.AddWithValue("@ttlDT", "0")
-            cmd.Parameters.AddWithValue("@ttlRprT", "0")
-            cmd.Parameters.AddWithValue("@ForQAVeri", "0")
-            cmd.Parameters.AddWithValue("@ttlQAVeri", "0")
-            cmd.Parameters.AddWithValue("@ttlFailFreq", "0")
-            cmd.Parameters.AddWithValue("@DTStatus", modSetVal_NewStoppage)
-            cmd.Parameters.AddWithValue("@JOCode", DT_JOCode)
-            cmd.Parameters.AddWithValue("@MCId", MCID)
-            'cmd.CommandType = CommandType.StoredProcedure
-            con.Open()
-            cmd.ExecuteNonQuery()
-            con.Close()
-        End Using
+                Using cmd As SqlCommand = New SqlCommand(proc, con)
+                    cmd.Parameters.AddWithValue("@ShiftCode", ShiftCOde)
+                    cmd.Parameters.AddWithValue("@UName", UserName)
+                    cmd.Parameters.AddWithValue("@UNID", UserID)
+                    cmd.Parameters.AddWithValue("@DTType", "TBA")
+                    cmd.Parameters.AddWithValue("@StartTime", StartTime)
+                    cmd.Parameters.AddWithValue("@DTReason", "TBA")
+                    cmd.Parameters.AddWithValue("@DTCountermeasure", "TBA")
+                    cmd.Parameters.AddWithValue("@AckDate", "Not Yet Ack")
+                    cmd.Parameters.AddWithValue("@EndTime", "TBA")
+                    cmd.Parameters.AddWithValue("@RunTime", "0")
+                    cmd.Parameters.AddWithValue("@ttlDT", "0")
+                    cmd.Parameters.AddWithValue("@ttlRprT", "0")
+                    cmd.Parameters.AddWithValue("@ForQAVeri", "0")
+                    cmd.Parameters.AddWithValue("@ttlQAVeri", "0")
+                    cmd.Parameters.AddWithValue("@ttlFailFreq", "0")
+                    cmd.Parameters.AddWithValue("@DTStatus", modSetVal_NewStoppage)
+                    cmd.Parameters.AddWithValue("@JOCode", DT_JOCode)
+                    cmd.Parameters.AddWithValue("@MCId", MCID)
+                    'cmd.CommandType = CommandType.StoredProcedure
+                    con.Open()
+                    cmd.ExecuteNonQuery()
+                    con.Close()
+                End Using
+            Catch ex As Exception
+                modErrFlag_IndertDowntime = True
+                MessageBox.Show(ex.Message, "Inserting Downtime Class...", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                If DialogResult.OK = True Then
+                    modErrFlag_IndertDowntime = False
+                    Application.Exit()
+                End If
+            End Try
+        End If
+
     End Sub
 End Class

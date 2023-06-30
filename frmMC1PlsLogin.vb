@@ -22,6 +22,4 @@
         StopTimer = Math.Round((modMC1StopTimer / 60), 3)
         lblElapsTimeMC1.Text = StopTimer & " " & "mins"
     End Sub
-
-
 End Class

@@ -120,6 +120,12 @@ Partial Class frmMainDash
         Me.Label38 = New System.Windows.Forms.Label()
         Me.Label39 = New System.Windows.Forms.Label()
         Me.Label40 = New System.Windows.Forms.Label()
+        Me.Label41 = New System.Windows.Forms.Label()
+        Me.lblQAVeriTime = New System.Windows.Forms.Label()
+        Me.Label42 = New System.Windows.Forms.Label()
+        Me.lblMCStopTime = New System.Windows.Forms.Label()
+        Me.Label43 = New System.Windows.Forms.Label()
+        Me.lblRepairTime = New System.Windows.Forms.Label()
         Me.pnlFormContainer.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.picComCheck, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -133,10 +139,9 @@ Partial Class frmMainDash
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.pnlFormContainer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.pnlFormContainer.Controls.Add(Me.Panel2)
-        Me.pnlFormContainer.Location = New System.Drawing.Point(0, 43)
-        Me.pnlFormContainer.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pnlFormContainer.Location = New System.Drawing.Point(0, 35)
         Me.pnlFormContainer.Name = "pnlFormContainer"
-        Me.pnlFormContainer.Size = New System.Drawing.Size(763, 570)
+        Me.pnlFormContainer.Size = New System.Drawing.Size(573, 464)
         Me.pnlFormContainer.TabIndex = 0
         '
         'Panel2
@@ -144,7 +149,14 @@ Partial Class frmMainDash
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.Panel2.Controls.Add(Me.lblNewDTisTrue)
         Me.Panel2.Controls.Add(Me.Label36)
+        Me.Panel2.Controls.Add(Me.Label37)
+        Me.Panel2.Controls.Add(Me.Label22)
+        Me.Panel2.Controls.Add(Me.Label32)
+        Me.Panel2.Controls.Add(Me.Label40)
+        Me.Panel2.Controls.Add(Me.Label39)
         Me.Panel2.Controls.Add(Me.lblTesting)
+        Me.Panel2.Controls.Add(Me.Label38)
+        Me.Panel2.Controls.Add(Me.lblJOLoadedisTrue)
         Me.Panel2.Controls.Add(Me.lblMC1QAStoppageSaveFlag)
         Me.Panel2.Controls.Add(Me.lblQAVerifyFailFlag)
         Me.Panel2.Controls.Add(Me.lblQAVerifyPassFlag)
@@ -215,219 +227,197 @@ Partial Class frmMainDash
         Me.Panel2.Controls.Add(Me.Label8)
         Me.Panel2.Controls.Add(Me.Label1)
         Me.Panel2.Controls.Add(Me.main)
-        Me.Panel2.Location = New System.Drawing.Point(13, 4)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel2.Location = New System.Drawing.Point(10, 3)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(551, 530)
+        Me.Panel2.Size = New System.Drawing.Size(414, 431)
         Me.Panel2.TabIndex = 0
         Me.Panel2.Visible = False
         '
         'lblNewDTisTrue
         '
         Me.lblNewDTisTrue.AutoSize = True
-        Me.lblNewDTisTrue.Location = New System.Drawing.Point(488, 91)
-        Me.lblNewDTisTrue.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblNewDTisTrue.Location = New System.Drawing.Point(366, 74)
         Me.lblNewDTisTrue.Name = "lblNewDTisTrue"
-        Me.lblNewDTisTrue.Size = New System.Drawing.Size(41, 16)
+        Me.lblNewDTisTrue.Size = New System.Drawing.Size(32, 13)
         Me.lblNewDTisTrue.TabIndex = 2
         Me.lblNewDTisTrue.Text = "False"
         '
         'Label36
         '
         Me.Label36.AutoSize = True
-        Me.Label36.Location = New System.Drawing.Point(273, 91)
-        Me.Label36.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label36.Location = New System.Drawing.Point(205, 74)
         Me.Label36.Name = "Label36"
-        Me.Label36.Size = New System.Drawing.Size(196, 16)
+        Me.Label36.Size = New System.Drawing.Size(155, 13)
         Me.Label36.TabIndex = 2
         Me.Label36.Text = "modDTDetails_NewDT_isTrue:"
         '
         'lblTesting
         '
         Me.lblTesting.AutoSize = True
-        Me.lblTesting.Location = New System.Drawing.Point(312, 283)
-        Me.lblTesting.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblTesting.Location = New System.Drawing.Point(234, 230)
         Me.lblTesting.Name = "lblTesting"
-        Me.lblTesting.Size = New System.Drawing.Size(55, 16)
+        Me.lblTesting.Size = New System.Drawing.Size(45, 13)
         Me.lblTesting.TabIndex = 1
         Me.lblTesting.Text = "Label28"
         '
         'lblMC1QAStoppageSaveFlag
         '
         Me.lblMC1QAStoppageSaveFlag.AutoSize = True
-        Me.lblMC1QAStoppageSaveFlag.Location = New System.Drawing.Point(216, 378)
-        Me.lblMC1QAStoppageSaveFlag.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblMC1QAStoppageSaveFlag.Location = New System.Drawing.Point(162, 307)
         Me.lblMC1QAStoppageSaveFlag.Name = "lblMC1QAStoppageSaveFlag"
-        Me.lblMC1QAStoppageSaveFlag.Size = New System.Drawing.Size(41, 16)
+        Me.lblMC1QAStoppageSaveFlag.Size = New System.Drawing.Size(32, 13)
         Me.lblMC1QAStoppageSaveFlag.TabIndex = 0
         Me.lblMC1QAStoppageSaveFlag.Text = "False"
         '
         'lblQAVerifyFailFlag
         '
         Me.lblQAVerifyFailFlag.AutoSize = True
-        Me.lblQAVerifyFailFlag.Location = New System.Drawing.Point(216, 362)
-        Me.lblQAVerifyFailFlag.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblQAVerifyFailFlag.Location = New System.Drawing.Point(162, 294)
         Me.lblQAVerifyFailFlag.Name = "lblQAVerifyFailFlag"
-        Me.lblQAVerifyFailFlag.Size = New System.Drawing.Size(41, 16)
+        Me.lblQAVerifyFailFlag.Size = New System.Drawing.Size(32, 13)
         Me.lblQAVerifyFailFlag.TabIndex = 0
         Me.lblQAVerifyFailFlag.Text = "False"
         '
         'lblQAVerifyPassFlag
         '
         Me.lblQAVerifyPassFlag.AutoSize = True
-        Me.lblQAVerifyPassFlag.Location = New System.Drawing.Point(216, 346)
-        Me.lblQAVerifyPassFlag.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblQAVerifyPassFlag.Location = New System.Drawing.Point(162, 281)
         Me.lblQAVerifyPassFlag.Name = "lblQAVerifyPassFlag"
-        Me.lblQAVerifyPassFlag.Size = New System.Drawing.Size(41, 16)
+        Me.lblQAVerifyPassFlag.Size = New System.Drawing.Size(32, 13)
         Me.lblQAVerifyPassFlag.TabIndex = 0
         Me.lblQAVerifyPassFlag.Text = "False"
         '
         'lblMC1MachStoppageSaveFlag
         '
         Me.lblMC1MachStoppageSaveFlag.AutoSize = True
-        Me.lblMC1MachStoppageSaveFlag.Location = New System.Drawing.Point(216, 315)
-        Me.lblMC1MachStoppageSaveFlag.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblMC1MachStoppageSaveFlag.Location = New System.Drawing.Point(162, 256)
         Me.lblMC1MachStoppageSaveFlag.Name = "lblMC1MachStoppageSaveFlag"
-        Me.lblMC1MachStoppageSaveFlag.Size = New System.Drawing.Size(41, 16)
+        Me.lblMC1MachStoppageSaveFlag.Size = New System.Drawing.Size(32, 13)
         Me.lblMC1MachStoppageSaveFlag.TabIndex = 0
         Me.lblMC1MachStoppageSaveFlag.Text = "False"
         '
         'lblMC1OptStoppageSaveFlag
         '
         Me.lblMC1OptStoppageSaveFlag.AutoSize = True
-        Me.lblMC1OptStoppageSaveFlag.Location = New System.Drawing.Point(216, 299)
-        Me.lblMC1OptStoppageSaveFlag.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblMC1OptStoppageSaveFlag.Location = New System.Drawing.Point(162, 243)
         Me.lblMC1OptStoppageSaveFlag.Name = "lblMC1OptStoppageSaveFlag"
-        Me.lblMC1OptStoppageSaveFlag.Size = New System.Drawing.Size(41, 16)
+        Me.lblMC1OptStoppageSaveFlag.Size = New System.Drawing.Size(32, 13)
         Me.lblMC1OptStoppageSaveFlag.TabIndex = 0
         Me.lblMC1OptStoppageSaveFlag.Text = "False"
         '
         'lblM16FlagisTrue
         '
-        Me.lblM16FlagisTrue.Location = New System.Drawing.Point(472, 59)
-        Me.lblM16FlagisTrue.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblM16FlagisTrue.Location = New System.Drawing.Point(354, 48)
         Me.lblM16FlagisTrue.Name = "lblM16FlagisTrue"
-        Me.lblM16FlagisTrue.Size = New System.Drawing.Size(43, 16)
+        Me.lblM16FlagisTrue.Size = New System.Drawing.Size(32, 13)
         Me.lblM16FlagisTrue.TabIndex = 0
         Me.lblM16FlagisTrue.Text = "False"
         Me.lblM16FlagisTrue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Label35
         '
-        Me.Label35.Location = New System.Drawing.Point(267, 59)
-        Me.Label35.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label35.Location = New System.Drawing.Point(200, 48)
         Me.Label35.Name = "Label35"
-        Me.Label35.Size = New System.Drawing.Size(201, 16)
+        Me.Label35.Size = New System.Drawing.Size(151, 13)
         Me.Label35.TabIndex = 0
         Me.Label35.Text = "InputCounterFlag_isTrue(X2=M16):"
         Me.Label35.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'lblUserLoggedAndJOLoadedisTrue
         '
-        Me.lblUserLoggedAndJOLoadedisTrue.Location = New System.Drawing.Point(472, 43)
-        Me.lblUserLoggedAndJOLoadedisTrue.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblUserLoggedAndJOLoadedisTrue.Location = New System.Drawing.Point(354, 35)
         Me.lblUserLoggedAndJOLoadedisTrue.Name = "lblUserLoggedAndJOLoadedisTrue"
-        Me.lblUserLoggedAndJOLoadedisTrue.Size = New System.Drawing.Size(43, 16)
+        Me.lblUserLoggedAndJOLoadedisTrue.Size = New System.Drawing.Size(32, 13)
         Me.lblUserLoggedAndJOLoadedisTrue.TabIndex = 0
         Me.lblUserLoggedAndJOLoadedisTrue.Text = "False"
         Me.lblUserLoggedAndJOLoadedisTrue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Label34
         '
-        Me.Label34.Location = New System.Drawing.Point(267, 43)
-        Me.Label34.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label34.Location = New System.Drawing.Point(200, 35)
         Me.Label34.Name = "Label34"
-        Me.Label34.Size = New System.Drawing.Size(201, 16)
+        Me.Label34.Size = New System.Drawing.Size(151, 13)
         Me.Label34.TabIndex = 0
         Me.Label34.Text = "UserLogged And JO Loaded isTrue:"
         Me.Label34.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'lblUserLoggedINisTrue
         '
-        Me.lblUserLoggedINisTrue.Location = New System.Drawing.Point(472, 27)
-        Me.lblUserLoggedINisTrue.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblUserLoggedINisTrue.Location = New System.Drawing.Point(354, 22)
         Me.lblUserLoggedINisTrue.Name = "lblUserLoggedINisTrue"
-        Me.lblUserLoggedINisTrue.Size = New System.Drawing.Size(43, 16)
+        Me.lblUserLoggedINisTrue.Size = New System.Drawing.Size(32, 13)
         Me.lblUserLoggedINisTrue.TabIndex = 0
         Me.lblUserLoggedINisTrue.Text = "False"
         Me.lblUserLoggedINisTrue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Label33
         '
-        Me.Label33.Location = New System.Drawing.Point(267, 27)
-        Me.Label33.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label33.Location = New System.Drawing.Point(200, 22)
         Me.Label33.Name = "Label33"
-        Me.Label33.Size = New System.Drawing.Size(201, 16)
+        Me.Label33.Size = New System.Drawing.Size(151, 13)
         Me.Label33.TabIndex = 0
         Me.Label33.Text = "User LoggedIn isTrue"
         Me.Label33.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'lblInfrmNewJOSetup
         '
-        Me.lblInfrmNewJOSetup.Location = New System.Drawing.Point(216, 426)
-        Me.lblInfrmNewJOSetup.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblInfrmNewJOSetup.Location = New System.Drawing.Point(162, 346)
         Me.lblInfrmNewJOSetup.Name = "lblInfrmNewJOSetup"
-        Me.lblInfrmNewJOSetup.Size = New System.Drawing.Size(43, 16)
+        Me.lblInfrmNewJOSetup.Size = New System.Drawing.Size(32, 13)
         Me.lblInfrmNewJOSetup.TabIndex = 0
         Me.lblInfrmNewJOSetup.Text = "False"
         Me.lblInfrmNewJOSetup.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Label31
         '
-        Me.Label31.Location = New System.Drawing.Point(11, 426)
-        Me.Label31.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label31.Location = New System.Drawing.Point(8, 346)
         Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(201, 16)
+        Me.Label31.Size = New System.Drawing.Size(151, 13)
         Me.Label31.TabIndex = 0
         Me.Label31.Text = "InfrmNewJOSetup"
         Me.Label31.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'lblPlanComplete
         '
-        Me.lblPlanComplete.Location = New System.Drawing.Point(216, 410)
-        Me.lblPlanComplete.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblPlanComplete.Location = New System.Drawing.Point(162, 333)
         Me.lblPlanComplete.Name = "lblPlanComplete"
-        Me.lblPlanComplete.Size = New System.Drawing.Size(43, 16)
+        Me.lblPlanComplete.Size = New System.Drawing.Size(32, 13)
         Me.lblPlanComplete.TabIndex = 0
         Me.lblPlanComplete.Text = "False"
         Me.lblPlanComplete.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Label29
         '
-        Me.Label29.Location = New System.Drawing.Point(11, 410)
-        Me.Label29.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label29.Location = New System.Drawing.Point(8, 333)
         Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(201, 16)
+        Me.Label29.Size = New System.Drawing.Size(151, 13)
         Me.Label29.TabIndex = 0
         Me.Label29.Text = "PlanComplete"
         Me.Label29.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'lblInfmPlanComplete
         '
-        Me.lblInfmPlanComplete.Location = New System.Drawing.Point(216, 394)
-        Me.lblInfmPlanComplete.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblInfmPlanComplete.Location = New System.Drawing.Point(162, 320)
         Me.lblInfmPlanComplete.Name = "lblInfmPlanComplete"
-        Me.lblInfmPlanComplete.Size = New System.Drawing.Size(43, 16)
+        Me.lblInfmPlanComplete.Size = New System.Drawing.Size(32, 13)
         Me.lblInfmPlanComplete.TabIndex = 0
         Me.lblInfmPlanComplete.Text = "False"
         Me.lblInfmPlanComplete.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Label28
         '
-        Me.Label28.Location = New System.Drawing.Point(11, 394)
-        Me.Label28.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label28.Location = New System.Drawing.Point(8, 320)
         Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(201, 16)
+        Me.Label28.Size = New System.Drawing.Size(151, 13)
         Me.Label28.TabIndex = 0
         Me.Label28.Text = "Infrm PlanComplete"
         Me.Label28.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label27
         '
-        Me.Label27.Location = New System.Drawing.Point(11, 378)
-        Me.Label27.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label27.Location = New System.Drawing.Point(8, 307)
         Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(201, 16)
+        Me.Label27.Size = New System.Drawing.Size(151, 13)
         Me.Label27.TabIndex = 0
         Me.Label27.Text = "QAStoppageFlag"
         Me.Label27.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -435,28 +425,25 @@ Partial Class frmMainDash
         'lblMC1_D2002
         '
         Me.lblMC1_D2002.AutoSize = True
-        Me.lblMC1_D2002.Location = New System.Drawing.Point(216, 283)
-        Me.lblMC1_D2002.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblMC1_D2002.Location = New System.Drawing.Point(162, 230)
         Me.lblMC1_D2002.Name = "lblMC1_D2002"
-        Me.lblMC1_D2002.Size = New System.Drawing.Size(0, 16)
+        Me.lblMC1_D2002.Size = New System.Drawing.Size(0, 13)
         Me.lblMC1_D2002.TabIndex = 0
         '
         'Label30
         '
-        Me.Label30.Location = New System.Drawing.Point(11, 362)
-        Me.Label30.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label30.Location = New System.Drawing.Point(8, 294)
         Me.Label30.Name = "Label30"
-        Me.Label30.Size = New System.Drawing.Size(201, 16)
+        Me.Label30.Size = New System.Drawing.Size(151, 13)
         Me.Label30.TabIndex = 0
         Me.Label30.Text = "QAVerifyFailFlag"
         Me.Label30.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label26
         '
-        Me.Label26.Location = New System.Drawing.Point(11, 346)
-        Me.Label26.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label26.Location = New System.Drawing.Point(8, 281)
         Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(201, 16)
+        Me.Label26.Size = New System.Drawing.Size(151, 13)
         Me.Label26.TabIndex = 0
         Me.Label26.Text = "QAVerifyPassFlag"
         Me.Label26.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -464,39 +451,35 @@ Partial Class frmMainDash
         'lblTestAutoMode
         '
         Me.lblTestAutoMode.AutoSize = True
-        Me.lblTestAutoMode.Location = New System.Drawing.Point(216, 267)
-        Me.lblTestAutoMode.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblTestAutoMode.Location = New System.Drawing.Point(162, 217)
         Me.lblTestAutoMode.Name = "lblTestAutoMode"
-        Me.lblTestAutoMode.Size = New System.Drawing.Size(41, 16)
+        Me.lblTestAutoMode.Size = New System.Drawing.Size(32, 13)
         Me.lblTestAutoMode.TabIndex = 0
         Me.lblTestAutoMode.Text = "False"
         '
         'Label25
         '
-        Me.Label25.Location = New System.Drawing.Point(11, 315)
-        Me.Label25.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label25.Location = New System.Drawing.Point(8, 256)
         Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(201, 16)
+        Me.Label25.Size = New System.Drawing.Size(151, 13)
         Me.Label25.TabIndex = 0
         Me.Label25.Text = "MachineStoppageSaveFlag"
         Me.Label25.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label24
         '
-        Me.Label24.Location = New System.Drawing.Point(39, 283)
-        Me.Label24.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label24.Location = New System.Drawing.Point(29, 230)
         Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(173, 16)
+        Me.Label24.Size = New System.Drawing.Size(130, 13)
         Me.Label24.TabIndex = 0
         Me.Label24.Text = "MC1 Counter D2002"
         Me.Label24.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label23
         '
-        Me.Label23.Location = New System.Drawing.Point(27, 299)
-        Me.Label23.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label23.Location = New System.Drawing.Point(20, 243)
         Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(185, 16)
+        Me.Label23.Size = New System.Drawing.Size(139, 13)
         Me.Label23.TabIndex = 0
         Me.Label23.Text = "OperatorStoppageSaveFlag"
         Me.Label23.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -504,19 +487,17 @@ Partial Class frmMainDash
         'Label17
         '
         Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(4, 283)
-        Me.Label17.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label17.Location = New System.Drawing.Point(3, 230)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(0, 16)
+        Me.Label17.Size = New System.Drawing.Size(0, 13)
         Me.Label17.TabIndex = 0
         Me.Label17.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label14
         '
-        Me.Label14.Location = New System.Drawing.Point(52, 267)
-        Me.Label14.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label14.Location = New System.Drawing.Point(39, 217)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(160, 16)
+        Me.Label14.Size = New System.Drawing.Size(120, 13)
         Me.Label14.TabIndex = 0
         Me.Label14.Text = "17.Infrm TestAutoMOde"
         Me.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -524,19 +505,17 @@ Partial Class frmMainDash
         'lblQAVerification
         '
         Me.lblQAVerification.AutoSize = True
-        Me.lblQAVerification.Location = New System.Drawing.Point(216, 251)
-        Me.lblQAVerification.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblQAVerification.Location = New System.Drawing.Point(162, 204)
         Me.lblQAVerification.Name = "lblQAVerification"
-        Me.lblQAVerification.Size = New System.Drawing.Size(41, 16)
+        Me.lblQAVerification.Size = New System.Drawing.Size(32, 13)
         Me.lblQAVerification.TabIndex = 0
         Me.lblQAVerification.Text = "False"
         '
         'Label15
         '
-        Me.Label15.Location = New System.Drawing.Point(59, 251)
-        Me.Label15.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label15.Location = New System.Drawing.Point(44, 204)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(153, 16)
+        Me.Label15.Size = New System.Drawing.Size(115, 13)
         Me.Label15.TabIndex = 0
         Me.Label15.Text = "16.Infrm QAVerification"
         Me.Label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -544,19 +523,17 @@ Partial Class frmMainDash
         'lblQAStoppage
         '
         Me.lblQAStoppage.AutoSize = True
-        Me.lblQAStoppage.Location = New System.Drawing.Point(216, 235)
-        Me.lblQAStoppage.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblQAStoppage.Location = New System.Drawing.Point(162, 191)
         Me.lblQAStoppage.Name = "lblQAStoppage"
-        Me.lblQAStoppage.Size = New System.Drawing.Size(41, 16)
+        Me.lblQAStoppage.Size = New System.Drawing.Size(32, 13)
         Me.lblQAStoppage.TabIndex = 0
         Me.lblQAStoppage.Text = "False"
         '
         'Label12
         '
-        Me.Label12.Location = New System.Drawing.Point(67, 235)
-        Me.Label12.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label12.Location = New System.Drawing.Point(50, 191)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(145, 16)
+        Me.Label12.Size = New System.Drawing.Size(109, 13)
         Me.Label12.TabIndex = 0
         Me.Label12.Text = "15.Infrm QAStoppage"
         Me.Label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -564,19 +541,17 @@ Partial Class frmMainDash
         'lblMachineStoppage
         '
         Me.lblMachineStoppage.AutoSize = True
-        Me.lblMachineStoppage.Location = New System.Drawing.Point(216, 219)
-        Me.lblMachineStoppage.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblMachineStoppage.Location = New System.Drawing.Point(162, 178)
         Me.lblMachineStoppage.Name = "lblMachineStoppage"
-        Me.lblMachineStoppage.Size = New System.Drawing.Size(41, 16)
+        Me.lblMachineStoppage.Size = New System.Drawing.Size(32, 13)
         Me.lblMachineStoppage.TabIndex = 0
         Me.lblMachineStoppage.Text = "False"
         '
         'Label13
         '
-        Me.Label13.Location = New System.Drawing.Point(32, 219)
-        Me.Label13.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label13.Location = New System.Drawing.Point(24, 178)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(180, 16)
+        Me.Label13.Size = New System.Drawing.Size(135, 13)
         Me.Label13.TabIndex = 0
         Me.Label13.Text = "14.Infrm MachineStoppage"
         Me.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -584,19 +559,17 @@ Partial Class frmMainDash
         'lblOperatorStoppage
         '
         Me.lblOperatorStoppage.AutoSize = True
-        Me.lblOperatorStoppage.Location = New System.Drawing.Point(216, 203)
-        Me.lblOperatorStoppage.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblOperatorStoppage.Location = New System.Drawing.Point(162, 165)
         Me.lblOperatorStoppage.Name = "lblOperatorStoppage"
-        Me.lblOperatorStoppage.Size = New System.Drawing.Size(41, 16)
+        Me.lblOperatorStoppage.Size = New System.Drawing.Size(32, 13)
         Me.lblOperatorStoppage.TabIndex = 0
         Me.lblOperatorStoppage.Text = "False"
         '
         'Label11
         '
-        Me.Label11.Location = New System.Drawing.Point(28, 203)
-        Me.Label11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label11.Location = New System.Drawing.Point(21, 165)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(184, 16)
+        Me.Label11.Size = New System.Drawing.Size(138, 13)
         Me.Label11.TabIndex = 0
         Me.Label11.Text = "13.Infrm Operator Stoppage"
         Me.Label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -604,19 +577,17 @@ Partial Class frmMainDash
         'lblStoppageType
         '
         Me.lblStoppageType.AutoSize = True
-        Me.lblStoppageType.Location = New System.Drawing.Point(216, 187)
-        Me.lblStoppageType.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblStoppageType.Location = New System.Drawing.Point(162, 152)
         Me.lblStoppageType.Name = "lblStoppageType"
-        Me.lblStoppageType.Size = New System.Drawing.Size(41, 16)
+        Me.lblStoppageType.Size = New System.Drawing.Size(32, 13)
         Me.lblStoppageType.TabIndex = 0
         Me.lblStoppageType.Text = "False"
         '
         'Label9
         '
-        Me.Label9.Location = New System.Drawing.Point(51, 187)
-        Me.Label9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label9.Location = New System.Drawing.Point(38, 152)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(161, 16)
+        Me.Label9.Size = New System.Drawing.Size(121, 13)
         Me.Label9.TabIndex = 0
         Me.Label9.Text = "12.Infrm Stoppage Type"
         Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -624,19 +595,17 @@ Partial Class frmMainDash
         'lblStop
         '
         Me.lblStop.AutoSize = True
-        Me.lblStop.Location = New System.Drawing.Point(216, 171)
-        Me.lblStop.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblStop.Location = New System.Drawing.Point(162, 139)
         Me.lblStop.Name = "lblStop"
-        Me.lblStop.Size = New System.Drawing.Size(41, 16)
+        Me.lblStop.Size = New System.Drawing.Size(32, 13)
         Me.lblStop.TabIndex = 0
         Me.lblStop.Text = "False"
         '
         'Label7
         '
-        Me.Label7.Location = New System.Drawing.Point(119, 171)
-        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label7.Location = New System.Drawing.Point(89, 139)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(93, 16)
+        Me.Label7.Size = New System.Drawing.Size(70, 13)
         Me.Label7.TabIndex = 0
         Me.Label7.Text = "11.Infrm Stop"
         Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -644,19 +613,17 @@ Partial Class frmMainDash
         'lblRun
         '
         Me.lblRun.AutoSize = True
-        Me.lblRun.Location = New System.Drawing.Point(216, 155)
-        Me.lblRun.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblRun.Location = New System.Drawing.Point(162, 126)
         Me.lblRun.Name = "lblRun"
-        Me.lblRun.Size = New System.Drawing.Size(41, 16)
+        Me.lblRun.Size = New System.Drawing.Size(32, 13)
         Me.lblRun.TabIndex = 0
         Me.lblRun.Text = "False"
         '
         'Label6
         '
-        Me.Label6.Location = New System.Drawing.Point(121, 155)
-        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label6.Location = New System.Drawing.Point(91, 126)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(91, 16)
+        Me.Label6.Size = New System.Drawing.Size(68, 13)
         Me.Label6.TabIndex = 0
         Me.Label6.Text = "10.Infrm Run"
         Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -664,19 +631,17 @@ Partial Class frmMainDash
         'lblReady
         '
         Me.lblReady.AutoSize = True
-        Me.lblReady.Location = New System.Drawing.Point(216, 139)
-        Me.lblReady.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblReady.Location = New System.Drawing.Point(162, 113)
         Me.lblReady.Name = "lblReady"
-        Me.lblReady.Size = New System.Drawing.Size(41, 16)
+        Me.lblReady.Size = New System.Drawing.Size(32, 13)
         Me.lblReady.TabIndex = 0
         Me.lblReady.Text = "False"
         '
         'Label5
         '
-        Me.Label5.Location = New System.Drawing.Point(115, 139)
-        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label5.Location = New System.Drawing.Point(86, 113)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(97, 16)
+        Me.Label5.Size = New System.Drawing.Size(73, 13)
         Me.Label5.TabIndex = 0
         Me.Label5.Text = "9.Infrm Ready"
         Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -684,19 +649,17 @@ Partial Class frmMainDash
         'lblQAStop
         '
         Me.lblQAStop.AutoSize = True
-        Me.lblQAStop.Location = New System.Drawing.Point(216, 123)
-        Me.lblQAStop.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblQAStop.Location = New System.Drawing.Point(162, 100)
         Me.lblQAStop.Name = "lblQAStop"
-        Me.lblQAStop.Size = New System.Drawing.Size(41, 16)
+        Me.lblQAStop.Size = New System.Drawing.Size(32, 13)
         Me.lblQAStop.TabIndex = 0
         Me.lblQAStop.Text = "False"
         '
         'Label4
         '
-        Me.Label4.Location = New System.Drawing.Point(71, 123)
-        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label4.Location = New System.Drawing.Point(53, 100)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(141, 16)
+        Me.Label4.Size = New System.Drawing.Size(106, 13)
         Me.Label4.TabIndex = 0
         Me.Label4.Text = "8.Infrm QA Stoppage"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -704,19 +667,17 @@ Partial Class frmMainDash
         'lblPlsLogin
         '
         Me.lblPlsLogin.AutoSize = True
-        Me.lblPlsLogin.Location = New System.Drawing.Point(216, 107)
-        Me.lblPlsLogin.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblPlsLogin.Location = New System.Drawing.Point(162, 87)
         Me.lblPlsLogin.Name = "lblPlsLogin"
-        Me.lblPlsLogin.Size = New System.Drawing.Size(41, 16)
+        Me.lblPlsLogin.Size = New System.Drawing.Size(32, 13)
         Me.lblPlsLogin.TabIndex = 0
         Me.lblPlsLogin.Text = "False"
         '
         'Label3
         '
-        Me.Label3.Location = New System.Drawing.Point(75, 107)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label3.Location = New System.Drawing.Point(56, 87)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(137, 16)
+        Me.Label3.Size = New System.Drawing.Size(103, 13)
         Me.Label3.TabIndex = 0
         Me.Label3.Text = "7.Infrm Please Login"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -724,19 +685,17 @@ Partial Class frmMainDash
         'lblNoplan
         '
         Me.lblNoplan.AutoSize = True
-        Me.lblNoplan.Location = New System.Drawing.Point(216, 91)
-        Me.lblNoplan.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblNoplan.Location = New System.Drawing.Point(162, 74)
         Me.lblNoplan.Name = "lblNoplan"
-        Me.lblNoplan.Size = New System.Drawing.Size(41, 16)
+        Me.lblNoplan.Size = New System.Drawing.Size(32, 13)
         Me.lblNoplan.TabIndex = 0
         Me.lblNoplan.Text = "False"
         '
         'Label2
         '
-        Me.Label2.Location = New System.Drawing.Point(105, 91)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label2.Location = New System.Drawing.Point(79, 74)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(107, 16)
+        Me.Label2.Size = New System.Drawing.Size(80, 13)
         Me.Label2.TabIndex = 0
         Me.Label2.Text = "6.Infrm No Plan"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -744,90 +703,81 @@ Partial Class frmMainDash
         'lblMaintenance
         '
         Me.lblMaintenance.AutoSize = True
-        Me.lblMaintenance.Location = New System.Drawing.Point(216, 75)
-        Me.lblMaintenance.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblMaintenance.Location = New System.Drawing.Point(162, 61)
         Me.lblMaintenance.Name = "lblMaintenance"
-        Me.lblMaintenance.Size = New System.Drawing.Size(41, 16)
+        Me.lblMaintenance.Size = New System.Drawing.Size(32, 13)
         Me.lblMaintenance.TabIndex = 0
         Me.lblMaintenance.Text = "False"
         '
         'lblRxPLCM0MC1
         '
         Me.lblRxPLCM0MC1.AutoSize = True
-        Me.lblRxPLCM0MC1.Location = New System.Drawing.Point(216, 9)
-        Me.lblRxPLCM0MC1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblRxPLCM0MC1.Location = New System.Drawing.Point(162, 7)
         Me.lblRxPLCM0MC1.Name = "lblRxPLCM0MC1"
-        Me.lblRxPLCM0MC1.Size = New System.Drawing.Size(41, 16)
+        Me.lblRxPLCM0MC1.Size = New System.Drawing.Size(32, 13)
         Me.lblRxPLCM0MC1.TabIndex = 0
         Me.lblRxPLCM0MC1.Text = "False"
         '
         'lblStopDateTime
         '
         Me.lblStopDateTime.AutoSize = True
-        Me.lblStopDateTime.Location = New System.Drawing.Point(413, 137)
-        Me.lblStopDateTime.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblStopDateTime.Location = New System.Drawing.Point(310, 111)
         Me.lblStopDateTime.Name = "lblStopDateTime"
-        Me.lblStopDateTime.Size = New System.Drawing.Size(41, 16)
+        Me.lblStopDateTime.Size = New System.Drawing.Size(32, 13)
         Me.lblStopDateTime.TabIndex = 0
         Me.lblStopDateTime.Text = "False"
         '
         'lblAckFlag
         '
         Me.lblAckFlag.AutoSize = True
-        Me.lblAckFlag.Location = New System.Drawing.Point(413, 153)
-        Me.lblAckFlag.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblAckFlag.Location = New System.Drawing.Point(310, 124)
         Me.lblAckFlag.Name = "lblAckFlag"
-        Me.lblAckFlag.Size = New System.Drawing.Size(41, 16)
+        Me.lblAckFlag.Size = New System.Drawing.Size(32, 13)
         Me.lblAckFlag.TabIndex = 0
         Me.lblAckFlag.Text = "False"
         '
         'lblAckDateTime
         '
         Me.lblAckDateTime.AutoSize = True
-        Me.lblAckDateTime.Location = New System.Drawing.Point(413, 170)
-        Me.lblAckDateTime.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblAckDateTime.Location = New System.Drawing.Point(310, 138)
         Me.lblAckDateTime.Name = "lblAckDateTime"
-        Me.lblAckDateTime.Size = New System.Drawing.Size(41, 16)
+        Me.lblAckDateTime.Size = New System.Drawing.Size(32, 13)
         Me.lblAckDateTime.TabIndex = 0
         Me.lblAckDateTime.Text = "False"
         '
         'lblRxPLCM12MC1
         '
         Me.lblRxPLCM12MC1.AutoSize = True
-        Me.lblRxPLCM12MC1.Location = New System.Drawing.Point(216, 43)
-        Me.lblRxPLCM12MC1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblRxPLCM12MC1.Location = New System.Drawing.Point(162, 35)
         Me.lblRxPLCM12MC1.Name = "lblRxPLCM12MC1"
-        Me.lblRxPLCM12MC1.Size = New System.Drawing.Size(41, 16)
+        Me.lblRxPLCM12MC1.Size = New System.Drawing.Size(32, 13)
         Me.lblRxPLCM12MC1.TabIndex = 0
         Me.lblRxPLCM12MC1.Text = "False"
         '
         'lblRxPLCM3MC1
         '
         Me.lblRxPLCM3MC1.AutoSize = True
-        Me.lblRxPLCM3MC1.Location = New System.Drawing.Point(216, 27)
-        Me.lblRxPLCM3MC1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblRxPLCM3MC1.Location = New System.Drawing.Point(162, 22)
         Me.lblRxPLCM3MC1.Name = "lblRxPLCM3MC1"
-        Me.lblRxPLCM3MC1.Size = New System.Drawing.Size(41, 16)
+        Me.lblRxPLCM3MC1.Size = New System.Drawing.Size(32, 13)
         Me.lblRxPLCM3MC1.TabIndex = 0
         Me.lblRxPLCM3MC1.Text = "False"
         '
         'Label20
         '
         Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(312, 137)
-        Me.Label20.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label20.Location = New System.Drawing.Point(234, 111)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(95, 16)
+        Me.Label20.Size = New System.Drawing.Size(75, 13)
         Me.Label20.TabIndex = 0
         Me.Label20.Text = "StopDate&Time"
         Me.Label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label10
         '
-        Me.Label10.Location = New System.Drawing.Point(127, 9)
-        Me.Label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label10.Location = New System.Drawing.Point(95, 7)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(85, 16)
+        Me.Label10.Size = New System.Drawing.Size(64, 13)
         Me.Label10.TabIndex = 0
         Me.Label10.Text = "1.RxPLCM0"
         Me.Label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -835,10 +785,9 @@ Partial Class frmMainDash
         'lblMC1QASendSampleFlag
         '
         Me.lblMC1QASendSampleFlag.AutoSize = True
-        Me.lblMC1QASendSampleFlag.Location = New System.Drawing.Point(216, 331)
-        Me.lblMC1QASendSampleFlag.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblMC1QASendSampleFlag.Location = New System.Drawing.Point(162, 269)
         Me.lblMC1QASendSampleFlag.Name = "lblMC1QASendSampleFlag"
-        Me.lblMC1QASendSampleFlag.Size = New System.Drawing.Size(41, 16)
+        Me.lblMC1QASendSampleFlag.Size = New System.Drawing.Size(32, 13)
         Me.lblMC1QASendSampleFlag.TabIndex = 0
         Me.lblMC1QASendSampleFlag.Text = "False"
         Me.lblMC1QASendSampleFlag.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -846,10 +795,9 @@ Partial Class frmMainDash
         'lblFailCounter
         '
         Me.lblFailCounter.AutoSize = True
-        Me.lblFailCounter.Location = New System.Drawing.Point(312, 251)
-        Me.lblFailCounter.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblFailCounter.Location = New System.Drawing.Point(234, 204)
         Me.lblFailCounter.Name = "lblFailCounter"
-        Me.lblFailCounter.Size = New System.Drawing.Size(78, 16)
+        Me.lblFailCounter.Size = New System.Drawing.Size(63, 13)
         Me.lblFailCounter.TabIndex = 0
         Me.lblFailCounter.Text = "Fail Counter"
         Me.lblFailCounter.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -857,10 +805,9 @@ Partial Class frmMainDash
         'lblQAVeriTimer
         '
         Me.lblQAVeriTimer.AutoSize = True
-        Me.lblQAVeriTimer.Location = New System.Drawing.Point(312, 235)
-        Me.lblQAVeriTimer.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblQAVeriTimer.Location = New System.Drawing.Point(234, 191)
         Me.lblQAVeriTimer.Name = "lblQAVeriTimer"
-        Me.lblQAVeriTimer.Size = New System.Drawing.Size(91, 16)
+        Me.lblQAVeriTimer.Size = New System.Drawing.Size(72, 13)
         Me.lblQAVeriTimer.TabIndex = 0
         Me.lblQAVeriTimer.Text = "QA Veri Timer"
         Me.lblQAVeriTimer.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -868,20 +815,18 @@ Partial Class frmMainDash
         'lblAckTime
         '
         Me.lblAckTime.AutoSize = True
-        Me.lblAckTime.Location = New System.Drawing.Point(312, 219)
-        Me.lblAckTime.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblAckTime.Location = New System.Drawing.Point(234, 178)
         Me.lblAckTime.Name = "lblAckTime"
-        Me.lblAckTime.Size = New System.Drawing.Size(108, 16)
+        Me.lblAckTime.Size = New System.Drawing.Size(86, 13)
         Me.lblAckTime.TabIndex = 0
         Me.lblAckTime.Text = "Ack Repair Time"
         Me.lblAckTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label21
         '
-        Me.Label21.Location = New System.Drawing.Point(99, 331)
-        Me.Label21.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label21.Location = New System.Drawing.Point(74, 269)
         Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(113, 16)
+        Me.Label21.Size = New System.Drawing.Size(85, 13)
         Me.Label21.TabIndex = 0
         Me.Label21.Text = "QA SendSample"
         Me.Label21.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -889,20 +834,18 @@ Partial Class frmMainDash
         'Label19
         '
         Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(312, 171)
-        Me.Label19.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label19.Location = New System.Drawing.Point(234, 139)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(93, 16)
+        Me.Label19.Size = New System.Drawing.Size(75, 13)
         Me.Label19.TabIndex = 0
         Me.Label19.Text = "Ack DateTime"
         Me.Label19.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label16
         '
-        Me.Label16.Location = New System.Drawing.Point(119, 43)
-        Me.Label16.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label16.Location = New System.Drawing.Point(89, 35)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(93, 16)
+        Me.Label16.Size = New System.Drawing.Size(70, 13)
         Me.Label16.TabIndex = 0
         Me.Label16.Text = "3.RxPLCM12"
         Me.Label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -910,10 +853,9 @@ Partial Class frmMainDash
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(285, 155)
-        Me.Label18.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label18.Location = New System.Drawing.Point(214, 126)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(119, 16)
+        Me.Label18.Size = New System.Drawing.Size(95, 13)
         Me.Label18.TabIndex = 0
         Me.Label18.Text = "Acknowledge Flag"
         Me.Label18.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -921,49 +863,44 @@ Partial Class frmMainDash
         'lblMain
         '
         Me.lblMain.AutoSize = True
-        Me.lblMain.Location = New System.Drawing.Point(216, 59)
-        Me.lblMain.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblMain.Location = New System.Drawing.Point(162, 48)
         Me.lblMain.Name = "lblMain"
-        Me.lblMain.Size = New System.Drawing.Size(41, 16)
+        Me.lblMain.Size = New System.Drawing.Size(32, 13)
         Me.lblMain.TabIndex = 0
         Me.lblMain.Text = "False"
         '
         'Label8
         '
-        Me.Label8.Location = New System.Drawing.Point(127, 27)
-        Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label8.Location = New System.Drawing.Point(95, 22)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(85, 16)
+        Me.Label8.Size = New System.Drawing.Size(64, 13)
         Me.Label8.TabIndex = 0
         Me.Label8.Text = "2.RxPLCM3"
         Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label1
         '
-        Me.Label1.Location = New System.Drawing.Point(73, 75)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label1.Location = New System.Drawing.Point(55, 61)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(139, 16)
+        Me.Label1.Size = New System.Drawing.Size(104, 13)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "5.Infrm Maintenance"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'main
         '
-        Me.main.Location = New System.Drawing.Point(125, 59)
-        Me.main.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.main.Location = New System.Drawing.Point(94, 48)
         Me.main.Name = "main"
-        Me.main.Size = New System.Drawing.Size(87, 16)
+        Me.main.Size = New System.Drawing.Size(65, 13)
         Me.main.TabIndex = 0
         Me.main.Text = "4.Infrm Main"
         Me.main.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'lblJOLoadedisTrue
         '
-        Me.lblJOLoadedisTrue.Location = New System.Drawing.Point(503, 622)
-        Me.lblJOLoadedisTrue.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblJOLoadedisTrue.Location = New System.Drawing.Point(354, 256)
         Me.lblJOLoadedisTrue.Name = "lblJOLoadedisTrue"
-        Me.lblJOLoadedisTrue.Size = New System.Drawing.Size(43, 16)
+        Me.lblJOLoadedisTrue.Size = New System.Drawing.Size(32, 13)
         Me.lblJOLoadedisTrue.TabIndex = 0
         Me.lblJOLoadedisTrue.Text = "False"
         Me.lblJOLoadedisTrue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -971,10 +908,9 @@ Partial Class frmMainDash
         '
         'Label32
         '
-        Me.Label32.Location = New System.Drawing.Point(297, 622)
-        Me.Label32.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label32.Location = New System.Drawing.Point(200, 256)
         Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(201, 16)
+        Me.Label32.Size = New System.Drawing.Size(151, 13)
         Me.Label32.TabIndex = 0
         Me.Label32.Text = "JO Loaded isTrue"
         Me.Label32.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -989,10 +925,9 @@ Partial Class frmMainDash
         Me.lblShiftCode.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.lblShiftCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblShiftCode.ForeColor = System.Drawing.Color.White
-        Me.lblShiftCode.Location = New System.Drawing.Point(554, 5)
-        Me.lblShiftCode.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblShiftCode.Location = New System.Drawing.Point(415, 4)
         Me.lblShiftCode.Name = "lblShiftCode"
-        Me.lblShiftCode.Size = New System.Drawing.Size(152, 25)
+        Me.lblShiftCode.Size = New System.Drawing.Size(114, 20)
         Me.lblShiftCode.TabIndex = 0
         Me.lblShiftCode.Text = "Shift Code"
         Me.lblShiftCode.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -1003,8 +938,7 @@ Partial Class frmMainDash
         Me.lblMachineNo.AutoSize = True
         Me.lblMachineNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblMachineNo.ForeColor = System.Drawing.Color.White
-        Me.lblMachineNo.Location = New System.Drawing.Point(295, 8)
-        Me.lblMachineNo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblMachineNo.Location = New System.Drawing.Point(201, 4)
         Me.lblMachineNo.Name = "lblMachineNo"
         Me.lblMachineNo.Size = New System.Drawing.Size(160, 20)
         Me.lblMachineNo.TabIndex = 0
@@ -1014,10 +948,9 @@ Partial Class frmMainDash
         '
         Me.picComCheck.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.picComCheck.Image = Global.HMI_PCBase.My.Resources.Resources.indicator_red
-        Me.picComCheck.Location = New System.Drawing.Point(723, 5)
-        Me.picComCheck.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.picComCheck.Location = New System.Drawing.Point(542, 4)
         Me.picComCheck.Name = "picComCheck"
-        Me.picComCheck.Size = New System.Drawing.Size(27, 25)
+        Me.picComCheck.Size = New System.Drawing.Size(20, 20)
         Me.picComCheck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picComCheck.TabIndex = 1
         Me.picComCheck.TabStop = False
@@ -1045,10 +978,9 @@ Partial Class frmMainDash
         Me.btnSetting.IconColor = System.Drawing.Color.Black
         Me.btnSetting.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.btnSetting.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnSetting.Location = New System.Drawing.Point(680, 622)
-        Me.btnSetting.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnSetting.Location = New System.Drawing.Point(510, 505)
         Me.btnSetting.Name = "btnSetting"
-        Me.btnSetting.Size = New System.Drawing.Size(83, 70)
+        Me.btnSetting.Size = New System.Drawing.Size(62, 57)
         Me.btnSetting.TabIndex = 2
         Me.btnSetting.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSetting.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -1073,21 +1005,20 @@ Partial Class frmMainDash
         '
         Me.TableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(37, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(77, Byte), Integer))
         Me.TableLayoutPanel1.ColumnCount = 4
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 53.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.picComCheck, 3, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.lblShiftCode, 2, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.lblMachineNo, 1, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.lblMCNumber, 0, 0)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
-        Me.TableLayoutPanel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(763, 36)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(572, 29)
         Me.TableLayoutPanel1.TabIndex = 6
         '
         'lblMCNumber
@@ -1096,8 +1027,7 @@ Partial Class frmMainDash
         Me.lblMCNumber.AutoSize = True
         Me.lblMCNumber.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblMCNumber.ForeColor = System.Drawing.Color.White
-        Me.lblMCNumber.Location = New System.Drawing.Point(4, 8)
-        Me.lblMCNumber.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblMCNumber.Location = New System.Drawing.Point(3, 4)
         Me.lblMCNumber.Name = "lblMCNumber"
         Me.lblMCNumber.Size = New System.Drawing.Size(101, 20)
         Me.lblMCNumber.TabIndex = 0
@@ -1106,9 +1036,10 @@ Partial Class frmMainDash
         'Label22
         '
         Me.Label22.AutoSize = True
-        Me.Label22.Location = New System.Drawing.Point(20, 652)
+        Me.Label22.Location = New System.Drawing.Point(11, 414)
+        Me.Label22.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(55, 16)
+        Me.Label22.Size = New System.Drawing.Size(45, 13)
         Me.Label22.TabIndex = 7
         Me.Label22.Text = "Label22"
         Me.Label22.Visible = False
@@ -1116,9 +1047,10 @@ Partial Class frmMainDash
         'Label37
         '
         Me.Label37.AutoSize = True
-        Me.Label37.Location = New System.Drawing.Point(93, 652)
+        Me.Label37.Location = New System.Drawing.Point(66, 414)
+        Me.Label37.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label37.Name = "Label37"
-        Me.Label37.Size = New System.Drawing.Size(55, 16)
+        Me.Label37.Size = New System.Drawing.Size(45, 13)
         Me.Label37.TabIndex = 7
         Me.Label37.Text = "Label37"
         Me.Label37.Visible = False
@@ -1126,9 +1058,10 @@ Partial Class frmMainDash
         'Label38
         '
         Me.Label38.AutoSize = True
-        Me.Label38.Location = New System.Drawing.Point(20, 622)
+        Me.Label38.Location = New System.Drawing.Point(11, 390)
+        Me.Label38.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label38.Name = "Label38"
-        Me.Label38.Size = New System.Drawing.Size(55, 16)
+        Me.Label38.Size = New System.Drawing.Size(45, 13)
         Me.Label38.TabIndex = 7
         Me.Label38.Text = "Label38"
         Me.Label38.Visible = False
@@ -1136,9 +1069,10 @@ Partial Class frmMainDash
         'Label39
         '
         Me.Label39.AutoSize = True
-        Me.Label39.Location = New System.Drawing.Point(93, 622)
+        Me.Label39.Location = New System.Drawing.Point(66, 390)
+        Me.Label39.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label39.Name = "Label39"
-        Me.Label39.Size = New System.Drawing.Size(55, 16)
+        Me.Label39.Size = New System.Drawing.Size(45, 13)
         Me.Label39.TabIndex = 7
         Me.Label39.Text = "Label39"
         Me.Label39.Visible = False
@@ -1146,31 +1080,84 @@ Partial Class frmMainDash
         'Label40
         '
         Me.Label40.AutoSize = True
-        Me.Label40.Location = New System.Drawing.Point(175, 622)
+        Me.Label40.Location = New System.Drawing.Point(127, 390)
+        Me.Label40.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label40.Name = "Label40"
-        Me.Label40.Size = New System.Drawing.Size(55, 16)
+        Me.Label40.Size = New System.Drawing.Size(45, 13)
         Me.Label40.TabIndex = 7
         Me.Label40.Text = "Label40"
         Me.Label40.Visible = False
         '
+        'Label41
+        '
+        Me.Label41.AutoSize = True
+        Me.Label41.Location = New System.Drawing.Point(7, 539)
+        Me.Label41.Name = "Label41"
+        Me.Label41.Size = New System.Drawing.Size(66, 13)
+        Me.Label41.TabIndex = 8
+        Me.Label41.Text = "QAVeriTime:"
+        '
+        'lblQAVeriTime
+        '
+        Me.lblQAVeriTime.AutoSize = True
+        Me.lblQAVeriTime.Location = New System.Drawing.Point(80, 539)
+        Me.lblQAVeriTime.Name = "lblQAVeriTime"
+        Me.lblQAVeriTime.Size = New System.Drawing.Size(13, 13)
+        Me.lblQAVeriTime.TabIndex = 8
+        Me.lblQAVeriTime.Text = "0"
+        '
+        'Label42
+        '
+        Me.Label42.AutoSize = True
+        Me.Label42.Location = New System.Drawing.Point(2, 505)
+        Me.Label42.Name = "Label42"
+        Me.Label42.Size = New System.Drawing.Size(71, 13)
+        Me.Label42.TabIndex = 8
+        Me.Label42.Text = "MCStopTime:"
+        '
+        'lblMCStopTime
+        '
+        Me.lblMCStopTime.AutoSize = True
+        Me.lblMCStopTime.Location = New System.Drawing.Point(80, 505)
+        Me.lblMCStopTime.Name = "lblMCStopTime"
+        Me.lblMCStopTime.Size = New System.Drawing.Size(13, 13)
+        Me.lblMCStopTime.TabIndex = 8
+        Me.lblMCStopTime.Text = "0"
+        '
+        'Label43
+        '
+        Me.Label43.AutoSize = True
+        Me.Label43.Location = New System.Drawing.Point(9, 522)
+        Me.Label43.Name = "Label43"
+        Me.Label43.Size = New System.Drawing.Size(64, 13)
+        Me.Label43.TabIndex = 8
+        Me.Label43.Text = "RepairTime:"
+        '
+        'lblRepairTime
+        '
+        Me.lblRepairTime.AutoSize = True
+        Me.lblRepairTime.Location = New System.Drawing.Point(80, 522)
+        Me.lblRepairTime.Name = "lblRepairTime"
+        Me.lblRepairTime.Size = New System.Drawing.Size(13, 13)
+        Me.lblRepairTime.TabIndex = 8
+        Me.lblRepairTime.Text = "0"
+        '
         'frmMainDash
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.ClientSize = New System.Drawing.Size(763, 690)
-        Me.Controls.Add(Me.Label37)
-        Me.Controls.Add(Me.Label32)
-        Me.Controls.Add(Me.lblJOLoadedisTrue)
-        Me.Controls.Add(Me.Label40)
-        Me.Controls.Add(Me.Label39)
-        Me.Controls.Add(Me.Label38)
-        Me.Controls.Add(Me.Label22)
+        Me.ClientSize = New System.Drawing.Size(572, 561)
+        Me.Controls.Add(Me.lblRepairTime)
+        Me.Controls.Add(Me.lblMCStopTime)
+        Me.Controls.Add(Me.lblQAVeriTime)
+        Me.Controls.Add(Me.Label43)
+        Me.Controls.Add(Me.Label42)
+        Me.Controls.Add(Me.Label41)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.btnSetting)
         Me.Controls.Add(Me.pnlFormContainer)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "frmMainDash"
         Me.Text = "Main Dashboard"
         Me.pnlFormContainer.ResumeLayout(False)
@@ -1281,4 +1268,10 @@ Partial Class frmMainDash
     Friend WithEvents Label38 As Label
     Friend WithEvents Label39 As Label
     Friend WithEvents Label40 As Label
+    Friend WithEvents Label41 As Label
+    Friend WithEvents lblQAVeriTime As Label
+    Friend WithEvents Label42 As Label
+    Friend WithEvents lblMCStopTime As Label
+    Friend WithEvents Label43 As Label
+    Friend WithEvents lblRepairTime As Label
 End Class
