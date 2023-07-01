@@ -145,7 +145,7 @@ Public Class frmMC1QAStoppage
 
 
     Public Sub detailsComplete()
-        If cboStoppage.Text <> "" And cboCountermeasure.Text <> "" Then
+        If cboStoppage.Text <> "" And cboCountermeasure.Text <> "" And cboCountermeasure.Text <> "TBA" Then
             btnSendSample.Enabled = True
         Else
             btnSendSample.Enabled = False

@@ -21,6 +21,8 @@ Public Class clsInsertAllDowntimeDetails
     Public DTStatus As String
     Public DT_JOCode
     Public MCID As String
+    Public VeriByQA As String
+    Public CreatedBy As String
 
     Public Sub InsertDowntime()
         If modErrFlag_IndertDowntime = False Then

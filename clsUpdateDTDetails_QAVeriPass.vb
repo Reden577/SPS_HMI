@@ -4,14 +4,19 @@ Public Class clsUpdateDTDetails_QAVeriPass
     Inherits clsInsertAllDowntimeDetails
 
     Public Sub UpdateDTQAVerifyPass()
-        Dim Proc As String = "UpdateProDTQAVeriPass"
+
         Dim con As New SqlConnection(modSQLPath)
+        Dim Proc As String = "UPDATE [Maintenance].[Downtime]
+                        SET [ttl_QAVeri_mins] = @ttlQAVeri
+                        ,[ttl_FailFreq] = @ttlFailFreq
+                        ,[VerifiedBy_QA] = @VeriByQA
+                        WHERE [DTStatus] = @DTStatus"
+
         Using cmd As SqlCommand = New SqlCommand(Proc, con)
             cmd.Parameters.AddWithValue("@ttlQAVeri", TtlVeri)
             cmd.Parameters.AddWithValue("@ttlFailFreq", TtlFailFreq)
             cmd.Parameters.AddWithValue("@DTStatus", modSetVal_NewStoppage)
-            cmd.CommandType = CommandType.StoredProcedure
-
+            cmd.Parameters.AddWithValue("@VeriByQA", VeriByQA)
             con.Open()
             cmd.ExecuteNonQuery()
             con.Close()

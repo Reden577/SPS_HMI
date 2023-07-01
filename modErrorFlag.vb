@@ -8,5 +8,7 @@
     Public modErrFlag_CntUNbyMachine As Boolean
     Public modErrFlag_CntLoadStatbyMCId As Boolean
     Public modErrFlag_GetFailFreq As Boolean
-
+    Public modErrFlag_GetUserID As Boolean
+    Public modErrFlag_GetAccessRights As Boolean
+    Public modErrFlag_GetUNandAR As Boolean
 End Module

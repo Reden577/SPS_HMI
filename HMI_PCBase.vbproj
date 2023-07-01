@@ -88,8 +88,11 @@
     <Compile Include="clsCountDTStatus_MCNewStoppage.vb" />
     <Compile Include="clsCountDTType_byDTStatusMCId.vb" />
     <Compile Include="clsDowntimeDetails.vb" />
+    <Compile Include="clsGetAccessRights.vb" />
     <Compile Include="clsGetForQAVeriNTtlQAVeri.vb" />
     <Compile Include="clsGetQAFailFreq.vb" />
+    <Compile Include="clsGetUserID.vb" />
+    <Compile Include="clsGetUserName_N_AccessRights.vb" />
     <Compile Include="clsInsertAllDowntimeDetails.vb" />
     <Compile Include="clsModBusClient.vb" />
     <Compile Include="clsModbusConnection.vb" />
@@ -107,6 +110,7 @@
     <Compile Include="clsUpdateDTDetails_QAVeriPass.vb" />
     <Compile Include="clsUpdateDTDetails_StoppageSave.vb" />
     <Compile Include="clsUpdateJOLoadedDetails_AtEndTime.vb" />
+    <Compile Include="clsUserDetails.vb" />
     <Compile Include="frmMC1MachineStoppage.Designer.vb">
       <DependentUpon>frmMC1MachineStoppage.vb</DependentUpon>
     </Compile>
@@ -177,6 +181,12 @@
       <DependentUpon>frmPlanComplete.vb</DependentUpon>
     </Compile>
     <Compile Include="frmPlanComplete.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQAVerification.Designer.vb">
+      <DependentUpon>frmQAVerification.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmQAVerification.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmSettings.vb">
@@ -287,6 +297,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPlanComplete.resx">
       <DependentUpon>frmPlanComplete.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQAVerification.resx">
+      <DependentUpon>frmQAVerification.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSettings.resx">
       <DependentUpon>frmSettings.vb</DependentUpon>

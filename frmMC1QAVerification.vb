@@ -1,4 +1,6 @@
-﻿Public Class frmMC1QAVerification
+﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ListView
+
+Public Class frmMC1QAVerification
 
     '//
     Private Sub frmMC1QAVerification_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -23,19 +25,43 @@
     End Sub
 
     Private Sub btnPass_Click(sender As Object, e As EventArgs) Handles btnPass.Click
-        If modForQA_NewJOLoaded_isTrue = False Then '<- Interlock during new Job Order is loaded
-            modMC1QAVerifyPassFlag = True
-            Update_AT_QAPass()
-            modINfrmMC1Ready = True
-            Me.Close()
-        Else
-            modForQAPass_NewJOLoaded_isTrue = True
-            modForQA_NewJOLoaded_isTrue = False
-            modINfrmNewJOSetup = True
-            Me.Close()
+        QAVerification()
+        If modQA_AccessGranted = True Then
+            If modForQA_NewJOLoaded_isTrue = False Then '<- Interlock during new Job Order is loaded
+                modMC1QAVerifyPassFlag = True
+                Update_AT_QAPass()
+                modINfrmMC1Ready = True
+
+                modQA_GetUserName = ""
+                modQA_GetUserID = ""
+                modQA_GetPassword = ""
+                modQA_GetOTS = ""
+                modQA_AccessGranted = False
+
+                Me.Close()
+            Else
+                modForQAPass_NewJOLoaded_isTrue = True
+                modForQA_NewJOLoaded_isTrue = False
+                modINfrmNewJOSetup = True
+
+                modQA_GetUserName = ""
+                modQA_GetUserID = ""
+                modQA_GetPassword = ""
+                modQA_GetOTS = ""
+                modQA_AccessGranted = False
+
+                Me.Close()
+            End If
         End If
 
+
     End Sub
+
+    '// QA PASS VERIFICATION
+    Public Sub QAVerification()
+        frmQAVerification.ShowDialog()
+    End Sub
+    '//
 
     '// UPDATE QA PASS
     Public Sub Update_AT_QAPass()
@@ -52,6 +78,7 @@
         Dim upd8 As New clsUpdateDTDetails_QAVeriPass
         upd8.TtlVeri = Math.Round((modMC1QAVeriTimer / 60), 4)
         upd8.TtlFailFreq = modMC1FailCounters
+        upd8.VeriByQA = modQA_GetUserName
         upd8.UpdateDTQAVerifyPass()
     End Sub
     '//
@@ -169,7 +196,7 @@
         ttlqaveri = chk.DTDetails_iTtlQAVeri
 
         If qaveri <> "" And qaveri <> "TBA" And ttlqaveri = 1 Then
-            Update_AT_QAPass()
+            UpdateDowntimeAtQAVerifyPass()
             modINfrmMC1Ready = True
             Me.Close()
         End If

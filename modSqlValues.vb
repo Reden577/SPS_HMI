@@ -16,5 +16,12 @@
 
     Public modDTDetails_NewDT_isTrue As Boolean
 
+    Public modQA_AccessGranted As Boolean
+    Public modQA_GetUserName As String
+    Public modQA_GetUserID As String
+    Public modQA_GetAccessRights As String
+    Public modQA_GetPassword As String
+    Public modQA_GetOTS As String
+
 
 End Module
