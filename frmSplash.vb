@@ -1,13 +1,31 @@
-﻿Imports System.Text
+﻿Imports System.IO
+Imports System.Text
 Imports System.Threading
 
 Public Class frmSplash
     Dim cntJOLoaded As Integer
     Private Sub frmSplash_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.CenterToScreen()
-        modSQLPath = My.Settings.SQLPath
-        modSetVal_IPAddress = My.Settings.IpAddress
-        modSetVal_Por = My.Settings.Port
+
+        Dim stMyConfig(2) As String
+        Dim MyConfig As StreamReader
+        MyConfig = New StreamReader("MyConfig.txt")
+        For i = 0 To 2
+            stMyConfig(i) = MyConfig.ReadLine
+            If i = 0 Then
+                modSQLPath = stMyConfig(i)
+            ElseIf i = 1 Then
+                modSetVal_IPAddress = stMyConfig(i)
+            ElseIf i = 2 Then
+                modSetVal_Por = stMyConfig(i)
+            End If
+        Next
+
+        My.Settings.SQLPath = modSQLPath
+        My.Settings.IpAddress = modSetVal_IPAddress
+        My.Settings.Port = modSetVal_Por
+        My.Settings.Save()
+
         modSettingValMachineID = My.Settings.MachineNo
         modJODetails_JOCode = My.Settings.JOCode
         MachineIdentification()
