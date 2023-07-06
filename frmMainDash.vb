@@ -38,6 +38,8 @@ Public Class frmMainDash
         lblStopDateTime.Text = My.Settings.stopTime
         modMC1StopDateandTime = My.Settings.stopTime
         modSettingValMachineID = My.Settings.MachineNo
+        modMCRunTime = My.Settings.RunTime
+        modFPBuyOff_Done = My.Settings.StartupBuyoff
 
         modMSTimerCounter = My.Settings.MSTimer
         modFPBTimerCounter = My.Settings.FBTimer
@@ -68,6 +70,9 @@ Public Class frmMainDash
         My.Settings.MassProTimer = modMassProTimerCounter
         My.Settings.TAMSetShots = modMC1TestAutoMOdeCounterSet
         My.Settings.MachineNo = modSettingValMachineID
+        My.Settings.RunTime = modMCRunTime
+        My.Settings.StartupBuyoff = modFPBuyOff_Done
+
 
         tmrRepairTime.Stop()
         tmrQAVeriTime.Stop()
@@ -100,6 +105,7 @@ Public Class frmMainDash
         InputCounterM16_M17_Via_X2_X5()
 
         TextChangeReferenceValues()
+        RunTime()
     End Sub
     '//
 
@@ -265,6 +271,7 @@ Public Class frmMainDash
             If modSettingValMachineID = "MC1" Then
                 If D2002 = 0 And modFPBuyOff_Done = False Then
                     modINfrmNewJOSetup = True
+                    modMCRunTime = 0
                 Else
                     modINfrmMC1Stop = True
                 End If
@@ -272,6 +279,7 @@ Public Class frmMainDash
             ElseIf modSettingValMachineID = "MC2" Then
                 If D2004 = 0 And modFPBuyOff_Done = False Then
                     modINfrmNewJOSetup = True
+                    modMCRunTime = 0
                 Else
                     modINfrmMC1Stop = True
                 End If
@@ -1337,4 +1345,17 @@ Public Class frmMainDash
     '    End If
     'End Sub
 
+    '// RUNNING TIME CONDITIONS
+    Public Sub RunTime()
+        If modSetVal_RXPLC_RunStop = True Then
+            tmrRunTime.Start()
+
+        Else
+            tmrRunTime.Stop()
+        End If
+    End Sub
+
+    Private Sub tmrRunTime_Tick(sender As Object, e As EventArgs) Handles tmrRunTime.Tick
+        modMCRunTime += 1
+    End Sub
 End Class

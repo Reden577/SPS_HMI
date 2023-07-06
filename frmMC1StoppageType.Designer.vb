@@ -42,13 +42,13 @@ Partial Class frmMC1StoppageType
         '
         'GroupBox1
         '
-        Me.GroupBox1.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.GroupBox1.Controls.Add(Me.lblDisplayON)
         Me.GroupBox1.Controls.Add(Me.pnlMC1)
+        Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(13, 13)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(561, 438)
+        Me.GroupBox1.Size = New System.Drawing.Size(625, 1088)
         Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "*"
@@ -58,7 +58,7 @@ Partial Class frmMC1StoppageType
         Me.lblDisplayON.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblDisplayON.BackColor = System.Drawing.Color.Transparent
         Me.lblDisplayON.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDisplayON.Location = New System.Drawing.Point(460, 13)
+        Me.lblDisplayON.Location = New System.Drawing.Point(524, 13)
         Me.lblDisplayON.Name = "lblDisplayON"
         Me.lblDisplayON.Size = New System.Drawing.Size(96, 15)
         Me.lblDisplayON.TabIndex = 5
@@ -74,7 +74,7 @@ Partial Class frmMC1StoppageType
         Me.pnlMC1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlMC1.Location = New System.Drawing.Point(3, 22)
         Me.pnlMC1.Name = "pnlMC1"
-        Me.pnlMC1.Size = New System.Drawing.Size(555, 413)
+        Me.pnlMC1.Size = New System.Drawing.Size(619, 1063)
         Me.pnlMC1.TabIndex = 0
         '
         'IconButton1
@@ -87,7 +87,7 @@ Partial Class frmMC1StoppageType
         Me.IconButton1.IconColor = System.Drawing.Color.Black
         Me.IconButton1.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.IconButton1.IconSize = 60
-        Me.IconButton1.Location = New System.Drawing.Point(481, 19)
+        Me.IconButton1.Location = New System.Drawing.Point(545, 19)
         Me.IconButton1.Name = "IconButton1"
         Me.IconButton1.Size = New System.Drawing.Size(65, 56)
         Me.IconButton1.TabIndex = 3
@@ -99,16 +99,16 @@ Partial Class frmMC1StoppageType
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.Location = New System.Drawing.Point(8, 28)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(250, 39)
+        Me.Label4.Size = New System.Drawing.Size(306, 39)
         Me.Label4.TabIndex = 0
-        Me.Label4.Text = "Stoppage Type"
+        Me.Label4.Text = "STOPPAGE TYPE"
         '
         'picMachineStoppage
         '
         Me.picMachineStoppage.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.picMachineStoppage.Cursor = System.Windows.Forms.Cursors.Hand
         Me.picMachineStoppage.Image = Global.HMI_PCBase.My.Resources.Resources.Operator_Stoppage
-        Me.picMachineStoppage.Location = New System.Drawing.Point(294, 178)
+        Me.picMachineStoppage.Location = New System.Drawing.Point(196, 555)
         Me.picMachineStoppage.Name = "picMachineStoppage"
         Me.picMachineStoppage.Size = New System.Drawing.Size(240, 200)
         Me.picMachineStoppage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -120,7 +120,7 @@ Partial Class frmMC1StoppageType
         Me.picOperatorStoppage.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.picOperatorStoppage.Cursor = System.Windows.Forms.Cursors.Hand
         Me.picOperatorStoppage.Image = Global.HMI_PCBase.My.Resources.Resources.Machine_Stoppage
-        Me.picOperatorStoppage.Location = New System.Drawing.Point(20, 178)
+        Me.picOperatorStoppage.Location = New System.Drawing.Point(196, 236)
         Me.picOperatorStoppage.Name = "picOperatorStoppage"
         Me.picOperatorStoppage.Size = New System.Drawing.Size(240, 200)
         Me.picOperatorStoppage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -151,15 +151,15 @@ Partial Class frmMC1StoppageType
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(587, 464)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(651, 1114)
         Me.TableLayoutPanel1.TabIndex = 5
         '
         'frmMC1StoppageType
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.ClientSize = New System.Drawing.Size(587, 464)
+        Me.BackColor = System.Drawing.Color.CadetBlue
+        Me.ClientSize = New System.Drawing.Size(651, 1114)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "frmMC1StoppageType"

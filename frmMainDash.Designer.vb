@@ -27,7 +27,14 @@ Partial Class frmMainDash
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.lblNewDTisTrue = New System.Windows.Forms.Label()
         Me.Label36 = New System.Windows.Forms.Label()
+        Me.Label37 = New System.Windows.Forms.Label()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.Label32 = New System.Windows.Forms.Label()
+        Me.Label40 = New System.Windows.Forms.Label()
+        Me.Label39 = New System.Windows.Forms.Label()
         Me.lblTesting = New System.Windows.Forms.Label()
+        Me.Label38 = New System.Windows.Forms.Label()
+        Me.lblJOLoadedisTrue = New System.Windows.Forms.Label()
         Me.lblMC1QAStoppageSaveFlag = New System.Windows.Forms.Label()
         Me.lblQAVerifyFailFlag = New System.Windows.Forms.Label()
         Me.lblQAVerifyPassFlag = New System.Windows.Forms.Label()
@@ -98,8 +105,6 @@ Partial Class frmMainDash
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.main = New System.Windows.Forms.Label()
-        Me.lblJOLoadedisTrue = New System.Windows.Forms.Label()
-        Me.Label32 = New System.Windows.Forms.Label()
         Me.tmrRealTimeCheck = New System.Windows.Forms.Timer(Me.components)
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
@@ -115,17 +120,13 @@ Partial Class frmMainDash
         Me.tmrMPTimerCounter = New System.Windows.Forms.Timer(Me.components)
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.lblMCNumber = New System.Windows.Forms.Label()
-        Me.Label22 = New System.Windows.Forms.Label()
-        Me.Label37 = New System.Windows.Forms.Label()
-        Me.Label38 = New System.Windows.Forms.Label()
-        Me.Label39 = New System.Windows.Forms.Label()
-        Me.Label40 = New System.Windows.Forms.Label()
         Me.Label41 = New System.Windows.Forms.Label()
         Me.lblQAVeriTime = New System.Windows.Forms.Label()
         Me.Label42 = New System.Windows.Forms.Label()
         Me.lblMCStopTime = New System.Windows.Forms.Label()
         Me.Label43 = New System.Windows.Forms.Label()
         Me.lblRepairTime = New System.Windows.Forms.Label()
+        Me.tmrRunTime = New System.Windows.Forms.Timer(Me.components)
         Me.pnlFormContainer.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.picComCheck, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -139,9 +140,9 @@ Partial Class frmMainDash
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.pnlFormContainer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.pnlFormContainer.Controls.Add(Me.Panel2)
-        Me.pnlFormContainer.Location = New System.Drawing.Point(0, 35)
+        Me.pnlFormContainer.Location = New System.Drawing.Point(10, 35)
         Me.pnlFormContainer.Name = "pnlFormContainer"
-        Me.pnlFormContainer.Size = New System.Drawing.Size(573, 464)
+        Me.pnlFormContainer.Size = New System.Drawing.Size(651, 1114)
         Me.pnlFormContainer.TabIndex = 0
         '
         'Panel2
@@ -229,7 +230,7 @@ Partial Class frmMainDash
         Me.Panel2.Controls.Add(Me.main)
         Me.Panel2.Location = New System.Drawing.Point(10, 3)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(414, 431)
+        Me.Panel2.Size = New System.Drawing.Size(634, 1104)
         Me.Panel2.TabIndex = 0
         Me.Panel2.Visible = False
         '
@@ -251,6 +252,60 @@ Partial Class frmMainDash
         Me.Label36.TabIndex = 2
         Me.Label36.Text = "modDTDetails_NewDT_isTrue:"
         '
+        'Label37
+        '
+        Me.Label37.AutoSize = True
+        Me.Label37.Location = New System.Drawing.Point(66, 414)
+        Me.Label37.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label37.Name = "Label37"
+        Me.Label37.Size = New System.Drawing.Size(45, 13)
+        Me.Label37.TabIndex = 7
+        Me.Label37.Text = "Label37"
+        Me.Label37.Visible = False
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.Location = New System.Drawing.Point(11, 414)
+        Me.Label22.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(45, 13)
+        Me.Label22.TabIndex = 7
+        Me.Label22.Text = "Label22"
+        Me.Label22.Visible = False
+        '
+        'Label32
+        '
+        Me.Label32.Location = New System.Drawing.Point(200, 256)
+        Me.Label32.Name = "Label32"
+        Me.Label32.Size = New System.Drawing.Size(151, 13)
+        Me.Label32.TabIndex = 0
+        Me.Label32.Text = "JO Loaded isTrue"
+        Me.Label32.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Label32.Visible = False
+        '
+        'Label40
+        '
+        Me.Label40.AutoSize = True
+        Me.Label40.Location = New System.Drawing.Point(127, 390)
+        Me.Label40.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label40.Name = "Label40"
+        Me.Label40.Size = New System.Drawing.Size(45, 13)
+        Me.Label40.TabIndex = 7
+        Me.Label40.Text = "Label40"
+        Me.Label40.Visible = False
+        '
+        'Label39
+        '
+        Me.Label39.AutoSize = True
+        Me.Label39.Location = New System.Drawing.Point(66, 390)
+        Me.Label39.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label39.Name = "Label39"
+        Me.Label39.Size = New System.Drawing.Size(45, 13)
+        Me.Label39.TabIndex = 7
+        Me.Label39.Text = "Label39"
+        Me.Label39.Visible = False
+        '
         'lblTesting
         '
         Me.lblTesting.AutoSize = True
@@ -259,6 +314,27 @@ Partial Class frmMainDash
         Me.lblTesting.Size = New System.Drawing.Size(45, 13)
         Me.lblTesting.TabIndex = 1
         Me.lblTesting.Text = "Label28"
+        '
+        'Label38
+        '
+        Me.Label38.AutoSize = True
+        Me.Label38.Location = New System.Drawing.Point(11, 390)
+        Me.Label38.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label38.Name = "Label38"
+        Me.Label38.Size = New System.Drawing.Size(45, 13)
+        Me.Label38.TabIndex = 7
+        Me.Label38.Text = "Label38"
+        Me.Label38.Visible = False
+        '
+        'lblJOLoadedisTrue
+        '
+        Me.lblJOLoadedisTrue.Location = New System.Drawing.Point(354, 256)
+        Me.lblJOLoadedisTrue.Name = "lblJOLoadedisTrue"
+        Me.lblJOLoadedisTrue.Size = New System.Drawing.Size(32, 13)
+        Me.lblJOLoadedisTrue.TabIndex = 0
+        Me.lblJOLoadedisTrue.Text = "False"
+        Me.lblJOLoadedisTrue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.lblJOLoadedisTrue.Visible = False
         '
         'lblMC1QAStoppageSaveFlag
         '
@@ -896,26 +972,6 @@ Partial Class frmMainDash
         Me.main.Text = "4.Infrm Main"
         Me.main.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'lblJOLoadedisTrue
-        '
-        Me.lblJOLoadedisTrue.Location = New System.Drawing.Point(354, 256)
-        Me.lblJOLoadedisTrue.Name = "lblJOLoadedisTrue"
-        Me.lblJOLoadedisTrue.Size = New System.Drawing.Size(32, 13)
-        Me.lblJOLoadedisTrue.TabIndex = 0
-        Me.lblJOLoadedisTrue.Text = "False"
-        Me.lblJOLoadedisTrue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblJOLoadedisTrue.Visible = False
-        '
-        'Label32
-        '
-        Me.Label32.Location = New System.Drawing.Point(200, 256)
-        Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(151, 13)
-        Me.Label32.TabIndex = 0
-        Me.Label32.Text = "JO Loaded isTrue"
-        Me.Label32.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Label32.Visible = False
-        '
         'tmrRealTimeCheck
         '
         Me.tmrRealTimeCheck.Enabled = True
@@ -925,7 +981,7 @@ Partial Class frmMainDash
         Me.lblShiftCode.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.lblShiftCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblShiftCode.ForeColor = System.Drawing.Color.White
-        Me.lblShiftCode.Location = New System.Drawing.Point(415, 4)
+        Me.lblShiftCode.Location = New System.Drawing.Point(514, 4)
         Me.lblShiftCode.Name = "lblShiftCode"
         Me.lblShiftCode.Size = New System.Drawing.Size(114, 20)
         Me.lblShiftCode.TabIndex = 0
@@ -938,7 +994,7 @@ Partial Class frmMainDash
         Me.lblMachineNo.AutoSize = True
         Me.lblMachineNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblMachineNo.ForeColor = System.Drawing.Color.White
-        Me.lblMachineNo.Location = New System.Drawing.Point(201, 4)
+        Me.lblMachineNo.Location = New System.Drawing.Point(250, 4)
         Me.lblMachineNo.Name = "lblMachineNo"
         Me.lblMachineNo.Size = New System.Drawing.Size(160, 20)
         Me.lblMachineNo.TabIndex = 0
@@ -948,7 +1004,7 @@ Partial Class frmMainDash
         '
         Me.picComCheck.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.picComCheck.Image = Global.HMI_PCBase.My.Resources.Resources.indicator_red
-        Me.picComCheck.Location = New System.Drawing.Point(542, 4)
+        Me.picComCheck.Location = New System.Drawing.Point(641, 4)
         Me.picComCheck.Name = "picComCheck"
         Me.picComCheck.Size = New System.Drawing.Size(20, 20)
         Me.picComCheck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -978,7 +1034,7 @@ Partial Class frmMainDash
         Me.btnSetting.IconColor = System.Drawing.Color.Black
         Me.btnSetting.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.btnSetting.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnSetting.Location = New System.Drawing.Point(510, 505)
+        Me.btnSetting.Location = New System.Drawing.Point(609, 1155)
         Me.btnSetting.Name = "btnSetting"
         Me.btnSetting.Size = New System.Drawing.Size(62, 57)
         Me.btnSetting.TabIndex = 2
@@ -1018,7 +1074,7 @@ Partial Class frmMainDash
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(572, 29)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(671, 29)
         Me.TableLayoutPanel1.TabIndex = 6
         '
         'lblMCNumber
@@ -1033,65 +1089,11 @@ Partial Class frmMainDash
         Me.lblMCNumber.TabIndex = 0
         Me.lblMCNumber.Text = "  Machine No"
         '
-        'Label22
-        '
-        Me.Label22.AutoSize = True
-        Me.Label22.Location = New System.Drawing.Point(11, 414)
-        Me.Label22.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(45, 13)
-        Me.Label22.TabIndex = 7
-        Me.Label22.Text = "Label22"
-        Me.Label22.Visible = False
-        '
-        'Label37
-        '
-        Me.Label37.AutoSize = True
-        Me.Label37.Location = New System.Drawing.Point(66, 414)
-        Me.Label37.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label37.Name = "Label37"
-        Me.Label37.Size = New System.Drawing.Size(45, 13)
-        Me.Label37.TabIndex = 7
-        Me.Label37.Text = "Label37"
-        Me.Label37.Visible = False
-        '
-        'Label38
-        '
-        Me.Label38.AutoSize = True
-        Me.Label38.Location = New System.Drawing.Point(11, 390)
-        Me.Label38.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label38.Name = "Label38"
-        Me.Label38.Size = New System.Drawing.Size(45, 13)
-        Me.Label38.TabIndex = 7
-        Me.Label38.Text = "Label38"
-        Me.Label38.Visible = False
-        '
-        'Label39
-        '
-        Me.Label39.AutoSize = True
-        Me.Label39.Location = New System.Drawing.Point(66, 390)
-        Me.Label39.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label39.Name = "Label39"
-        Me.Label39.Size = New System.Drawing.Size(45, 13)
-        Me.Label39.TabIndex = 7
-        Me.Label39.Text = "Label39"
-        Me.Label39.Visible = False
-        '
-        'Label40
-        '
-        Me.Label40.AutoSize = True
-        Me.Label40.Location = New System.Drawing.Point(127, 390)
-        Me.Label40.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label40.Name = "Label40"
-        Me.Label40.Size = New System.Drawing.Size(45, 13)
-        Me.Label40.TabIndex = 7
-        Me.Label40.Text = "Label40"
-        Me.Label40.Visible = False
-        '
         'Label41
         '
+        Me.Label41.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label41.AutoSize = True
-        Me.Label41.Location = New System.Drawing.Point(7, 539)
+        Me.Label41.Location = New System.Drawing.Point(10, 1194)
         Me.Label41.Name = "Label41"
         Me.Label41.Size = New System.Drawing.Size(66, 13)
         Me.Label41.TabIndex = 8
@@ -1099,8 +1101,9 @@ Partial Class frmMainDash
         '
         'lblQAVeriTime
         '
+        Me.lblQAVeriTime.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lblQAVeriTime.AutoSize = True
-        Me.lblQAVeriTime.Location = New System.Drawing.Point(80, 539)
+        Me.lblQAVeriTime.Location = New System.Drawing.Point(83, 1194)
         Me.lblQAVeriTime.Name = "lblQAVeriTime"
         Me.lblQAVeriTime.Size = New System.Drawing.Size(13, 13)
         Me.lblQAVeriTime.TabIndex = 8
@@ -1108,8 +1111,9 @@ Partial Class frmMainDash
         '
         'Label42
         '
+        Me.Label42.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label42.AutoSize = True
-        Me.Label42.Location = New System.Drawing.Point(2, 505)
+        Me.Label42.Location = New System.Drawing.Point(5, 1160)
         Me.Label42.Name = "Label42"
         Me.Label42.Size = New System.Drawing.Size(71, 13)
         Me.Label42.TabIndex = 8
@@ -1117,8 +1121,9 @@ Partial Class frmMainDash
         '
         'lblMCStopTime
         '
+        Me.lblMCStopTime.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lblMCStopTime.AutoSize = True
-        Me.lblMCStopTime.Location = New System.Drawing.Point(80, 505)
+        Me.lblMCStopTime.Location = New System.Drawing.Point(83, 1160)
         Me.lblMCStopTime.Name = "lblMCStopTime"
         Me.lblMCStopTime.Size = New System.Drawing.Size(13, 13)
         Me.lblMCStopTime.TabIndex = 8
@@ -1126,8 +1131,9 @@ Partial Class frmMainDash
         '
         'Label43
         '
+        Me.Label43.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label43.AutoSize = True
-        Me.Label43.Location = New System.Drawing.Point(9, 522)
+        Me.Label43.Location = New System.Drawing.Point(12, 1177)
         Me.Label43.Name = "Label43"
         Me.Label43.Size = New System.Drawing.Size(64, 13)
         Me.Label43.TabIndex = 8
@@ -1135,28 +1141,34 @@ Partial Class frmMainDash
         '
         'lblRepairTime
         '
+        Me.lblRepairTime.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lblRepairTime.AutoSize = True
-        Me.lblRepairTime.Location = New System.Drawing.Point(80, 522)
+        Me.lblRepairTime.Location = New System.Drawing.Point(83, 1177)
         Me.lblRepairTime.Name = "lblRepairTime"
         Me.lblRepairTime.Size = New System.Drawing.Size(13, 13)
         Me.lblRepairTime.TabIndex = 8
         Me.lblRepairTime.Text = "0"
+        '
+        'tmrRunTime
+        '
+        Me.tmrRunTime.Enabled = True
+        Me.tmrRunTime.Interval = 1000
         '
         'frmMainDash
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.ClientSize = New System.Drawing.Size(572, 561)
+        Me.ClientSize = New System.Drawing.Size(671, 1211)
         Me.Controls.Add(Me.lblRepairTime)
-        Me.Controls.Add(Me.lblMCStopTime)
-        Me.Controls.Add(Me.lblQAVeriTime)
-        Me.Controls.Add(Me.Label43)
-        Me.Controls.Add(Me.Label42)
-        Me.Controls.Add(Me.Label41)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.btnSetting)
+        Me.Controls.Add(Me.lblMCStopTime)
         Me.Controls.Add(Me.pnlFormContainer)
+        Me.Controls.Add(Me.Label42)
+        Me.Controls.Add(Me.lblQAVeriTime)
+        Me.Controls.Add(Me.Label43)
+        Me.Controls.Add(Me.Label41)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Name = "frmMainDash"
         Me.Text = "Main Dashboard"
@@ -1274,4 +1286,5 @@ Partial Class frmMainDash
     Friend WithEvents lblMCStopTime As Label
     Friend WithEvents Label43 As Label
     Friend WithEvents lblRepairTime As Label
+    Friend WithEvents tmrRunTime As Timer
 End Class

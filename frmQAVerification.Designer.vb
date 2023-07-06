@@ -66,7 +66,7 @@ Partial Class frmQAVerification
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.BackColor = System.Drawing.Color.CadetBlue
         Me.ClientSize = New System.Drawing.Size(329, 182)
         Me.Controls.Add(Me.IconButton1)
         Me.Controls.Add(Me.Label1)

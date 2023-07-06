@@ -188,6 +188,10 @@ Public Class frmMC1QAStoppage
         End If
     End Sub
 
+    Private Sub pnlMC1_Paint(sender As Object, e As PaintEventArgs) Handles pnlMC1.Paint
+
+    End Sub
+
 
     '//
 End Class

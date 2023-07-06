@@ -207,6 +207,30 @@ Namespace My
                 Me("JOCode") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property RunTime() As Integer
+            Get
+                Return CType(Me("RunTime"),Integer)
+            End Get
+            Set
+                Me("RunTime") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property StartupBuyoff() As Boolean
+            Get
+                Return CType(Me("StartupBuyoff"),Boolean)
+            End Get
+            Set
+                Me("StartupBuyoff") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

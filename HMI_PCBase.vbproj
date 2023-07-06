@@ -384,5 +384,8 @@
   <ItemGroup>
     <None Include="Resources\SPSHMI_2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewJOSetup3.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

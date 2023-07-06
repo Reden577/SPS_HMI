@@ -10,8 +10,6 @@
         modINfrmMC1Run = False
     End Sub
 
-
-
     Private Sub lblStatMC1_Click(sender As Object, e As EventArgs) Handles lblStatMC1.Click
         modInfrmMC1MainPage = True
         Me.Close()
@@ -21,6 +19,18 @@
         modInfrmMC1MainPage = True
         Me.Close()
     End Sub
+
+    Private Sub tmrRealTimeCheck_Tick(sender As Object, e As EventArgs) Handles tmrRealTimeCheck.Tick
+        If modMCRunTime < 3600 Then
+            lblElapsTimeMCRunning.Text = Math.Round((modMCRunTime / 60), 4) & " mins"
+        ElseIf modMCRunTime >= 3600 Then
+            lblElapsTimeMCRunning.Text = Math.Round((modMCRunTime / 3600), 2) & " hrs"
+        End If
+
+        lblElapsedDays.Text = Math.Round(((modMCRunTime / 3600)) / 24, 2) & " day/s"
+    End Sub
     '//
+
+
 
 End Class

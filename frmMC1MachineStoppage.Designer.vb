@@ -46,7 +46,7 @@ Partial Class frmMC1MachineStoppage
         '
         Me.lblDisplayON.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.lblDisplayON.BackColor = System.Drawing.Color.Transparent
-        Me.lblDisplayON.Location = New System.Drawing.Point(555, 0)
+        Me.lblDisplayON.Location = New System.Drawing.Point(619, 0)
         Me.lblDisplayON.Name = "lblDisplayON"
         Me.lblDisplayON.Size = New System.Drawing.Size(19, 10)
         Me.lblDisplayON.TabIndex = 9
@@ -55,12 +55,13 @@ Partial Class frmMC1MachineStoppage
         '
         'GroupBox1
         '
-        Me.GroupBox1.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.GroupBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.Controls.Add(Me.pnlMC1)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(13, 13)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(561, 438)
+        Me.GroupBox1.Size = New System.Drawing.Size(625, 1088)
         Me.GroupBox1.TabIndex = 8
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "*"
@@ -79,7 +80,7 @@ Partial Class frmMC1MachineStoppage
         Me.pnlMC1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlMC1.Location = New System.Drawing.Point(3, 22)
         Me.pnlMC1.Name = "pnlMC1"
-        Me.pnlMC1.Size = New System.Drawing.Size(555, 413)
+        Me.pnlMC1.Size = New System.Drawing.Size(619, 1063)
         Me.pnlMC1.TabIndex = 0
         '
         'btnClear
@@ -91,7 +92,7 @@ Partial Class frmMC1MachineStoppage
         Me.btnClear.IconColor = System.Drawing.Color.Black
         Me.btnClear.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.btnClear.IconSize = 40
-        Me.btnClear.Location = New System.Drawing.Point(139, 307)
+        Me.btnClear.Location = New System.Drawing.Point(202, 990)
         Me.btnClear.Name = "btnClear"
         Me.btnClear.Size = New System.Drawing.Size(199, 58)
         Me.btnClear.TabIndex = 5
@@ -109,7 +110,7 @@ Partial Class frmMC1MachineStoppage
         Me.btnSave.IconColor = System.Drawing.Color.Black
         Me.btnSave.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.btnSave.IconSize = 40
-        Me.btnSave.Location = New System.Drawing.Point(345, 307)
+        Me.btnSave.Location = New System.Drawing.Point(408, 990)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(199, 58)
         Me.btnSave.TabIndex = 5
@@ -122,23 +123,23 @@ Partial Class frmMC1MachineStoppage
         '
         Me.cboCountermeasure.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cboCountermeasure.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cboCountermeasure.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboCountermeasure.FormattingEnabled = True
-        Me.cboCountermeasure.ItemHeight = 25
-        Me.cboCountermeasure.Location = New System.Drawing.Point(9, 214)
+        Me.cboCountermeasure.ItemHeight = 33
+        Me.cboCountermeasure.Location = New System.Drawing.Point(9, 309)
         Me.cboCountermeasure.Name = "cboCountermeasure"
-        Me.cboCountermeasure.Size = New System.Drawing.Size(534, 33)
+        Me.cboCountermeasure.Size = New System.Drawing.Size(598, 41)
         Me.cboCountermeasure.TabIndex = 4
         '
         'cboStoppage
         '
         Me.cboStoppage.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cboStoppage.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cboStoppage.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboStoppage.FormattingEnabled = True
-        Me.cboStoppage.Location = New System.Drawing.Point(9, 129)
+        Me.cboStoppage.Location = New System.Drawing.Point(9, 200)
         Me.cboStoppage.Name = "cboStoppage"
-        Me.cboStoppage.Size = New System.Drawing.Size(534, 33)
+        Me.cboStoppage.Size = New System.Drawing.Size(598, 41)
         Me.cboStoppage.TabIndex = 4
         '
         'btnBack
@@ -151,7 +152,7 @@ Partial Class frmMC1MachineStoppage
         Me.btnBack.IconColor = System.Drawing.Color.Black
         Me.btnBack.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.btnBack.IconSize = 60
-        Me.btnBack.Location = New System.Drawing.Point(407, 19)
+        Me.btnBack.Location = New System.Drawing.Point(471, 19)
         Me.btnBack.Name = "btnBack"
         Me.btnBack.Size = New System.Drawing.Size(65, 56)
         Me.btnBack.TabIndex = 3
@@ -160,10 +161,10 @@ Partial Class frmMC1MachineStoppage
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(3, 180)
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(7, 272)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(315, 31)
+        Me.Label2.Size = New System.Drawing.Size(338, 33)
         Me.Label2.TabIndex = 0
         Me.Label2.Text = "Countermeasure Details:"
         '
@@ -177,7 +178,7 @@ Partial Class frmMC1MachineStoppage
         Me.btnMainPage.IconColor = System.Drawing.Color.Black
         Me.btnMainPage.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.btnMainPage.IconSize = 60
-        Me.btnMainPage.Location = New System.Drawing.Point(478, 19)
+        Me.btnMainPage.Location = New System.Drawing.Point(542, 19)
         Me.btnMainPage.Name = "btnMainPage"
         Me.btnMainPage.Size = New System.Drawing.Size(65, 56)
         Me.btnMainPage.TabIndex = 3
@@ -186,22 +187,22 @@ Partial Class frmMC1MachineStoppage
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(3, 95)
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(7, 160)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(229, 31)
+        Me.Label1.Size = New System.Drawing.Size(244, 33)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Stoppage Details:"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(2, 28)
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(6, 28)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(304, 39)
+        Me.Label4.Size = New System.Drawing.Size(349, 37)
         Me.Label4.TabIndex = 0
-        Me.Label4.Text = "Machine Stoppage"
+        Me.Label4.Text = "MACHINE STOPPAGE"
         '
         'tmrRealTimeCheck
         '
@@ -212,6 +213,7 @@ Partial Class frmMC1MachineStoppage
         Me.TableLayoutPanel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel1.BackColor = System.Drawing.Color.CadetBlue
         Me.TableLayoutPanel1.ColumnCount = 3
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
@@ -224,7 +226,7 @@ Partial Class frmMC1MachineStoppage
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(587, 464)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(651, 1114)
         Me.TableLayoutPanel1.TabIndex = 10
         '
         'frmMC1MachineStoppage
@@ -232,7 +234,7 @@ Partial Class frmMC1MachineStoppage
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.ClientSize = New System.Drawing.Size(587, 464)
+        Me.ClientSize = New System.Drawing.Size(651, 1114)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "frmMC1MachineStoppage"

@@ -43,7 +43,7 @@ Partial Class frmMC1STOP
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(13, 13)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(553, 438)
+        Me.GroupBox1.Size = New System.Drawing.Size(625, 1088)
         Me.GroupBox1.TabIndex = 5
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "*"
@@ -60,7 +60,7 @@ Partial Class frmMC1STOP
         Me.pnlMC1.ForeColor = System.Drawing.Color.Black
         Me.pnlMC1.Location = New System.Drawing.Point(3, 22)
         Me.pnlMC1.Name = "pnlMC1"
-        Me.pnlMC1.Size = New System.Drawing.Size(547, 413)
+        Me.pnlMC1.Size = New System.Drawing.Size(619, 1063)
         Me.pnlMC1.TabIndex = 0
         '
         'btnAcknowledge
@@ -70,9 +70,9 @@ Partial Class frmMC1STOP
         Me.btnAcknowledge.IconChar = FontAwesome.Sharp.IconChar.Wrench
         Me.btnAcknowledge.IconColor = System.Drawing.Color.Black
         Me.btnAcknowledge.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.btnAcknowledge.Location = New System.Drawing.Point(147, 233)
+        Me.btnAcknowledge.Location = New System.Drawing.Point(159, 503)
         Me.btnAcknowledge.Name = "btnAcknowledge"
-        Me.btnAcknowledge.Size = New System.Drawing.Size(252, 59)
+        Me.btnAcknowledge.Size = New System.Drawing.Size(299, 69)
         Me.btnAcknowledge.TabIndex = 9
         Me.btnAcknowledge.Text = "Acknowledge"
         Me.btnAcknowledge.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -85,7 +85,7 @@ Partial Class frmMC1STOP
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(14, 359)
+        Me.Label1.Location = New System.Drawing.Point(14, 1009)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(187, 31)
         Me.Label1.TabIndex = 7
@@ -99,7 +99,7 @@ Partial Class frmMC1STOP
         Me.lblElapsTimeMC1.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblElapsTimeMC1.ForeColor = System.Drawing.Color.White
         Me.lblElapsTimeMC1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.lblElapsTimeMC1.Location = New System.Drawing.Point(209, 357)
+        Me.lblElapsTimeMC1.Location = New System.Drawing.Point(209, 1007)
         Me.lblElapsTimeMC1.Name = "lblElapsTimeMC1"
         Me.lblElapsTimeMC1.Size = New System.Drawing.Size(272, 35)
         Me.lblElapsTimeMC1.TabIndex = 8
@@ -114,9 +114,9 @@ Partial Class frmMC1STOP
         Me.lblStatMC1.Cursor = System.Windows.Forms.Cursors.Hand
         Me.lblStatMC1.Font = New System.Drawing.Font("Microsoft Sans Serif", 48.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblStatMC1.ForeColor = System.Drawing.Color.White
-        Me.lblStatMC1.Location = New System.Drawing.Point(3, 116)
+        Me.lblStatMC1.Location = New System.Drawing.Point(5, 371)
         Me.lblStatMC1.Name = "lblStatMC1"
-        Me.lblStatMC1.Size = New System.Drawing.Size(537, 114)
+        Me.lblStatMC1.Size = New System.Drawing.Size(609, 114)
         Me.lblStatMC1.TabIndex = 6
         Me.lblStatMC1.Text = "Machine Stop"
         Me.lblStatMC1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -139,15 +139,15 @@ Partial Class frmMC1STOP
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(579, 464)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(651, 1114)
         Me.TableLayoutPanel1.TabIndex = 6
         '
         'frmMC1STOP
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.ClientSize = New System.Drawing.Size(579, 464)
+        Me.BackColor = System.Drawing.Color.DarkCyan
+        Me.ClientSize = New System.Drawing.Size(651, 1114)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "frmMC1STOP"

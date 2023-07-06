@@ -22,12 +22,16 @@ Partial Class frmMC1RUN
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.pnlMC1 = New System.Windows.Forms.Panel()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.lblElapsedDays = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.lblElapsTimeMC1 = New System.Windows.Forms.Label()
+        Me.lblElapsTimeMCRunning = New System.Windows.Forms.Label()
         Me.lblStatMC1 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.tmrRealTimeCheck = New System.Windows.Forms.Timer(Me.components)
         Me.pnlMC1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -36,15 +40,44 @@ Partial Class frmMC1RUN
         'pnlMC1
         '
         Me.pnlMC1.BackColor = System.Drawing.Color.Green
+        Me.pnlMC1.Controls.Add(Me.Label3)
+        Me.pnlMC1.Controls.Add(Me.lblElapsedDays)
         Me.pnlMC1.Controls.Add(Me.Label1)
-        Me.pnlMC1.Controls.Add(Me.lblElapsTimeMC1)
+        Me.pnlMC1.Controls.Add(Me.lblElapsTimeMCRunning)
         Me.pnlMC1.Controls.Add(Me.lblStatMC1)
         Me.pnlMC1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlMC1.ForeColor = System.Drawing.Color.Black
         Me.pnlMC1.Location = New System.Drawing.Point(3, 22)
         Me.pnlMC1.Name = "pnlMC1"
-        Me.pnlMC1.Size = New System.Drawing.Size(555, 413)
+        Me.pnlMC1.Size = New System.Drawing.Size(619, 1063)
         Me.pnlMC1.TabIndex = 0
+        '
+        'Label3
+        '
+        Me.Label3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.White
+        Me.Label3.Location = New System.Drawing.Point(15, 1016)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(276, 31)
+        Me.Label3.TabIndex = 7
+        Me.Label3.Text = "Elapsed Time(Day/s):"
+        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'lblElapsedDays
+        '
+        Me.lblElapsedDays.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.lblElapsedDays.BackColor = System.Drawing.Color.Transparent
+        Me.lblElapsedDays.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblElapsedDays.ForeColor = System.Drawing.Color.White
+        Me.lblElapsedDays.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lblElapsedDays.Location = New System.Drawing.Point(298, 1014)
+        Me.lblElapsedDays.Name = "lblElapsedDays"
+        Me.lblElapsedDays.Size = New System.Drawing.Size(272, 35)
+        Me.lblElapsedDays.TabIndex = 8
+        Me.lblElapsedDays.Text = "0"
+        Me.lblElapsedDays.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Label1
         '
@@ -52,28 +85,26 @@ Partial Class frmMC1RUN
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(14, 359)
+        Me.Label1.Location = New System.Drawing.Point(14, 985)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(187, 31)
         Me.Label1.TabIndex = 7
         Me.Label1.Text = "Elapsed Time:"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.Label1.Visible = False
         '
-        'lblElapsTimeMC1
+        'lblElapsTimeMCRunning
         '
-        Me.lblElapsTimeMC1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.lblElapsTimeMC1.BackColor = System.Drawing.Color.Transparent
-        Me.lblElapsTimeMC1.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblElapsTimeMC1.ForeColor = System.Drawing.Color.White
-        Me.lblElapsTimeMC1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.lblElapsTimeMC1.Location = New System.Drawing.Point(209, 357)
-        Me.lblElapsTimeMC1.Name = "lblElapsTimeMC1"
-        Me.lblElapsTimeMC1.Size = New System.Drawing.Size(272, 35)
-        Me.lblElapsTimeMC1.TabIndex = 8
-        Me.lblElapsTimeMC1.Text = "0"
-        Me.lblElapsTimeMC1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblElapsTimeMC1.Visible = False
+        Me.lblElapsTimeMCRunning.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.lblElapsTimeMCRunning.BackColor = System.Drawing.Color.Transparent
+        Me.lblElapsTimeMCRunning.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblElapsTimeMCRunning.ForeColor = System.Drawing.Color.White
+        Me.lblElapsTimeMCRunning.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lblElapsTimeMCRunning.Location = New System.Drawing.Point(209, 983)
+        Me.lblElapsTimeMCRunning.Name = "lblElapsTimeMCRunning"
+        Me.lblElapsTimeMCRunning.Size = New System.Drawing.Size(272, 35)
+        Me.lblElapsTimeMCRunning.TabIndex = 8
+        Me.lblElapsTimeMCRunning.Text = "0"
+        Me.lblElapsTimeMCRunning.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'lblStatMC1
         '
@@ -83,9 +114,9 @@ Partial Class frmMC1RUN
         Me.lblStatMC1.BackColor = System.Drawing.Color.Transparent
         Me.lblStatMC1.Font = New System.Drawing.Font("Microsoft Sans Serif", 48.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblStatMC1.ForeColor = System.Drawing.Color.White
-        Me.lblStatMC1.Location = New System.Drawing.Point(10, 92)
+        Me.lblStatMC1.Location = New System.Drawing.Point(3, 311)
         Me.lblStatMC1.Name = "lblStatMC1"
-        Me.lblStatMC1.Size = New System.Drawing.Size(535, 192)
+        Me.lblStatMC1.Size = New System.Drawing.Size(613, 298)
         Me.lblStatMC1.TabIndex = 6
         Me.lblStatMC1.Text = "Machine Running"
         Me.lblStatMC1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -99,7 +130,7 @@ Partial Class frmMC1RUN
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(13, 13)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(561, 438)
+        Me.GroupBox1.Size = New System.Drawing.Size(625, 1088)
         Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "*"
@@ -120,15 +151,19 @@ Partial Class frmMC1RUN
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(587, 464)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(651, 1114)
         Me.TableLayoutPanel1.TabIndex = 5
+        '
+        'tmrRealTimeCheck
+        '
+        Me.tmrRealTimeCheck.Enabled = True
         '
         'frmMC1RUN
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.ClientSize = New System.Drawing.Size(587, 464)
+        Me.BackColor = System.Drawing.Color.CadetBlue
+        Me.ClientSize = New System.Drawing.Size(651, 1114)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "frmMC1RUN"
@@ -143,8 +178,11 @@ Partial Class frmMC1RUN
 
     Friend WithEvents pnlMC1 As Panel
     Friend WithEvents Label1 As Label
-    Friend WithEvents lblElapsTimeMC1 As Label
+    Friend WithEvents lblElapsTimeMCRunning As Label
     Friend WithEvents lblStatMC1 As Label
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
+    Friend WithEvents tmrRealTimeCheck As Timer
+    Friend WithEvents Label3 As Label
+    Friend WithEvents lblElapsedDays As Label
 End Class

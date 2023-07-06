@@ -4,6 +4,9 @@ Imports System.Net.Security
 Public Class frmNewJOSetup
     Private Sub frmNewJOSetup_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         modINfrmNewJOSetup = True
+        btnFail.Enabled = False
+        btnPass.Enabled = False
+
 
         frmMC1PlsLogin.Close()
         btnMS_TAM_ONOFF.Enabled = False
@@ -110,9 +113,11 @@ Public Class frmNewJOSetup
             btnMS_StartStop.Text = "DONE"
             modMSTimerStart = False
             modFPBTimerStart = True
-            modForQA_NewJOLoaded_isTrue = True
-            modINfrmMC1QAVerification = True
-            Me.Close()
+            btnFail.Enabled = True
+            btnPass.Enabled = True
+            'modForQA_NewJOLoaded_isTrue = True
+            'modINfrmMC1QAVerification = True
+            'Me.Close()
         ElseIf modFPBTimerStart = True Then
             FPBButtonSendSampleStat()
             modFPBTimerStart = False
@@ -120,6 +125,8 @@ Public Class frmNewJOSetup
             modFPBTimerCounter = 0
             MSbutton_INPROGStats()
             modMSTimerStart = True
+            btnFail.Enabled = False
+            btnPass.Enabled = False
         End If
     End Sub
     Public Sub FPBButtonForQACheckStat()
@@ -139,6 +146,7 @@ Public Class frmNewJOSetup
         Me.Close()
     End Sub
 
+    '// Ver.1 QA Fail Seq.
     Public Sub FORQAVeriResult_Failed()
         If modForQAFail_NewJOLoaded_isTrue = True Then
             modForQAFail_NewJOLoaded_isTrue = False
@@ -153,6 +161,18 @@ Public Class frmNewJOSetup
         End If
     End Sub
 
+    '// Ver.2 QA Fail Seq.
+    Public Sub QAFail()
+        modFPBFailCounter += 1
+        FPBButtonSendSampleStat()
+        modFPBTimerStart = False
+        modMSTimerCounter = modMSTimerCounter + modFPBTimerCounter
+        modFPBTimerCounter = 0
+        MSbutton_INPROGStats()
+        modMSTimerStart = True
+    End Sub
+
+    '// Ver.1 QA Pass Seq.
     Public Sub FORQAVeriResult_Pass()
         If modForQAPass_NewJOLoaded_isTrue = True Then
             modForQAPass_NewJOLoaded_isTrue = False
@@ -162,6 +182,12 @@ Public Class frmNewJOSetup
         End If
     End Sub
 
+    '/' Ver.2 QA Pass Seq.
+    Public Sub QAPass()
+        btnFPB_StartStop.Text = "QA PASS!"
+        modFPBTimerStart = False
+        modMPTimerStart = True
+    End Sub
 
     Public Sub BtnMassPro_EnabelDisable()
         If btnFPB_StartStop.Text = "QA PASS!" Then
@@ -176,4 +202,15 @@ Public Class frmNewJOSetup
         Me.Close()
     End Sub
 
+    Private Sub btnFail_Click(sender As Object, e As EventArgs) Handles btnFail.Click
+        QAFail()
+        btnFail.Enabled = False
+        btnPass.Enabled = False
+    End Sub
+
+    Private Sub btnPass_Click(sender As Object, e As EventArgs) Handles btnPass.Click
+        QAPass()
+        btnFail.Enabled = False
+        btnPass.Enabled = False
+    End Sub
 End Class

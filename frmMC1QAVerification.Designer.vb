@@ -25,9 +25,6 @@ Partial Class frmMC1QAVerification
         Me.components = New System.ComponentModel.Container()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.pnlMC1 = New System.Windows.Forms.Panel()
-        Me.btnMainPage = New FontAwesome.Sharp.IconButton()
-        Me.btnFail = New FontAwesome.Sharp.IconButton()
-        Me.btnPass = New FontAwesome.Sharp.IconButton()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblFailedCounter = New System.Windows.Forms.Label()
         Me.lblElapsTimeMC1 = New System.Windows.Forms.Label()
@@ -35,6 +32,9 @@ Partial Class frmMC1QAVerification
         Me.lblStatMC1 = New System.Windows.Forms.Label()
         Me.tmrRealTimeCheck = New System.Windows.Forms.Timer(Me.components)
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.btnMainPage = New FontAwesome.Sharp.IconButton()
+        Me.btnFail = New FontAwesome.Sharp.IconButton()
+        Me.btnPass = New FontAwesome.Sharp.IconButton()
         Me.GroupBox1.SuspendLayout()
         Me.pnlMC1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -42,12 +42,12 @@ Partial Class frmMC1QAVerification
         '
         'GroupBox1
         '
-        Me.GroupBox1.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.GroupBox1.Controls.Add(Me.pnlMC1)
+        Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(13, 13)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(561, 438)
+        Me.GroupBox1.Size = New System.Drawing.Size(625, 1088)
         Me.GroupBox1.TabIndex = 6
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "*"
@@ -68,60 +68,8 @@ Partial Class frmMC1QAVerification
         Me.pnlMC1.ForeColor = System.Drawing.Color.Black
         Me.pnlMC1.Location = New System.Drawing.Point(3, 22)
         Me.pnlMC1.Name = "pnlMC1"
-        Me.pnlMC1.Size = New System.Drawing.Size(555, 413)
+        Me.pnlMC1.Size = New System.Drawing.Size(619, 1063)
         Me.pnlMC1.TabIndex = 0
-        '
-        'btnMainPage
-        '
-        Me.btnMainPage.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnMainPage.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnMainPage.FlatAppearance.BorderSize = 0
-        Me.btnMainPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnMainPage.IconChar = FontAwesome.Sharp.IconChar.HomeLg
-        Me.btnMainPage.IconColor = System.Drawing.Color.Black
-        Me.btnMainPage.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.btnMainPage.IconSize = 60
-        Me.btnMainPage.Location = New System.Drawing.Point(480, 15)
-        Me.btnMainPage.Name = "btnMainPage"
-        Me.btnMainPage.Size = New System.Drawing.Size(65, 56)
-        Me.btnMainPage.TabIndex = 10
-        Me.btnMainPage.UseVisualStyleBackColor = True
-        '
-        'btnFail
-        '
-        Me.btnFail.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.btnFail.BackColor = System.Drawing.Color.DarkRed
-        Me.btnFail.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnFail.ForeColor = System.Drawing.Color.White
-        Me.btnFail.IconChar = FontAwesome.Sharp.IconChar.Xmark
-        Me.btnFail.IconColor = System.Drawing.Color.White
-        Me.btnFail.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.btnFail.Location = New System.Drawing.Point(87, 234)
-        Me.btnFail.Name = "btnFail"
-        Me.btnFail.Size = New System.Drawing.Size(184, 60)
-        Me.btnFail.TabIndex = 9
-        Me.btnFail.Text = "Fail"
-        Me.btnFail.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnFail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnFail.UseVisualStyleBackColor = False
-        '
-        'btnPass
-        '
-        Me.btnPass.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.btnPass.BackColor = System.Drawing.Color.Green
-        Me.btnPass.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPass.ForeColor = System.Drawing.Color.White
-        Me.btnPass.IconChar = FontAwesome.Sharp.IconChar.Check
-        Me.btnPass.IconColor = System.Drawing.Color.White
-        Me.btnPass.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.btnPass.Location = New System.Drawing.Point(277, 234)
-        Me.btnPass.Name = "btnPass"
-        Me.btnPass.Size = New System.Drawing.Size(184, 60)
-        Me.btnPass.TabIndex = 9
-        Me.btnPass.Text = "Pass"
-        Me.btnPass.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnPass.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnPass.UseVisualStyleBackColor = False
         '
         'Label1
         '
@@ -129,7 +77,7 @@ Partial Class frmMC1QAVerification
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Black
-        Me.Label1.Location = New System.Drawing.Point(14, 359)
+        Me.Label1.Location = New System.Drawing.Point(14, 1009)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(187, 31)
         Me.Label1.TabIndex = 7
@@ -142,7 +90,7 @@ Partial Class frmMC1QAVerification
         Me.lblFailedCounter.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblFailedCounter.ForeColor = System.Drawing.Color.Black
         Me.lblFailedCounter.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.lblFailedCounter.Location = New System.Drawing.Point(87, 297)
+        Me.lblFailedCounter.Location = New System.Drawing.Point(87, 533)
         Me.lblFailedCounter.Name = "lblFailedCounter"
         Me.lblFailedCounter.Size = New System.Drawing.Size(184, 35)
         Me.lblFailedCounter.TabIndex = 8
@@ -156,7 +104,7 @@ Partial Class frmMC1QAVerification
         Me.lblElapsTimeMC1.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblElapsTimeMC1.ForeColor = System.Drawing.Color.Black
         Me.lblElapsTimeMC1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.lblElapsTimeMC1.Location = New System.Drawing.Point(209, 357)
+        Me.lblElapsTimeMC1.Location = New System.Drawing.Point(209, 1007)
         Me.lblElapsTimeMC1.Name = "lblElapsTimeMC1"
         Me.lblElapsTimeMC1.Size = New System.Drawing.Size(272, 35)
         Me.lblElapsTimeMC1.TabIndex = 8
@@ -184,9 +132,9 @@ Partial Class frmMC1QAVerification
         Me.lblStatMC1.Cursor = System.Windows.Forms.Cursors.Hand
         Me.lblStatMC1.Font = New System.Drawing.Font("Microsoft Sans Serif", 48.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblStatMC1.ForeColor = System.Drawing.Color.Black
-        Me.lblStatMC1.Location = New System.Drawing.Point(10, 54)
+        Me.lblStatMC1.Location = New System.Drawing.Point(10, 266)
         Me.lblStatMC1.Name = "lblStatMC1"
-        Me.lblStatMC1.Size = New System.Drawing.Size(535, 192)
+        Me.lblStatMC1.Size = New System.Drawing.Size(599, 192)
         Me.lblStatMC1.TabIndex = 6
         Me.lblStatMC1.Text = "QA" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Verification"
         Me.lblStatMC1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -211,15 +159,67 @@ Partial Class frmMC1QAVerification
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(587, 464)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(651, 1114)
         Me.TableLayoutPanel1.TabIndex = 7
+        '
+        'btnMainPage
+        '
+        Me.btnMainPage.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnMainPage.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnMainPage.FlatAppearance.BorderSize = 0
+        Me.btnMainPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnMainPage.IconChar = FontAwesome.Sharp.IconChar.HomeLg
+        Me.btnMainPage.IconColor = System.Drawing.Color.Black
+        Me.btnMainPage.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.btnMainPage.IconSize = 60
+        Me.btnMainPage.Location = New System.Drawing.Point(544, 15)
+        Me.btnMainPage.Name = "btnMainPage"
+        Me.btnMainPage.Size = New System.Drawing.Size(65, 56)
+        Me.btnMainPage.TabIndex = 10
+        Me.btnMainPage.UseVisualStyleBackColor = True
+        '
+        'btnFail
+        '
+        Me.btnFail.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.btnFail.BackColor = System.Drawing.Color.DarkRed
+        Me.btnFail.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnFail.ForeColor = System.Drawing.Color.White
+        Me.btnFail.IconChar = FontAwesome.Sharp.IconChar.Xmark
+        Me.btnFail.IconColor = System.Drawing.Color.White
+        Me.btnFail.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.btnFail.Location = New System.Drawing.Point(119, 470)
+        Me.btnFail.Name = "btnFail"
+        Me.btnFail.Size = New System.Drawing.Size(184, 60)
+        Me.btnFail.TabIndex = 9
+        Me.btnFail.Text = "Fail"
+        Me.btnFail.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnFail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnFail.UseVisualStyleBackColor = False
+        '
+        'btnPass
+        '
+        Me.btnPass.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.btnPass.BackColor = System.Drawing.Color.Green
+        Me.btnPass.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPass.ForeColor = System.Drawing.Color.White
+        Me.btnPass.IconChar = FontAwesome.Sharp.IconChar.Check
+        Me.btnPass.IconColor = System.Drawing.Color.White
+        Me.btnPass.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.btnPass.Location = New System.Drawing.Point(309, 470)
+        Me.btnPass.Name = "btnPass"
+        Me.btnPass.Size = New System.Drawing.Size(184, 60)
+        Me.btnPass.TabIndex = 9
+        Me.btnPass.Text = "Pass"
+        Me.btnPass.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnPass.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnPass.UseVisualStyleBackColor = False
         '
         'frmMC1QAVerification
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.ClientSize = New System.Drawing.Size(587, 464)
+        Me.BackColor = System.Drawing.Color.CadetBlue
+        Me.ClientSize = New System.Drawing.Size(651, 1114)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "frmMC1QAVerification"
