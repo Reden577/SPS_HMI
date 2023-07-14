@@ -157,18 +157,18 @@ Partial Class frmMainDash
         Me.Panel2.Controls.Add(Me.Label39)
         Me.Panel2.Controls.Add(Me.lblTesting)
         Me.Panel2.Controls.Add(Me.Label38)
-        Me.Panel2.Controls.Add(Me.lblJOLoadedisTrue)
         Me.Panel2.Controls.Add(Me.lblMC1QAStoppageSaveFlag)
+        Me.Panel2.Controls.Add(Me.lblJOLoadedisTrue)
         Me.Panel2.Controls.Add(Me.lblQAVerifyFailFlag)
         Me.Panel2.Controls.Add(Me.lblQAVerifyPassFlag)
+        Me.Panel2.Controls.Add(Me.Label33)
         Me.Panel2.Controls.Add(Me.lblMC1MachStoppageSaveFlag)
+        Me.Panel2.Controls.Add(Me.lblUserLoggedINisTrue)
         Me.Panel2.Controls.Add(Me.lblMC1OptStoppageSaveFlag)
         Me.Panel2.Controls.Add(Me.lblM16FlagisTrue)
         Me.Panel2.Controls.Add(Me.Label35)
         Me.Panel2.Controls.Add(Me.lblUserLoggedAndJOLoadedisTrue)
         Me.Panel2.Controls.Add(Me.Label34)
-        Me.Panel2.Controls.Add(Me.lblUserLoggedINisTrue)
-        Me.Panel2.Controls.Add(Me.Label33)
         Me.Panel2.Controls.Add(Me.lblInfrmNewJOSetup)
         Me.Panel2.Controls.Add(Me.Label31)
         Me.Panel2.Controls.Add(Me.lblPlanComplete)
@@ -232,7 +232,6 @@ Partial Class frmMainDash
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(634, 1104)
         Me.Panel2.TabIndex = 0
-        Me.Panel2.Visible = False
         '
         'lblNewDTisTrue
         '
@@ -276,13 +275,12 @@ Partial Class frmMainDash
         '
         'Label32
         '
-        Me.Label32.Location = New System.Drawing.Point(200, 256)
+        Me.Label32.Location = New System.Drawing.Point(224, 574)
         Me.Label32.Name = "Label32"
         Me.Label32.Size = New System.Drawing.Size(151, 13)
         Me.Label32.TabIndex = 0
         Me.Label32.Text = "JO Loaded isTrue"
         Me.Label32.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Label32.Visible = False
         '
         'Label40
         '
@@ -328,13 +326,12 @@ Partial Class frmMainDash
         '
         'lblJOLoadedisTrue
         '
-        Me.lblJOLoadedisTrue.Location = New System.Drawing.Point(354, 256)
+        Me.lblJOLoadedisTrue.Location = New System.Drawing.Point(378, 574)
         Me.lblJOLoadedisTrue.Name = "lblJOLoadedisTrue"
         Me.lblJOLoadedisTrue.Size = New System.Drawing.Size(32, 13)
         Me.lblJOLoadedisTrue.TabIndex = 0
         Me.lblJOLoadedisTrue.Text = "False"
         Me.lblJOLoadedisTrue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblJOLoadedisTrue.Visible = False
         '
         'lblMC1QAStoppageSaveFlag
         '
@@ -419,7 +416,7 @@ Partial Class frmMainDash
         '
         'lblUserLoggedINisTrue
         '
-        Me.lblUserLoggedINisTrue.Location = New System.Drawing.Point(354, 22)
+        Me.lblUserLoggedINisTrue.Location = New System.Drawing.Point(378, 591)
         Me.lblUserLoggedINisTrue.Name = "lblUserLoggedINisTrue"
         Me.lblUserLoggedINisTrue.Size = New System.Drawing.Size(32, 13)
         Me.lblUserLoggedINisTrue.TabIndex = 0
@@ -428,7 +425,7 @@ Partial Class frmMainDash
         '
         'Label33
         '
-        Me.Label33.Location = New System.Drawing.Point(200, 22)
+        Me.Label33.Location = New System.Drawing.Point(224, 591)
         Me.Label33.Name = "Label33"
         Me.Label33.Size = New System.Drawing.Size(151, 13)
         Me.Label33.TabIndex = 0
@@ -1098,6 +1095,7 @@ Partial Class frmMainDash
         Me.Label41.Size = New System.Drawing.Size(66, 13)
         Me.Label41.TabIndex = 8
         Me.Label41.Text = "QAVeriTime:"
+        Me.Label41.Visible = False
         '
         'lblQAVeriTime
         '
@@ -1108,6 +1106,7 @@ Partial Class frmMainDash
         Me.lblQAVeriTime.Size = New System.Drawing.Size(13, 13)
         Me.lblQAVeriTime.TabIndex = 8
         Me.lblQAVeriTime.Text = "0"
+        Me.lblQAVeriTime.Visible = False
         '
         'Label42
         '
@@ -1118,6 +1117,7 @@ Partial Class frmMainDash
         Me.Label42.Size = New System.Drawing.Size(71, 13)
         Me.Label42.TabIndex = 8
         Me.Label42.Text = "MCStopTime:"
+        Me.Label42.Visible = False
         '
         'lblMCStopTime
         '
@@ -1128,6 +1128,7 @@ Partial Class frmMainDash
         Me.lblMCStopTime.Size = New System.Drawing.Size(13, 13)
         Me.lblMCStopTime.TabIndex = 8
         Me.lblMCStopTime.Text = "0"
+        Me.lblMCStopTime.Visible = False
         '
         'Label43
         '
@@ -1138,6 +1139,7 @@ Partial Class frmMainDash
         Me.Label43.Size = New System.Drawing.Size(64, 13)
         Me.Label43.TabIndex = 8
         Me.Label43.Text = "RepairTime:"
+        Me.Label43.Visible = False
         '
         'lblRepairTime
         '
@@ -1148,6 +1150,7 @@ Partial Class frmMainDash
         Me.lblRepairTime.Size = New System.Drawing.Size(13, 13)
         Me.lblRepairTime.TabIndex = 8
         Me.lblRepairTime.Text = "0"
+        Me.lblRepairTime.Visible = False
         '
         'tmrRunTime
         '

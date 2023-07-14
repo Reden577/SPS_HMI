@@ -1,0 +1,3 @@
+Data Source=169.254.190.85,49172;Initial Catalog=SPS;Persist Security Info=True;User ID=sa;Password=doc577isin
+169.254.190.100
+502

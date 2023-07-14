@@ -25,6 +25,9 @@ Partial Class frmMC1QAVerification
         Me.components = New System.ComponentModel.Container()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.pnlMC1 = New System.Windows.Forms.Panel()
+        Me.btnMainPage = New FontAwesome.Sharp.IconButton()
+        Me.btnFail = New FontAwesome.Sharp.IconButton()
+        Me.btnPass = New FontAwesome.Sharp.IconButton()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblFailedCounter = New System.Windows.Forms.Label()
         Me.lblElapsTimeMC1 = New System.Windows.Forms.Label()
@@ -32,9 +35,6 @@ Partial Class frmMC1QAVerification
         Me.lblStatMC1 = New System.Windows.Forms.Label()
         Me.tmrRealTimeCheck = New System.Windows.Forms.Timer(Me.components)
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.btnMainPage = New FontAwesome.Sharp.IconButton()
-        Me.btnFail = New FontAwesome.Sharp.IconButton()
-        Me.btnPass = New FontAwesome.Sharp.IconButton()
         Me.GroupBox1.SuspendLayout()
         Me.pnlMC1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -70,6 +70,59 @@ Partial Class frmMC1QAVerification
         Me.pnlMC1.Name = "pnlMC1"
         Me.pnlMC1.Size = New System.Drawing.Size(619, 1063)
         Me.pnlMC1.TabIndex = 0
+        '
+        'btnMainPage
+        '
+        Me.btnMainPage.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnMainPage.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnMainPage.Enabled = False
+        Me.btnMainPage.FlatAppearance.BorderSize = 0
+        Me.btnMainPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnMainPage.IconChar = FontAwesome.Sharp.IconChar.HomeLg
+        Me.btnMainPage.IconColor = System.Drawing.Color.Black
+        Me.btnMainPage.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.btnMainPage.IconSize = 60
+        Me.btnMainPage.Location = New System.Drawing.Point(544, 15)
+        Me.btnMainPage.Name = "btnMainPage"
+        Me.btnMainPage.Size = New System.Drawing.Size(65, 56)
+        Me.btnMainPage.TabIndex = 10
+        Me.btnMainPage.UseVisualStyleBackColor = True
+        '
+        'btnFail
+        '
+        Me.btnFail.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.btnFail.BackColor = System.Drawing.Color.DarkRed
+        Me.btnFail.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnFail.ForeColor = System.Drawing.Color.White
+        Me.btnFail.IconChar = FontAwesome.Sharp.IconChar.Xmark
+        Me.btnFail.IconColor = System.Drawing.Color.White
+        Me.btnFail.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.btnFail.Location = New System.Drawing.Point(119, 470)
+        Me.btnFail.Name = "btnFail"
+        Me.btnFail.Size = New System.Drawing.Size(184, 60)
+        Me.btnFail.TabIndex = 9
+        Me.btnFail.Text = "Fail"
+        Me.btnFail.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnFail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnFail.UseVisualStyleBackColor = False
+        '
+        'btnPass
+        '
+        Me.btnPass.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.btnPass.BackColor = System.Drawing.Color.Green
+        Me.btnPass.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPass.ForeColor = System.Drawing.Color.White
+        Me.btnPass.IconChar = FontAwesome.Sharp.IconChar.Check
+        Me.btnPass.IconColor = System.Drawing.Color.White
+        Me.btnPass.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.btnPass.Location = New System.Drawing.Point(309, 470)
+        Me.btnPass.Name = "btnPass"
+        Me.btnPass.Size = New System.Drawing.Size(184, 60)
+        Me.btnPass.TabIndex = 9
+        Me.btnPass.Text = "Pass"
+        Me.btnPass.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnPass.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnPass.UseVisualStyleBackColor = False
         '
         'Label1
         '
@@ -161,58 +214,6 @@ Partial Class frmMC1QAVerification
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10.0!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(651, 1114)
         Me.TableLayoutPanel1.TabIndex = 7
-        '
-        'btnMainPage
-        '
-        Me.btnMainPage.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnMainPage.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnMainPage.FlatAppearance.BorderSize = 0
-        Me.btnMainPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnMainPage.IconChar = FontAwesome.Sharp.IconChar.HomeLg
-        Me.btnMainPage.IconColor = System.Drawing.Color.Black
-        Me.btnMainPage.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.btnMainPage.IconSize = 60
-        Me.btnMainPage.Location = New System.Drawing.Point(544, 15)
-        Me.btnMainPage.Name = "btnMainPage"
-        Me.btnMainPage.Size = New System.Drawing.Size(65, 56)
-        Me.btnMainPage.TabIndex = 10
-        Me.btnMainPage.UseVisualStyleBackColor = True
-        '
-        'btnFail
-        '
-        Me.btnFail.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.btnFail.BackColor = System.Drawing.Color.DarkRed
-        Me.btnFail.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnFail.ForeColor = System.Drawing.Color.White
-        Me.btnFail.IconChar = FontAwesome.Sharp.IconChar.Xmark
-        Me.btnFail.IconColor = System.Drawing.Color.White
-        Me.btnFail.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.btnFail.Location = New System.Drawing.Point(119, 470)
-        Me.btnFail.Name = "btnFail"
-        Me.btnFail.Size = New System.Drawing.Size(184, 60)
-        Me.btnFail.TabIndex = 9
-        Me.btnFail.Text = "Fail"
-        Me.btnFail.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnFail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnFail.UseVisualStyleBackColor = False
-        '
-        'btnPass
-        '
-        Me.btnPass.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.btnPass.BackColor = System.Drawing.Color.Green
-        Me.btnPass.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPass.ForeColor = System.Drawing.Color.White
-        Me.btnPass.IconChar = FontAwesome.Sharp.IconChar.Check
-        Me.btnPass.IconColor = System.Drawing.Color.White
-        Me.btnPass.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.btnPass.Location = New System.Drawing.Point(309, 470)
-        Me.btnPass.Name = "btnPass"
-        Me.btnPass.Size = New System.Drawing.Size(184, 60)
-        Me.btnPass.TabIndex = 9
-        Me.btnPass.Text = "Pass"
-        Me.btnPass.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnPass.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnPass.UseVisualStyleBackColor = False
         '
         'frmMC1QAVerification
         '

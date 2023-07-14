@@ -194,6 +194,7 @@ Public Class frmMC1QAVerification
         chk.GetForQAVeri_N_TtlQAVeri()
         qaveri = chk.DTDetails_sfForQAVeri
         ttlqaveri = chk.DTDetails_iTtlQAVeri
+        modQA_GetUserName = chk.DTDetails_sfVeriByQA
 
         If qaveri <> "" And qaveri <> "TBA" And ttlqaveri = 1 Then
             UpdateDowntimeAtQAVerifyPass()

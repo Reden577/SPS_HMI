@@ -26,6 +26,12 @@ Partial Class frmMC1MachineStoppage
         Me.lblDisplayON = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.pnlMC1 = New System.Windows.Forms.Panel()
+        Me.lstCmeasure = New System.Windows.Forms.ListBox()
+        Me.lstStoppage = New System.Windows.Forms.ListBox()
+        Me.btnCmeasure = New FontAwesome.Sharp.IconButton()
+        Me.btnStoppage = New FontAwesome.Sharp.IconButton()
+        Me.txtCMeasure = New System.Windows.Forms.TextBox()
+        Me.txtStoppage = New System.Windows.Forms.TextBox()
         Me.btnClear = New FontAwesome.Sharp.IconButton()
         Me.btnSave = New FontAwesome.Sharp.IconButton()
         Me.cboCountermeasure = New System.Windows.Forms.ComboBox()
@@ -34,7 +40,7 @@ Partial Class frmMC1MachineStoppage
         Me.Label2 = New System.Windows.Forms.Label()
         Me.btnMainPage = New FontAwesome.Sharp.IconButton()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Stoppage = New System.Windows.Forms.Label()
         Me.tmrRealTimeCheck = New System.Windows.Forms.Timer(Me.components)
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.GroupBox1.SuspendLayout()
@@ -52,6 +58,7 @@ Partial Class frmMC1MachineStoppage
         Me.lblDisplayON.TabIndex = 9
         Me.lblDisplayON.Text = "0"
         Me.lblDisplayON.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lblDisplayON.Visible = False
         '
         'GroupBox1
         '
@@ -68,6 +75,12 @@ Partial Class frmMC1MachineStoppage
         '
         'pnlMC1
         '
+        Me.pnlMC1.Controls.Add(Me.lstCmeasure)
+        Me.pnlMC1.Controls.Add(Me.lstStoppage)
+        Me.pnlMC1.Controls.Add(Me.btnCmeasure)
+        Me.pnlMC1.Controls.Add(Me.btnStoppage)
+        Me.pnlMC1.Controls.Add(Me.txtCMeasure)
+        Me.pnlMC1.Controls.Add(Me.txtStoppage)
         Me.pnlMC1.Controls.Add(Me.btnClear)
         Me.pnlMC1.Controls.Add(Me.btnSave)
         Me.pnlMC1.Controls.Add(Me.cboCountermeasure)
@@ -76,12 +89,84 @@ Partial Class frmMC1MachineStoppage
         Me.pnlMC1.Controls.Add(Me.Label2)
         Me.pnlMC1.Controls.Add(Me.btnMainPage)
         Me.pnlMC1.Controls.Add(Me.Label1)
-        Me.pnlMC1.Controls.Add(Me.Label4)
+        Me.pnlMC1.Controls.Add(Me.Stoppage)
         Me.pnlMC1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlMC1.Location = New System.Drawing.Point(3, 22)
         Me.pnlMC1.Name = "pnlMC1"
         Me.pnlMC1.Size = New System.Drawing.Size(619, 1063)
         Me.pnlMC1.TabIndex = 0
+        '
+        'lstCmeasure
+        '
+        Me.lstCmeasure.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lstCmeasure.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lstCmeasure.FormattingEnabled = True
+        Me.lstCmeasure.ItemHeight = 33
+        Me.lstCmeasure.Location = New System.Drawing.Point(9, 352)
+        Me.lstCmeasure.Name = "lstCmeasure"
+        Me.lstCmeasure.Size = New System.Drawing.Size(500, 235)
+        Me.lstCmeasure.TabIndex = 8
+        '
+        'lstStoppage
+        '
+        Me.lstStoppage.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lstStoppage.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lstStoppage.FormattingEnabled = True
+        Me.lstStoppage.ItemHeight = 33
+        Me.lstStoppage.Location = New System.Drawing.Point(9, 243)
+        Me.lstStoppage.Name = "lstStoppage"
+        Me.lstStoppage.Size = New System.Drawing.Size(500, 730)
+        Me.lstStoppage.TabIndex = 8
+        '
+        'btnCmeasure
+        '
+        Me.btnCmeasure.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnCmeasure.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.btnCmeasure.IconChar = FontAwesome.Sharp.IconChar.Ellipsis
+        Me.btnCmeasure.IconColor = System.Drawing.Color.Black
+        Me.btnCmeasure.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.btnCmeasure.IconSize = 40
+        Me.btnCmeasure.Location = New System.Drawing.Point(507, 306)
+        Me.btnCmeasure.Name = "btnCmeasure"
+        Me.btnCmeasure.Size = New System.Drawing.Size(100, 40)
+        Me.btnCmeasure.TabIndex = 7
+        Me.btnCmeasure.UseVisualStyleBackColor = False
+        '
+        'btnStoppage
+        '
+        Me.btnStoppage.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnStoppage.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.btnStoppage.IconChar = FontAwesome.Sharp.IconChar.Ellipsis
+        Me.btnStoppage.IconColor = System.Drawing.Color.Black
+        Me.btnStoppage.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.btnStoppage.IconSize = 40
+        Me.btnStoppage.Location = New System.Drawing.Point(507, 197)
+        Me.btnStoppage.Name = "btnStoppage"
+        Me.btnStoppage.Size = New System.Drawing.Size(100, 40)
+        Me.btnStoppage.TabIndex = 7
+        Me.btnStoppage.UseVisualStyleBackColor = False
+        '
+        'txtCMeasure
+        '
+        Me.txtCMeasure.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtCMeasure.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCMeasure.Location = New System.Drawing.Point(9, 306)
+        Me.txtCMeasure.Name = "txtCMeasure"
+        Me.txtCMeasure.Size = New System.Drawing.Size(500, 40)
+        Me.txtCMeasure.TabIndex = 6
+        '
+        'txtStoppage
+        '
+        Me.txtStoppage.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtStoppage.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtStoppage.Location = New System.Drawing.Point(9, 197)
+        Me.txtStoppage.Name = "txtStoppage"
+        Me.txtStoppage.Size = New System.Drawing.Size(500, 40)
+        Me.txtStoppage.TabIndex = 6
         '
         'btnClear
         '
@@ -126,10 +211,11 @@ Partial Class frmMC1MachineStoppage
         Me.cboCountermeasure.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboCountermeasure.FormattingEnabled = True
         Me.cboCountermeasure.ItemHeight = 33
-        Me.cboCountermeasure.Location = New System.Drawing.Point(9, 309)
+        Me.cboCountermeasure.Location = New System.Drawing.Point(9, 939)
         Me.cboCountermeasure.Name = "cboCountermeasure"
         Me.cboCountermeasure.Size = New System.Drawing.Size(598, 41)
         Me.cboCountermeasure.TabIndex = 4
+        Me.cboCountermeasure.Visible = False
         '
         'cboStoppage
         '
@@ -137,10 +223,11 @@ Partial Class frmMC1MachineStoppage
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cboStoppage.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboStoppage.FormattingEnabled = True
-        Me.cboStoppage.Location = New System.Drawing.Point(9, 200)
+        Me.cboStoppage.Location = New System.Drawing.Point(9, 892)
         Me.cboStoppage.Name = "cboStoppage"
         Me.cboStoppage.Size = New System.Drawing.Size(598, 41)
         Me.cboStoppage.TabIndex = 4
+        Me.cboStoppage.Visible = False
         '
         'btnBack
         '
@@ -194,15 +281,15 @@ Partial Class frmMC1MachineStoppage
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Stoppage Details:"
         '
-        'Label4
+        'Stoppage
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(6, 28)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(349, 37)
-        Me.Label4.TabIndex = 0
-        Me.Label4.Text = "MACHINE STOPPAGE"
+        Me.Stoppage.AutoSize = True
+        Me.Stoppage.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Stoppage.Location = New System.Drawing.Point(6, 28)
+        Me.Stoppage.Name = "Stoppage"
+        Me.Stoppage.Size = New System.Drawing.Size(349, 37)
+        Me.Stoppage.TabIndex = 0
+        Me.Stoppage.Text = "MACHINE STOPPAGE"
         '
         'tmrRealTimeCheck
         '
@@ -256,9 +343,15 @@ Partial Class frmMC1MachineStoppage
     Friend WithEvents btnBack As FontAwesome.Sharp.IconButton
     Friend WithEvents btnMainPage As FontAwesome.Sharp.IconButton
     Friend WithEvents Label1 As Label
-    Friend WithEvents Label4 As Label
+    Friend WithEvents Stoppage As Label
     Friend WithEvents cboCountermeasure As ComboBox
     Friend WithEvents Label2 As Label
     Friend WithEvents tmrRealTimeCheck As Timer
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
+    Friend WithEvents txtStoppage As TextBox
+    Friend WithEvents txtCMeasure As TextBox
+    Friend WithEvents btnStoppage As FontAwesome.Sharp.IconButton
+    Friend WithEvents btnCmeasure As FontAwesome.Sharp.IconButton
+    Friend WithEvents lstStoppage As ListBox
+    Friend WithEvents lstCmeasure As ListBox
 End Class

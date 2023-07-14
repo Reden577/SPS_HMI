@@ -44,6 +44,26 @@
         Dim StopTimer As String
         StopTimer = Math.Round((modMC1StopTimer / 60), 3)
         lblElapsTimeMC1.Text = StopTimer & " " & "mins"
+
+        'HAVE QUALITY ISSUE...
+        CheckQADTlogged()
+
+    End Sub
+
+    Public Sub CheckQADTlogged()
+        Dim result As String
+        Dim qaStop As New clsCheckQAStoppage
+        qaStop.QAStop_MCId = modSettingValMachineID
+        qaStop.QAStop_DTStatus = modSetVal_NewStoppage
+        qaStop.CheckExistingQAStoppage()
+        result = qaStop.QAStop_Result
+
+        If result = "Quality" Then
+            lblStatInfo.Visible = True
+        Else
+            lblStatInfo.Visible = False
+        End If
+
     End Sub
 
 End Class

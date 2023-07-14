@@ -31,6 +31,7 @@ Partial Class frmMC1STOP
         Me.lblStatMC1 = New System.Windows.Forms.Label()
         Me.tmrRealTimeCheck = New System.Windows.Forms.Timer(Me.components)
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.lblStatInfo = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.pnlMC1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -51,6 +52,7 @@ Partial Class frmMC1STOP
         'pnlMC1
         '
         Me.pnlMC1.BackColor = System.Drawing.Color.DarkRed
+        Me.pnlMC1.Controls.Add(Me.lblStatInfo)
         Me.pnlMC1.Controls.Add(Me.btnAcknowledge)
         Me.pnlMC1.Controls.Add(Me.Label1)
         Me.pnlMC1.Controls.Add(Me.lblElapsTimeMC1)
@@ -142,6 +144,17 @@ Partial Class frmMC1STOP
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(651, 1114)
         Me.TableLayoutPanel1.TabIndex = 6
         '
+        'lblStatInfo
+        '
+        Me.lblStatInfo.BackColor = System.Drawing.Color.Yellow
+        Me.lblStatInfo.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblStatInfo.Location = New System.Drawing.Point(17, 18)
+        Me.lblStatInfo.Name = "lblStatInfo"
+        Me.lblStatInfo.Size = New System.Drawing.Size(584, 52)
+        Me.lblStatInfo.TabIndex = 10
+        Me.lblStatInfo.Text = "HAVE QUALITY ISSUE..."
+        Me.lblStatInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'frmMC1STOP
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -168,4 +181,5 @@ Partial Class frmMC1STOP
     Friend WithEvents btnAcknowledge As FontAwesome.Sharp.IconButton
     Friend WithEvents tmrRealTimeCheck As Timer
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
+    Friend WithEvents lblStatInfo As Label
 End Class

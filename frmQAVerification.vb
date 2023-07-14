@@ -26,6 +26,7 @@
 
             If QAAcsRights = "QALvl1" Or QAAcsRights = "QALvl2" Then
                 modQA_AccessGranted = True
+                txtUserID.Text = ""
                 Me.Close()
             Else
                 MessageBox.Show("You are not allowed to do this Transaction." &
@@ -42,5 +43,6 @@
 
     Private Sub IconButton1_Click(sender As Object, e As EventArgs) Handles IconButton1.Click
         QAVerification()
+
     End Sub
 End Class

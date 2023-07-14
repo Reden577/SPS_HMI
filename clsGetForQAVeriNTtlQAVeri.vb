@@ -4,7 +4,7 @@ Public Class clsGetForQAVeriNTtlQAVeri
     Inherits clsDowntimeDetails
     Public Sub GetForQAVeri_N_TtlQAVeri()
         Dim con As New SqlConnection(modSQLPath)
-        Dim proc As String = "SELECT [ForQAVerification] ,[ttl_QAVeri_mins]
+        Dim proc As String = "SELECT [ForQAVerification] ,[ttl_QAVeri_mins], [VerifiedBy_QA]
                         FROM [Maintenance].[Downtime]
                         WHERE  [DT_Type] = @DTType And [DTStatus] = @DTStats And [Machine_ID] = @MCId"
         Using cmd As SqlCommand = New SqlCommand(proc, con)
@@ -17,6 +17,7 @@ Public Class clsGetForQAVeriNTtlQAVeri
             myreader.Read()
             DTDetails_sfForQAVeri = myreader("ForQAVerification")
             DTDetails_iTtlQAVeri = myreader("ttl_QAVeri_mins")
+            DTDetails_sfVeriByQA = myreader("VerifiedBy_QA")
             con.Close()
         End Using
     End Sub

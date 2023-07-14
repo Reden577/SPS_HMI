@@ -18,7 +18,7 @@ Public Class frmMC1NoPlan
     Public Sub WithPlan()
         If modJODetails_isTrue = True Then
             modINfrmMC1NoPlan = False
-            modINfrmMC1PlsLogin = True
+            'modINfrmMC1PlsLogin = True
             Me.Close()
         End If
     End Sub

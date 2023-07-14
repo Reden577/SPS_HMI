@@ -1,31 +1,45 @@
 ﻿Imports System.ComponentModel
 Imports System.Data.SqlClient
+Imports System.Windows.Documents
+
 Public Class frmMC1QAStoppage
 
     'Dim sqlPath As String = "Data Source=DESKTOP-4OGTIB2\DIAVIEWSQL;Initial Catalog=SPS;Persist Security Info=True;User ID=sa;Password=doc577isin"
     Dim sqlStoppageSelectCmd As String = "SELECT[Quality_Issue] FROM [Quality].[MListQualityStoppage]"
 
+    Dim listStopIsShow As Boolean
+    Dim listCmeasureIsShow As Boolean
     '//
     Private Sub frmMC1QAStoppage_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         modINfrmMC1QAStoppage = True
+
+        lstStoppage.Visible = False
+        lstCmeasure.Visible = False
+        txtCMeasure.Enabled = False
+        btnCmeasure.Enabled = False
+
         frmMC1MainPage.Close()
         frmMC1QAVerification.Close()
         LoadStoppageToDropdown()
 
         If modMC1QASendSampleFlag = True Then
-            cboStoppage.Text = My.Settings.QAStoppage
-            cboCountermeasure.Text = My.Settings.QACountermeasure
+            txtStoppage.Text = My.Settings.QAStoppage
+            txtCMeasure.Text = My.Settings.QACountermeasure
         Else
-            cboStoppage.Text = ""
-            cboCountermeasure.Text = ""
+            txtStoppage.Text = ""
+            txtCMeasure.Text = ""
         End If
 
         tmrRstFailFlag.Start()
         detailsComplete()
         CheckLoggedQualityStoppage()
 
-        If cboStoppage.Text <> "" And cboCountermeasure.Text <> "" Then
+        If txtStoppage.Text <> "" And txtCMeasure.Text <> "" Then
             grpStopDetails.Enabled = False
+            txtStoppage.Enabled = False
+            txtCMeasure.Enabled = False
+            btnStoppage.Enabled = False
+            btnCmeasure.Enabled = False
             btnClear.Enabled = False
         End If
 
@@ -34,8 +48,8 @@ Public Class frmMC1QAStoppage
         modINfrmMC1QAStoppage = False
     End Sub
     Private Sub frmMC1QAStoppage_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        My.Settings.QAStoppage = cboStoppage.Text
-        My.Settings.QACountermeasure = cboCountermeasure.Text
+        My.Settings.QAStoppage = txtStoppage.Text
+        My.Settings.QACountermeasure = txtCMeasure.Text
     End Sub
     '//
 
@@ -48,10 +62,10 @@ Public Class frmMC1QAStoppage
 
     '//
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSendSample.Click
-        If cboStoppage.Text <> "" And cboCountermeasure.Text <> "" And cboCountermeasure.Text <> "TBA" Then
+        If txtStoppage.Text <> "" And txtCMeasure.Text <> "" And txtCMeasure.Text <> "TBA" Then
             modMC1StoppageType = "Quality"
-            modMC1StoppageReason = cboStoppage.Text
-            modMC1Countermeasure = cboCountermeasure.Text
+            modMC1StoppageReason = txtStoppage.Text
+            modMC1Countermeasure = txtCMeasure.Text
             modMC1StoppageEndTime = Now()
 
             UpdateDowntimeAtStoppageSaved()
@@ -75,8 +89,8 @@ Public Class frmMC1QAStoppage
     Public Sub UpdateDowntimeAtStoppageSaved()
         Dim upD8 As New clsUpdateDTDetails_StoppageSave
         upD8.DTType = "Quality"
-        upD8.DTReason = cboStoppage.Text
-        upD8.DTCountermeasure = cboCountermeasure.Text
+        upD8.DTReason = txtStoppage.Text
+        upD8.DTCountermeasure = txtCMeasure.Text
         upD8.EndTime = Now()
         upD8.TtlRepairTime = Math.Round((modMC1RepairTimer / 60), 4)
         upD8.ForQAVeri = Now()
@@ -89,13 +103,32 @@ Public Class frmMC1QAStoppage
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
         cboStoppage.Text = ""
         cboCountermeasure.Text = ""
+
+        lstStoppage.SelectedItems.Clear()
+        txtStoppage.Text = ""
+        lstStoppage.Visible = False
+        listStopIsShow = False
+
+        lstCmeasure.SelectedItems.Clear()
+        txtCMeasure.Text = ""
+        lstCmeasure.Visible = False
+        listCmeasureIsShow = False
+
+        txtCMeasure.Enabled = False
+        btnCmeasure.Enabled = False
     End Sub
     '// 
 
     '//
     Private Sub btnEditDetails_Click(sender As Object, e As EventArgs) Handles btnEditDetails.Click
         grpStopDetails.Enabled = True
+
+        txtStoppage.Enabled = True
+        txtCMeasure.Enabled = True
+        btnStoppage.Enabled = True
+        btnCmeasure.Enabled = True
         btnClear.Enabled = True
+
     End Sub
     '//
     Public Sub LoadStoppageToDropdown()
@@ -110,6 +143,9 @@ Public Class frmMC1QAStoppage
             con.Close()
             cboStoppage.DataSource = table
             cboStoppage.DisplayMember = "Quality_Issue"
+
+            lstStoppage.DataSource = table
+            lstStoppage.DisplayMember = "Quality_Issue"
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Loading Quality Stoppage List", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -120,7 +156,7 @@ Public Class frmMC1QAStoppage
     Public Sub LoaCountermeasureToDropdown()
         Try
             Dim sqlCountermeasureSelectCmd As String = "SELECT [Countermeasure] FROM [Quality].[MListQualityCountermeasure]" _
-         & "where [Machine_No] = '" + modSettingValMachineID + "'  AND [Stoppage_Details] = '" + cboStoppage.Text + "'   "
+         & "where [Machine_No] = '" + modSettingValMachineID + "'  AND [Stoppage_Details] = '" + txtStoppage.Text + "'   "
             Dim con As New SqlConnection(modSQLPath)
             Dim cmd As New SqlCommand(sqlCountermeasureSelectCmd, con)
             Dim adapter As New SqlDataAdapter(cmd)
@@ -131,6 +167,9 @@ Public Class frmMC1QAStoppage
             con.Close()
             cboCountermeasure.DataSource = table
             cboCountermeasure.DisplayMember = "Countermeasure"
+
+            lstCmeasure.DataSource = table
+            lstCmeasure.DisplayMember = "Countermeasure"
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Loading Countermeasure List", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -145,7 +184,7 @@ Public Class frmMC1QAStoppage
 
 
     Public Sub detailsComplete()
-        If cboStoppage.Text <> "" And cboCountermeasure.Text <> "" And cboCountermeasure.Text <> "TBA" Then
+        If txtStoppage.Text <> "" And txtCMeasure.Text <> "" And txtCMeasure.Text <> "TBA" Then
             btnSendSample.Enabled = True
         Else
             btnSendSample.Enabled = False
@@ -179,17 +218,76 @@ Public Class frmMC1QAStoppage
             sel.MCID = modSettingValMachineID
             sel.DTStatus = modSetVal_NewStoppage
             sel.SelDTReason_CMeasure()
-            cboStoppage.Text = sel.DTReason
-            cboCountermeasure.Text = sel.DTCountermeasure
+            txtStoppage.Text = sel.DTReason
+            txtCMeasure.Text = sel.DTCountermeasure
             modMC1FailCounters = sel.TtlFailFreq
         Else
-            cboStoppage.SelectedIndex = -1
-            cboCountermeasure.SelectedIndex = -1
+            txtStoppage.Text = ""
+            txtCMeasure.Text = ""
         End If
     End Sub
 
-    Private Sub pnlMC1_Paint(sender As Object, e As PaintEventArgs) Handles pnlMC1.Paint
+    Private Sub pnlMC1_Click(sender As Object, e As EventArgs) Handles pnlMC1.Click
+        lstStoppage.Visible = False
+        lstCmeasure.Visible = False
+        listStopIsShow = False
+        listCmeasureIsShow = False
+    End Sub
 
+    Private Sub txtStoppage_TextChanged(sender As Object, e As EventArgs) Handles txtStoppage.TextChanged
+        txtCMeasure.Text = ""
+        lstCmeasure.Visible = False
+        listCmeasureIsShow = False
+    End Sub
+
+    Private Sub lstStoppage_Click(sender As Object, e As EventArgs) Handles lstStoppage.Click
+        txtStoppage.Text = lstStoppage.GetItemText(lstStoppage.SelectedItem)
+        If txtStoppage.Text <> "" Then
+            listStopIsShow = False
+            lstStoppage.Visible = False
+            txtCMeasure.Enabled = True
+            btnCmeasure.Enabled = True
+        End If
+    End Sub
+
+    Private Sub lstCmeasure_Click(sender As Object, e As EventArgs) Handles lstCmeasure.Click
+        txtCMeasure.Text = lstCmeasure.GetItemText(lstCmeasure.SelectedItem)
+        If txtCMeasure.Text <> "" Then
+            listCmeasureIsShow = False
+            lstCmeasure.Visible = False
+
+        End If
+    End Sub
+
+    Private Sub btnStoppage_Click(sender As Object, e As EventArgs) Handles btnStoppage.Click
+        If listStopIsShow = False Then
+            listStopIsShow = True
+            LoadStoppageToDropdown()
+            lstStoppage.SelectedItems.Clear()
+            'txtStoppage.Text = ""
+            lstStoppage.Visible = True
+        ElseIf listStopIsShow = True Then
+            lstStoppage.Visible = False
+            listStopIsShow = False
+        End If
+
+        lstCmeasure.Visible = False
+        listCmeasureIsShow = False
+    End Sub
+
+    Private Sub btnCmeasure_Click(sender As Object, e As EventArgs) Handles btnCmeasure.Click
+        If lstStoppage.Visible = False Then
+            If listCmeasureIsShow = False Then
+                listCmeasureIsShow = True
+                LoaCountermeasureToDropdown()
+                lstCmeasure.SelectedItems.Clear()
+                'txtCMeasure.Text = ""
+                lstCmeasure.Visible = True
+            ElseIf listCmeasureIsShow = True Then
+                lstCmeasure.Visible = False
+                listCmeasureIsShow = False
+            End If
+        End If
     End Sub
 
 

@@ -58,6 +58,8 @@ Public Class frmMainDash
         checkLoginAndJOLoaded()
         ConnectToModbus()
 
+        NOJO_or_NoPlan()
+
         Me.CenterToScreen()
     End Sub
     '//
@@ -263,32 +265,35 @@ Public Class frmMainDash
     End Sub
     '//
 
-    '// CALLING CONDITION SUB FOR SWITCHING FORMS (PLS LOGIN, STOP AND NEW JO SETUP, NO PLAN)
+    '// CALLING CONDITION SUB FOR SWITCHING FORMS (PLS LOGIN, STOP AND NEW JO SETUP)
     Public Sub formSwitchPlsLogin_Stop_JOLoadeSetup()
-        If modLoginAndJOLoaded_isTrue = True Then
-            modINfrmMC1PlsLogin = False
+        If modJODetails_isTrue = True Then
+            If modLoginAndJOLoaded_isTrue = True Then
+                modINfrmMC1PlsLogin = False
 
-            If modSettingValMachineID = "MC1" Then
-                If D2002 = 0 And modFPBuyOff_Done = False Then
-                    modINfrmNewJOSetup = True
-                    modMCRunTime = 0
-                Else
-                    modINfrmMC1Stop = True
+                If modSettingValMachineID = "MC1" Then
+                    If D2002 = 0 And modFPBuyOff_Done = False Then
+                        modINfrmNewJOSetup = True
+                        modMCRunTime = 0
+                    Else
+                        modINfrmMC1Stop = True
+                    End If
+
+                ElseIf modSettingValMachineID = "MC2" Then
+                    If D2004 = 0 And modFPBuyOff_Done = False Then
+                        modINfrmNewJOSetup = True
+                        modMCRunTime = 0
+                    Else
+                        modINfrmMC1Stop = True
+                    End If
                 End If
 
-            ElseIf modSettingValMachineID = "MC2" Then
-                If D2004 = 0 And modFPBuyOff_Done = False Then
-                    modINfrmNewJOSetup = True
-                    modMCRunTime = 0
-                Else
-                    modINfrmMC1Stop = True
-                End If
+            Else
+                modINfrmMC1PlsLogin = True
+                modINfrmMC1Stop = False
             End If
-
-        Else
-            modINfrmMC1PlsLogin = True
-            modINfrmMC1Stop = False
         End If
+
     End Sub
     '//
 
@@ -343,7 +348,10 @@ Public Class frmMainDash
             End If
 
             If modTestAutoModeMC1Flag = False Then
-                modINfrmMC1Stop = True
+                If modJODetails_isTrue = True Then
+                    modINfrmMC1Stop = True
+                End If
+
             End If
 
             'Note:
@@ -392,7 +400,11 @@ Public Class frmMainDash
                 End If
 
                 If modTestAutoModeMC1Flag = False Then
-                    modINfrmMC1Stop = True
+                    If modJODetails_isTrue = True Then
+                        If modLoginAndJOLoaded_isTrue = True Then
+                            modINfrmMC1Stop = True
+                        End If
+                    End If
                 End If
 
                 'Note:
@@ -619,8 +631,11 @@ Public Class frmMainDash
     End Sub
     '//
 
-    '// CALLING JO LOADED IS TRUE SUBS
+    '// CALLING JO LOADED OR NO PLAN IS TRUE SUBS
     Private Sub lblJOLoadedisTrue_TextChanged(sender As Object, e As EventArgs) Handles lblJOLoadedisTrue.TextChanged
+        NOJO_or_NoPlan()
+    End Sub
+    Public Sub NOJO_or_NoPlan()
         If modJODetails_isTrue = False Then
             modMPTimerStart = False
             modMSTimerCounter = 0
@@ -631,6 +646,9 @@ Public Class frmMainDash
 
             change_PanelContainerFrmMC1(stMC1NoPlan) 'No Plan
             showForm(frmMC1NoPlan)
+
+        ElseIf modJODetails_isTrue = True Then
+            formSwitchPlsLogin_Stop_JOLoadeSetup()
         End If
     End Sub
     '//
@@ -934,6 +952,7 @@ Public Class frmMainDash
                 mc_p1Out = D2004 * D2016
                 mc_P2Out = D2004 * D2016
             End If
+
             If modSettingValMachineID <> "" And cntProdnStat >= 1 Then
                 Dim upd8 As New clsUpdateJOLoadedDetails_AtEndTime
                 upd8.MCId = modSettingValMachineID
