@@ -1,3 +1,0 @@
-Data Source=169.254.120.130,49172;Initial Catalog=SPS;Persist Security Info=True;User ID=sa;Password=admin01
-169.254.204.70
-502
