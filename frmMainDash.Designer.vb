@@ -34,18 +34,18 @@ Partial Class frmMainDash
         Me.Label39 = New System.Windows.Forms.Label()
         Me.lblTesting = New System.Windows.Forms.Label()
         Me.Label38 = New System.Windows.Forms.Label()
-        Me.lblJOLoadedisTrue = New System.Windows.Forms.Label()
         Me.lblMC1QAStoppageSaveFlag = New System.Windows.Forms.Label()
+        Me.lblJOLoadedisTrue = New System.Windows.Forms.Label()
         Me.lblQAVerifyFailFlag = New System.Windows.Forms.Label()
         Me.lblQAVerifyPassFlag = New System.Windows.Forms.Label()
+        Me.Label33 = New System.Windows.Forms.Label()
         Me.lblMC1MachStoppageSaveFlag = New System.Windows.Forms.Label()
+        Me.lblUserLoggedINisTrue = New System.Windows.Forms.Label()
         Me.lblMC1OptStoppageSaveFlag = New System.Windows.Forms.Label()
         Me.lblM16FlagisTrue = New System.Windows.Forms.Label()
         Me.Label35 = New System.Windows.Forms.Label()
         Me.lblUserLoggedAndJOLoadedisTrue = New System.Windows.Forms.Label()
         Me.Label34 = New System.Windows.Forms.Label()
-        Me.lblUserLoggedINisTrue = New System.Windows.Forms.Label()
-        Me.Label33 = New System.Windows.Forms.Label()
         Me.lblInfrmNewJOSetup = New System.Windows.Forms.Label()
         Me.Label31 = New System.Windows.Forms.Label()
         Me.lblPlanComplete = New System.Windows.Forms.Label()
@@ -127,6 +127,7 @@ Partial Class frmMainDash
         Me.Label43 = New System.Windows.Forms.Label()
         Me.lblRepairTime = New System.Windows.Forms.Label()
         Me.tmrRunTime = New System.Windows.Forms.Timer(Me.components)
+        Me.lblSystemBypass = New System.Windows.Forms.Label()
         Me.pnlFormContainer.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.picComCheck, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -148,13 +149,19 @@ Partial Class frmMainDash
         'Panel2
         '
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel2.Controls.Add(Me.lblRepairTime)
         Me.Panel2.Controls.Add(Me.lblNewDTisTrue)
         Me.Panel2.Controls.Add(Me.Label36)
         Me.Panel2.Controls.Add(Me.Label37)
+        Me.Panel2.Controls.Add(Me.lblMCStopTime)
         Me.Panel2.Controls.Add(Me.Label22)
         Me.Panel2.Controls.Add(Me.Label32)
+        Me.Panel2.Controls.Add(Me.Label42)
         Me.Panel2.Controls.Add(Me.Label40)
+        Me.Panel2.Controls.Add(Me.lblQAVeriTime)
         Me.Panel2.Controls.Add(Me.Label39)
+        Me.Panel2.Controls.Add(Me.Label43)
+        Me.Panel2.Controls.Add(Me.Label41)
         Me.Panel2.Controls.Add(Me.lblTesting)
         Me.Panel2.Controls.Add(Me.Label38)
         Me.Panel2.Controls.Add(Me.lblMC1QAStoppageSaveFlag)
@@ -324,15 +331,6 @@ Partial Class frmMainDash
         Me.Label38.Text = "Label38"
         Me.Label38.Visible = False
         '
-        'lblJOLoadedisTrue
-        '
-        Me.lblJOLoadedisTrue.Location = New System.Drawing.Point(378, 574)
-        Me.lblJOLoadedisTrue.Name = "lblJOLoadedisTrue"
-        Me.lblJOLoadedisTrue.Size = New System.Drawing.Size(32, 13)
-        Me.lblJOLoadedisTrue.TabIndex = 0
-        Me.lblJOLoadedisTrue.Text = "False"
-        Me.lblJOLoadedisTrue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
         'lblMC1QAStoppageSaveFlag
         '
         Me.lblMC1QAStoppageSaveFlag.AutoSize = True
@@ -341,6 +339,15 @@ Partial Class frmMainDash
         Me.lblMC1QAStoppageSaveFlag.Size = New System.Drawing.Size(32, 13)
         Me.lblMC1QAStoppageSaveFlag.TabIndex = 0
         Me.lblMC1QAStoppageSaveFlag.Text = "False"
+        '
+        'lblJOLoadedisTrue
+        '
+        Me.lblJOLoadedisTrue.Location = New System.Drawing.Point(378, 574)
+        Me.lblJOLoadedisTrue.Name = "lblJOLoadedisTrue"
+        Me.lblJOLoadedisTrue.Size = New System.Drawing.Size(32, 13)
+        Me.lblJOLoadedisTrue.TabIndex = 0
+        Me.lblJOLoadedisTrue.Text = "False"
+        Me.lblJOLoadedisTrue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'lblQAVerifyFailFlag
         '
@@ -360,6 +367,15 @@ Partial Class frmMainDash
         Me.lblQAVerifyPassFlag.TabIndex = 0
         Me.lblQAVerifyPassFlag.Text = "False"
         '
+        'Label33
+        '
+        Me.Label33.Location = New System.Drawing.Point(224, 591)
+        Me.Label33.Name = "Label33"
+        Me.Label33.Size = New System.Drawing.Size(151, 13)
+        Me.Label33.TabIndex = 0
+        Me.Label33.Text = "User LoggedIn isTrue"
+        Me.Label33.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
         'lblMC1MachStoppageSaveFlag
         '
         Me.lblMC1MachStoppageSaveFlag.AutoSize = True
@@ -368,6 +384,15 @@ Partial Class frmMainDash
         Me.lblMC1MachStoppageSaveFlag.Size = New System.Drawing.Size(32, 13)
         Me.lblMC1MachStoppageSaveFlag.TabIndex = 0
         Me.lblMC1MachStoppageSaveFlag.Text = "False"
+        '
+        'lblUserLoggedINisTrue
+        '
+        Me.lblUserLoggedINisTrue.Location = New System.Drawing.Point(378, 591)
+        Me.lblUserLoggedINisTrue.Name = "lblUserLoggedINisTrue"
+        Me.lblUserLoggedINisTrue.Size = New System.Drawing.Size(32, 13)
+        Me.lblUserLoggedINisTrue.TabIndex = 0
+        Me.lblUserLoggedINisTrue.Text = "False"
+        Me.lblUserLoggedINisTrue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'lblMC1OptStoppageSaveFlag
         '
@@ -413,24 +438,6 @@ Partial Class frmMainDash
         Me.Label34.TabIndex = 0
         Me.Label34.Text = "UserLogged And JO Loaded isTrue:"
         Me.Label34.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'lblUserLoggedINisTrue
-        '
-        Me.lblUserLoggedINisTrue.Location = New System.Drawing.Point(378, 591)
-        Me.lblUserLoggedINisTrue.Name = "lblUserLoggedINisTrue"
-        Me.lblUserLoggedINisTrue.Size = New System.Drawing.Size(32, 13)
-        Me.lblUserLoggedINisTrue.TabIndex = 0
-        Me.lblUserLoggedINisTrue.Text = "False"
-        Me.lblUserLoggedINisTrue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'Label33
-        '
-        Me.Label33.Location = New System.Drawing.Point(224, 591)
-        Me.Label33.Name = "Label33"
-        Me.Label33.Size = New System.Drawing.Size(151, 13)
-        Me.Label33.TabIndex = 0
-        Me.Label33.Text = "User LoggedIn isTrue"
-        Me.Label33.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'lblInfrmNewJOSetup
         '
@@ -1090,7 +1097,7 @@ Partial Class frmMainDash
         '
         Me.Label41.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label41.AutoSize = True
-        Me.Label41.Location = New System.Drawing.Point(10, 1194)
+        Me.Label41.Location = New System.Drawing.Point(18, 875)
         Me.Label41.Name = "Label41"
         Me.Label41.Size = New System.Drawing.Size(66, 13)
         Me.Label41.TabIndex = 8
@@ -1101,7 +1108,7 @@ Partial Class frmMainDash
         '
         Me.lblQAVeriTime.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lblQAVeriTime.AutoSize = True
-        Me.lblQAVeriTime.Location = New System.Drawing.Point(83, 1194)
+        Me.lblQAVeriTime.Location = New System.Drawing.Point(91, 875)
         Me.lblQAVeriTime.Name = "lblQAVeriTime"
         Me.lblQAVeriTime.Size = New System.Drawing.Size(13, 13)
         Me.lblQAVeriTime.TabIndex = 8
@@ -1112,7 +1119,7 @@ Partial Class frmMainDash
         '
         Me.Label42.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label42.AutoSize = True
-        Me.Label42.Location = New System.Drawing.Point(5, 1160)
+        Me.Label42.Location = New System.Drawing.Point(13, 841)
         Me.Label42.Name = "Label42"
         Me.Label42.Size = New System.Drawing.Size(71, 13)
         Me.Label42.TabIndex = 8
@@ -1123,7 +1130,7 @@ Partial Class frmMainDash
         '
         Me.lblMCStopTime.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lblMCStopTime.AutoSize = True
-        Me.lblMCStopTime.Location = New System.Drawing.Point(83, 1160)
+        Me.lblMCStopTime.Location = New System.Drawing.Point(91, 841)
         Me.lblMCStopTime.Name = "lblMCStopTime"
         Me.lblMCStopTime.Size = New System.Drawing.Size(13, 13)
         Me.lblMCStopTime.TabIndex = 8
@@ -1134,7 +1141,7 @@ Partial Class frmMainDash
         '
         Me.Label43.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label43.AutoSize = True
-        Me.Label43.Location = New System.Drawing.Point(12, 1177)
+        Me.Label43.Location = New System.Drawing.Point(20, 858)
         Me.Label43.Name = "Label43"
         Me.Label43.Size = New System.Drawing.Size(64, 13)
         Me.Label43.TabIndex = 8
@@ -1145,7 +1152,7 @@ Partial Class frmMainDash
         '
         Me.lblRepairTime.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lblRepairTime.AutoSize = True
-        Me.lblRepairTime.Location = New System.Drawing.Point(83, 1177)
+        Me.lblRepairTime.Location = New System.Drawing.Point(91, 858)
         Me.lblRepairTime.Name = "lblRepairTime"
         Me.lblRepairTime.Size = New System.Drawing.Size(13, 13)
         Me.lblRepairTime.TabIndex = 8
@@ -1157,21 +1164,28 @@ Partial Class frmMainDash
         Me.tmrRunTime.Enabled = True
         Me.tmrRunTime.Interval = 1000
         '
+        'lblSystemBypass
+        '
+        Me.lblSystemBypass.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.lblSystemBypass.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSystemBypass.ForeColor = System.Drawing.Color.Red
+        Me.lblSystemBypass.Location = New System.Drawing.Point(12, 1161)
+        Me.lblSystemBypass.Name = "lblSystemBypass"
+        Me.lblSystemBypass.Size = New System.Drawing.Size(387, 46)
+        Me.lblSystemBypass.TabIndex = 7
+        Me.lblSystemBypass.Text = "SYSTEM BYPASS ON !"
+        Me.lblSystemBypass.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'frmMainDash
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
         Me.ClientSize = New System.Drawing.Size(671, 1211)
-        Me.Controls.Add(Me.lblRepairTime)
+        Me.Controls.Add(Me.lblSystemBypass)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.btnSetting)
-        Me.Controls.Add(Me.lblMCStopTime)
         Me.Controls.Add(Me.pnlFormContainer)
-        Me.Controls.Add(Me.Label42)
-        Me.Controls.Add(Me.lblQAVeriTime)
-        Me.Controls.Add(Me.Label43)
-        Me.Controls.Add(Me.Label41)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Name = "frmMainDash"
         Me.Text = "Main Dashboard"
@@ -1182,7 +1196,6 @@ Partial Class frmMainDash
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.TableLayoutPanel1.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
 
@@ -1290,4 +1303,5 @@ Partial Class frmMainDash
     Friend WithEvents Label43 As Label
     Friend WithEvents lblRepairTime As Label
     Friend WithEvents tmrRunTime As Timer
+    Friend WithEvents lblSystemBypass As Label
 End Class

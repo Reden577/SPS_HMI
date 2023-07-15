@@ -108,6 +108,7 @@ Public Class frmMainDash
 
         TextChangeReferenceValues()
         RunTime()
+        SystemBypass()
     End Sub
     '//
 
@@ -1377,4 +1378,23 @@ Public Class frmMainDash
     Private Sub tmrRunTime_Tick(sender As Object, e As EventArgs) Handles tmrRunTime.Tick
         modMCRunTime += 1
     End Sub
+
+    Public Sub SystemBypass()
+        'MC1
+        If modSettingValMachineID = "MC1" Then
+            If RxPLCM9 = True Then
+                lblSystemBypass.Visible = True
+            Else
+                lblSystemBypass.Visible = False
+            End If
+            'MC2
+        ElseIf modSettingValMachineID = "MC2" Then
+            If RxPLCM10 = True Then
+                lblSystemBypass.Visible = True
+            Else
+                lblSystemBypass.Visible = False
+            End If
+        End If
+    End Sub
+
 End Class
